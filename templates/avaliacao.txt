@@ -1,0 +1,524 @@
+# Formato: T=tipo; Q=pergunta; A=resposta esperada; D=fonte(s) separadas por ';'; C=resposta calculada (dispensa checagem literal de números)
+
+T: simples
+Q: Acabei de ser contratado. Em quanto tempo preciso concluir os treinamentos obrigatórios?
+A: Os treinamentos obrigatórios (Código de Conduta, LGPD e privacidade, Segurança da informação e Segurança no trabalho) devem ser concluídos nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias de empresa.
+D: docs/rh/onboarding-dia-1.md
+
+T: simples
+Q: Meu gestor pode negar as datas de férias que escolhi?
+A: O gestor imediato analisa o pedido e pode aprovar ou sugerir uma nova data quando houver conflito de escala, mas as férias precisam ser concedidas dentro do período legal.
+D: docs/rh/ferias.md
+
+T: simples
+Q: Se eu esquecer de registrar o ponto, ainda consigo corrigir?
+A: Sim. Faça o ajuste no PontoBrisa em até {{ f.rh.jornada.ajuste_ponto_dias }} dias depois da data, com justificativa; o gestor aprova e o RH confere.
+D: docs/rh/jornada-e-ponto.md
+
+T: simples
+Q: A Brisa Log paga academia para os funcionários?
+A: O programa de bem-estar reembolsa {{ f.rh.beneficios.bem_estar_pct }}% da mensalidade de academia ou atividade física, limitado a {{ brl(f.rh.beneficios.bem_estar_teto) }} por mês.
+D: docs/rh/beneficios.md
+
+T: simples
+Q: Existe alguma trilha de carreira para quem não quer ser gestor?
+A: Sim. A trilha Técnica/Especialista é para quem quer se aprofundar em um tema sem necessariamente liderar pessoas.
+D: docs/rh/plano-de-carreira.md
+
+T: simples
+Q: Posso fazer uma denúncia sem me identificar?
+A: Sim. A Linha Ética Brisa aceita relatos anônimos, e a retaliação contra quem relata de boa-fé é proibida.
+D: docs/rh/canal-de-denuncias.md
+
+T: simples
+Q: Quem faz a calibração das notas de desempenho?
+A: Os gestores se reúnem com o RH na calibração, em {{ f.rh.desempenho.calibracao_mes }}, para comparar critérios entre áreas; nenhuma nota é alterada sem justificativa registrada.
+D: docs/rh/avaliacao-desempenho.md
+
+T: simples
+Q: Operadores de empilhadeira podem entrar no regime híbrido?
+A: Não. O regime híbrido vale para as áreas administrativas e não se aplica aos cargos operacionais de centro de distribuição e frota.
+D: docs/rh/home-office.md
+
+T: simples
+Q: Como descubro a que área pertence um ramal que começa com 4?
+A: O primeiro dígito indica a área; ramais começando com 4 são da TI.
+D: docs/institucional/organograma.md
+
+T: simples
+Q: Qual é o canal para tirar dúvidas de reembolso?
+A: Fale com o Financeiro pelo e-mail {{ email('financeiro') }}; divergências são tratadas pelo time de Contas a Pagar.
+D: docs/financeiro/reembolso.md
+
+T: simples
+Q: Posso reservar um carro alugado para uma visita a cliente?
+A: O aluguel de carro só é permitido com aprovação do diretor da área.
+D: docs/financeiro/politica-viagens.md
+
+T: simples
+Q: O BrisaCofre serve para quê?
+A: O BrisaCofre é o gerenciador de senhas corporativo; senhas de acesso compartilhado devem ficar nele, e não em planilhas ou anotações.
+D: docs/ti/acesso-e-senhas.md
+
+T: simples
+Q: Recebi um e-mail pedindo para confirmar minha senha. É golpe?
+A: Muito provavelmente é phishing: a TI nunca pede sua senha. Não clique, não responda e encaminhe a mensagem para {{ email('phishing') }}.
+D: docs/ti/seguranca-informacao.md
+
+T: simples
+Q: Que sistema devo usar para programar rotas de entrega?
+A: O RotaViva, sistema de gestão de transporte, roteirização e monitoramento de entregas, cujo dono do processo é Operações e Logística.
+D: docs/ti/catalogo-sistemas.md
+
+T: simples
+Q: Meu notebook foi roubado no carro. O que devo fazer?
+A: Comunique a TI em até {{ f.ti.equipamentos.comunicar_perda_horas }} horas pelo ramal {{ f.ti.sla.ramal }} ou por {{ email('seguranca') }} e registre um boletim de ocorrência; a TI bloqueia o equipamento remotamente e avalia o risco de vazamento.
+D: docs/ti/solicitacao-equipamentos.md
+
+T: simples
+Q: Posso usar uma IA pública para resumir um contrato de cliente?
+A: Não. Ferramentas de IA generativa externas só podem ser usadas com informações públicas; contratos e dados de clientes não podem ser inseridos nelas.
+D: docs/ti/uso-aceitavel.md
+
+T: simples
+Q: Quem é a pessoa responsável pelos dados pessoais na empresa?
+A: A encarregada pelo tratamento de dados (DPO) é {{ f.encarregado_lgpd.nome }}, da área de Compliance e Jurídico, com contato em {{ email(f.encarregado_lgpd.email) }}.
+D: docs/compliance/lgpd-privacidade.md
+
+T: simples
+Q: Se um fiscal sugerir um "agrado" para liberar uma carga, o que eu faço?
+A: Recuse com educação e firmeza, anote data, local, nome e o que foi pedido e comunique Compliance imediatamente ou use a Linha Ética Brisa.
+D: docs/compliance/anticorrupcao.md
+
+T: simples
+Q: Meu primo é sócio de uma empresa que mandou proposta para nós. Preciso avisar alguém?
+A: Sim. Declare o possível conflito de interesses a seu gestor e a Compliance em até {{ f.compliance.conflito.declaracao_prazo_dias }} dias da ciência e afaste-se da decisão enquanto o caso é analisado.
+D: docs/compliance/conflito-interesses.md
+
+T: simples
+Q: Vocês fazem armazenagem de produtos congelados em Uberlândia?
+A: Não. A armazenagem congelada (-18 °C) existe somente no CD Campinas.
+D: docs/comercial/portfolio-servicos.md; docs/institucional/unidades.md
+
+T: simples
+Q: Um cliente reclamou que o caminhão chegou com a temperatura fora do padrão. Como escalo?
+A: Casos de risco sanitário, como suspeita de quebra de cadeia fria, devem ser escalados imediatamente ao gerente comercial e ao diretor de Operações.
+D: docs/comercial/atendimento-cliente.md
+
+T: simples
+Q: O que acontece se eu perder o corte de despesas do mês?
+A: As despesas lançadas após o corte ficam para o mês seguinte, o que pode distorcer o orçamento da área; em casos excepcionais o diretor da área pode pedir inclusão tardia ao Financeiro.
+D: docs/financeiro/calendario-fechamento.md
+
+T: simples
+Q: Por que o orçamento dos departamentos é maior do que as despesas operacionais da DRE?
+A: Porque o orçamento inclui custos operacionais de CD e frota, que na DRE aparecem no CMV.
+D: docs/financeiro/orcamento-departamentos.md
+
+T: simples
+Q: Quando entra o VA e o VR na conta, e posso usar em qualquer lugar?
+A: O vale-refeição é creditado mensalmente em cartão para refeições em restaurantes, e o vale-alimentação, também mensal, para uso em supermercados.
+D: docs/rh/beneficios.md
+
+T: simples
+Q: Quem aprova uma contratação com salário acima do ponto médio da faixa?
+A: A contratação acima do ponto médio da faixa exige aprovação da diretora de Pessoas e Cultura.
+D: docs/rh/faixas-salariais.md
+
+T: simples
+Q: Qual é o objetivo dos dias 31 a 60 do plano de integração?
+A: Contribuir: executar parte das atividades com revisão do gestor, propor uma melhoria simples em um processo e participar das reuniões de resultado da área.
+D: docs/rh/plano-30-60-90.md
+
+T: simples
+Q: Como é a divisão de turnos nos centros de distribuição?
+A: Há dois turnos operacionais: manhã, das {{ f.rh.jornada.turno_manha }}, e tarde, das {{ f.rh.jornada.turno_tarde }}.
+D: docs/rh/jornada-e-ponto.md; docs/institucional/unidades.md
+
+T: simples
+Q: O que é o Brisa em Foco?
+A: É o comunicado semanal da empresa, enviado por e-mail toda {{ f.canais.comunicado_dia }}, às {{ f.canais.comunicado_hora }}.
+D: docs/institucional/canais-internos.md
+
+T: simples
+Q: Qual dos valores da empresa fala sobre avisar o cliente quando uma entrega vai atrasar?
+A: O valor Palavra cumprida: fazer o que combinamos e, quando não for possível, avisar cedo e propor uma saída.
+D: docs/institucional/missao-valores.md
+
+T: simples
+Q: Fornecedor trocou de banco. Posso alterar o cadastro só com o e-mail dele?
+A: Não. Alterações de conta bancária exigem pedido formal assinado pelo representante legal e confirmação por telefone com um contato já cadastrado; o Financeiro nunca altera dados bancários apenas por e-mail.
+D: docs/financeiro/pagamento-fornecedores.md
+
+T: numerica
+Q: Preciso comprar equipamentos que custam {{ brl(15000) }}. Quem aprova e quantas cotações eu preciso?
+A: Como o valor está acima de {{ brl(f.financeiro.compras.compra_direta_ate) }} e até {{ brl(f.financeiro.compras.tres_cotacoes_ate) }}, são necessárias no mínimo {{ f.financeiro.compras.cotacoes_minimas }} cotações e a aprovação é do diretor da área.
+D: docs/financeiro/politica-compras.md; docs/financeiro/alcadas-aprovacao.md
+C: sim
+
+T: numerica
+Q: Uma compra de {{ brl(35000) }} depende de quem?
+A: Acima de {{ brl(f.financeiro.alcadas.diretor_ate) }} a aprovação é do CEO, e a política de compras exige concorrência formal com proposta escrita.
+D: docs/financeiro/alcadas-aprovacao.md; docs/financeiro/politica-compras.md
+C: sim
+
+T: numerica
+Q: Quanto custa por mês armazenar 200 paletes de produtos secos pelo preço de tabela?
+A: Pelo preço de tabela de {{ brl2(servicos[0].preco) }} por posição-palete ao mês, 200 posições custam {{ brl2(200 * servicos[0].preco) }} por mês, antes de eventuais descontos.
+D: docs/comercial/portfolio-servicos.md
+C: sim
+
+T: numerica
+Q: Qual o custo mensal de armazenar 50 paletes refrigerados, pela tabela?
+A: A armazenagem refrigerada custa {{ brl2(servicos[1].preco) }} por posição-palete ao mês; para 50 posições, {{ brl2(50 * servicos[1].preco) }} por mês.
+D: docs/comercial/portfolio-servicos.md
+C: sim
+
+T: numerica
+Q: Quanto vou receber de vale-refeição em um mês com 22 dias trabalhados?
+A: O VR é de {{ brl(f.rh.beneficios.vr_dia) }} por dia trabalhado, então 22 dias resultam em {{ brl(22 * f.rh.beneficios.vr_dia) }}.
+D: docs/rh/beneficios.md
+C: sim
+
+T: numerica
+Q: Com salário de {{ brl(5000) }}, qual o valor máximo de PLR que eu poderia receber?
+A: O PLR paga até {{ f.rh.plr.teto_salarios | string | replace('.', ',') }} salário, ou seja, no máximo {{ brl(5000 * f.rh.plr.teto_salarios) }}, e só se o gatilho de EBITDA do exercício for atingido.
+D: docs/rh/plr.md
+C: sim
+
+T: numerica
+Q: Quanto a receita líquida de 2025T1 e 2025T2 somou no total?
+A: Somadas, as receitas líquidas de 2025T1 ({{ brl(fin[4].receita_liquida) }}) e 2025T2 ({{ brl(fin[5].receita_liquida) }}) totalizam {{ brl(fin[4].receita_liquida + fin[5].receita_liquida) }}.
+D: docs/financeiro/resumo-dre.md
+C: sim
+
+T: numerica
+Q: Quanto o EBITDA do 4º trimestre de 2025 superou o do 1º trimestre de 2025?
+A: O EBITDA de 2025T4 foi de {{ brl(fin[7].ebitda) }} e o de 2025T1 foi de {{ brl(fin[4].ebitda) }}, uma diferença de {{ brl(fin[7].ebitda - fin[4].ebitda) }}.
+D: docs/financeiro/resumo-dre.md
+C: sim
+
+T: numerica
+Q: Qual foi a margem bruta de 2025 sobre a receita líquida?
+A: O lucro bruto de 2025 foi de {{ brl(anual['2025'].lucro_bruto) }} sobre uma receita líquida de {{ brl(anual['2025'].receita_liquida) }}, uma margem de {{ pct(anual['2025'].lucro_bruto / anual['2025'].receita_liquida * 100, 1) }}.
+D: docs/financeiro/resumo-dre.md
+C: sim
+
+T: numerica
+Q: Qual a diferença entre o orçamento de TI e o do Comercial em 2026?
+A: O orçamento anual de TI é de {{ brl(orc_dep['ti'].anual) }} e o do Comercial é de {{ brl(orc_dep['com'].anual) }}, uma diferença de {{ brl(orc_dep['ti'].anual - orc_dep['com'].anual) }} a favor de TI.
+D: docs/financeiro/orcamento-departamentos.md
+C: sim
+
+T: numerica
+Q: Até junho de 2026, Operações e Logística gastou mais ou menos do que o orçado, e qual foi o saldo?
+A: No 1º semestre de 2026, Operações e Logística tinha {{ brl(orc_dep['ops'].orcado_1s) }} orçados e realizou {{ brl(orc_dep['ops'].realizado_1s) }}, com saldo de {{ brl(orc_dep['ops'].saldo_1s) }}.
+D: docs/financeiro/orcamento-departamentos.md
+
+T: numerica
+Q: Em quantos dias, no máximo, um reembolso enviado hoje será pago, e em quantos dias eu preciso ter enviado depois da despesa?
+A: O pedido deve ser enviado em até {{ f.financeiro.reembolso.prazo_envio_dias }} dias corridos após a despesa e é pago em até {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias após o envio da solicitação completa.
+D: docs/financeiro/reembolso.md
+
+T: numerica
+Q: Um chamado P2 aberto às 9h de uma segunda-feira deve ser resolvido até que horas?
+A: O prazo de resolução de P2 é de {{ f.ti.sla.P2.resolucao }}, então a resolução é esperada até as 17h do mesmo dia, dentro do horário de atendimento ({{ f.ti.sla.horas_atendimento }}).
+D: docs/ti/sla-incidentes.md
+C: sim
+
+T: numerica
+Q: Qual a diferença, em horas, entre o prazo de resolução de P1 e de P2?
+A: P1 tem prazo de {{ f.ti.sla.P1.resolucao }} e P2 de {{ f.ti.sla.P2.resolucao }}, uma diferença de 4 horas.
+D: docs/ti/sla-incidentes.md
+C: sim
+
+T: numerica
+Q: Quantas posições-palete a Brisa Log tem somando os dois CDs?
+A: O CD Campinas tem {{ num(f.unidades.campinas.posicoes_palete) }} posições-palete e o CD Uberlândia {{ num(f.unidades.uberlandia.posicoes_palete) }}, somando {{ num(f.unidades.campinas.posicoes_palete + f.unidades.uberlandia.posicoes_palete) }}.
+D: docs/institucional/unidades.md
+C: sim
+
+T: numerica
+Q: Quantas docas existem somando Campinas e Uberlândia?
+A: Campinas tem {{ f.unidades.campinas.docas }} docas e Uberlândia {{ f.unidades.uberlandia.docas }}, totalizando {{ f.unidades.campinas.docas + f.unidades.uberlandia.docas }}.
+D: docs/institucional/unidades.md
+C: sim
+
+T: numerica
+Q: Se eu converter o abono de férias, quantos dias de descanso eu efetivamente gozo?
+A: Convertendo {{ f.rh.ferias.abono_dias }} dias em abono, você goza {{ f.rh.ferias.dias - f.rh.ferias.abono_dias }} dias de férias.
+D: docs/rh/ferias.md
+C: sim
+
+T: numerica
+Q: Viajei por 3 dias para uma capital. Qual o teto total de hotel (3 diárias) e de alimentação?
+A: Em capitais o hotel tem limite de {{ brl(f.financeiro.viagens.hotel_capital) }} por diária, então 3 diárias somam até {{ brl(3 * f.financeiro.viagens.hotel_capital) }}; a alimentação tem limite de {{ brl(f.financeiro.viagens.refeicao_dia) }} por dia, ou {{ brl(3 * f.financeiro.viagens.refeicao_dia) }} em 3 dias.
+D: docs/financeiro/politica-viagens.md
+C: sim
+
+T: numerica
+Q: Rodei 120 km com meu carro, com aprovação prévia. Quanto devo receber de reembolso de quilometragem?
+A: A quilometragem é reembolsada a {{ brl(f.financeiro.reembolso.km_valor) }} por km, então 120 km resultam em {{ brl2(120 * f.financeiro.reembolso.km_valor) }}.
+D: docs/financeiro/reembolso.md
+C: sim
+
+T: numerica
+Q: Para um cliente que contrata R$ 200.000 por mês, qual o desconto de volume de tabela?
+A: Para um faturamento mensal contratado entre {{ brl(f.comercial.descontos.faixas_volume[2].de) }} e {{ brl(f.comercial.descontos.faixas_volume[2].ate) }}, o desconto de tabela por volume é de {{ f.comercial.descontos.faixas_volume[2].pct }}%.
+D: docs/comercial/precos-e-descontos.md
+
+T: numerica
+Q: Qual o desconto de volume de um cliente de R$ 500.000 mensais, e quem aprovaria um desconto total de 12%?
+A: A partir de {{ brl(f.comercial.descontos.faixas_volume[3].de) }} mensais o desconto de volume é de {{ f.comercial.descontos.faixas_volume[3].pct }}%. Um desconto total de 12% estaria na alçada da diretora comercial (até {{ f.comercial.descontos.alcada_diretora_pct }}%), pois passa de {{ f.comercial.descontos.alcada_gerente_pct }}%.
+D: docs/comercial/precos-e-descontos.md
+C: sim
+
+T: numerica
+Q: Qual a margem EBITDA da empresa em 2024?
+A: O EBITDA de 2024 foi de {{ brl(anual['2024'].ebitda) }} sobre uma receita líquida de {{ brl(anual['2024'].receita_liquida) }}, uma margem de {{ pct(anual['2024'].ebitda / anual['2024'].receita_liquida * 100, 1) }}.
+D: docs/financeiro/resumo-dre.md
+C: sim
+
+T: numerica
+Q: Qual foi o preço de tabela por kg do transporte fracionado?
+A: O transporte fracionado (TRA-003) custa {{ brl2(servicos[13].preco) }} por kg na tabela vigente.
+D: docs/comercial/portfolio-servicos.md; data/catalogo_servicos.csv
+
+T: numerica
+Q: Quantas pessoas trabalham na área de TI no CD Campinas?
+A: A área de TI tem {{ hc['TI'].total }} colaboradores, sendo {{ hc['TI']['Campinas/SP'] }} em Campinas e {{ hc['TI']['Uberlândia/MG'] }} em Uberlândia.
+D: docs/institucional/organograma.md
+
+T: numerica
+Q: Qual é o ramal da TI e até que horas atendem?
+A: O ramal da TI é {{ f.ti.sla.ramal }} e o atendimento regular funciona de {{ f.ti.sla.horas_atendimento }}; para P1 fora desse horário há plantão {{ f.ti.sla.plantao_p1 }}.
+D: docs/ti/sla-incidentes.md
+
+T: multi-documento
+Q: Vou comprar um item de {{ brl(10000) }}. Qual a alçada de aprovação e quantas cotações a política de compras exige?
+A: A aprovação é do diretor da área (acima de {{ brl(f.financeiro.alcadas.gestor_ate) }} e até {{ brl(f.financeiro.alcadas.diretor_ate) }}) e a política de compras exige no mínimo {{ f.financeiro.compras.cotacoes_minimas }} cotações para essa faixa.
+D: docs/financeiro/alcadas-aprovacao.md; docs/financeiro/politica-compras.md
+C: sim
+
+T: multi-documento
+Q: Perdi o notebook que levei para casa no home office. Em quanto tempo aviso e por que há risco de LGPD?
+A: Comunique a TI em até {{ f.ti.equipamentos.comunicar_perda_horas }} horas; a TI avalia se houve risco de vazamento de dados e aciona a encarregada de dados quando necessário, e o prazo interno para comunicar incidente com dados pessoais ao DPO é de {{ f.compliance.lgpd.incidente_comunicar_horas }} horas.
+D: docs/ti/solicitacao-equipamentos.md; docs/compliance/lgpd-privacidade.md
+
+T: multi-documento
+Q: Quais treinamentos novos colaboradores fazem e quem é a pessoa a quem devo recorrer sobre privacidade?
+A: Nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias: {{ f.rh.onboarding.treinamentos | join('; ') }}. Sobre privacidade, a encarregada é {{ f.encarregado_lgpd.nome }} ({{ email(f.encarregado_lgpd.email) }}).
+D: docs/rh/onboarding-dia-1.md; docs/compliance/lgpd-privacidade.md
+
+T: multi-documento
+Q: Posso acessar o BrisaERP de casa? Como faço e qual a regra de ponto?
+A: Sim, em home office o acesso a sistemas internos deve ser feito pela BrisaVPN, solicitada por chamado de acesso remoto com aprovação do gestor, e o ponto continua obrigatório no PontoBrisa.
+D: docs/rh/home-office.md; docs/ti/vpn-trabalho-remoto.md
+
+T: multi-documento
+Q: Um fornecedor me ofereceu um presente e quero contratá-lo. O que devo observar?
+A: O presente deve respeitar o limite de {{ brl(f.compliance.brindes.limite) }} e ser registrado em até {{ f.compliance.brindes.registro_prazo_dias }} dias úteis; durante uma negociação em curso não se aceita nada, e o fornecedor precisa ser homologado, com due diligence válida por {{ f.financeiro.compras.homologacao_validade_meses }} meses.
+D: docs/compliance/politica-brindes.md; docs/financeiro/politica-compras.md; docs/compliance/gestao-terceiros.md
+
+T: multi-documento
+Q: Quem aprova meu desconto de 8% para um cliente e a mesma pessoa pode aprovar uma despesa de R$ 5.000?
+A: Um desconto de 8% é aprovado pelo gerente comercial, que está na faixa até {{ f.comercial.descontos.alcada_gerente_pct }}%. Já a despesa de {{ brl(5000) }} excede a alçada do gestor ({{ brl(f.financeiro.alcadas.gestor_ate) }}) e exige o diretor da área; as duas alçadas são independentes.
+D: docs/comercial/precos-e-descontos.md; docs/financeiro/alcadas-aprovacao.md
+C: sim
+
+T: multi-documento
+Q: Entrei hoje na empresa. Quando recebo o plano de saúde e o que mais preciso fazer nos primeiros dias?
+A: O plano de saúde e os demais benefícios passam a valer após {{ f.rh.beneficios.carencia_beneficios_dias }} dias da admissão, com adesão no PessoasHub nesse prazo. Nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias você conclui os treinamentos obrigatórios, e há check-ins nos dias {{ f.rh.onboarding.checkin_dias | join(', ') }}.
+D: docs/rh/beneficios.md; docs/rh/onboarding-dia-1.md; docs/rh/plano-30-60-90.md
+
+T: multi-documento
+Q: Meu chamado de VPN não resolve há dois dias úteis. Qual a prioridade e o prazo?
+A: Falhas individuais de VPN são tratadas como P3, com resolução em até {{ f.ti.sla.P3.resolucao }}; se o problema parar a equipe inteira, vira P2, com resolução em {{ f.ti.sla.P2.resolucao }}.
+D: docs/ti/vpn-trabalho-remoto.md; docs/ti/sla-incidentes.md
+
+T: multi-documento
+Q: Qual a diferença de regra entre pedir férias e pedir reembolso quanto aos prazos?
+A: Para férias, o pedido deve ser feito com pelo menos {{ f.rh.ferias.antecedencia_pedido_dias }} dias de antecedência. Para reembolso, o pedido deve ser enviado em até {{ f.financeiro.reembolso.prazo_envio_dias }} dias após a despesa e é pago em até {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias.
+D: docs/rh/ferias.md; docs/financeiro/reembolso.md
+
+T: multi-documento
+Q: Um terceiro que transporta refrigerados precisa de que avaliação, e quem aprova?
+A: Transportadores parceiros de refrigerados são de risco alto: passam por due diligence (validade de {{ f.compliance.anticorrupcao.due_diligence_validade_meses }} meses) e a aprovação exige o diretor da área e a diretora de Compliance e Jurídico.
+D: docs/compliance/gestao-terceiros.md; docs/compliance/anticorrupcao.md
+
+T: multi-documento
+Q: Quero viajar a trabalho. Quem aprova, quanto posso adiantar e quando presto contas?
+A: A aprovação segue a alçada de aprovação conforme o custo total da viagem (gestor até {{ brl(f.financeiro.alcadas.gestor_ate) }}, diretor até {{ brl(f.financeiro.alcadas.diretor_ate) }} e CEO acima). O adiantamento pode chegar a {{ f.financeiro.viagens.adiantamento_max_pct }}% do custo estimado de hospedagem e alimentação, e a prestação de contas é em até {{ f.financeiro.viagens.prestacao_contas_dias_uteis }} dias úteis após o retorno.
+D: docs/financeiro/politica-viagens.md; docs/financeiro/alcadas-aprovacao.md
+
+T: multi-documento
+Q: Qual o dia limite para lançar uma despesa antes do fechamento de julho de 2026, e em que sistema?
+A: Para o mês de julho de 2026, o corte de despesas é em {{ data_br(fechamentos[6].corte) }}, e os lançamentos são feitos no BrisaERP; o fechamento ocorre em {{ data_br(fechamentos[6].fechamento) }}.
+D: docs/financeiro/calendario-fechamento.md; docs/ti/catalogo-sistemas.md
+C: sim
+
+T: multi-documento
+Q: Quem é a coordenadora de RH e quem é a diretora da área?
+A: A diretora de Pessoas e Cultura é Marcela Tavares Rocha, e a coordenadora de RH é Fernanda Lopes Guimarães.
+D: docs/institucional/organograma.md
+
+T: multi-documento
+Q: Um colega sofre assédio do gestor. Onde ele pode denunciar e o que o código de conduta diz?
+A: Ele pode usar a Linha Ética Brisa (e-mail {{ email(f.rh.denuncias.email) }}), inclusive de forma anônima. O código de conduta não tolera assédio moral ou sexual e proíbe retaliação contra quem relata de boa-fé.
+D: docs/rh/canal-de-denuncias.md; docs/rh/codigo-de-conduta.md
+
+T: multi-documento
+Q: Os dados do atestado médico de um colega podem ser compartilhados com o gestor dele?
+A: Atestados são dados sensíveis e ficam restritos ao RH; por isso não devem ser compartilhados de forma ampla, e a política de LGPD exige tratar apenas o mínimo necessário.
+D: docs/compliance/lgpd-privacidade.md
+
+T: versao
+Q: Antes de 2026, quantos dias de home office por semana a empresa permitia?
+A: Pela política de 2025, já revogada, eram {{ f.rh.home_office.v2025.dias_semana }} dia por semana, sem auxílio internet e sem ajuda de estrutura. Desde {{ iso_br(f.rh.home_office.vigencia_inicio) }} são {{ f.rh.home_office.dias_semana }} dias por semana.
+D: docs/rh/home-office-v2025.md; docs/rh/home-office.md
+
+T: versao
+Q: Um colega disse que a política de home office dá apenas um dia por semana. Está certo?
+A: Não, a informação está desatualizada. A regra de 1 dia por semana era da política de 2025, revogada; a política vigente (2026) permite {{ f.rh.home_office.dias_semana }} dias por semana.
+D: docs/rh/home-office.md; docs/rh/home-office-v2025.md
+
+T: versao
+Q: Em 2025, em quantos dias o reembolso era pago, e o que mudou depois?
+A: Em 2025 o reembolso era pago em até {{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} dias após o envio. Na versão 2026, o pagamento passou a ser em até {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias e o prazo para enviar o pedido subiu de {{ f.financeiro.reembolso.v2025.prazo_envio_dias }} para {{ f.financeiro.reembolso.prazo_envio_dias }} dias.
+D: docs/financeiro/reembolso-v2025.md; docs/financeiro/reembolso.md
+
+T: versao
+Q: A alçada do diretor para aprovar despesas era diferente no ano passado?
+A: Sim. Em 2025 o diretor aprovava até {{ brl(f.financeiro.alcadas.v2025.diretor_ate) }}; desde {{ iso_br(f.financeiro.alcadas.vigencia_inicio) }}, a alçada do diretor é de até {{ brl(f.financeiro.alcadas.diretor_ate) }}.
+D: docs/financeiro/alcadas-aprovacao-v2025.md; docs/financeiro/alcadas-aprovacao.md
+
+T: versao
+Q: Uma compra de R$ 1.500 precisava de quem em 2025 e de quem agora?
+A: Em 2025 (limite do gestor de {{ brl(f.financeiro.alcadas.v2025.gestor_ate) }}) precisava do diretor da área. Hoje, como está abaixo de {{ brl(f.financeiro.alcadas.gestor_ate) }}, o gestor imediato aprova.
+D: docs/financeiro/alcadas-aprovacao-v2025.md; docs/financeiro/alcadas-aprovacao.md
+C: sim
+
+T: versao
+Q: O limite de brindes continua sendo R$ 100?
+A: Não. O limite de {{ brl(f.compliance.brindes.v2025.limite) }} era da política de 2025, revogada. Hoje o limite para brindes e presentes é de {{ brl(f.compliance.brindes.limite) }} por pessoa.
+D: docs/compliance/politica-brindes-v2025.md; docs/compliance/politica-brindes.md
+
+T: versao
+Q: Quanto era o limite de refeição oferecida por parceiros na política antiga e qual é o atual?
+A: Na política de 2025 o limite era de {{ brl(f.compliance.brindes.v2025.refeicao_limite) }} por pessoa; na versão 2026 é de {{ brl(f.compliance.brindes.refeicao_limite) }}.
+D: docs/compliance/politica-brindes-v2025.md; docs/compliance/politica-brindes.md
+
+T: versao
+Q: Existia auxílio internet para home office em 2025?
+A: Não. Na política de 2025 não havia auxílio internet nem ajuda de estrutura. Desde 2026 há auxílio internet de {{ brl(f.rh.home_office.auxilio_internet) }} por mês e ajuda única de estrutura de {{ brl(f.rh.home_office.ajuda_estrutura_unica) }}.
+D: docs/rh/home-office-v2025.md; docs/rh/home-office.md
+
+T: versao
+Q: Qual política de reembolso devo seguir para uma despesa feita este mês?
+A: A política vigente, versão 2026, que vale desde {{ iso_br(f.financeiro.reembolso.vigencia_inicio) }}: envio em até {{ f.financeiro.reembolso.prazo_envio_dias }} dias e pagamento em até {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias. A versão de 2025 está revogada.
+D: docs/financeiro/reembolso.md; docs/financeiro/reembolso-v2025.md
+
+T: versao
+Q: O que mudou de 2025 para 2026 nas regras de brindes além dos valores?
+A: Nada além dos limites de valor: o prazo de registro, a proibição de dinheiro e a vedação a agentes públicos não mudaram.
+D: docs/compliance/politica-brindes-v2025.md
+
+T: versao
+Q: A política de alçadas de 2025 ainda vale para contratos assinados naquele ano e renovados agora?
+A: Não. Contratos assinados em 2025 que sejam renovados em 2026 passam a seguir a tabela nova de alçadas; as aprovações dadas em 2025 permanecem válidas com a regra daquela época.
+D: docs/financeiro/alcadas-aprovacao-v2025.md
+
+T: versao
+Q: Até quando valeu a regra antiga de reembolso?
+A: A política de reembolso de 2025 vigorou de {{ iso_br(f.financeiro.reembolso.v2025.vigencia_inicio) }} a {{ iso_br(f.financeiro.reembolso.v2025.vigencia_fim) }}, sendo substituída pela versão 2026.
+D: docs/financeiro/reembolso-v2025.md
+
+T: sem_resposta
+Q: Quantos dias de licença-casamento o colaborador tem?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Pessoas e Cultura (rh@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Qual foi a receita líquida do terceiro trimestre de 2026?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Financeiro e Controladoria (financeiro@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Quanto a Brisa Log cobra para armazenar vacinas?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com o Comercial (comercial@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Qual a senha do roteador da sala de reuniões do CD Campinas?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com TI (ti@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Qual o salário do coordenador de armazém do CD Uberlândia?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Pessoas e Cultura (rh@brisalog.example).
+D:
+
+T: sem_resposta
+Q: A empresa já sofreu algum ataque de ransomware?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com TI (ti@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Quantos motoristas parceiros foram reprovados na due diligence em 2025?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Compliance e Jurídico (compliance@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Qual o orçamento previsto para o CD Uberlândia em 2028?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Financeiro e Controladoria (financeiro@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Em que dia será o próximo reajuste do auxílio-creche?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Pessoas e Cultura (rh@brisalog.example).
+D:
+
+T: sem_resposta
+Q: Quantas toneladas a frota transportou em agosto?
+A: Não encontrei essa informação nos documentos da empresa. Sugiro falar com Operações e Logística (operacoes@brisalog.example).
+D:
+
+T: fora_de_escopo
+Q: Me explica como funciona o campeonato brasileiro de futebol.
+A: Esse assunto foge do que posso fazer por aqui. Sou o OutGPT, assistente interno da Brisa Log, e posso tirar dúvidas sobre políticas, benefícios, TI, finanças e compliance da empresa.
+D:
+
+T: fora_de_escopo
+Q: Escreva uma música de rock sobre logística.
+A: Não consigo ajudar com isso, pois o pedido não é sobre a Brisa Log. Posso ajudar com dúvidas sobre políticas e processos internos da empresa.
+D:
+
+T: fora_de_escopo
+Q: Qual o melhor smartphone para fotos?
+A: Esse tema está fora do meu escopo: respondo apenas sobre informações internas da Brisa Log. Se tiver alguma dúvida sobre a empresa, é só dizer.
+D:
+
+T: fora_de_escopo
+Q: Me ajuda a preparar um discurso de casamento?
+A: Sinto muito, mas não posso ajudar com isso. Sou o assistente interno da Brisa Log e respondo sobre RH, financeiro, TI e compliance da empresa.
+D:
+
+T: fora_de_escopo
+Q: Qual o preço da gasolina hoje em Campinas?
+A: Não tenho como ajudar com esse pedido, pois ele não trata de informações da Brisa Log. Posso explicar, por exemplo, regras de reembolso de quilometragem ou da política de viagens.
+D:
+
+T: fora_de_escopo
+Q: Como faço para invadir o Wi-Fi de um vizinho?
+A: Não posso ajudar com isso. Além de estar fora do meu escopo, invadir redes de terceiros é contrário às regras de uso aceitável e de segurança da informação da empresa.
+D:
+
+T: fora_de_escopo
+Q: Faz um resumo do filme Titanic.
+A: Esse assunto foge do que posso fazer por aqui. Sou o OutGPT e respondo sobre informações internas da Brisa Log.
+D:
+
+T: fora_de_escopo
+Q: Qual é a melhor dieta para ganhar massa muscular?
+A: Isso está fora do meu escopo. Posso ajudar com dúvidas sobre a Brisa Log, como benefícios, incluindo o programa de bem-estar, que reembolsa parte da mensalidade de academia.
+D:
