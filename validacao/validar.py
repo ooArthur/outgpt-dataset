@@ -11,7 +11,10 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
-from common import (AREAS_DOC, RAIZ, RODAPE, SYSTEM_PROMPT, carregar_ficha, ler_csv, ler_doc, normaliza)  # noqa: E402
+from common import (AREAS_DOC, RAIZ, RODAPE, SYSTEM_PROMPT, carregar_ficha, ler_csv, ler_doc, normaliza,  # noqa: E402
+                    sem_resposta_renderizadas)
+
+NUM_RE = re.compile(r"\d+(?:[.,]\d+)*")
 
 CAMPOS_FM = ["titulo", "area", "versao", "vigencia", "acesso", "responsavel"]
 ACESSOS = {"publico", "gestores", "rh_restrito", "financeiro_restrito"}
@@ -24,6 +27,7 @@ ABERTURA_EMPILHADA = re.compile(r"^(Tenho uma dúvida|Pergunta rápida|Preciso c
 SEGREDOS = re.compile(r"(ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|BEGIN (RSA |EC )?PRIVATE KEY)")
 
 erros, avisos, stats = [], [], {}
+avisos_info = []  # metas não atingidas: aparecem no relatório como nota, sem reprovar
 
 
 def erro(msg):
@@ -179,6 +183,9 @@ def checa_fatos():
     return {f["fato_id"]: f for f in fatos}
 
 
+RECUSAS_OK = sem_resposta_renderizadas()
+
+
 def checa_qa(fatos):
     split = {"treino": jsonl("qa/qa_treino.jsonl"), "teste": jsonl("qa/qa_teste.jsonl")}
     perguntas, ids_split = {}, {"treino": set(), "teste": set()}
@@ -221,8 +228,16 @@ def checa_qa(fatos):
                 erro(f"{loc}: direta com contexto")
             if tipo == "direta" and meta.get("fato_id") in fatos and fatos[meta["fato_id"]]["destino"] != "finetuning":
                 erro(f"{loc}: fato de destino rag em pergunta direta ({meta['fato_id']})")
-            if tipo == "sem_resposta" and not m[-1]["content"].startswith("Não encontrei essa informação nos documentos da empresa. Sugiro falar com"):
-                erro(f"{loc}: resposta de sem_resposta fora do padrão")
+            if tipo == "sem_resposta" and (m[-1]["content"] not in RECUSAS_OK or "@brisalog.example" not in m[-1]["content"]):
+                erro(f"{loc}: resposta de sem_resposta fora das variantes de recusa (ou sem e-mail da área)")
+            if tipo in ("direta", "com_contexto") and meta.get("fato_id") in fatos:
+                f = fatos[meta["fato_id"]]
+                orig, final = set(NUM_RE.findall(f["resposta"])), set(NUM_RE.findall(m[-1]["content"]))
+                titulo = ler_doc(f["fonte_doc"])[0]["titulo"] if f["fonte_doc"].endswith(".md") else ""
+                if not orig <= final:
+                    erro(f"{loc}: resposta perdeu números do fato {meta['fato_id']}: {sorted(orig - final)}")
+                if not final <= orig | set(NUM_RE.findall(titulo)):
+                    erro(f"{loc}: resposta com números novos em {meta['fato_id']}: {sorted(final - orig)}")
             if tipo == "multi_turno" and not 5 <= len(m) <= 7:
                 erro(f"{loc}: multi_turno deve ter 2 a 3 turnos")
             if tipo in ("direta", "com_contexto", "multi_turno") and meta.get("fato_id") not in fatos:
@@ -242,6 +257,17 @@ def checa_qa(fatos):
     abaixo = sum(1 for n in por_fato.values() if n < 3)
     if abaixo:
         avisos.append(f"{abaixo} fatos com menos de 3 formulações (de {len(por_fato)})")
+    resp_treino = [r["messages"][-1]["content"] for r in split["treino"]]
+    rep = Counter(resp_treino)
+    recusas = Counter(r["messages"][-1]["content"] for sp in split for r in split[sp] if r["meta"]["tipo"] == "sem_resposta")
+    stats_div = {"palavras_por_resposta": round(sum(len(x.split()) for x in resp_treino) / len(resp_treino), 1),
+                 "respostas_distintas": len(rep), "pct_distintas": round(100 * len(rep) / len(resp_treino), 1),
+                 "maior_repeticao": rep.most_common(1)[0][1], "variantes_recusa_usadas": len({r.split(". ")[0] for r in recusas}),
+                 "pct_recusa_original": round(100 * sum(n for r, n in recusas.items() if r.startswith("Não encontrei essa informação")) / max(sum(recusas.values()), 1), 1)}
+    if stats_div["pct_recusa_original"] > 30:
+        erro(f"recusa original em {stats_div['pct_recusa_original']}% das recusas (máximo 30%)")
+    if stats_div["palavras_por_resposta"] < 26 or stats_div["pct_distintas"] < 40:
+        avisos_info.append(f"diversidade de respostas abaixo da meta da v1.1: {stats_div}")
     cobertos = set(por_fato)
     sem_qa = [fid for fid in fatos if fid not in cobertos]
     if sem_qa:
@@ -249,7 +275,7 @@ def checa_qa(fatos):
     stats["qa"] = {"treino": len(split["treino"]), "teste": len(split["teste"]), "total": total,
                    "tipo_treino": dict(por_tipo["treino"]), "tipo_teste": dict(por_tipo["teste"]),
                    "fatos_treino": len(ids_split["treino"]), "fatos_teste": len(ids_split["teste"]),
-                   "formulacoes_por_fato": round(sum(por_fato.values()) / max(len(por_fato), 1), 2)}
+                   "formulacoes_por_fato": round(sum(por_fato.values()) / max(len(por_fato), 1), 2), "diversidade": stats_div}
     return perguntas
 
 
@@ -351,6 +377,12 @@ def relatorio():
     for tp in sorted(TIPOS_QA):
         a, b = q["tipo_treino"].get(tp, 0), q["tipo_teste"].get(tp, 0)
         out.append(f"| {tp} | {a} | {b} | {a + b} |\n")
+    d = q["diversidade"]
+    out += ["\n### Diversidade das respostas (treino)\n", tabela({"Palavras por resposta (média)": d["palavras_por_resposta"],
+            "Respostas distintas": f"{d['respostas_distintas']} ({d['pct_distintas']}%)", "Maior repetição de uma resposta": d["maior_repeticao"],
+            "Variantes de recusa em uso": d["variantes_recusa_usadas"], "Recusa original (% das recusas)": d["pct_recusa_original"]}, "Métrica", "Valor")]
+    if avisos_info:
+        out += ["\n> **Nota:** " + n + "\n" for n in avisos_info]
     out += ["\n### Avaliação\n", tabela(s["avaliacao"]["tipo"], "Tipo", "Perguntas")]
     tk = s["tickets"]
     out += ["\n### Tickets de TI\n", tabela(tk["categoria"], "Categoria", "Tickets"), "\n", tabela(tk["prioridade"], "Prioridade", "Tickets"), "\n",

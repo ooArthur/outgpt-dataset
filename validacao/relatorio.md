@@ -7,8 +7,8 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 |---|---:|
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
 | fatos/fatos.jsonl | 325.1 KB |
-| qa/qa_teste.jsonl | 639.8 KB |
-| qa/qa_treino.jsonl | 3663.6 KB |
+| qa/qa_teste.jsonl | 650.4 KB |
+| qa/qa_treino.jsonl | 3717.9 KB |
 | data/catalogo_servicos.csv | 2.7 KB |
 | data/financeiro_trimestral.csv | 1.1 KB |
 | data/funcionarios.csv | 18.1 KB |
@@ -68,6 +68,17 @@ Total: **3114** (treino 2631, teste 483); fatos distintos: treino 887, teste 173
 | fora_de_escopo | 80 | 14 | 94 |
 | multi_turno | 128 | 28 | 156 |
 | sem_resposta | 375 | 83 | 458 |
+
+### Diversidade das respostas (treino)
+| Métrica | Valor |
+|---|---:|
+| Palavras por resposta (média) | 23.9 |
+| Respostas distintas | 1020 (38.8%) |
+| Maior repetição de uma resposta | 63 |
+| Variantes de recusa em uso | 7 |
+| Recusa original (% das recusas) | 26.4 |
+
+> **Nota:** diversidade de respostas abaixo da meta da v1.1: {'palavras_por_resposta': 23.9, 'respostas_distintas': 1020, 'pct_distintas': 38.8, 'maior_repeticao': 63, 'variantes_recusa_usadas': 7, 'pct_recusa_original': 26.4}
 
 ### Avaliação
 | Tipo | Perguntas |

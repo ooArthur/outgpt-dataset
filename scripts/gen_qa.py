@@ -3,12 +3,11 @@ import random
 import re
 from collections import Counter
 
-from common import (SYSTEM_PROMPT, carregar_ficha, chunks_doc, escrever_jsonl, ler_csv, ler_jsonl, ler_doc,
+from common import (AREAS_SUG, RESP_FORA, SEM_RESP_VARIANTES, SYSTEM_PROMPT, carregar_ficha, chunks_doc, escrever_jsonl, ler_csv, ler_jsonl, ler_doc,
                     normaliza, brl)
 
 PROP_TESTE = 0.15
 NUM_RE = re.compile(r"\d+(?:[.,]\d+)*")
-SEM_RESP = "Não encontrei essa informação nos documentos da empresa. Sugiro falar com {area}."
 LOWER_OK = {"Qual", "Quais", "Quanto", "Quantos", "Quantas", "Como", "Quem", "Onde", "Quando", "Em", "Por", "Com", "Até",
             "Para", "O", "A", "Os", "As", "Posso", "Preciso", "Existe", "Tem", "Dá", "Perdi", "Apaguei", "Esqueci",
             "Descobri", "Enviei", "Recebi", "Discordei", "Minha", "Meu", "Meus", "Um", "Uma", "Estou", "Tenho", "De",
@@ -19,14 +18,6 @@ ABERTURAS = ["oi, ", "oi! ", "bom dia, ", "boa tarde, ", "e aí, ", "me tira uma
 FORMAIS_WH = ["Poderia me informar ", "Gostaria de saber ", "Pode me dizer ", "Por favor, me explique "]
 FORMAIS_GERAL = ["Tenho uma dúvida: ", "Pergunta rápida: ", "Preciso confirmar uma informação: "]
 FORMAIS_SUFIXO = [", por favor?", ", se possível?", ", se não for incômodo?"]
-AREAS_SUG = {
-    "rh": "Pessoas e Cultura (rh@brisalog.example)", "financeiro": "Financeiro e Controladoria (financeiro@brisalog.example)",
-    "ti": "TI (ti@brisalog.example)", "comercial": "o Comercial (comercial@brisalog.example)",
-    "compliance": "Compliance e Jurídico (compliance@brisalog.example)", "operacoes": "Operações e Logística (operacoes@brisalog.example)",
-    "institucional": "Pessoas e Cultura (rh@brisalog.example)",
-}
-
-
 PROPRIOS = {"Brisa", "BrisaERP", "BrisaWMS", "RotaViva", "PessoasHub", "PontoBrisa", "Portal", "Uberlândia", "Campinas", "Linha",
             "Helena", "Marina", "Operações", "Pessoas", "Financeiro", "Comercial", "Compliance", "Diretoria"}
 
@@ -284,20 +275,50 @@ FORA = [
     "Qual o signo de quem nasce em outubro?", "Me sugere um nome para o meu cachorro.", "Quais são os melhores destinos de praia do Nordeste?",
     "Como funciona o financiamento de um imóvel?", "Me ajuda a estudar para o ENEM?", "Qual é a letra da música Garota de Ipanema?",
 ]
-RESP_FORA = [
-    "Desculpe, não consigo ajudar com isso: sou o OutGPT, assistente interno da Brisa Log, e respondo sobre RH, financeiro, TI e compliance da empresa. Posso ajudar com alguma dúvida sobre políticas, benefícios, sistemas ou processos internos?",
-    "Esse assunto foge do que posso fazer por aqui. Sou o assistente interno da Brisa Log e posso tirar dúvidas sobre políticas, benefícios, TI, finanças e compliance da empresa. Quer que eu ajude com algum desses temas?",
-    "Não tenho como ajudar com esse pedido, pois ele não é sobre a Brisa Log. Se precisar, posso explicar, por exemplo, regras de férias, reembolso, chamados de TI ou o código de conduta.",
-    "Sinto muito, mas isso está fora do meu escopo. Eu respondo apenas sobre informações internas da Brisa Log. Se tiver alguma dúvida sobre a empresa, é só me dizer.",
-]
-
-
 def fora_de_escopo(rng):
     out = []
     for i, q in enumerate(FORA):
         out.append(q)
         out.append(informal(q, rng))
     return out
+
+
+# ------------------------------------------------------------------ enriquecimento das respostas
+PESOS_RECUSA = [0.25] + [0.75 / (len(SEM_RESP_VARIANTES) - 1)] * (len(SEM_RESP_VARIANTES) - 1)
+ABERTURA_SEGURA = {"O", "A", "Os", "As", "Um", "Uma", "Para", "Em", "Cada", "Todo", "Toda", "Se", "Depois", "Antes", "No", "Na", "Nos", "Nas",
+                   "Pela", "Pelo", "Existem", "Quando", "Ao", "Você", "Use", "Abra", "Comunique", "Têm", "Chamados", "Cópias", "Alterações",
+                   "Despesas", "Compras", "Brindes"}
+FECHOS = [" Se precisar de mais detalhes, fale com {area}.",
+          " Para confirmar ou aprofundar esse ponto, o contato é {area}, que também pode orientar sobre casos específicos."]
+SUFIXO_FONTE = re.compile(r" \(Fonte: [^)]*\)$")
+
+
+def enriquecer(pares, fatos_por_id, ctxs, rng):
+    """Pós-processa respostas de pares direta/com_contexto com um rng próprio (seed + 5).
+
+    ~25% ganham "De acordo com <título>, ..." (só quando a 1ª palavra é funcional, o documento é vigente, é .md e o título
+    não tem dígitos; não se aplica a respostas que já terminam com "(Fonte: ...)", para não repetir o título) e ~15% ganham um
+    fecho com o contato da área. Nenhum número novo é inserido.
+    """
+    for sp in ("treino", "teste"):
+        for par in pares[sp]:
+            meta = par["meta"]
+            if meta["tipo"] not in ("direta", "com_contexto"):
+                continue
+            fato = fatos_por_id[meta["fato_id"]]
+            resp = par["messages"][-1]["content"]
+            r_abre, r_fecha, r_var = rng.random(), rng.random(), rng.random()  # sempre sorteia: o resultado de um par não depende de outro
+            if fato["fonte_doc"].endswith(".md"):
+                m, _ = ctxs.chunks(fato["fonte_doc"])
+                titulo = m["titulo"]
+                if (r_abre < 0.25 and m.get("status") != "revogada" and not re.search(r"\d", titulo)
+                        and "Fonte:" not in resp and resp.split()[0] in ABERTURA_SEGURA):
+                    resp = f"De acordo com {titulo}, {resp[0].lower()}{resp[1:]}"
+            if r_fecha < 0.15:
+                fonte = SUFIXO_FONTE.search(resp)
+                corpo, cauda = (resp[:fonte.start()], resp[fonte.start():]) if fonte else (resp, "")
+                resp = corpo + FECHOS[int(r_var * len(FECHOS))].format(area=AREAS_SUG[fato["area"]]) + cauda
+            par["messages"][-1]["content"] = resp
 
 
 # ------------------------------------------------------------------ principal
@@ -315,6 +336,7 @@ def main():
     teste = set(ids[:n_teste])
     split = lambda fid: "teste" if fid in teste else "treino"
 
+    rng_recusa = random.Random(ficha["empresa"]["seed"] + 21)  # só escolhe a variante da recusa
     usadas = set()
     pares = {"treino": [], "teste": []}
     for f in sorted(fatos, key=lambda x: x["fato_id"]):
@@ -343,7 +365,8 @@ def main():
             user = montar_contexto([(doc, rng.choice(chs))], it["q"])
         else:
             user = it["q"]
-        pares[sp].append({"messages": msgs(user, SEM_RESP.format(area=area_sug)),
+        variante = rng_recusa.choices(SEM_RESP_VARIANTES, weights=PESOS_RECUSA)[0]
+        pares[sp].append({"messages": msgs(user, variante.format(area=area_sug)),
                           "meta": {"fato_id": fid, "tipo": "sem_resposta", "area": it["area"], "fonte_doc": None, "estilo": "formal", "sensibilidade": "publico"}})
         n_sr += 1
 
@@ -400,6 +423,7 @@ def main():
                                                       "fonte_doc": doc, "estilo": "informal", "sensibilidade": grupo[0]["sensibilidade"],
                                                       "fato_ids": [f["fato_id"] for f in grupo]}})
 
+    enriquecer(pares, {f["fato_id"]: f for f in fatos}, ctxs, random.Random(ficha["empresa"]["seed"] + 5))
     for sp, nome in (("treino", "qa/qa_treino.jsonl"), ("teste", "qa/qa_teste.jsonl")):
         rng.shuffle(pares[sp])
         escrever_jsonl(nome, pares[sp])

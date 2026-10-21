@@ -146,3 +146,40 @@ def chunks_doc(rel):
     if atual:
         blocos.append("\n".join(atual).strip())
     return meta, [b for b in blocos if len(b.split()) >= 8]
+
+
+# ------------------------------------------------------------ respostas padronizadas (QA e avaliação)
+AREAS_SUG = {
+    "rh": "Pessoas e Cultura (rh@brisalog.example)", "financeiro": "Financeiro e Controladoria (financeiro@brisalog.example)",
+    "ti": "TI (ti@brisalog.example)", "comercial": "o Comercial (comercial@brisalog.example)",
+    "compliance": "Compliance e Jurídico (compliance@brisalog.example)", "operacoes": "Operações e Logística (operacoes@brisalog.example)",
+    "institucional": "Pessoas e Cultura (rh@brisalog.example)",
+}
+SEM_RESP = "Não encontrei essa informação nos documentos da empresa. Sugiro falar com {area}."
+# Variantes de recusa (a original é uma delas e não passa de 30% das recusas geradas).
+SEM_RESP_VARIANTES = [
+    SEM_RESP,
+    "Não encontrei esse dado nos documentos que tenho aqui. O melhor caminho é falar com {area}. Se quiser, posso ajudar com outra dúvida sobre políticas e processos da Brisa Log.",
+    "Essa informação não consta na base de documentos da Brisa Log. Para confirmar, procure {area}.",
+    "Não localizei isso nos documentos da empresa, então prefiro não arriscar um palpite. Fale com {area}, que pode orientar você com segurança.",
+    "Não tenho essa informação por aqui. Recomendo consultar {area}, que é a área responsável pelo assunto e poderá confirmar o dado com você.",
+    "Não achei nada sobre isso nos documentos disponíveis. Vale perguntar direto para {area}.",
+    "Isso não está nos documentos da empresa a que tenho acesso. Quem pode ajudar é {area}. Se tiver outra dúvida sobre a Brisa Log, é só perguntar.",
+]
+RESP_FORA = [
+    "Desculpe, não consigo ajudar com isso: sou o OutGPT, assistente interno da Brisa Log, e respondo sobre RH, financeiro, TI e compliance da empresa. Posso ajudar com alguma dúvida sobre políticas, benefícios, sistemas ou processos internos?",
+    "Esse assunto foge do que posso fazer por aqui. Sou o assistente interno da Brisa Log e posso tirar dúvidas sobre políticas, benefícios, TI, finanças e compliance da empresa. Quer que eu ajude com algum desses temas?",
+    "Não tenho como ajudar com esse pedido, pois ele não é sobre a Brisa Log. Se precisar, posso explicar, por exemplo, regras de férias, reembolso, chamados de TI ou o código de conduta.",
+    "Sinto muito, mas isso está fora do meu escopo. Eu respondo apenas sobre informações internas da Brisa Log. Se tiver alguma dúvida sobre a empresa, é só me dizer.",
+]
+# Expressões (minúsculas) que caracterizam cada tipo de recusa; usadas pelo runner de avaliação e pelo validador.
+MARCADORES_RECUSA = ["não encontrei", "não localizei", "não consta", "não tenho essa informação", "não achei", "não está nos documentos",
+                     "não há informação", "não aparece nos documentos"]
+MARCADORES_FORA_ESCOPO = ["fora do meu escopo", "foge do que posso", "não consigo ajudar", "não tenho como ajudar",
+                          "não é sobre a brisa log", "não posso ajudar", "fora do que posso", "não é sobre a empresa"]
+MARCADORES_ACESSO = ["acesso restrito", "restrito", "não tenho permissão", "sem permissão", "não está disponível para o seu perfil"]
+
+
+def sem_resposta_renderizadas():
+    """Todas as recusas válidas (variante x área), para o validador."""
+    return {v.format(area=a) for v in SEM_RESP_VARIANTES for a in AREAS_SUG.values()}
