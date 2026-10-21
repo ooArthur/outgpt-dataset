@@ -7,6 +7,8 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 |---|---:|
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
 | fatos/fatos.jsonl | 325.1 KB |
+| qa/qa_memorizacao_teste.jsonl | 225.5 KB |
+| qa/qa_memorizacao_treino.jsonl | 859.5 KB |
 | qa/qa_teste.jsonl | 650.4 KB |
 | qa/qa_treino.jsonl | 3717.9 KB |
 | data/catalogo_servicos.csv | 2.7 KB |
@@ -68,6 +70,18 @@ Total: **3114** (treino 2631, teste 483); fatos distintos: treino 887, teste 173
 | fora_de_escopo | 80 | 14 | 94 |
 | multi_turno | 128 | 28 | 156 |
 | sem_resposta | 375 | 83 | 458 |
+
+### Memorização (perguntas diretas sobre fatos rag, só split de treino)
+Treino: **1180** pares (318 fatos); teste: **309** pares (309 fatos).
+
+| Área | Treino | Teste |
+|---|---:|---:|
+| comercial | 185 | 47 |
+| compliance | 29 | 8 |
+| financeiro | 508 | 133 |
+| institucional | 279 | 73 |
+| rh | 131 | 35 |
+| ti | 48 | 13 |
 
 ### Diversidade das respostas (treino)
 | Métrica | Valor |

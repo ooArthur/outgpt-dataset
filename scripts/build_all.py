@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-ETAPAS = ["gen_data", "render_docs", "gen_fatos", "gen_qa", "gen_avaliacao", "gen_tickets"]
+ETAPAS = ["gen_data", "render_docs", "gen_fatos", "gen_qa", "gen_memorizacao", "gen_avaliacao", "gen_tickets"]
 
 
 def main():

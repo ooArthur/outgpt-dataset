@@ -184,6 +184,7 @@ def checa_fatos():
 
 
 RECUSAS_OK = sem_resposta_renderizadas()
+IDS_SPLIT = {}
 
 
 def checa_qa(fatos):
@@ -242,6 +243,7 @@ def checa_qa(fatos):
                 erro(f"{loc}: multi_turno deve ter 2 a 3 turnos")
             if tipo in ("direta", "com_contexto", "multi_turno") and meta.get("fato_id") not in fatos:
                 erro(f"{loc}: fato_id desconhecido {meta.get('fato_id')}")
+    IDS_SPLIT.update(ids_split)
     vazamento = ids_split["treino"] & ids_split["teste"]
     if vazamento:
         erro(f"fato_id presente no treino e no teste: {sorted(vazamento)[:5]} ({len(vazamento)})")
@@ -277,6 +279,50 @@ def checa_qa(fatos):
                    "fatos_treino": len(ids_split["treino"]), "fatos_teste": len(ids_split["teste"]),
                    "formulacoes_por_fato": round(sum(por_fato.values()) / max(len(por_fato), 1), 2), "diversidade": stats_div}
     return perguntas
+
+
+def checa_memorizacao(fatos, perguntas_qa):
+    """qa_memorizacao_*: perguntas diretas sobre fatos rag do split de treino, fora dos documentos revogados."""
+    treino, teste = jsonl("qa/qa_memorizacao_treino.jsonl"), jsonl("qa/qa_memorizacao_teste.jsonl")
+    ids_qa_teste = set()
+    for r in jsonl("qa/qa_teste.jsonl"):
+        ids_qa_teste.update(r["meta"].get("fato_ids", [r["meta"]["fato_id"]]))
+    q_treino, ids = {}, {"treino": set(), "teste": set()}
+    for nome, regs in (("treino", treino), ("teste", teste)):
+        for i, r in enumerate(regs, 1):
+            loc = f"qa_memorizacao_{nome}.jsonl:{i}"
+            m, meta = r.get("messages", []), r.get("meta", {})
+            if [x.get("role") for x in m] != ["system", "user", "assistant"] or m[0]["content"] != SYSTEM_PROMPT:
+                erro(f"{loc}: deve ter exatamente system, user, assistant com o system prompt padrão")
+                continue
+            if "CONTEXTO:" in m[1]["content"]:
+                erro(f"{loc}: pergunta de memorização não pode ter CONTEXTO")
+            f = fatos.get(meta.get("fato_id"))
+            if f is None:
+                erro(f"{loc}: fato_id inexistente {meta.get('fato_id')}")
+                continue
+            if f["destino"] != "rag":
+                erro(f"{loc}: fato não é rag ({f['fato_id']})")
+            if f["fonte_doc"].endswith(".md") and ler_doc(f["fonte_doc"])[0].get("status") == "revogada":
+                erro(f"{loc}: fato de documento revogado ({f['fato_id']})")
+            if meta.get("tipo") != "direta_memorizacao":
+                erro(f"{loc}: meta.tipo deve ser direta_memorizacao")
+            if m[2]["content"] != f["resposta"]:
+                erro(f"{loc}: resposta difere de fato['resposta'] ({f['fato_id']})")
+            if f["fato_id"] in ids_qa_teste or f["fato_id"] not in IDS_SPLIT.get("treino", set()):
+                erro(f"{loc}: fato fora do split de treino de qa_treino.jsonl ({f['fato_id']})")
+            ids[nome].add(f["fato_id"])
+            q = normaliza(m[1]["content"])
+            if nome == "treino":
+                if q in q_treino:
+                    erro(f"{loc}: pergunta duplicada no treino de memorização")
+                q_treino[q] = loc
+            elif q in q_treino:
+                erro(f"{loc}: teste de memorização repete pergunta do treino de memorização ({q_treino[q]})")
+            perguntas_qa.setdefault(q, loc)
+    stats["memorizacao"] = {"treino": len(treino), "teste": len(teste), "fatos_treino": len(ids["treino"]), "fatos_teste": len(ids["teste"]),
+                            "area_treino": dict(Counter(r["meta"]["area"] for r in treino)),
+                            "area_teste": dict(Counter(r["meta"]["area"] for r in teste))}
 
 
 def checa_avaliacao(perguntas_qa):
@@ -377,6 +423,12 @@ def relatorio():
     for tp in sorted(TIPOS_QA):
         a, b = q["tipo_treino"].get(tp, 0), q["tipo_teste"].get(tp, 0)
         out.append(f"| {tp} | {a} | {b} | {a + b} |\n")
+    mm = s["memorizacao"]
+    out += ["\n### Memorização (perguntas diretas sobre fatos rag, só split de treino)\n",
+            f"Treino: **{mm['treino']}** pares ({mm['fatos_treino']} fatos); teste: **{mm['teste']}** pares ({mm['fatos_teste']} fatos).\n\n",
+            "| Área | Treino | Teste |\n|---|---:|---:|\n"]
+    for a in sorted(mm["area_treino"]):
+        out.append(f"| {a} | {mm['area_treino'][a]} | {mm['area_teste'].get(a, 0)} |\n")
     d = q["diversidade"]
     out += ["\n### Diversidade das respostas (treino)\n", tabela({"Palavras por resposta (média)": d["palavras_por_resposta"],
             "Respostas distintas": f"{d['respostas_distintas']} ({d['pct_distintas']}%)", "Maior repetição de uma resposta": d["maior_repeticao"],
@@ -405,6 +457,8 @@ def atualizar_readme():
     ]
     for tp in sorted(TIPOS_QA):
         linhas.append(f"| &nbsp;&nbsp;↳ `{tp}` | {q['tipo_treino'].get(tp, 0) + q['tipo_teste'].get(tp, 0)} |")
+    mm = s["memorizacao"]
+    linhas += [f"| Pares de memorização (`qa_memorizacao_*`) | {mm['treino'] + mm['teste']} ({mm['treino']} + {mm['teste']}) |"]
     linhas += [f"| Perguntas de avaliação | {s['avaliacao']['total']} |", f"| Tickets de TI | {s['tickets']['total']} |"]
     novo = "<!-- STATS:START -->\n" + "\n".join(linhas) + "\n<!-- STATS:END -->"
     readme = (RAIZ / "README.md").read_text(encoding="utf-8")
@@ -418,6 +472,7 @@ def main():
     checa_csvs(ficha)
     fatos = checa_fatos()
     perguntas = checa_qa(fatos)
+    checa_memorizacao(fatos, perguntas)
     checa_avaliacao(perguntas)
     checa_tickets(ficha)
     checa_repositorio()

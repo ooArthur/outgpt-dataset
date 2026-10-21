@@ -13,7 +13,7 @@ NUM_RE = re.compile(r"\d+(?:[.,]\d+)*")
 
 def perguntas_treino():
     qs = set()
-    for arq in ("qa/qa_treino.jsonl", "qa/qa_teste.jsonl"):
+    for arq in ("qa/qa_treino.jsonl", "qa/qa_teste.jsonl", "qa/qa_memorizacao_treino.jsonl", "qa/qa_memorizacao_teste.jsonl"):
         for r in ler_jsonl(arq):
             for m in r["messages"]:
                 if m["role"] == "user":
