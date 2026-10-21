@@ -1,0 +1,61 @@
+---
+titulo: "Reembolso de despesas (versão 2025 — REVOGADA)"
+area: financeiro
+versao: "2025.1"
+vigencia: "{{ iso_br(f.financeiro.reembolso.v2025.vigencia_inicio) }} a {{ iso_br(f.financeiro.reembolso.v2025.vigencia_fim) }}"
+acesso: publico
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: revogada
+substituido_por: "financeiro/reembolso"
+---
+
+# Reembolso de despesas — versão 2025 (revogada)
+
+> **Documento revogado.** Esta política valeu de {{ iso_br(f.financeiro.reembolso.v2025.vigencia_inicio) }} a {{ iso_br(f.financeiro.reembolso.v2025.vigencia_fim) }}. A regra vigente é a da *Política de reembolso de despesas (versão 2026)*. Este texto serve apenas para consulta de pedidos feitos durante 2025.
+
+## Prazos que valiam em 2025
+
+- **Envio da solicitação:** até **{{ f.financeiro.reembolso.v2025.prazo_envio_dias }} dias corridos** após a despesa.
+- **Pagamento:** até **{{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} dias** após o envio.
+
+Esses prazos eram mais longos para o pagamento e mais curtos para o envio do que os atuais.
+
+## Comparação com a política vigente
+
+| Item | 2025 (revogada) | 2026 (vigente) |
+|---|---|---|
+| Prazo para enviar a solicitação | {{ f.financeiro.reembolso.v2025.prazo_envio_dias }} dias | {{ f.financeiro.reembolso.prazo_envio_dias }} dias |
+| Prazo para pagamento | {{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} dias | {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias |
+
+Em resumo: a regra de 2026 dá mais tempo para o colaborador enviar o pedido e **reduz** o prazo de pagamento.
+
+## O que não mudou
+
+Algumas regras continuam as mesmas na versão 2026:
+
+- exigência de comprovante legível;
+- aprovação do gestor conforme a alçada;
+- ausência de reembolso de bebidas alcoólicas e de multas;
+- uso do {{ f.financeiro.reembolso.sistema }}.
+
+## Pedidos feitos em 2025
+
+Pedidos enviados em 2025 e ainda não pagos em 1º de janeiro de 2026 passaram a seguir o prazo mais curto, de {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias, contado a partir de 2026, quando isso era mais favorável ao colaborador. O Financeiro tratou esses casos individualmente.
+
+## Por que a regra mudou
+
+A área de Controladoria identificou que o fechamento mensal, que ocorre até o {{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil, não precisava de um prazo tão longo para pagar reembolsos. Encurtar o pagamento melhora a experiência de quem adianta valores para a empresa.
+
+## Perguntas frequentes sobre a transição
+
+**Meu reembolso de 2025 atrasou além do prazo da época. O que faço?** Escreva para o Contas a Pagar com o número da solicitação; o Financeiro prioriza pedidos que ultrapassaram o prazo da versão vigente na data do envio.
+
+**A justificativa de despesas continua obrigatória?** Sim. A finalidade e o centro de custo são informados em qualquer versão.
+
+**O limite de refeição mudou?** Os limites por tipo de despesa são os da versão 2026, descritos na política vigente.
+
+**O prazo para enviar também mudou?** Sim. Em 2025 era de {{ f.financeiro.reembolso.v2025.prazo_envio_dias }} dias; hoje é de {{ f.financeiro.reembolso.prazo_envio_dias }} dias.
+
+## Qual regra seguir hoje
+
+Siga sempre a versão 2026. Em caso de dúvida, escreva para {{ email('financeiro') }}.

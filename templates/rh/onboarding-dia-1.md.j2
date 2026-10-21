@@ -1,0 +1,58 @@
+---
+titulo: "Onboarding: seu primeiro dia"
+area: rh
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Onboarding: seu primeiro dia
+
+Bem-vinda e bem-vindo à {{ f.empresa.nome_fantasia }}! O primeiro dia é para você se sentir acolhido, conhecer as pessoas e ter tudo pronto para começar a trabalhar. Aqui está o roteiro.
+
+## Antes de chegar
+
+Alguns dias antes, o RH envia um e-mail com o local, o horário e a lista de documentos de admissão. Se algo estiver faltando, responda o e-mail ou fale com {{ email('rh') }}.
+
+## Roteiro do dia
+
+| Horário | Atividade |
+|---|---|
+| {{ f.rh.onboarding.horario_dia1 }} | Recepção na {{ f.rh.onboarding.local_dia1 }} e entrega do crachá |
+| Manhã | Apresentação da empresa, da cultura e dos {{ f.valores | length }} valores |
+| Manhã | Visita guiada ao CD e às áreas comuns |
+| Almoço | Almoço com seu gestor e seu buddy |
+| Tarde | Entrega do notebook e dos acessos pela TI (quando o cargo exige) |
+| Final do dia | Conversa com o gestor para alinhar o plano de integração |
+
+## O que você recebe
+
+- Crachá de acesso e kit de boas-vindas.
+- Equipamento de trabalho e acessos básicos: {{ f.sistemas.email }}, {{ f.sistemas.chat }}, {{ f.sistemas.rh }} e {{ f.sistemas.intranet }}.
+- EPI, quando o cargo exige (por exemplo, coletes, botas e roupa térmica para câmaras frias).
+- Seu buddy: um colega experiente que acompanha você por {{ f.rh.onboarding.buddy_semanas }} semanas.
+
+## Primeiros acessos
+
+A TI cria a conta e uma senha temporária. No primeiro login, você define sua senha definitiva com pelo menos {{ f.ti.senhas.tamanho_min }} caracteres e ativa a verificação em duas etapas. Detalhes estão no documento de acesso e senhas.
+
+## Treinamentos obrigatórios
+
+Nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias, você conclui: {{ f.rh.onboarding.treinamentos | join('; ') }}. O RH agenda tudo com você, e o progresso fica visível no {{ f.sistemas.rh }}.
+
+## Período de experiência
+
+O contrato começa com um período de experiência de {{ f.rh.onboarding.periodo_experiencia_dias }} dias. Ao longo dele, seu gestor e o RH fazem check-ins nos dias {{ f.rh.onboarding.checkin_dias | join(', ') }}, descritos no plano 30-60-90.
+
+## Dicas para o primeiro dia
+
+1. Chegue um pouco antes, para a portaria e o crachá.
+2. Leve um documento com foto.
+3. Pergunte à vontade: ninguém espera que você saiba tudo.
+4. Anote nomes e ramais; o diretório completo está no {{ f.sistemas.intranet }}.
+
+## Em caso de imprevisto
+
+Se não puder comparecer, avise o RH pelo ramal {{ f.rh.ramal_rh }}. Estamos ansiosos para receber você.

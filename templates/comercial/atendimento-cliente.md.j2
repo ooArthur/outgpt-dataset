@@ -1,0 +1,67 @@
+---
+titulo: "Atendimento ao cliente"
+area: comercial
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Comercial ({{ email('comercial') }})"
+status: vigente
+---
+
+# Atendimento ao cliente
+
+Nossos clientes confiam à {{ f.empresa.nome_fantasia }} produtos que precisam chegar inteiros, no prazo e na temperatura certa. O atendimento é a face dessa confiança. Este guia vale para quem fala com clientes, diretamente ou por meio de outras áreas.
+
+## Canais e horários
+
+| Canal | Contato |
+|---|---|
+| E-mail | {{ email(f.comercial.atendimento.email) }} |
+| Telefone | ramal {{ f.comercial.atendimento.ramal }} |
+| Horário | {{ f.comercial.atendimento.horario }} |
+
+## Prazos de resposta
+
+- **Primeira resposta:** em até **{{ f.comercial.atendimento.primeira_resposta_horas_uteis }} horas úteis**.
+- **Escalonamento:** se o caso não for resolvido em **{{ f.comercial.atendimento.escalonamento_horas }} horas**, ele sobe para o gerente comercial.
+
+## Metas de qualidade
+
+- **OTIF** (entrega no prazo e completa): meta de **{{ f.comercial.atendimento.meta_otif }}%**.
+- **NPS** (satisfação): meta de **{{ f.comercial.atendimento.meta_nps }}**.
+
+Os resultados são acompanhados mensalmente pelo Comercial e por Operações e Logística.
+
+## Como tratar uma ocorrência
+
+1. **Escute e registre.** Anote nota fiscal, produto, quantidade e horário.
+2. **Peça desculpas quando a falha for nossa**, sem procurar culpados no primeiro contato.
+3. **Investigue** com Operações, consultando o {{ f.sistemas.wms }} e o {{ f.sistemas.tms }}.
+4. **Informe o cliente** com prazo de solução, mesmo que a resposta final ainda não esteja pronta.
+5. **Feche o ciclo.** Confirme com o cliente se o problema foi resolvido e registre o aprendizado.
+
+## Tipos comuns de ocorrência
+
+| Ocorrência | Quem apoia |
+|---|---|
+| Atraso na entrega | Transporte |
+| Falta ou sobra de volumes | Armazém |
+| Avaria | Armazém e Logística reversa |
+| Temperatura fora do padrão | Operações e Qualidade |
+| Divergência de cobrança | Financeiro |
+
+## Linguagem
+
+Seja claro, direto e cordial, em linha com o valor *{{ f.valores[2].nome }}*. Evite siglas internas com clientes. Não prometa o que não depende de você: prometa o que pode cumprir, em linha com *{{ f.valores[1].nome }}*.
+
+## Dados dos clientes
+
+Informações de clientes são confidenciais. Compartilhe só o necessário e nunca por aplicativos pessoais de mensagem. Veja o documento de LGPD e privacidade.
+
+## Quando escalar
+
+Escale imediatamente casos de risco sanitário, como suspeita de quebra de cadeia fria, ou de ameaça de rompimento de contrato. Nesses casos, avise o gerente comercial e o diretor de Operações.
+
+## Dúvidas
+
+{{ email('comercial') }}.

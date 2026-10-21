@@ -1,0 +1,56 @@
+---
+titulo: "Orçamento por departamento 2026"
+area: financeiro
+versao: "2026.1"
+vigencia: "Exercício de 2026"
+acesso: gestores
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+---
+
+# Orçamento por departamento — 2026
+
+> **Acesso para gestores.** Este documento resume o orçamento anual de custos e despesas de cada departamento e o acompanhamento do primeiro semestre. O orçamento inclui custos operacionais de CD e frota, que na DRE aparecem no CMV; por isso o total é maior que as despesas operacionais da DRE.
+
+## Orçamento anual
+
+O orçamento total de 2026 é de **{{ brl(total_orc_2026) }}**, distribuído entre os {{ f.departamentos | length }} departamentos:
+
+| Departamento | Orçamento anual 2026 | Participação |
+|---|---|---|
+{% for d in f.departamentos %}
+| {{ d.nome }} | {{ brl(orc_dep[d.id].anual) }} | {{ pct(orc_dep[d.id].anual / total_orc_2026 * 100, 1) }} |
+{% endfor %}
+
+A distribuição ao longo do ano segue os pesos {{ f.orcamento_pesos_trimestre | map('string') | join(', ') | replace('.', ',') }} para os trimestres T1 a T4.
+
+## Acompanhamento: orçado x realizado
+
+O realizado está disponível até **2026T2**. Saldo positivo significa gasto abaixo do orçado; saldo negativo, gasto acima.
+
+| Departamento | Orçado 1º semestre | Realizado 1º semestre | Saldo |
+|---|---|---|---|
+{% for d in f.departamentos %}
+| {{ d.nome }} | {{ brl(orc_dep[d.id].orcado_1s) }} | {{ brl(orc_dep[d.id].realizado_1s) }} | {{ brl(orc_dep[d.id].saldo_1s) }} |
+{% endfor %}
+
+## Detalhe por trimestre
+
+{% for d in f.departamentos %}
+### {{ d.nome }}
+
+| Trimestre | Orçado | Realizado | Saldo |
+|---|---|---|---|
+{% for l in orc_dep[d.id].linhas %}
+| {{ l.trimestre }} | {{ brl(l.orcado) }} | {{ brl(l.realizado) if l.realizado is not none else '—' }} | {{ brl(l.saldo) if l.saldo is not none else '—' }} |
+{% endfor %}
+
+{% endfor %}
+## Regras de gestão do orçamento
+
+1. Cada diretor é responsável pelo orçamento do seu departamento.
+2. Gastos devem ser aprovados conforme as alçadas de aprovação.
+3. Remanejamentos entre trimestres do mesmo departamento são aprovados pela Controladoria; entre departamentos, pela CEO.
+4. O acompanhamento é feito mensalmente, após o fechamento contábil.
+
+Dados completos em `data/orcamento_departamentos_2026.csv`. Dúvidas: {{ email('financeiro') }}.

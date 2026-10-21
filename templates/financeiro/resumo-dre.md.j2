@@ -1,0 +1,52 @@
+---
+titulo: "Resumo da DRE 2024–2026"
+area: financeiro
+versao: "2026.2"
+vigencia: "Posição em {{ f.financeiro.data_ultimo_fechamento_trimestre }}"
+acesso: financeiro_restrito
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+---
+
+# Resumo da DRE 2024–2026
+
+> **Acesso restrito à diretoria e ao Financeiro.** Valores em reais, a partir do fechamento contábil. Último trimestre fechado: {{ f.financeiro.data_ultimo_fechamento_trimestre }}.
+
+A DRE (demonstração do resultado do exercício) mostra como a receita se transforma em resultado. Estrutura usada aqui: receita bruta − deduções (impostos sobre vendas) = receita líquida; receita líquida − CMV = lucro bruto; lucro bruto − despesas operacionais = EBITDA; EBITDA − depreciação e amortização ± resultado financeiro − IR e CSLL = resultado líquido.
+
+## Totais anuais
+
+| Indicador | 2024 | 2025 |
+|---|---|---|
+| Receita bruta | {{ brl(anual['2024'].receita_bruta) }} | {{ brl(anual['2025'].receita_bruta) }} |
+| Deduções | {{ brl(anual['2024'].deducoes) }} | {{ brl(anual['2025'].deducoes) }} |
+| **Receita líquida** | {{ brl(anual['2024'].receita_liquida) }} | {{ brl(anual['2025'].receita_liquida) }} |
+| CMV | {{ brl(anual['2024'].cmv) }} | {{ brl(anual['2025'].cmv) }} |
+| Lucro bruto | {{ brl(anual['2024'].lucro_bruto) }} | {{ brl(anual['2025'].lucro_bruto) }} |
+| Despesas operacionais | {{ brl(anual['2024'].despesas_operacionais) }} | {{ brl(anual['2025'].despesas_operacionais) }} |
+| **EBITDA** | {{ brl(anual['2024'].ebitda) }} | {{ brl(anual['2025'].ebitda) }} |
+| **Resultado líquido** | {{ brl(anual['2024'].resultado_liquido) }} | {{ brl(anual['2025'].resultado_liquido) }} |
+
+A receita líquida de 2025 foi de **{{ brl(anual['2025'].receita_liquida) }}**, ou seja, cerca de {{ milhoes(anual['2025'].receita_liquida) }}, valor usado como faturamento líquido nos materiais institucionais. O crescimento da receita líquida de 2024 para 2025 foi de {{ pct((anual['2025'].receita_liquida / anual['2024'].receita_liquida - 1) * 100, 1) }}.
+
+## Margens de 2025
+
+- Margem bruta: {{ pct(anual['2025'].lucro_bruto / anual['2025'].receita_liquida * 100, 1) }} da receita líquida.
+- Margem EBITDA: {{ pct(anual['2025'].ebitda / anual['2025'].receita_liquida * 100, 1) }} da receita líquida.
+- Margem líquida: {{ pct(anual['2025'].resultado_liquido / anual['2025'].receita_liquida * 100, 1) }} da receita líquida.
+
+## Detalhe trimestral
+
+| Trimestre | Receita bruta | Receita líquida | CMV | Lucro bruto | Despesas op. | EBITDA | Resultado líquido |
+|---|---|---|---|---|---|---|---|
+{% for t in fin %}
+| {{ t.trimestre }} | {{ brl(t.receita_bruta) }} | {{ brl(t.receita_liquida) }} | {{ brl(t.cmv) }} | {{ brl(t.lucro_bruto) }} | {{ brl(t.despesas_operacionais) }} | {{ brl(t.ebitda) }} | {{ brl(t.resultado_liquido) }} |
+{% endfor %}
+
+Os dados completos, incluindo deduções, depreciação e amortização, resultado financeiro e IR/CSLL, estão em `data/financeiro_trimestral.csv`.
+
+## Comentários da Controladoria
+
+- O quarto trimestre costuma ser o mais forte do ano, por causa da sazonalidade de alimentos e bebidas no fim de ano.
+- O CMV inclui custos diretos de operação de CD e frota, por isso é a maior linha de custo.
+- O resultado de {{ f.financeiro.data_ultimo_fechamento_trimestre }} considera a mesma metodologia dos trimestres anteriores.

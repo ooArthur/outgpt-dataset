@@ -424,3 +424,36 @@ compliance:
   etica:
     comite: "Comitê de Ética"
     reuniao: "mensal"
+
+# ---------------------------------------------------------------- Extras (Fase 2)
+canais:
+  comunicado_nome: "Brisa em Foco"
+  comunicado_dia: "segunda-feira"
+  comunicado_hora: "09:00"
+  town_hall: "trimestral"
+  chat_canais: ["#geral", "#ti-ajuda", "#rh-duvidas", "#financeiro-duvidas", "#cd-campinas", "#cd-uberlandia"]
+  mural_unidade: "mural físico na entrada de cada CD"
+
+sistemas_detalhe:
+  - {nome: "BrisaERP", funcao: "finanças, compras, faturamento e despesas", dono: "Financeiro e Controladoria", suporte: "Sistemas"}
+  - {nome: "BrisaWMS", funcao: "gestão de armazém: recebimento, estoque, separação e expedição", dono: "Operações e Logística", suporte: "Sistemas"}
+  - {nome: "RotaViva", funcao: "gestão de transporte, roteirização e monitoramento de entregas", dono: "Operações e Logística", suporte: "Sistemas"}
+  - {nome: "PessoasHub", funcao: "férias, holerites, benefícios e dados cadastrais", dono: "Pessoas e Cultura", suporte: "Sistemas"}
+  - {nome: "PontoBrisa", funcao: "registro e ajuste de ponto", dono: "Pessoas e Cultura", suporte: "N1"}
+  - {nome: "BrisaDocs", funcao: "gestão documental e pastas compartilhadas", dono: "TI", suporte: "N2"}
+  - {nome: "Portal Brisa", funcao: "intranet com políticas, comunicados e diretório", dono: "Pessoas e Cultura", suporte: "N1"}
+  - {nome: "ServiceDesk Brisa", funcao: "abertura e acompanhamento de chamados de TI", dono: "TI", suporte: "N1"}
+  - {nome: "BrisaVPN", funcao: "acesso remoto seguro à rede interna", dono: "TI", suporte: "Infraestrutura"}
+  - {nome: "BrisaCofre", funcao: "gerenciador de senhas corporativo", dono: "TI", suporte: "Segurança"}
+  - {nome: "BrisaMail", funcao: "e-mail e agenda corporativos", dono: "TI", suporte: "N1"}
+  - {nome: "BrisaChat", funcao: "mensagens e reuniões por vídeo", dono: "TI", suporte: "N1"}
+
+ti_extra:
+  uso:
+    pessoal_limite: "uso pessoal eventual e sem prejuízo ao trabalho"
+    software: "somente software homologado pela TI"
+    armazenamento: "arquivos de trabalho ficam no BrisaDocs, nunca em nuvens pessoais"
+  suporte_equipamento:
+    notebook_garantia_anos: 3
+    troca_bateria_ciclos: "quando a autonomia cair de forma perceptível"
+  telefone_plantao: "ramal 4000, opção de plantão"

@@ -1,0 +1,58 @@
+---
+titulo: "Canais internos de comunicação"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Canais internos de comunicação
+
+Cada tipo de assunto tem um canal mais adequado. Usar o canal certo evita ruído e acelera respostas. Este guia mostra onde falar sobre o quê.
+
+## Quadro rápido
+
+| Preciso de... | Canal |
+|---|---|
+| Ajuda com sistema, senha ou equipamento | {{ f.sistemas.chamados }} ou ramal {{ f.ti.sla.ramal }} |
+| Dúvida sobre férias, benefícios ou folha | {{ email('rh') }} ou {{ f.sistemas.rh }} |
+| Dúvida sobre reembolso ou pagamento | {{ email('financeiro') }} |
+| Falar com atendimento ao cliente | {{ email(f.comercial.atendimento.email) }} |
+| Relatar conduta inadequada | {{ f.rh.denuncias.canal }} ({{ email(f.rh.denuncias.email) }}) |
+| Questão de privacidade e dados pessoais | {{ email(f.compliance.lgpd.email) }} |
+
+## {{ f.sistemas.intranet }}
+
+É a intranet da empresa, em {{ f.empresa.intranet }}. Ali ficam as políticas vigentes, o diretório de colaboradores, o calendário de fechamento e os formulários. Quando houver uma política nova, a versão anterior é marcada como revogada.
+
+## {{ f.canais.comunicado_nome }}
+
+Comunicado semanal enviado por e-mail toda {{ f.canais.comunicado_dia }}, às {{ f.canais.comunicado_hora }}. Traz novidades da empresa, aniversariantes, resultados operacionais e destaques de equipes. Quem trabalha nos CDs também encontra o resumo no {{ f.canais.mural_unidade }}.
+
+## {{ f.sistemas.chat }}
+
+Ferramenta de mensagens e videochamadas. Canais públicos mais usados: {{ f.canais.chat_canais | join(', ') }}. Boas práticas:
+
+- Use o canal do assunto em vez de mensagens diretas, para que outras pessoas aprendam com a resposta.
+- Em pedidos urgentes, diga o prazo e o motivo.
+- Respeite o horário de trabalho dos colegas; mensagens fora do expediente não exigem resposta imediata.
+
+## {{ f.sistemas.email }}
+
+Use para comunicações formais, envio de documentos e registros. Resumos de reuniões importantes devem ser enviados por e-mail.
+
+## Encontros presenciais e town hall
+
+Uma vez por trimestre, a CEO realiza o *town hall* da empresa, com apresentação dos resultados e espaço para perguntas, que podem ser enviadas de forma anônima antes do encontro. A frequência é {{ f.canais.town_hall }}.
+
+## O que não fazer
+
+1. Não use aplicativos pessoais de mensagem para tratar dados de clientes ou de colegas.
+2. Não envie documentos confidenciais para e-mails pessoais.
+3. Não use canais amplos, como o #geral, para tratar de problemas individuais.
+
+## Ouvidoria e denúncias
+
+Para situações sensíveis, use a {{ f.rh.denuncias.canal }}, que aceita relatos anônimos. O detalhamento está no documento do canal de denúncias.

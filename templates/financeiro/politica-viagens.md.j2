@@ -1,0 +1,53 @@
+---
+titulo: "Política de viagens corporativas"
+area: financeiro
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+---
+
+# Política de viagens corporativas
+
+Viagens a trabalho devem ser úteis, seguras e econômicas. Esta política vale para visitas a clientes, treinamentos e deslocamentos entre unidades.
+
+## Antes da viagem
+
+1. **Justifique.** Pergunte-se se a reunião pode ser feita por vídeo.
+2. **Solicite** a viagem no {{ f.sistemas.erp }}, informando destino, datas, objetivo e custo estimado.
+3. **Obtenha aprovação** conforme a alçada: gestor até {{ brl(f.financeiro.alcadas.gestor_ate) }}, diretor até {{ brl(f.financeiro.alcadas.diretor_ate) }} e CEO acima disso, considerando o custo total da viagem.
+4. **Compre com antecedência.** Passagens aéreas devem ser compradas com pelo menos **{{ f.financeiro.viagens.antecedencia_aereo_dias }} dias** de antecedência, sempre que possível. Compras mais próximas da data precisam de justificativa.
+
+## Limites de despesa
+
+| Item | Limite |
+|---|---|
+| Hotel em capitais | até {{ brl(f.financeiro.viagens.hotel_capital) }} por diária |
+| Hotel nas demais cidades | até {{ brl(f.financeiro.viagens.hotel_demais) }} por diária |
+| Alimentação | até {{ brl(f.financeiro.viagens.refeicao_dia) }} por dia |
+| Aluguel de carro | {{ f.financeiro.viagens.carro_aluguel }} |
+
+O hotel deve ser reservado pelo canal indicado pelo Financeiro. Café da manhã incluso na diária não gera nova despesa de alimentação.
+
+## Adiantamento
+
+É possível pedir adiantamento de até **{{ f.financeiro.viagens.adiantamento_max_pct }}%** do custo estimado de hospedagem e alimentação. O valor é depositado antes da viagem e descontado na prestação de contas.
+
+## Durante a viagem
+
+- Guarde todos os comprovantes, com nota fiscal em nome da {{ f.empresa.razao_social }} sempre que o fornecedor emitir.
+- Em caso de imprevisto, como cancelamento de voo, avise o gestor e o Financeiro.
+- Cumpra as regras de segurança: não deixe notebook sem supervisão, use a {{ f.ti.vpn.nome }} em redes públicas e evite falar de assuntos confidenciais em locais públicos.
+
+## Prestação de contas
+
+Depois do retorno, o colaborador tem **{{ f.financeiro.viagens.prestacao_contas_dias_uteis }} dias úteis** para prestar contas no {{ f.sistemas.erp }}. Valores adiantados e não utilizados devem ser devolvidos. Despesas fora dos limites precisam de justificativa e aprovação do diretor da área.
+
+## Exemplo
+
+Ricardo viaja de Campinas a Uberlândia para uma visita a cliente por dois dias. Aprovado pelo gestor, compra a passagem com antecedência, usa hotel de até {{ brl(f.financeiro.viagens.hotel_demais) }} por diária e almoça dentro do limite de {{ brl(f.financeiro.viagens.refeicao_dia) }} por dia. Ao voltar, presta contas em até {{ f.financeiro.viagens.prestacao_contas_dias_uteis }} dias úteis, e reembolso de despesas pessoais segue o prazo da política de reembolso.
+
+## Dúvidas
+
+{{ email('financeiro') }}.

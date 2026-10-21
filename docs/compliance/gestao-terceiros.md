@@ -1,0 +1,58 @@
+---
+titulo: "Gestão de terceiros e due diligence"
+area: compliance
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Compliance e Jurídico (compliance@brisalog.example)"
+status: vigente
+---
+
+# Gestão de terceiros e due diligence
+
+Terceiros são fornecedores, transportadores parceiros, prestadores de serviço, despachantes e qualquer empresa ou pessoa que age em nosso nome ou nos fornece algo. Escolher bem com quem trabalhamos protege a Brisa Log de riscos legais, de reputação e de qualidade.
+
+## Quando a avaliação é necessária
+
+Toda contratação nova passa por uma avaliação proporcional ao risco. Terceiros de **risco alto** são:
+
+- intermediários que lidam com órgãos públicos;
+- transportadores parceiros que carregam produtos refrigerados;
+- fornecedores de serviços de valor relevante;
+- fornecedores que acessam dados pessoais ou sistemas da empresa.
+
+## Etapas da due diligence
+
+1. **Cadastro.** CNPJ, quadro societário e dados de contato.
+2. **Verificações.** Regularidade fiscal, listas de sanções e processos relevantes.
+3. **Questionário de integridade.** O terceiro responde sobre políticas anticorrupção, trabalho infantil ou análogo ao escravo e proteção de dados.
+4. **Análise de Compliance.** Classifica o risco em baixo, médio ou alto.
+5. **Decisão.** Risco alto exige aprovação do diretor da área e da diretora de Compliance e Jurídico.
+
+Depois de aprovada, a homologação vale por **24 meses**, quando é renovada. A política de compras prevê o mesmo prazo de homologação: 24 meses.
+
+## Cláusulas contratuais
+
+Os contratos devem conter cláusulas de anticorrupção, de proteção de dados (LGPD), de respeito à legislação trabalhista e de direito de auditoria. O Jurídico mantém modelos padrão.
+
+## Monitoramento
+
+Durante o contrato, a área gestora acompanha o desempenho e reporta qualquer alerta, como notícia negativa, desvio de conduta ou mudança societária relevante. Compliance faz monitoramento amostral.
+
+## Transportadores parceiros
+
+Além da due diligence, motoristas parceiros recebem orientações sobre cadeia fria, segurança e conduta. O RotaViva registra a rota e a temperatura de cada viagem.
+
+## Encerramento
+
+Terceiros que violarem as cláusulas de integridade podem ter o contrato suspenso ou rescindido, com apoio do Jurídico.
+
+## Exemplo
+
+A área de Operações quer contratar uma nova transportadora para a rota de Uberlândia. O comprador abre o cadastro no BrisaERP, a transportadora responde ao questionário e Compliance classifica como risco médio. A homologação é aprovada e fica válida pelo período previsto.
+
+## Dúvidas
+
+compliance@brisalog.example.
+
+Documento fictício, criado para fins acadêmicos.

@@ -1,0 +1,53 @@
+---
+titulo: "Catálogo de sistemas internos"
+area: ti
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "TI ({{ email('ti') }})"
+status: vigente
+---
+
+# Catálogo de sistemas internos
+
+Este catálogo reúne os sistemas usados na {{ f.empresa.nome_fantasia }}, para que você saiba para que serve cada um, quem é o dono do processo e a qual fila da TI recorrer em caso de problema.
+
+## Visão geral
+
+| Sistema | Para que serve | Dono do processo | Fila de suporte |
+|---|---|---|---|
+{% for s in f.sistemas_detalhe %}
+| {{ s.nome }} | {{ s.funcao }} | {{ s.dono }} | {{ s.suporte }} |
+{% endfor %}
+
+O **dono do processo** decide regras de negócio e aprova acessos. A **fila de suporte** é o time de TI que resolve falhas técnicas.
+
+## Como pedir acesso
+
+O gestor abre uma requisição no {{ f.sistemas.chamados }} informando o sistema e o perfil desejado. O dono do processo aprova, e a TI concede. Prazo típico: P4, ou seja, até {{ f.ti.sla.P4.resolucao }}. Veja o documento de acesso e senhas.
+
+## Qual sistema devo usar para...
+
+- **Registrar uma entrada de mercadoria:** {{ f.sistemas.wms }}.
+- **Programar uma rota de entrega:** {{ f.sistemas.tms }}.
+- **Pedir reembolso ou comprar:** {{ f.sistemas.erp }}.
+- **Pedir férias ou ver holerite:** {{ f.sistemas.rh }}.
+- **Ajustar ponto:** {{ f.rh.jornada.ponto_sistema }}.
+- **Abrir chamado de TI:** {{ f.sistemas.chamados }}.
+- **Buscar políticas e ramais:** {{ f.sistemas.intranet }}.
+
+## Ciclo de manutenção
+
+Atualizações programadas dos sistemas são avisadas com antecedência no {{ f.canais.comunicado_nome }} e no {{ f.sistemas.chat }}. Mudanças de alto impacto, como atualizações do {{ f.sistemas.wms }}, são feitas fora do horário de pico dos CDs.
+
+## Disponibilidade
+
+Falhas que paralisam um CD são tratadas como P1: resolução em até {{ f.ti.sla.P1.resolucao }}. Para o caso de falhas com contorno, aplicam-se os prazos de P2 ou P3 descritos no SLA de incidentes.
+
+## Integrações
+
+O {{ f.sistemas.erp }} recebe os dados de faturamento do {{ f.sistemas.wms }} e do {{ f.sistemas.tms }}. Por isso, divergências em estoque ou frete afetam o fechamento contábil e devem ser corrigidas antes do corte.
+
+## Dúvidas
+
+Para sugerir melhorias em sistemas, escreva para {{ email('ti') }}.

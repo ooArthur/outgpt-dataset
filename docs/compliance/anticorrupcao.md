@@ -1,0 +1,69 @@
+---
+titulo: "Política anticorrupção"
+area: compliance
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Compliance e Jurídico (compliance@brisalog.example)"
+status: vigente
+---
+
+# Política anticorrupção
+
+A Brisa Log não tolera corrupção. Nossa postura está alinhada à Lei Anticorrupção (Lei 12.846/2013), que responsabiliza empresas por atos de corrupção contra a administração pública. Este documento é um guia interno e não substitui orientação jurídica.
+
+## Princípio central
+
+Nenhuma pessoa que atue em nome da empresa pode oferecer, prometer, dar, pedir ou aceitar vantagem indevida, de qualquer valor, para obter ou manter negócio ou favor. Isso vale para agentes públicos e para o setor privado.
+
+## Onde o risco aparece na nossa atividade
+
+- **Fiscalizações e licenças:** vigilância sanitária, trânsito, meio ambiente e órgãos fiscais.
+- **Transporte:** abordagens em rodovias e documentação de cargas.
+- **Contratações:** licitações ou contratos com órgãos públicos.
+- **Intermediários:** despachantes, consultores e agentes que representam a empresa.
+
+## O que é proibido
+
+1. Pagar "facilitação" ou "cafezinho" para acelerar processos.
+2. Dar presentes, hospitalidade ou favores a agentes públicos.
+3. Contratar intermediário sem avaliação prévia.
+4. Fraudar licitações, combinar propostas ou manipular preços.
+5. Registrar pagamentos de forma imprecisa ou esconder despesas.
+
+## Em caso de pedido de propina
+
+Se um agente público pedir dinheiro ou vantagem:
+
+1. Recuse com educação e firmeza.
+2. Não discuta nem ameace.
+3. Anote data, local, nome e o que foi pedido.
+4. Comunique Compliance imediatamente ou use a Linha Ética Brisa.
+
+Nenhuma consequência negativa será imposta ao colaborador que recusar uma propina, mesmo que isso resulte em atraso ou perda de negócio.
+
+## Terceiros
+
+Fornecedores, parceiros e prestadores que atuam em nosso nome passam por *due diligence* de integridade antes da contratação, com validade de **24 meses**. Os contratos têm cláusula anticorrupção. Veja a política de gestão de terceiros.
+
+## Brindes e hospitalidade
+
+Há limites e regras de registro na política de brindes. Para agentes públicos, não é permitido oferecer brindes.
+
+## Treinamento
+
+O treinamento anticorrupção tem frequência **anual** e é obrigatório para áreas de risco, como Comercial, Financeiro, Operações e Compras.
+
+## Registros e controles
+
+Todos os pagamentos devem ter documento de suporte, aprovação conforme a alçada e descrição fiel. Pagamentos em dinheiro vivo para terceiros são vedados.
+
+## Consequências
+
+Violações levam a medidas disciplinares e podem resultar em responsabilização legal. Compliance reporta casos relevantes à CEO e ao Comitê de Ética.
+
+## Dúvidas
+
+compliance@brisalog.example.
+
+Documento fictício, criado para fins acadêmicos.

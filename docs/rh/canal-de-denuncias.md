@@ -1,0 +1,60 @@
+---
+titulo: "Canal de denúncias (Linha Ética)"
+area: rh
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Compliance e Jurídico (compliance@brisalog.example)"
+status: vigente
+---
+
+# Canal de denúncias — Linha Ética Brisa
+
+A Linha Ética Brisa é o canal confidencial para relatar condutas que violem o código de conduta, a lei ou as políticas da empresa. Qualquer pessoa pode usá-lo: colaboradores, prestadores, fornecedores e clientes.
+
+## O que pode ser relatado
+
+- Assédio moral ou sexual e discriminação.
+- Fraude, desvio de recursos ou falsificação de documentos.
+- Corrupção, suborno ou pagamentos indevidos.
+- Conflito de interesses não declarado.
+- Vazamento de dados pessoais ou de informações confidenciais.
+- Riscos graves à segurança do trabalho ou à segurança dos alimentos.
+
+Dúvidas operacionais do dia a dia, como erro de pagamento, devem ir para a área responsável, e não para este canal.
+
+## Como acessar
+
+| Meio | Contato |
+|---|---|
+| E-mail | etica@brisalog.example |
+| Telefone | 0800 000 0000 (número fictício) |
+| Formulário | no Portal Brisa, na área *Linha Ética* |
+
+## Anonimato e proteção
+
+É possível relatar **de forma anônima**. Quem se identifica tem a identidade preservada e conhecida apenas pelos responsáveis pela apuração. **Retaliação é proibida**: nenhuma pessoa pode ser prejudicada por relatar de boa-fé. Quem sofrer retaliação deve relatar também esse fato.
+
+## O que acontece depois
+
+1. **Recebimento.** O relato recebe um número de protocolo.
+2. **Retorno inicial.** Em até **5 dias úteis**, confirmamos o recebimento e, se necessário, pedimos mais informações.
+3. **Apuração.** A equipe de Compliance, com apoio do Comitê de Ética, investiga com imparcialidade. Pessoas envolvidas nunca participam da análise do próprio caso.
+4. **Conclusão.** A apuração é concluída em até **60 dias**, podendo ser prorrogada em casos complexos, com aviso ao denunciante.
+5. **Medidas.** Quando a denúncia se confirma, são aplicadas medidas proporcionais.
+
+O Comitê de Ética se reúne com frequência mensal para acompanhar os casos em andamento, sem expor a identidade de quem relatou.
+
+## Como fazer um bom relato
+
+Ajuda muito informar: o que aconteceu, quando, onde, quem estava envolvido e se há testemunhas ou documentos. Não é preciso ter provas; basta agir de boa-fé.
+
+## Relatos de má-fé
+
+Acusações feitas sabendo que são falsas são tratadas como violação ao código de conduta.
+
+## Dúvidas
+
+Se não tiver certeza de que seu caso se encaixa, ligue ou escreva mesmo assim. É melhor perguntar do que ficar em silêncio.
+
+Documento fictício, criado para fins acadêmicos.

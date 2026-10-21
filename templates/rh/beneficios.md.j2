@@ -1,0 +1,60 @@
+---
+titulo: "Benefícios"
+area: rh
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Benefícios
+
+Cuidar de quem cuida da cadeia é parte do nosso jeito de trabalhar. Este documento descreve os benefícios oferecidos aos colaboradores em regime CLT.
+
+## Alimentação
+
+| Benefício | Valor | Como funciona |
+|---|---|---|
+| Vale-refeição (VR) | {{ brl(f.rh.beneficios.vr_dia) }} por dia trabalhado | crédito mensal em cartão, para refeições em restaurantes |
+| Vale-alimentação (VA) | {{ brl(f.rh.beneficios.va_mes) }} por mês | crédito mensal em cartão, para supermercados |
+
+## Plano de saúde
+
+O plano é oferecido pela {{ f.rh.beneficios.saude_operadora }} com **coparticipação**. A empresa custeia **{{ f.rh.beneficios.saude_empresa_pct }}%** da mensalidade do titular. Em uso, o colaborador paga {{ brl(f.rh.beneficios.saude_copart_consulta) }} por consulta e {{ brl(f.rh.beneficios.saude_copart_exame) }} por exame simples. Dependentes podem ser incluídos mediante pagamento integral da mensalidade deles.
+
+O plano odontológico é {{ f.rh.beneficios.odonto }}. O seguro de vida é {{ f.rh.beneficios.seguro_vida }}.
+
+## Apoio à família
+
+O **auxílio-creche** é de {{ brl(f.rh.beneficios.auxilio_creche) }} por mês para filhos de até {{ f.rh.beneficios.auxilio_creche_idade_anos }} anos, mediante comprovação de matrícula.
+
+## Bem-estar
+
+O programa de bem-estar reembolsa **{{ f.rh.beneficios.bem_estar_pct }}%** da mensalidade de academia ou atividade física, limitado a {{ brl(f.rh.beneficios.bem_estar_teto) }} por mês. Todo colaborador também tem direito a **{{ f.rh.beneficios.folga_aniversario }} dia de folga** no mês do aniversário, a combinar com o gestor.
+
+## 13º salário
+
+O 13º salário é pago em duas parcelas: a primeira até {{ f.rh.decimo_terceiro.parcela1_ate }} e a segunda até {{ f.rh.decimo_terceiro.parcela2_ate }}. Quem pediu o adiantamento junto com as férias recebe a primeira parcela antecipada.
+
+## Participação nos resultados
+
+Há uma PLR anual, com regras próprias descritas no documento de participação nos lucros e resultados.
+
+## Vale-transporte
+
+Concedido conforme a legislação a quem precisar se deslocar de transporte público. Quem trabalha em home office recebe apenas pelos dias presenciais.
+
+## Quando os benefícios começam
+
+Os benefícios de alimentação começam no primeiro mês de trabalho. O plano de saúde e os demais benefícios passam a valer após {{ f.rh.beneficios.carencia_beneficios_dias }} dias da admissão, e a adesão deve ser feita no {{ f.sistemas.rh }} dentro desse prazo.
+
+## Perguntas frequentes
+
+**Posso incluir meu cônjuge no plano?** Sim, como dependente, pagando a mensalidade dele integralmente.
+
+**O que acontece com os benefícios nas férias?** Os créditos de alimentação seguem as regras do mês e não são interrompidos pelo gozo de férias.
+
+**Onde vejo meu extrato?** No {{ f.sistemas.rh }}, na área *Meus benefícios*.
+
+Dúvidas: {{ email('rh') }}.

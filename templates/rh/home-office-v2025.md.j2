@@ -1,0 +1,47 @@
+---
+titulo: "Política de home office (versão 2025 — REVOGADA)"
+area: rh
+versao: "2025.1"
+vigencia: "{{ iso_br(f.rh.home_office.v2025.vigencia_inicio) }} a {{ iso_br(f.rh.home_office.v2025.vigencia_fim) }}"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: revogada
+substituido_por: "rh/home-office"
+---
+
+# Política de home office — versão 2025 (revogada)
+
+> **Atenção:** este documento está **revogado**. Ele vigorou de {{ iso_br(f.rh.home_office.v2025.vigencia_inicio) }} a {{ iso_br(f.rh.home_office.v2025.vigencia_fim) }} e foi substituído pela política de home office de 2026. Mantemos o texto apenas para consulta histórica e para esclarecer situações ocorridas durante 2025.
+
+## O que dizia a regra de 2025
+
+Em 2025, a empresa iniciou o regime híbrido em caráter de piloto, com limites mais conservadores.
+
+- **Dias de home office:** {{ f.rh.home_office.v2025.dias_semana }} dia por semana, em dia combinado com o gestor.
+- **Quem podia:** colaboradores das áreas administrativas com pelo menos {{ f.rh.onboarding.periodo_experiencia_dias }} dias de empresa, isto é, que já tivessem concluído o período de experiência.
+- **Auxílio internet:** {{ brl(f.rh.home_office.v2025.auxilio_internet) }}. Não havia pagamento de auxílio.
+- **Ajuda de estrutura:** {{ brl(f.rh.home_office.v2025.ajuda_estrutura_unica) }}. Não havia ajuda de custo.
+- **Equipamento:** uso do notebook corporativo, sem custeio de cadeira ou mesa.
+
+## Por que mudou
+
+O piloto de 2025 mostrou que as entregas das equipes administrativas se mantiveram e que o engajamento subiu. Por isso, a partir de 2026, a empresa ampliou o regime e passou a apoiar a estrutura de trabalho em casa. Os principais pontos de mudança foram:
+
+| Ponto | 2025 (revogada) | 2026 (vigente) |
+|---|---|---|
+| Dias por semana | {{ f.rh.home_office.v2025.dias_semana }} | {{ f.rh.home_office.dias_semana }} |
+| Auxílio internet | {{ brl(f.rh.home_office.v2025.auxilio_internet) }} | {{ brl(f.rh.home_office.auxilio_internet) }} por mês |
+| Ajuda de estrutura | {{ brl(f.rh.home_office.v2025.ajuda_estrutura_unica) }} | {{ brl(f.rh.home_office.ajuda_estrutura_unica) }}, uma única vez |
+| Dias presenciais fixos | não havia | {{ f.rh.home_office.dias_presenciais_fixos }} |
+
+## Qual regra vale hoje?
+
+Vale a política de **2026**. Se alguém lhe passar a regra de 1 dia por semana, ela está desatualizada. Qualquer situação iniciada em 2025, como um acordo individual, deve ser revisada com o gestor para se adequar às regras novas.
+
+## Segurança
+
+As regras de segurança já valiam em 2025 e continuam valendo: acesso a sistemas internos somente pela {{ f.ti.vpn.nome }}, bloqueio de tela ao se afastar e proibição de compartilhar o equipamento com terceiros.
+
+## Em caso de dúvida
+
+Consulte sempre o documento *Política de home office (versão 2026)* ou escreva para {{ email('rh') }}. O {{ f.sistemas.intranet }} marca os documentos revogados para evitar confusão.

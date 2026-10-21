@@ -1,0 +1,39 @@
+---
+titulo: "Faixas salariais por cargo"
+area: rh
+versao: "2026.1"
+vigencia: "{{ iso_br(f.rh.home_office.vigencia_inicio) }}"
+acesso: rh_restrito
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Faixas salariais por cargo
+
+> **Documento de acesso restrito ao RH.** As faixas abaixo são salários base mensais, em reais, de referência para contratações e promoções. Não representam o salário de nenhuma pessoa específica e não devem ser compartilhadas.
+
+## Como ler as faixas
+
+Cada cargo tem um valor mínimo e um máximo. Novos contratados entram, em regra, na metade inferior da faixa. O ponto de partida depende da experiência, do mercado e da equidade interna com colegas na mesma função. Promoções levam o salário, no mínimo, ao piso do novo nível.
+
+{% for d in f.departamentos %}
+## {{ d.nome }}
+
+| Cargo | Nível | Mínimo | Máximo |
+|---|---|---|---|
+{% for c in f.quadro[d.id] %}
+| {{ c.cargo }} | {{ c.nivel }} | {{ brl(c.faixa[0]) }} | {{ brl(c.faixa[1]) }} |
+{% endfor %}
+
+{% endfor %}
+## Regras gerais
+
+1. A contratação acima do ponto médio da faixa exige aprovação da diretora de Pessoas e Cultura.
+2. Contratação acima do máximo da faixa não é permitida; nesses casos, o RH avalia se o cargo está adequado.
+3. A revisão das faixas é feita uma vez por ano, a partir da data-base de {{ f.rh.carreira.data_base }}.
+4. Pisos de categoria definidos em convenção coletiva se sobrepõem às faixas quando forem maiores.
+5. Comparações entre pessoas só devem ocorrer pela área de Pessoas e Cultura, em processos de equidade.
+
+## Quem pode consultar
+
+Somente colaboradores do RH com função de remuneração e a diretoria. Gestores recebem, quando necessário, apenas a faixa do cargo da vaga que estão abrindo.

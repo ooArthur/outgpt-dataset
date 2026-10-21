@@ -1,0 +1,53 @@
+---
+titulo: "Política de brindes, presentes e hospitalidade (versão 2026)"
+area: compliance
+versao: "2026.1"
+vigencia: "A partir de {{ iso_br(f.compliance.brindes.vigencia_inicio) }}"
+acesso: publico
+responsavel: "Compliance e Jurídico ({{ email('compliance') }})"
+status: vigente
+substitui: "compliance/politica-brindes-v2025"
+---
+
+# Política de brindes, presentes e hospitalidade
+
+Pequenos gestos fazem parte das relações de negócio, mas presentes e convites podem criar a impressão de troca de favores. Esta política define limites claros e **substitui a versão de 2025**.
+
+## Limites
+
+| Item | Limite por pessoa |
+|---|---|
+| Brinde ou presente | até {{ brl(f.compliance.brindes.limite) }} |
+| Refeição ou hospitalidade | até {{ brl(f.compliance.brindes.refeicao_limite) }} |
+
+Os limites valem para o que **recebemos** e para o que **oferecemos**, por ocasião e por pessoa. Brindes institucionais, como canetas e agendas com o logotipo da empresa, de valor simbólico, são permitidos.
+
+## Regras
+
+1. **Nunca dinheiro.** É proibido dar ou receber dinheiro, cartões-presente ou equivalentes.
+2. **Nada para agentes públicos.** Não oferecemos presentes ou hospitalidade a agentes públicos, de qualquer valor.
+3. **Sem vínculo com decisões.** Não aceite nem ofereça nada durante uma negociação, cotação ou avaliação em andamento.
+4. **Frequência.** Presentes repetidos do mesmo parceiro, mesmo abaixo do limite, devem ser avisados.
+5. **Transparência.** O que ultrapassar o limite deve ser recusado ou devolvido com educação.
+
+## Registro
+
+Brindes aceitos ou oferecidos devem ser registrados no formulário da política, no {{ f.sistemas.intranet }}, em até **{{ f.compliance.brindes.registro_prazo_dias }} dias úteis**. Compliance consolida os registros trimestralmente.
+
+## E se o valor for maior?
+
+Se o presente for mais caro que o limite e a recusa causar constrangimento, entregue-o a Compliance, que o devolve ao remetente ou o destina a uma ação social. O mesmo vale para presentes que chegam sem aviso.
+
+## Exemplos
+
+- Um fornecedor envia uma cesta de fim de ano avaliada em {{ brl(120) }}: está dentro do limite, deve ser registrada e compartilhada com a equipe.
+- Um cliente oferece um jantar de {{ brl(350) }} por pessoa: acima do limite de refeição. Recuse e proponha uma reunião de trabalho.
+- Um colega do Comercial quer enviar uma garrafa de vinho a um fiscal: **proibido**, pois se trata de agente público.
+
+## Versão anterior
+
+Em 2025, o limite para brindes era de {{ brl(f.compliance.brindes.v2025.limite) }} e para refeições, de {{ brl(f.compliance.brindes.v2025.refeicao_limite) }}. Esses valores foram revogados em {{ iso_br(f.compliance.brindes.v2025.vigencia_fim) }}.
+
+## Dúvidas
+
+{{ email('compliance') }}.

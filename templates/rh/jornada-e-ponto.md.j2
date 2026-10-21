@@ -1,0 +1,60 @@
+---
+titulo: "Jornada de trabalho e controle de ponto"
+area: rh
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Jornada de trabalho e controle de ponto
+
+A jornada da {{ f.empresa.nome_fantasia }} é de **{{ f.rh.jornada.horas_semanais }} horas semanais**, distribuídas de {{ f.rh.jornada.dias }}, o que equivale a {{ f.rh.jornada.horas_diarias }} por dia. Este documento explica horários, registro de ponto, banco de horas e horas extras.
+
+## Horários
+
+**Áreas administrativas:** das {{ f.rh.jornada.entrada_adm }} às {{ f.rh.jornada.saida_adm }}, com {{ f.rh.jornada.intervalo_min }} de intervalo para refeição.
+
+**Centros de distribuição:** há dois turnos operacionais.
+
+| Turno | Horário |
+|---|---|
+| Manhã | {{ f.rh.jornada.turno_manha }} |
+| Tarde | {{ f.rh.jornada.turno_tarde }} |
+
+O intervalo para refeição nos turnos também é de {{ f.rh.jornada.intervalo_min }}, definido pelo supervisor para não interromper a operação.
+
+## Registro de ponto
+
+O registro é feito no **{{ f.rh.jornada.ponto_sistema }}**, no computador, no aplicativo ou no relógio dos CDs. São quatro marcações por dia: entrada, saída para o intervalo, volta e saída. Quem trabalha em home office registra pelo aplicativo.
+
+### Tolerância
+
+A tolerância é de **{{ f.rh.jornada.tolerancia_min }} minutos por dia**, somando atrasos e saídas antecipadas. Passou disso, as horas entram como débito no banco de horas ou como falta, conforme o caso.
+
+### Esqueci de bater o ponto
+
+Faça o ajuste no {{ f.rh.jornada.ponto_sistema }} em até **{{ f.rh.jornada.ajuste_ponto_dias }} dias** depois da data, com justificativa. O gestor aprova e o RH confere. Ajustes fora desse prazo precisam de aprovação do RH.
+
+## Horas extras e banco de horas
+
+- Horas extras precisam de **aprovação prévia** do gestor, com limite de **{{ f.rh.jornada.limite_he_dia }} horas por dia**.
+- As horas extras podem ser pagas na folha ou compensadas no banco de horas, conforme acordo vigente.
+- O saldo do banco de horas deve ser compensado em até **{{ f.rh.jornada.banco_horas_meses }} meses**.
+
+## Exemplo
+
+Carla, analista do Financeiro, ficou 1h30 além do horário para o fechamento do mês, com aprovação do gestor. Ela escolheu compensar: pode tirar uma saída antecipada de 1h30 em dia combinado, dentro de {{ f.rh.jornada.banco_horas_meses }} meses.
+
+## Trabalho noturno e fins de semana
+
+Trabalho noturno e em dias de descanso segue a legislação trabalhista e o acordo coletivo da categoria. Para dúvidas sobre adicional ou escala, fale com Departamento Pessoal.
+
+## Home office
+
+No regime híbrido, a jornada é a mesma e o ponto continua obrigatório.
+
+## Dúvidas
+
+{{ email('rh') }}, ramal {{ f.rh.ramal_rh }}.

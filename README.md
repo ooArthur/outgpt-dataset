@@ -58,7 +58,7 @@ python scripts/build_all.py         # regenera data/ e docs/ (e, quando prontos,
 - [x] Ficha-mestra completa (`ficha-mestra/empresa.yaml`)
 - [x] CSVs de `data/` (funcionários, financeiro, orçamento, catálogo)
 - [x] Motor de templates + 8 documentos de amostra (um por área, incluindo uma política com versão antiga e nova)
-- [ ] 30 a 60 documentos (incluindo pares de versão antiga e nova)
+- [x] 46 documentos (incluindo 4 pares de versão antiga e nova)
 - [ ] Catálogo de fatos (≥ 350)
 - [ ] Perguntas e respostas de treino e teste (alvo 3.000)
 - [ ] 100 perguntas de avaliação

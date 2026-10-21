@@ -1,0 +1,68 @@
+---
+titulo: "Política de preços e descontos"
+area: comercial
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: gestores
+responsavel: "Comercial ({{ email('comercial') }})"
+status: vigente
+---
+
+# Política de preços e descontos
+
+> **Acesso para gestores e time comercial.** Esta política define como montar propostas, quanto desconto pode ser concedido e quem aprova cada nível.
+
+## Ponto de partida: a tabela
+
+Todo preço parte da tabela do catálogo de serviços. Serviços com temperatura controlada em transporte têm adicional de {{ f.comercial.adicional_refrigerado_pct }}% sobre o valor do transporte seco equivalente. O time de Preços atualiza a tabela uma vez por ano e sempre que há mudança relevante de custo.
+
+## Desconto por volume
+
+O desconto de tabela depende do faturamento mensal contratado:
+
+| Faturamento mensal contratado | Desconto de tabela |
+|---|---|
+{% for fx in f.comercial.descontos.faixas_volume %}
+| {% if fx.ate is none %}a partir de {{ brl(fx.de) }}{% elif fx.de == 0 %}até {{ brl(fx.ate) }}{% else %}de {{ brl(fx.de) }} a {{ brl(fx.ate) }}{% endif %} | {{ fx.pct }}% |
+{% endfor %}
+
+## Contrato e prazo
+
+O contrato mínimo é de **{{ f.comercial.descontos.contrato_min_meses }} meses**. Contratos de **24 meses** ou mais recebem um bônus adicional de {{ f.comercial.descontos.bonus_prazo_24_meses_pp }} pontos percentuais de desconto, somado ao desconto por volume. O reajuste é {{ f.comercial.descontos.reajuste }}.
+
+## Alçadas de desconto
+
+Descontos negociados além da tabela de volume precisam de aprovação, conforme o total concedido sobre o preço de tabela:
+
+| Desconto total | Quem aprova |
+|---|---|
+| até {{ f.comercial.descontos.alcada_coordenador_pct }}% | coordenador de contas |
+| até {{ f.comercial.descontos.alcada_gerente_pct }}% | gerente comercial |
+| até {{ f.comercial.descontos.alcada_diretora_pct }}% | diretora comercial |
+| acima de {{ f.comercial.descontos.alcada_diretora_pct }}% | CEO |
+
+Essa alçada é específica de preços comerciais e não substitui a alçada de aprovação de despesas do Financeiro.
+
+## Proposta comercial
+
+1. O executivo de contas levanta volume, perfil de produto, temperatura e frequência.
+2. O time de Preços monta o cálculo no sistema.
+3. A proposta sai com validade de **{{ f.comercial.descontos.validade_proposta_dias }} dias**.
+4. Após o aceite, o Jurídico revisa o contrato.
+
+## Exemplo
+
+{% set pos = 1000 %}
+{% set total = pos * servicos[0].preco %}
+{% set faixa = f.comercial.descontos.faixas_volume[1] %}
+Um cliente de bebidas contrata armazenagem seca de {{ num(pos) }} posições-palete. Ao preço de tabela de {{ brl2(servicos[0].preco) }} por posição-palete por mês, o faturamento mensal é de {{ brl2(total) }}. Como esse valor está na faixa de {{ brl(faixa.de) }} a {{ brl(faixa.ate) }}, o desconto de volume é de {{ faixa.pct }}%, o que reduz a mensalidade em {{ brl2(total * faixa.pct / 100) }}. Se o cliente fechar contrato de 24 meses, ganha mais {{ f.comercial.descontos.bonus_prazo_24_meses_pp }} pontos percentuais.
+
+## O que não é permitido
+
+- Prometer prazo ou preço sem proposta aprovada.
+- Dar desconto verbal fora das alçadas.
+- Oferecer brindes ou vantagens pessoais para fechar contratos.
+
+## Dúvidas
+
+{{ email('comercial') }}.

@@ -51,6 +51,7 @@ def contexto():
     adm = sum(v["total"] for k, v in hc.items() if k != "Operações e Logística")
     return {
         "f": f, "fin": fin, "anual": anual, "orc": orc, "orc_dep": por_dep, "hc": hc, "hc_adm": adm,
+        "hc_un": {u: sum(v[u] for v in hc.values()) for u in ("Campinas/SP", "Uberlândia/MG")},
         "fechamentos": fech, "servicos": f["catalogo_servicos"],
         "dep": {d["id"]: d for d in f["departamentos"]},
         "iso_br": lambda s: data_br(dt.date.fromisoformat(s)),

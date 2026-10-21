@@ -1,0 +1,57 @@
+---
+titulo: "Calendário de fechamento contábil 2026"
+area: financeiro
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+---
+
+# Calendário de fechamento contábil 2026
+
+O fechamento contábil mensal acontece até o **{{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil** do mês seguinte. Para que o prazo seja cumprido, todas as áreas precisam enviar lançamentos e documentos antes do corte.
+
+## Etapas
+
+1. **Corte de despesas e documentos — {{ f.financeiro.fechamento.dia_util_corte_despesas }}º dia útil.** Notas fiscais, reembolsos, prestações de contas de viagem e pedidos de pagamento devem estar lançados no {{ f.sistemas.erp }}.
+2. **Conciliação bancária — {{ f.financeiro.fechamento.dia_util_conciliacao }}º dia útil.** A Controladoria concilia contas e confere divergências.
+3. **Fechamento — {{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil.** O mês é encerrado no sistema e, a partir daí, lançamentos retroativos só são aceitos com autorização da Gerência de Controladoria.
+
+Os dias úteis consideram segunda a sexta, descontados os feriados nacionais.
+
+## Datas de 2026
+
+| Mês de referência | Corte de despesas | Conciliação | Fechamento |
+|---|---|---|---|
+{% for m in fechamentos %}
+| {{ m.mes | capitalize }} | {{ data_br(m.corte) }} | {{ data_br(m.conciliacao) }} | {{ data_br(m.fechamento) }} |
+{% endfor %}
+
+> As datas de dezembro (fechamento em janeiro de 2027) são previsões e serão confirmadas no início de 2027.
+
+## Feriados considerados em 2026
+
+Datas consideradas: {% for d in f.financeiro.fechamento.feriados_2026 %}{{ iso_br(d) }}{{ ', ' if not loop.last else '.' }}{% endfor %}
+
+## Fechamentos trimestrais
+
+A cada três meses, o fechamento é acompanhado de um pacote de análise: DRE, variação contra o orçamento e comentários de cada diretoria. O último trimestre fechado é {{ f.financeiro.data_ultimo_fechamento_trimestre }}.
+
+## Responsabilidades
+
+| Área | O que entrega |
+|---|---|
+| Operações e Logística | conferência de fretes e despesas de CD |
+| Comercial | validação de faturamento e devoluções |
+| Pessoas e Cultura | folha e provisões de férias |
+| TI | notas de licenças e contratos |
+| Todas as áreas | reembolsos e adiantamentos pendentes |
+
+## O que acontece se eu perder o corte
+
+Despesas lançadas após o corte ficam para o mês seguinte. Isso pode distorcer o orçamento da sua área. Em situações excepcionais, o diretor da área pode pedir ao Financeiro a inclusão tardia.
+
+## Dúvidas
+
+{{ email('financeiro') }}.

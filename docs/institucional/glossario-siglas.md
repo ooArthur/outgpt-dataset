@@ -1,0 +1,71 @@
+---
+titulo: "Glossário de siglas e termos"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura (rh@brisalog.example)"
+status: vigente
+---
+
+# Glossário de siglas e termos
+
+Quem chega à Brisa Log costuma estranhar o vocabulário. Este glossário reúne as siglas mais usadas, organizadas por assunto.
+
+## Logística e operação
+
+- **CD** — centro de distribuição. Temos o CD Campinas e o CD Uberlândia.
+- **WMS** — sistema de gestão de armazém. O nosso é o BrisaWMS.
+- **TMS** — sistema de gestão de transporte. O nosso é o RotaViva.
+- **Palete** — plataforma de madeira ou plástico que agrupa caixas para movimentação com empilhadeira.
+- **Cross-docking** — operação em que a carga é recebida e expedida sem ser armazenada por longo período.
+- **Picking** — separação de itens de um pedido.
+- **Cadeia fria** — conjunto de etapas em que o produto precisa ser mantido refrigerado ou congelado.
+- **OTIF** — *on time, in full*: entrega no prazo e completa. A meta é 97%.
+- **VUC** — veículo urbano de carga, usado em entregas no varejo.
+- **Milk run** — rota fixa de coleta em vários fornecedores.
+
+## Finanças
+
+- **DRE** — demonstração do resultado do exercício.
+- **EBITDA** — resultado antes de juros, impostos, depreciação e amortização.
+- **CMV** — custo das mercadorias vendidas.
+- **NF** — nota fiscal.
+- **PC** — pedido de compra.
+- **FP&A** — planejamento e análise financeira.
+- **Alçada** — limite de valor que cada nível pode aprovar.
+
+## Pessoas
+
+- **CLT** — Consolidação das Leis do Trabalho.
+- **PLR** — participação nos lucros ou resultados.
+- **VR / VA** — vale-refeição e vale-alimentação.
+- **30-60-90** — plano de integração de 30, 60 e 90 dias.
+- **HRBP** — parceiro de negócios de RH, no nosso quadro chamado de *Parceiro de Negócios de RH*.
+- **Buddy** — colega que acompanha o novo integrante nas primeiras semanas.
+
+## TI e segurança
+
+- **SLA** — acordo de nível de serviço: o prazo para atender cada prioridade.
+- **P1, P2, P3, P4** — prioridades de chamado, da mais crítica à mais simples.
+- **N1 / N2** — níveis de suporte. O N1 atende primeiro; o N2 trata casos mais complexos.
+- **VPN** — rede privada virtual, para acesso remoto seguro (BrisaVPN).
+- **MFA** — verificação em duas etapas.
+- **Phishing** — golpe por mensagem falsa que tenta roubar dados ou senhas.
+- **RPO / RTO** — quanto de dado podemos perder e em quanto tempo precisamos restaurar um serviço.
+
+## Compliance
+
+- **LGPD** — Lei Geral de Proteção de Dados Pessoais.
+- **DPO** — encarregado pelo tratamento de dados pessoais.
+- **Due diligence** — avaliação prévia de terceiros antes de contratar.
+- **Conflito de interesses** — situação em que interesses pessoais podem interferir em decisões da empresa.
+
+## Cultura
+
+- **Brisa em Foco** — comunicado semanal da empresa.
+- **Check-in** — conversa periódica entre gestor e colaborador.
+
+Faltou alguma sigla? Sugira em rh@brisalog.example.
+
+Documento fictício, criado para fins acadêmicos.

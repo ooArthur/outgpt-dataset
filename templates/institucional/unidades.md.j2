@@ -1,0 +1,67 @@
+---
+titulo: "Unidades: CD Campinas e CD Uberlândia"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Operações e Logística ({{ email('operacoes') }})"
+status: vigente
+---
+
+# Unidades: CD Campinas e CD Uberlândia
+
+A {{ f.empresa.nome_fantasia }} opera duas unidades. Conhecer a estrutura de cada uma ajuda a entender para onde vai cada carga e quem atende cada cliente.
+
+## CD Campinas
+
+- **Papel:** {{ f.unidades.campinas.papel }}.
+- **Endereço:** {{ f.unidades.campinas.endereco }}.
+- **Inauguração:** {{ f.unidades.campinas.inauguracao }}.
+- **Área:** {{ num(f.unidades.campinas.area_m2) }} m².
+- **Capacidade:** {{ num(f.unidades.campinas.posicoes_palete) }} posições-palete.
+- **Docas:** {{ f.unidades.campinas.docas }}.
+- **Câmaras frias:** {{ f.unidades.campinas.camaras_frias }}, incluindo a única câmara de congelados da empresa.
+- **Pessoas:** {{ hc_un['Campinas/SP'] }} colaboradores, incluindo todas as áreas administrativas.
+- **Gerente:** Wagner Pimentel Souza.
+
+## CD Uberlândia
+
+- **Papel:** {{ f.unidades.uberlandia.papel }}.
+- **Endereço:** {{ f.unidades.uberlandia.endereco }}.
+- **Inauguração:** {{ f.unidades.uberlandia.inauguracao }}.
+- **Área:** {{ num(f.unidades.uberlandia.area_m2) }} m².
+- **Capacidade:** {{ num(f.unidades.uberlandia.posicoes_palete) }} posições-palete.
+- **Docas:** {{ f.unidades.uberlandia.docas }}.
+- **Câmaras frias:** {{ f.unidades.uberlandia.camaras_frias }}, para produtos refrigerados.
+- **Pessoas:** {{ hc_un['Uberlândia/MG'] }} colaboradores.
+- **Gerente:** Luciana Ferraz Medeiros.
+
+## Turnos de trabalho nos CDs
+
+Os turnos operacionais são: manhã, das {{ f.rh.jornada.turno_manha }}, e tarde, das {{ f.rh.jornada.turno_tarde }}. Cada turno tem um supervisor responsável, que passa o resumo do dia para o turno seguinte pelo {{ f.sistemas.chat }} e registra ocorrências no {{ f.sistemas.wms }}.
+
+## Diferenças que importam
+
+| Tema | Campinas | Uberlândia |
+|---|---|---|
+| Armazenagem congelada (-18 °C) | disponível | não disponível |
+| Montagem de kits | disponível | não disponível |
+| Coleta programada (milk run) | disponível | não disponível |
+| Armazenagem seca e refrigerada | disponível | disponível |
+| Distribuição urbana | disponível | disponível |
+
+## Segurança e acesso
+
+Em ambas as unidades o acesso às áreas de armazenagem exige crachá e uso de EPI. Visitantes são acompanhados e registrados na portaria. Nas câmaras frias, o tempo de permanência segue o procedimento de segurança do trabalho e deve ser respeitado por todos.
+
+## Como visitar uma unidade
+
+Colaboradores de outras unidades e áreas administrativas podem visitar os CDs mediante agendamento com o gerente da unidade, com pelo menos um dia de antecedência. Na chegada, a portaria registra a visita, entrega crachá de visitante e orienta sobre os EPIs obrigatórios. Visitas às câmaras frias exigem roupa térmica, fornecida pela unidade.
+
+## Contatos por unidade
+
+Cada unidade tem um supervisor responsável por turno e um coordenador de armazém. Pedidos operacionais devem ser feitos pelo {{ f.sistemas.wms }} ou pelo e-mail {{ email('operacoes') }}; urgências, pelo ramal da unidade indicado no diretório do {{ f.sistemas.intranet }}.
+
+## Integração entre unidades
+
+Cargas podem ser transferidas entre os CDs. Os pedidos de transferência são feitos no {{ f.sistemas.wms }} e programados pelo time de Planejamento Logístico. Para dúvidas sobre as operações: {{ email('operacoes') }}.

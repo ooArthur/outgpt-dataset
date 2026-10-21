@@ -1,0 +1,51 @@
+---
+titulo: "Organograma e áreas da empresa"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Organograma e áreas da empresa
+
+A {{ f.empresa.nome_fantasia }} é organizada em {{ f.departamentos | length }} departamentos. Todos os diretores reportam à CEO, **{{ f.departamentos[0].diretor }}**. Este documento mostra quem lidera cada área e o que ela faz.
+
+## Quadro geral
+
+| Departamento | Liderança | Pessoas | Campinas | Uberlândia |
+|---|---|---|---|---|
+{% for d in f.departamentos %}
+| {{ d.nome }} | {{ d.diretor }} ({{ d.cargo_diretor }}) | {{ hc[d.nome].total }} | {{ hc[d.nome]['Campinas/SP'] }} | {{ hc[d.nome]['Uberlândia/MG'] }} |
+{% endfor %}
+
+No total, são {{ f.empresa.colaboradores }} colaboradores.
+
+## O que cada área faz
+
+**Diretoria Executiva.** Define estratégia, orçamento geral e prioridades. Reúne a CEO, a assistente executiva e a equipe de estratégia e projetos.
+
+**Pessoas e Cultura (RH).** Cuida de recrutamento, folha, benefícios, treinamentos, cultura e clima. A coordenadora de RH é Fernanda Lopes Guimarães.
+
+**Financeiro e Controladoria.** Responsável por contas a pagar e receber, faturamento, contabilidade, planejamento financeiro e fechamento mensal. Tem duas gerências: Controladoria (Daniela Pires Amaral) e Financeiro (Otávio Resende Maia).
+
+**TI.** Mantém sistemas, redes, equipamentos e segurança da informação. O gerente de Infraestrutura e Suporte é Thiago Bastos Carvalho.
+
+**Comercial.** Prospecta clientes, negocia contratos, define preços com o time de Preços e cuida do atendimento. O gerente comercial é Ricardo Siqueira Borges.
+
+**Operações e Logística.** É a maior área e opera os dois centros de distribuição e a frota. O CD Campinas é gerido por Wagner Pimentel Souza, o CD Uberlândia por Luciana Ferraz Medeiros, e o transporte por Anderson Matos Vieira.
+
+**Compliance e Jurídico.** Cuida de integridade, contratos, privacidade (LGPD) e do canal de denúncias. A encarregada de dados é {{ f.encarregado_lgpd.nome }}.
+
+## Como encontrar alguém
+
+O diretório completo, com cargo, ramal e e-mail, fica no {{ f.sistemas.intranet }}. Os e-mails seguem o padrão `nome.sobrenome@{{ f.empresa.dominio_email }}`. Os ramais começam com o número da área: 1 para a Diretoria, 2 para Pessoas e Cultura, 3 para o Financeiro, 4 para TI, 5 para o Comercial, 6 para Operações em Campinas, 7 para Operações em Uberlândia e 8 para Compliance e Jurídico.
+
+## Cadeia de aprovação
+
+Dúvidas e aprovações sobem do gestor imediato para o diretor da área e, quando necessário, para a CEO. Os limites de valor estão no documento de alçadas de aprovação.
+
+## Atualização
+
+O organograma é revisado quando há mudança de liderança. Sugestões ou correções: {{ email('rh') }}.

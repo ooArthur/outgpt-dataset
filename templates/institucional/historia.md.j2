@@ -1,0 +1,45 @@
+---
+titulo: "Nossa história"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Nossa história
+
+A {{ f.empresa.nome_fantasia }} nasceu em {{ f.empresa.fundacao_ano }}, em {{ f.empresa.sede }}, pelas mãos de {{ f.empresa.fundadores[0] }} e {{ f.empresa.fundadores[1] }}. A ideia era simples: ajudar pequenos e médios varejistas da região a receber alimentos e bebidas com regularidade, sem depender de grandes distribuidores.
+
+## Linha do tempo
+
+{% for m in f.empresa.marcos %}
+- **{{ m.ano }}** — {{ m.evento }}
+{% endfor %}
+
+## Como crescemos
+
+No começo, o dia da equipe era dividido entre carregar caminhão e atender cliente por telefone. A primeira grande virada foi a inauguração do centro de distribuição próprio em {{ f.unidades.campinas.inauguracao }}, que deu espaço para estocar com segurança e organizar rotas diárias. Hoje o {{ f.unidades.campinas.nome }} tem {{ num(f.unidades.campinas.area_m2) }} m² e {{ f.unidades.campinas.camaras_frias }} câmaras frias.
+
+A segunda virada foi tecnológica. Depois da implantação do primeiro WMS, passamos a registrar cada palete desde o recebimento. Isso reduziu divergências de estoque e deu aos clientes uma visão confiável do que estava armazenado. Mais tarde, o transporte também passou a ser acompanhado em sistema próprio, o {{ f.sistemas.tms }}.
+
+## Expansão para Minas Gerais
+
+Em {{ f.unidades.uberlandia.inauguracao }}, a empresa abriu o {{ f.unidades.uberlandia.nome }}. A decisão veio de uma conversa com clientes do Triângulo Mineiro, que pediam entregas mais frequentes e menos tempo de trânsito. A nova unidade nasceu com {{ f.unidades.uberlandia.camaras_frias }} câmaras frias e {{ f.unidades.uberlandia.docas }} docas, e foi desenhada para crescer por etapas.
+
+## Cadeia fria como compromisso
+
+O lançamento do programa de rastreabilidade da cadeia fria, em 2023, reflete o valor *{{ f.valores[0].nome }}*: todas as viagens refrigeradas passaram a ter monitoramento de temperatura, e o cliente recebe um relatório ao final de cada entrega.
+
+## Cultura e profissionalização
+
+Em 2019, a empresa se transformou em sociedade anônima e Helena Monteiro Duarte assumiu como CEO. Desde então, foram estruturadas as áreas de Pessoas e Cultura, Financeiro e Controladoria e Compliance e Jurídico, com políticas escritas que dão previsibilidade para todos. Mesmo com o crescimento, preservamos um traço dos primeiros anos: decisões perto de quem executa e conversas diretas, em linha com o valor *{{ f.valores[2].nome }}*.
+
+## Onde estamos hoje
+
+Em 2025, o faturamento líquido foi de cerca de {{ milhoes(f.empresa.faturamento_liquido_2025) }}, com cerca de {{ f.empresa.colaboradores }} colaboradores. Os resultados trimestrais podem ser consultados no resumo da DRE, de acesso restrito.
+
+## Para saber mais
+
+Para conhecer melhor a trajetória, converse com os colegas mais antigos; muitos têm histórias dos primeiros caminhões. Sugestões para este documento: {{ email('rh') }}.
