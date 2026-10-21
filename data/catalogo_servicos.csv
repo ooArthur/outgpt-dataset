@@ -1,0 +1,23 @@
+codigo,servico,categoria,unidade_cobranca,preco_unitario_brl,disponibilidade,observacao
+ARM-001,Armazenagem seca,Armazenagem,posição-palete/mês,68.00,Campinas e Uberlândia,Temperatura ambiente
+ARM-002,Armazenagem refrigerada (0 a 10 °C),Armazenagem,posição-palete/mês,142.00,Campinas e Uberlândia,Monitoramento contínuo de temperatura
+ARM-003,Armazenagem congelada (-18 °C),Armazenagem,posição-palete/mês,189.00,Campinas,Somente no CD Campinas
+ARM-004,Recebimento e conferência,Armazenagem,palete,24.00,Campinas e Uberlândia,Inclui conferência cega e lançamento no BrisaWMS
+ARM-005,Expedição,Armazenagem,palete,22.00,Campinas e Uberlândia,Inclui carregamento e checklist do veículo
+ARM-006,Inventário cíclico com relatório,Armazenagem,mês,1850.00,Campinas e Uberlândia,Contagens semanais e relatório mensal de acuracidade
+VAL-001,Separação de pedidos (picking),Valor agregado,caixa,1.35,Campinas e Uberlândia,Pedidos fracionados
+VAL-002,Etiquetagem,Valor agregado,unidade,0.28,Campinas e Uberlândia,Etiqueta fornecida pelo cliente
+VAL-003,Montagem de kits promocionais,Valor agregado,kit,3.90,Campinas,Mínimo de 500 kits por ordem
+VAL-004,Repaletização e reembalagem,Valor agregado,palete,31.00,Campinas e Uberlândia,Filme e fita incluídos
+VAL-005,Cross-docking,Valor agregado,palete,18.50,Campinas e Uberlândia,Permanência máxima de 24 horas
+TRA-001,Transporte de carga fechada (truck),Transporte,km rodado,6.80,Campinas e Uberlândia,Capacidade de até 12 paletes
+TRA-002,Transporte de carga fechada (carreta),Transporte,km rodado,9.40,Campinas e Uberlândia,Capacidade de até 28 paletes
+TRA-003,Transporte fracionado,Transporte,kg,0.42,Campinas e Uberlândia,"Carga consolidada, prazo conforme rota"
+TRA-004,Coleta programada (milk run),Transporte,parada,47.00,Campinas,Rotas fixas semanais
+TRA-005,Monitoramento de temperatura em viagem,Transporte,viagem,85.00,Campinas e Uberlândia,Relatório de temperatura entregue ao cliente
+DIS-001,Distribuição urbana (VUC),Distribuição urbana,entrega,38.00,Campinas e Uberlândia,Entrega no varejo da região metropolitana
+DIS-002,Entrega agendada com janela de horário,Distribuição urbana,entrega,55.00,Campinas e Uberlândia,Janela de 2 horas
+DIS-003,Reentrega,Distribuição urbana,entrega,29.00,Campinas e Uberlândia,Cobrada quando o cliente final não recebe a primeira tentativa
+REV-001,Logística reversa de devoluções,Logística reversa,caixa,2.10,Campinas e Uberlândia,"Triagem, avaria e reintegração ao estoque"
+REV-002,Destruição certificada de produtos avariados,Logística reversa,kg,1.15,Campinas,Com certificado de destinação
+REV-003,Recolhimento de embalagens retornáveis,Logística reversa,palete,14.00,Campinas e Uberlândia,Paletes e caixas plásticas

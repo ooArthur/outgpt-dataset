@@ -1,0 +1,426 @@
+# FICHA-MESTRA — fonte única da verdade da Brisa Log (empresa FICTÍCIA).
+# Todos os documentos, CSVs, fatos, perguntas e tickets derivam deste arquivo.
+# Valores monetários em reais (R$), sem centavos quando inteiros.
+
+empresa:
+  razao_social: "Brisa Logística e Distribuição S.A."
+  nome_fantasia: "Brisa Log"
+  cnpj: "00.000.000/0001-00"
+  setor: "distribuição e operação logística de alimentos e bebidas para o varejo regional"
+  fundacao_ano: 2009
+  sede: "Campinas/SP"
+  colaboradores: 140
+  faturamento_liquido_2025: 85000000
+  dominio_email: "brisalog.example"
+  intranet: "intranet.brisalog.example"
+  seed: 20260420
+  fundadores: ["Antônio Brisa Ferraz", "Sônia Brisa Ferraz"]
+  missao: "Levar alimentos e bebidas ao varejo regional com segurança, pontualidade e cuidado em cada etapa da cadeia."
+  visao: "Ser a operadora logística preferida do varejo regional de alimentos e bebidas, reconhecida pela confiança e pela simplicidade de trabalhar com a gente."
+  marcos:
+    - {ano: 2009, evento: "Fundação em Campinas/SP, com uma frota inicial de três caminhões e um galpão alugado."}
+    - {ano: 2013, evento: "Inauguração do primeiro centro de distribuição próprio, em Campinas."}
+    - {ano: 2016, evento: "Implantação do primeiro sistema de gestão de armazém (WMS) e início da operação de produtos refrigerados."}
+    - {ano: 2019, evento: "Profissionalização da gestão: Helena Monteiro Duarte assume como CEO e a empresa passa a ser uma sociedade anônima."}
+    - {ano: 2021, evento: "Abertura do centro de distribuição de Uberlândia/MG para atender o Triângulo Mineiro e o Alto Paranaíba."}
+    - {ano: 2023, evento: "Lançamento do programa de rastreabilidade da cadeia fria, com monitoramento de temperatura em todas as viagens refrigeradas."}
+    - {ano: 2025, evento: "Faturamento líquido de cerca de R$ 85 milhões e adoção do regime híbrido para as áreas administrativas."}
+
+valores:
+  - nome: "Cuidado com a cadeia"
+    descricao: "Cada caixa carrega o trabalho de muita gente e a confiança de um cliente; tratamos produto, temperatura e prazo com o mesmo zelo."
+    exemplo: "Registrar a temperatura da câmara fria no horário correto, mesmo em dia de pico."
+  - nome: "Palavra cumprida"
+    descricao: "Fazemos o que combinamos e, quando não for possível, avisamos cedo e propomos uma saída."
+    exemplo: "Avisar o cliente assim que perceber que uma entrega vai atrasar, em vez de esperar ele ligar."
+  - nome: "Simplicidade"
+    descricao: "Preferimos processos curtos, linguagem clara e decisões próximas de quem executa."
+    exemplo: "Eliminar uma etapa de aprovação que não protege nada."
+  - nome: "Aprender sempre"
+    descricao: "Erros viram aprendizado compartilhado, e todo mundo tem espaço para crescer."
+    exemplo: "Registrar o aprendizado de uma ocorrência no fim do mês para que outras equipes não repitam o problema."
+
+unidades:
+  campinas:
+    nome: "CD Campinas"
+    cidade: "Campinas/SP"
+    papel: "sede administrativa e centro de distribuição principal"
+    endereco: "Avenida Exemplo, 1000 – Distrito Industrial, Campinas/SP (endereço fictício)"
+    area_m2: 18000
+    posicoes_palete: 14000
+    docas: 22
+    camaras_frias: 4
+    inauguracao: 2013
+  uberlandia:
+    nome: "CD Uberlândia"
+    cidade: "Uberlândia/MG"
+    papel: "centro de distribuição regional"
+    endereco: "Rodovia Fictícia, km 0 – Distrito Industrial, Uberlândia/MG (endereço fictício)"
+    area_m2: 11000
+    posicoes_palete: 8500
+    docas: 14
+    camaras_frias: 2
+    inauguracao: 2021
+
+sistemas:
+  erp: "BrisaERP"
+  wms: "BrisaWMS"
+  tms: "RotaViva"
+  rh: "PessoasHub"
+  ponto: "PontoBrisa"
+  docs: "BrisaDocs"
+  intranet: "Portal Brisa"
+  chamados: "ServiceDesk Brisa"
+  vpn: "BrisaVPN"
+  cofre: "BrisaCofre"
+  email: "BrisaMail"
+  chat: "BrisaChat"
+
+# Departamentos: sigla, ramal-base, e-mail, diretor(a) e orçamento anual 2026.
+departamentos:
+  - {id: dir, nome: "Diretoria Executiva", sigla: "DIR", email: "diretoria", ramal_base: 1000, diretor: "Helena Monteiro Duarte", cargo_diretor: "CEO", orcamento_2026: 3200000}
+  - {id: rh, nome: "Pessoas e Cultura", sigla: "RH", email: "rh", ramal_base: 2000, diretor: "Marcela Tavares Rocha", cargo_diretor: "Diretora de Pessoas e Cultura", orcamento_2026: 4800000}
+  - {id: fin, nome: "Financeiro e Controladoria", sigla: "FIN", email: "financeiro", ramal_base: 3000, diretor: "Rogério Albuquerque Lins", cargo_diretor: "Diretor Financeiro", orcamento_2026: 4200000}
+  - {id: ti, nome: "TI", sigla: "TI", email: "ti", ramal_base: 4000, diretor: "Caio Vasconcelos Prado", cargo_diretor: "Diretor de TI", orcamento_2026: 6500000}
+  - {id: com, nome: "Comercial", sigla: "COM", email: "comercial", ramal_base: 5000, diretor: "Patrícia Nogueira Salgado", cargo_diretor: "Diretora Comercial", orcamento_2026: 5900000}
+  - {id: ops, nome: "Operações e Logística", sigla: "OPS", email: "operacoes", ramal_base: 6000, diretor: "Eduardo Fontes Barreto", cargo_diretor: "Diretor de Operações", orcamento_2026: 38000000}
+  - {id: cmp, nome: "Compliance e Jurídico", sigla: "CMP", email: "compliance", ramal_base: 8000, diretor: "Beatriz Camargo Leal", cargo_diretor: "Diretora de Compliance e Jurídico", orcamento_2026: 1800000}
+
+orcamento_pesos_trimestre: [0.24, 0.25, 0.26, 0.25]
+
+# Quadro de pessoal. qtd: {c: Campinas, u: Uberlândia}. reporta: cargo do gestor imediato.
+# Faixas salariais (R$ mensais) são restritas ao RH; o CSV de funcionários NÃO traz salário.
+quadro:
+  dir:
+    - {cargo: "CEO", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Helena Monteiro Duarte"], reporta: null, faixa: [60000, 90000]}
+    - {cargo: "Assistente Executiva", nivel: "Assistente", qtd: {c: 1}, reporta: "CEO", faixa: [5200, 7600]}
+    - {cargo: "Analista de Estratégia e Projetos", nivel: "Pleno", qtd: {c: 1}, reporta: "CEO", faixa: [7800, 11500]}
+  rh:
+    - {cargo: "Diretora de Pessoas e Cultura", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Marcela Tavares Rocha"], reporta: "CEO", faixa: [32000, 45000]}
+    - {cargo: "Coordenadora de RH", nivel: "Coordenação", qtd: {c: 1}, nomes: ["Fernanda Lopes Guimarães"], reporta: "Diretora de Pessoas e Cultura", faixa: [12500, 16500]}
+    - {cargo: "Analista de RH Pleno", nivel: "Pleno", qtd: {c: 2}, reporta: "Coordenadora de RH", faixa: [6200, 8800]}
+    - {cargo: "Analista de Departamento Pessoal", nivel: "Pleno", qtd: {c: 2}, reporta: "Coordenadora de RH", faixa: [5400, 7600]}
+    - {cargo: "Analista de Recrutamento e Seleção", nivel: "Pleno", qtd: {c: 1}, reporta: "Coordenadora de RH", faixa: [5600, 8000]}
+    - {cargo: "Analista de Treinamento e Desenvolvimento", nivel: "Pleno", qtd: {c: 1}, reporta: "Coordenadora de RH", faixa: [5800, 8400]}
+    - {cargo: "Assistente de RH", nivel: "Assistente", qtd: {c: 1}, reporta: "Coordenadora de RH", faixa: [3200, 4300]}
+    - {cargo: "Parceiro de Negócios de RH", nivel: "Pleno", qtd: {u: 1}, reporta: "Coordenadora de RH", faixa: [6200, 8800]}
+  fin:
+    - {cargo: "Diretor Financeiro", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Rogério Albuquerque Lins"], reporta: "CEO", faixa: [34000, 48000]}
+    - {cargo: "Gerente de Controladoria", nivel: "Gerência", qtd: {c: 1}, nomes: ["Daniela Pires Amaral"], reporta: "Diretor Financeiro", faixa: [18000, 24000]}
+    - {cargo: "Gerente Financeiro", nivel: "Gerência", qtd: {c: 1}, nomes: ["Otávio Resende Maia"], reporta: "Diretor Financeiro", faixa: [18000, 24000]}
+    - {cargo: "Coordenador de Contas a Pagar e Receber", nivel: "Coordenação", qtd: {c: 1}, reporta: "Gerente Financeiro", faixa: [10500, 14000]}
+    - {cargo: "Analista Contábil Sênior", nivel: "Sênior", qtd: {c: 1}, reporta: "Gerente de Controladoria", faixa: [8800, 12000]}
+    - {cargo: "Analista Contábil", nivel: "Pleno", qtd: {c: 2}, reporta: "Gerente de Controladoria", faixa: [5800, 8200]}
+    - {cargo: "Analista de Contas a Pagar", nivel: "Pleno", qtd: {c: 2}, reporta: "Coordenador de Contas a Pagar e Receber", faixa: [4800, 6800]}
+    - {cargo: "Analista de Contas a Receber", nivel: "Pleno", qtd: {c: 2}, reporta: "Coordenador de Contas a Pagar e Receber", faixa: [4800, 6800]}
+    - {cargo: "Analista de Faturamento", nivel: "Pleno", qtd: {c: 1}, reporta: "Coordenador de Contas a Pagar e Receber", faixa: [4600, 6500]}
+    - {cargo: "Analista de Planejamento Financeiro", nivel: "Sênior", qtd: {c: 1}, reporta: "Gerente Financeiro", faixa: [8500, 11800]}
+    - {cargo: "Assistente Financeiro", nivel: "Assistente", qtd: {c: 1}, reporta: "Coordenador de Contas a Pagar e Receber", faixa: [3200, 4300]}
+  ti:
+    - {cargo: "Diretor de TI", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Caio Vasconcelos Prado"], reporta: "CEO", faixa: [32000, 45000]}
+    - {cargo: "Gerente de Infraestrutura e Suporte", nivel: "Gerência", qtd: {c: 1}, nomes: ["Thiago Bastos Carvalho"], reporta: "Diretor de TI", faixa: [17000, 23000]}
+    - {cargo: "Coordenador de Sistemas", nivel: "Coordenação", qtd: {c: 1}, reporta: "Diretor de TI", faixa: [13500, 18000]}
+    - {cargo: "Analista de Suporte N1", nivel: "Júnior", qtd: {c: 3, u: 1}, reporta: "Gerente de Infraestrutura e Suporte", faixa: [3600, 5200]}
+    - {cargo: "Analista de Infraestrutura", nivel: "Pleno", qtd: {c: 2}, reporta: "Gerente de Infraestrutura e Suporte", faixa: [7000, 10000]}
+    - {cargo: "Analista de Segurança da Informação", nivel: "Sênior", qtd: {c: 1}, reporta: "Diretor de TI", faixa: [9500, 13500]}
+    - {cargo: "Desenvolvedor de Sistemas", nivel: "Pleno", qtd: {c: 2}, reporta: "Coordenador de Sistemas", faixa: [7500, 11000]}
+  com:
+    - {cargo: "Diretora Comercial", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Patrícia Nogueira Salgado"], reporta: "CEO", faixa: [32000, 45000]}
+    - {cargo: "Gerente Comercial", nivel: "Gerência", qtd: {c: 1}, nomes: ["Ricardo Siqueira Borges"], reporta: "Diretora Comercial", faixa: [17000, 23000]}
+    - {cargo: "Coordenador de Contas", nivel: "Coordenação", qtd: {c: 1}, reporta: "Gerente Comercial", faixa: [11000, 15000]}
+    - {cargo: "Executivo de Contas", nivel: "Pleno", qtd: {c: 5, u: 1}, reporta: "Coordenador de Contas", faixa: [6500, 10500]}
+    - {cargo: "Analista Comercial", nivel: "Pleno", qtd: {c: 3}, reporta: "Coordenador de Contas", faixa: [5200, 7600]}
+    - {cargo: "Analista de Preços", nivel: "Sênior", qtd: {c: 1}, reporta: "Gerente Comercial", faixa: [8200, 11500]}
+    - {cargo: "Analista de Atendimento ao Cliente", nivel: "Júnior", qtd: {c: 4, u: 2}, reporta: "Gerente Comercial", faixa: [3400, 4800]}
+    - {cargo: "Assistente Comercial", nivel: "Assistente", qtd: {c: 3}, reporta: "Coordenador de Contas", faixa: [3100, 4200]}
+  ops:
+    - {cargo: "Diretor de Operações", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Eduardo Fontes Barreto"], reporta: "CEO", faixa: [34000, 48000]}
+    - {cargo: "Gerente de CD", nivel: "Gerência", qtd: {c: 1, u: 1}, nomes: ["Wagner Pimentel Souza", "Luciana Ferraz Medeiros"], reporta: "Diretor de Operações", faixa: [16000, 22000]}
+    - {cargo: "Gerente de Transporte", nivel: "Gerência", qtd: {c: 1}, nomes: ["Anderson Matos Vieira"], reporta: "Diretor de Operações", faixa: [16000, 22000]}
+    - {cargo: "Coordenador de Armazém", nivel: "Coordenação", qtd: {c: 1, u: 1}, reporta: "Gerente de CD", faixa: [9500, 13000]}
+    - {cargo: "Coordenador de Transporte", nivel: "Coordenação", qtd: {c: 1}, reporta: "Gerente de Transporte", faixa: [9500, 13000]}
+    - {cargo: "Supervisor de Turno", nivel: "Supervisão", qtd: {c: 3, u: 2}, reporta: "Coordenador de Armazém", faixa: [6200, 8200]}
+    - {cargo: "Analista de Planejamento Logístico", nivel: "Pleno", qtd: {c: 2, u: 1}, reporta: "Gerente de CD", faixa: [6000, 8800]}
+    - {cargo: "Analista de Controle de Estoque", nivel: "Pleno", qtd: {c: 2, u: 1}, reporta: "Coordenador de Armazém", faixa: [4800, 6600]}
+    - {cargo: "Analista de Roteirização", nivel: "Pleno", qtd: {c: 1}, reporta: "Coordenador de Transporte", faixa: [5000, 7000]}
+    - {cargo: "Conferente", nivel: "Operacional", qtd: {c: 6, u: 5}, reporta: "Supervisor de Turno", faixa: [2600, 3500]}
+    - {cargo: "Operador de Empilhadeira", nivel: "Operacional", qtd: {c: 7, u: 5}, reporta: "Supervisor de Turno", faixa: [2700, 3700]}
+    - {cargo: "Auxiliar de Armazém", nivel: "Operacional", qtd: {c: 10, u: 10}, reporta: "Supervisor de Turno", faixa: [2200, 2900]}
+    - {cargo: "Motorista", nivel: "Operacional", qtd: {c: 6, u: 5}, reporta: "Coordenador de Transporte", faixa: [3300, 4600]}
+  cmp:
+    - {cargo: "Diretora de Compliance e Jurídico", nivel: "Diretoria", qtd: {c: 1}, nomes: ["Beatriz Camargo Leal"], reporta: "CEO", faixa: [32000, 45000]}
+    - {cargo: "Coordenador Jurídico", nivel: "Coordenação", qtd: {c: 1}, reporta: "Diretora de Compliance e Jurídico", faixa: [14000, 19000]}
+    - {cargo: "Advogada Corporativa", nivel: "Sênior", qtd: {c: 1}, reporta: "Coordenador Jurídico", faixa: [10500, 14500]}
+    - {cargo: "Analista de Compliance", nivel: "Pleno", qtd: {c: 2}, reporta: "Diretora de Compliance e Jurídico", faixa: [6500, 9200]}
+    - {cargo: "Analista de Privacidade", nivel: "Sênior", qtd: {c: 1}, nomes: ["Marina Fontoura Quintela"], reporta: "Diretora de Compliance e Jurídico", faixa: [8200, 11500]}
+
+encarregado_lgpd: {nome: "Marina Fontoura Quintela", email: "privacidade", ramal: 8010}
+
+# ---------------------------------------------------------------- RH
+rh:
+  jornada:
+    horas_semanais: 44
+    dias: "segunda a sexta"
+    entrada_adm: "08:00"
+    saida_adm: "17:48"
+    intervalo_min: "1 hora"
+    horas_diarias: "8h48"
+    turno_manha: "06:00 às 15:48"
+    turno_tarde: "14:00 às 23:48"
+    tolerancia_min: 10
+    banco_horas_meses: 6
+    limite_he_dia: 2
+    ponto_sistema: "PontoBrisa"
+    ajuste_ponto_dias: 3
+  home_office:
+    dias_semana: 2
+    dias_presenciais_fixos: "terça-feira e quarta-feira"
+    auxilio_internet: 100
+    ajuda_estrutura_unica: 500
+    elegiveis: "colaboradores das áreas administrativas"
+    nao_elegiveis: "cargos operacionais de centro de distribuição e frota"
+    vigencia_inicio: "2026-01-01"
+    antecedencia_troca_dias: 1
+    v2025:
+      dias_semana: 1
+      auxilio_internet: 0
+      ajuda_estrutura_unica: 0
+      vigencia_inicio: "2025-01-01"
+      vigencia_fim: "2025-12-31"
+  ferias:
+    dias: 30
+    abono_dias: 10
+    fracionamento_max_periodos: 3
+    periodo_min_maior: 14
+    periodo_min_demais: 5
+    antecedencia_pedido_dias: 30
+    pagamento_antecedencia_dias: 2
+    adiantamento_13: "pode ser pago junto com as férias, mediante pedido"
+    aprovador: "gestor imediato"
+  decimo_terceiro:
+    parcela1_ate: "30 de novembro"
+    parcela2_ate: "20 de dezembro"
+  beneficios:
+    vr_dia: 42
+    va_mes: 380
+    saude_empresa_pct: 70
+    saude_copart_consulta: 25
+    saude_copart_exame: 15
+    saude_operadora: "Operadora Vida Plena (fictícia)"
+    odonto: "opcional, custeado integralmente pelo colaborador"
+    seguro_vida: "sem custo para o colaborador"
+    auxilio_creche: 600
+    auxilio_creche_idade_anos: 5
+    bem_estar_pct: 50
+    bem_estar_teto: 120
+    folga_aniversario: 1
+    carencia_beneficios_dias: 30
+  plr:
+    pagamento: "março do ano seguinte ao exercício"
+    teto_salarios: 1.5
+    peso_corporativo: 50
+    peso_area: 30
+    peso_individual: 20
+    gatilho: "EBITDA do exercício igual ou superior à meta aprovada pelo Conselho"
+    carencia_dias: 90
+  desempenho:
+    ciclo: "anual, com check-in semestral"
+    autoavaliacao_mes: "novembro"
+    calibracao_mes: "dezembro"
+    devolutiva_mes: "janeiro"
+    escala: ["Abaixo do esperado", "Parcialmente atende", "Atende", "Supera", "Referência"]
+    peso_resultados: 60
+    peso_comportamentos: 40
+  carreira:
+    trilhas: ["Técnica/Especialista", "Gestão"]
+    niveis: ["Assistente/Operacional", "Júnior", "Pleno", "Sênior", "Especialista ou Coordenação", "Gerência", "Diretoria"]
+    intersticio_meses: 18
+    ciclos_promocao: ["abril", "outubro"]
+    data_base: "maio"
+  onboarding:
+    horario_dia1: "09:00"
+    local_dia1: "recepção do CD Campinas ou da unidade de lotação"
+    treinamentos_prazo_dias: 15
+    treinamentos: ["Código de Conduta", "LGPD e privacidade", "Segurança da informação", "Segurança no trabalho (CD e frota)"]
+    buddy_semanas: 8
+    periodo_experiencia_dias: 90
+    checkin_dias: [7, 30, 60, 90]
+  denuncias:
+    canal: "Linha Ética Brisa"
+    email: "etica"
+    telefone: "0800 000 0000 (número fictício)"
+    retorno_inicial_dias_uteis: 5
+    conclusao_dias: 60
+    anonimato: true
+  ramal_rh: 2000
+
+# ---------------------------------------------------------------- Financeiro
+financeiro:
+  alcadas:
+    gestor_ate: 2000
+    diretor_ate: 20000
+    ciencia_conselho_acima: 200000
+    exemplos: [1800, 12000, 95000]
+    v2025: {gestor_ate: 1000, diretor_ate: 10000, vigencia_inicio: "2025-01-01", vigencia_fim: "2025-12-31"}
+    vigencia_inicio: "2026-01-01"
+  reembolso:
+    prazo_pagamento_dias: 30
+    prazo_envio_dias: 15
+    sistema: "módulo Despesas do BrisaERP"
+    refeicao_teto: 70
+    exemplo_valor: 58.50
+    km_valor: 1.20
+    comprovante: "nota fiscal ou cupom fiscal com CNPJ da Brisa Log ou CPF do colaborador, legível"
+    v2025: {prazo_pagamento_dias: 45, prazo_envio_dias: 10, vigencia_inicio: "2025-01-01", vigencia_fim: "2025-12-31"}
+    vigencia_inicio: "2026-01-01"
+  viagens:
+    hotel_capital: 380
+    hotel_demais: 300
+    refeicao_dia: 90
+    antecedencia_aereo_dias: 14
+    adiantamento_max_pct: 50
+    prestacao_contas_dias_uteis: 5
+    carro_aluguel: "somente com aprovação do diretor da área"
+  fechamento:
+    dia_util_fechamento: 5
+    dia_util_corte_despesas: 3
+    dia_util_conciliacao: 4
+    feriados_2026: ["2026-01-01", "2026-04-03", "2026-04-21", "2026-05-01", "2026-09-07", "2026-10-12", "2026-11-02", "2026-11-20", "2026-12-25"]
+  compras:
+    compra_direta_ate: 2000
+    tres_cotacoes_ate: 20000
+    cotacoes_minimas: 3
+    pagamento_prazo_padrao_dias: 30
+    dias_pagamento: "terças e quintas-feiras"
+    nf_antecedencia_dias: 5
+    homologacao_validade_meses: 24
+  # Receita líquida trimestral (R$) — base do financeiro_trimestral.csv
+  receita_liquida_trimestral:
+    2024: [17900000, 18700000, 19000000, 20600000]
+    2025: [19950000, 20850000, 21250000, 22950000]
+    2026: [22100000, 23050000]
+  deducoes_pct_da_bruta: 18
+  cmv_pct_da_liquida: 79.0
+  desp_op_pct_da_liquida: 14.5
+  dep_amort_trimestre: {2024: 520000, 2025: 560000, 2026: 600000}
+  resultado_financeiro_pct_da_liquida: -0.9
+  ir_csll_pct: 34
+  data_ultimo_fechamento_trimestre: "2026T2"
+
+# ---------------------------------------------------------------- TI
+ti:
+  sla:
+    P1: {resolucao: "4 horas", resposta: "15 minutos", descricao: "parada total de um sistema crítico ou de uma unidade (por exemplo, BrisaWMS fora do ar no CD, rede indisponível, suspeita de ataque em andamento)"}
+    P2: {resolucao: "8 horas", resposta: "1 hora", descricao: "impacto grave em uma área ou usuário bloqueado sem alternativa (por exemplo, impossibilidade de faturar, VPN fora para o time comercial)"}
+    P3: {resolucao: "3 dias úteis", resposta: "4 horas", descricao: "falha com alternativa de contorno ou que afeta uma pessoa (por exemplo, lentidão, impressora, erro em relatório)"}
+    P4: {resolucao: "5 dias úteis", resposta: "1 dia útil", descricao: "requisição simples, dúvida ou melhoria (por exemplo, nova licença, instalação de software homologado)"}
+    horas_atendimento: "segunda a sexta, das 7h às 19h"
+    plantao_p1: "24 horas por dia, 7 dias por semana"
+    alerta_pct: 80
+    rca_dias_uteis: 5
+    ramal: 4000
+    email: "ti"
+    filas: ["N1", "N2", "Infraestrutura", "Sistemas", "Segurança"]
+  senhas:
+    tamanho_min: 12
+    troca_dias: 180
+    tentativas_bloqueio: 5
+    mfa: true
+    sessao_inatividade_min: 15
+    historico: 5
+  equipamentos:
+    prazo_entrega_dias_uteis: 5
+    renovacao_anos: 4
+    comunicar_perda_horas: 24
+  vpn:
+    nome: "BrisaVPN"
+    mfa: "aplicativo autenticador"
+    wifi_publico: "proibido o acesso a sistemas internos sem a VPN"
+  backup:
+    incremental: "diário, às 22h"
+    completo: "semanal, aos domingos"
+    retencao_diario_dias: 30
+    retencao_mensal_meses: 12
+    teste_restauracao: "trimestral"
+    rpo_horas: 24
+    rto_horas: 8
+  seguranca:
+    classificacao: ["Público", "Interno", "Confidencial", "Restrito"]
+    email_phishing: "phishing"
+    email_seguranca: "seguranca"
+    comunicar_incidente: "imediatamente"
+    treinamento: "anual"
+
+# ---------------------------------------------------------------- Comercial
+comercial:
+  atendimento:
+    horario: "segunda a sexta, das 7h às 19h, e sábados das 8h às 12h"
+    primeira_resposta_horas_uteis: 2
+    email: "atendimento"
+    ramal: 5100
+    meta_otif: 97
+    meta_nps: 75
+    escalonamento_horas: 24
+  descontos:
+    faixas_volume:   # faturamento mensal contratado (R$) -> desconto de tabela (%)
+      - {de: 0, ate: 49999, pct: 0}
+      - {de: 50000, ate: 149999, pct: 3}
+      - {de: 150000, ate: 399999, pct: 6}
+      - {de: 400000, ate: null, pct: 9}
+    alcada_coordenador_pct: 5
+    alcada_gerente_pct: 10
+    alcada_diretora_pct: 15
+    contrato_min_meses: 12
+    bonus_prazo_24_meses_pp: 2
+    reajuste: "anual, pelo índice de preços previsto em contrato"
+    validade_proposta_dias: 15
+  adicional_refrigerado_pct: 28
+
+catalogo_servicos:
+  - {codigo: "ARM-001", servico: "Armazenagem seca", categoria: "Armazenagem", unidade_cobranca: "posição-palete/mês", preco: 68.00, disponibilidade: "Campinas e Uberlândia", observacao: "Temperatura ambiente"}
+  - {codigo: "ARM-002", servico: "Armazenagem refrigerada (0 a 10 °C)", categoria: "Armazenagem", unidade_cobranca: "posição-palete/mês", preco: 142.00, disponibilidade: "Campinas e Uberlândia", observacao: "Monitoramento contínuo de temperatura"}
+  - {codigo: "ARM-003", servico: "Armazenagem congelada (-18 °C)", categoria: "Armazenagem", unidade_cobranca: "posição-palete/mês", preco: 189.00, disponibilidade: "Campinas", observacao: "Somente no CD Campinas"}
+  - {codigo: "ARM-004", servico: "Recebimento e conferência", categoria: "Armazenagem", unidade_cobranca: "palete", preco: 24.00, disponibilidade: "Campinas e Uberlândia", observacao: "Inclui conferência cega e lançamento no BrisaWMS"}
+  - {codigo: "ARM-005", servico: "Expedição", categoria: "Armazenagem", unidade_cobranca: "palete", preco: 22.00, disponibilidade: "Campinas e Uberlândia", observacao: "Inclui carregamento e checklist do veículo"}
+  - {codigo: "ARM-006", servico: "Inventário cíclico com relatório", categoria: "Armazenagem", unidade_cobranca: "mês", preco: 1850.00, disponibilidade: "Campinas e Uberlândia", observacao: "Contagens semanais e relatório mensal de acuracidade"}
+  - {codigo: "VAL-001", servico: "Separação de pedidos (picking)", categoria: "Valor agregado", unidade_cobranca: "caixa", preco: 1.35, disponibilidade: "Campinas e Uberlândia", observacao: "Pedidos fracionados"}
+  - {codigo: "VAL-002", servico: "Etiquetagem", categoria: "Valor agregado", unidade_cobranca: "unidade", preco: 0.28, disponibilidade: "Campinas e Uberlândia", observacao: "Etiqueta fornecida pelo cliente"}
+  - {codigo: "VAL-003", servico: "Montagem de kits promocionais", categoria: "Valor agregado", unidade_cobranca: "kit", preco: 3.90, disponibilidade: "Campinas", observacao: "Mínimo de 500 kits por ordem"}
+  - {codigo: "VAL-004", servico: "Repaletização e reembalagem", categoria: "Valor agregado", unidade_cobranca: "palete", preco: 31.00, disponibilidade: "Campinas e Uberlândia", observacao: "Filme e fita incluídos"}
+  - {codigo: "VAL-005", servico: "Cross-docking", categoria: "Valor agregado", unidade_cobranca: "palete", preco: 18.50, disponibilidade: "Campinas e Uberlândia", observacao: "Permanência máxima de 24 horas"}
+  - {codigo: "TRA-001", servico: "Transporte de carga fechada (truck)", categoria: "Transporte", unidade_cobranca: "km rodado", preco: 6.80, disponibilidade: "Campinas e Uberlândia", observacao: "Capacidade de até 12 paletes"}
+  - {codigo: "TRA-002", servico: "Transporte de carga fechada (carreta)", categoria: "Transporte", unidade_cobranca: "km rodado", preco: 9.40, disponibilidade: "Campinas e Uberlândia", observacao: "Capacidade de até 28 paletes"}
+  - {codigo: "TRA-003", servico: "Transporte fracionado", categoria: "Transporte", unidade_cobranca: "kg", preco: 0.42, disponibilidade: "Campinas e Uberlândia", observacao: "Carga consolidada, prazo conforme rota"}
+  - {codigo: "TRA-004", servico: "Coleta programada (milk run)", categoria: "Transporte", unidade_cobranca: "parada", preco: 47.00, disponibilidade: "Campinas", observacao: "Rotas fixas semanais"}
+  - {codigo: "TRA-005", servico: "Monitoramento de temperatura em viagem", categoria: "Transporte", unidade_cobranca: "viagem", preco: 85.00, disponibilidade: "Campinas e Uberlândia", observacao: "Relatório de temperatura entregue ao cliente"}
+  - {codigo: "DIS-001", servico: "Distribuição urbana (VUC)", categoria: "Distribuição urbana", unidade_cobranca: "entrega", preco: 38.00, disponibilidade: "Campinas e Uberlândia", observacao: "Entrega no varejo da região metropolitana"}
+  - {codigo: "DIS-002", servico: "Entrega agendada com janela de horário", categoria: "Distribuição urbana", unidade_cobranca: "entrega", preco: 55.00, disponibilidade: "Campinas e Uberlândia", observacao: "Janela de 2 horas"}
+  - {codigo: "DIS-003", servico: "Reentrega", categoria: "Distribuição urbana", unidade_cobranca: "entrega", preco: 29.00, disponibilidade: "Campinas e Uberlândia", observacao: "Cobrada quando o cliente final não recebe a primeira tentativa"}
+  - {codigo: "REV-001", servico: "Logística reversa de devoluções", categoria: "Logística reversa", unidade_cobranca: "caixa", preco: 2.10, disponibilidade: "Campinas e Uberlândia", observacao: "Triagem, avaria e reintegração ao estoque"}
+  - {codigo: "REV-002", servico: "Destruição certificada de produtos avariados", categoria: "Logística reversa", unidade_cobranca: "kg", preco: 1.15, disponibilidade: "Campinas", observacao: "Com certificado de destinação"}
+  - {codigo: "REV-003", servico: "Recolhimento de embalagens retornáveis", categoria: "Logística reversa", unidade_cobranca: "palete", preco: 14.00, disponibilidade: "Campinas e Uberlândia", observacao: "Paletes e caixas plásticas"}
+
+# ---------------------------------------------------------------- Compliance
+compliance:
+  brindes:
+    limite: 150
+    refeicao_limite: 200
+    registro_prazo_dias: 5
+    vigencia_inicio: "2026-01-01"
+    v2025: {limite: 100, refeicao_limite: 150, vigencia_inicio: "2025-01-01", vigencia_fim: "2025-12-31"}
+  conflito:
+    declaracao_prazo_dias: 10
+    revisao: "anual"
+    quarentena_meses: 6
+  lgpd:
+    prazo_resposta_titular_dias: 15
+    incidente_comunicar_horas: 24
+    retencao_curriculos_meses: 12
+    email: "privacidade"
+  anticorrupcao:
+    lei: "Lei Anticorrupção (Lei 12.846/2013)"
+    treinamento: "anual"
+    due_diligence_validade_meses: 24
+  etica:
+    comite: "Comitê de Ética"
+    reuniao: "mensal"

@@ -1,0 +1,56 @@
+---
+titulo: "Reembolso de despesas (versão 2026)"
+area: financeiro
+versao: "2026.1"
+vigencia: "A partir de {{ iso_br(f.financeiro.reembolso.vigencia_inicio) }}"
+acesso: publico
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+substitui: "financeiro/reembolso-v2025"
+---
+
+# Reembolso de despesas
+
+Despesas feitas a serviço da empresa e pagas do próprio bolso são reembolsadas conforme esta política, que **substitui a versão de 2025**.
+
+## Prazos
+
+- **Envio:** a solicitação deve ser enviada em até **{{ f.financeiro.reembolso.prazo_envio_dias }} dias corridos** após a data da despesa.
+- **Pagamento:** o reembolso é pago em até **{{ f.financeiro.reembolso.prazo_pagamento_dias }} dias** após o envio da solicitação completa.
+
+Solicitações incompletas voltam ao colaborador e o prazo de pagamento só começa a contar quando a pendência é resolvida.
+
+## Como pedir
+
+1. Abra uma solicitação no {{ f.financeiro.reembolso.sistema }}.
+2. Anexe o comprovante: {{ f.financeiro.reembolso.comprovante }}.
+3. Informe a finalidade, o centro de custo e, quando houver, o cliente ou a viagem relacionada.
+4. Seu gestor aprova de acordo com a alçada de aprovação; despesas até {{ brl(f.financeiro.alcadas.gestor_ate) }} ficam com o gestor.
+5. O Financeiro confere, e o valor cai na conta cadastrada.
+
+## O que é reembolsável
+
+| Tipo de despesa | Regra |
+|---|---|
+| Refeição durante deslocamento a trabalho | até {{ brl(f.financeiro.reembolso.refeicao_teto) }} por refeição |
+| Quilometragem com carro próprio, com aprovação prévia | {{ brl(f.financeiro.reembolso.km_valor) }} por km rodado |
+| Táxi ou aplicativo, quando não houver alternativa | com comprovante e justificativa |
+| Estacionamento e pedágio | com comprovante |
+| Material de escritório de pequena monta | com aprovação prévia do gestor |
+
+Despesas de viagem seguem também a política de viagens.
+
+## O que não é reembolsado
+
+- Bebidas alcoólicas.
+- Multas de trânsito e despesas pessoais.
+- Despesas sem comprovante ou com comprovante ilegível.
+- Despesas enviadas fora do prazo, salvo exceção aprovada pelo diretor da área.
+
+## Exemplo prático
+
+Mariana, do Comercial, almoçou com um cliente em Ribeirão Preto e pagou {{ brl(f.financeiro.reembolso.exemplo_valor) }} no cartão pessoal. Ela anexou o cupom fiscal ao pedido no {{ f.financeiro.reembolso.sistema }} no dia seguinte, dentro do prazo de {{ f.financeiro.reembolso.prazo_envio_dias }} dias, e informou o nome do cliente. A gestora aprovou, e o reembolso foi pago dentro de {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias.
+
+## Dúvidas
+
+Fale com o Financeiro pelo e-mail {{ email('financeiro') }}. Em caso de divergência, o responsável é o time de Contas a Pagar.

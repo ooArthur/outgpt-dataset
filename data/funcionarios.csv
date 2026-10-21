@@ -1,0 +1,141 @@
+id,nome,cargo,departamento,gestor_id,unidade,data_admissao,ramal,email
+1,Helena Monteiro Duarte,CEO,Diretoria Executiva,,Campinas/SP,2019-03-01,1001,helena.duarte@brisalog.example
+2,Gabriela Oliveira Vieira,Assistente Executiva,Diretoria Executiva,1,Campinas/SP,2014-03-01,1002,gabriela.vieira@brisalog.example
+3,Débora Cavalcanti Jardim,Analista de Estratégia e Projetos,Diretoria Executiva,1,Campinas/SP,2019-11-06,1003,debora.jardim@brisalog.example
+4,Marcela Tavares Rocha,Diretora de Pessoas e Cultura,Pessoas e Cultura,1,Campinas/SP,2015-05-16,2001,marcela.rocha@brisalog.example
+5,Fernanda Lopes Guimarães,Coordenadora de RH,Pessoas e Cultura,4,Campinas/SP,2018-09-02,2002,fernanda.guimaraes@brisalog.example
+6,Helena Gomes Brandão,Analista de RH Pleno,Pessoas e Cultura,5,Campinas/SP,2024-05-28,2003,helena.brandao@brisalog.example
+7,Paulo Pacheco Brandão,Analista de RH Pleno,Pessoas e Cultura,5,Campinas/SP,2014-08-20,2004,paulo.brandao@brisalog.example
+8,Cássio Ferreira Duarte,Analista de Departamento Pessoal,Pessoas e Cultura,5,Campinas/SP,2014-12-22,2005,cassio.duarte@brisalog.example
+9,Kleber Vaz Fonseca,Analista de Departamento Pessoal,Pessoas e Cultura,5,Campinas/SP,2018-03-29,2006,kleber.fonseca@brisalog.example
+10,Flávia Lima Barbosa,Analista de Recrutamento e Seleção,Pessoas e Cultura,5,Campinas/SP,2015-06-20,2007,flavia.barbosa@brisalog.example
+11,Heitor Paiva Viana,Analista de Treinamento e Desenvolvimento,Pessoas e Cultura,5,Campinas/SP,2010-11-23,2008,heitor.viana@brisalog.example
+12,Elaine Vaz Guedes,Assistente de RH,Pessoas e Cultura,5,Campinas/SP,2011-01-27,2009,elaine.guedes@brisalog.example
+13,Armando Barbosa Farias,Parceiro de Negócios de RH,Pessoas e Cultura,5,Uberlândia/MG,2022-02-14,2010,armando.farias@brisalog.example
+14,Rogério Albuquerque Lins,Diretor Financeiro,Financeiro e Controladoria,1,Campinas/SP,2019-11-09,3001,rogerio.lins@brisalog.example
+15,Daniela Pires Amaral,Gerente de Controladoria,Financeiro e Controladoria,14,Campinas/SP,2015-08-31,3002,daniela.amaral@brisalog.example
+16,Otávio Resende Maia,Gerente Financeiro,Financeiro e Controladoria,14,Campinas/SP,2013-03-24,3003,otavio.maia@brisalog.example
+17,Paulo Torres Nascimento,Coordenador de Contas a Pagar e Receber,Financeiro e Controladoria,16,Campinas/SP,2010-06-16,3004,paulo.nascimento@brisalog.example
+18,Rafaela Castro Carvalho,Analista Contábil Sênior,Financeiro e Controladoria,15,Campinas/SP,2023-10-24,3005,rafaela.carvalho@brisalog.example
+19,Isabela Nogueira Castro,Analista Contábil,Financeiro e Controladoria,15,Campinas/SP,2024-10-03,3006,isabela.castro@brisalog.example
+20,Renata Andrade Cavalcanti,Analista Contábil,Financeiro e Controladoria,15,Campinas/SP,2014-06-10,3007,renata.cavalcanti@brisalog.example
+21,Adriana Xavier Gomes,Analista de Contas a Pagar,Financeiro e Controladoria,17,Campinas/SP,2017-04-09,3008,adriana.gomes@brisalog.example
+22,Emerson Vieira Duarte,Analista de Contas a Pagar,Financeiro e Controladoria,17,Campinas/SP,2019-09-16,3009,emerson.duarte@brisalog.example
+23,Larissa Rodrigues Moraes,Analista de Contas a Receber,Financeiro e Controladoria,17,Campinas/SP,2018-11-23,3010,larissa.moraes@brisalog.example
+24,Renata Araújo Guedes,Analista de Contas a Receber,Financeiro e Controladoria,17,Campinas/SP,2025-08-30,3011,renata.guedes@brisalog.example
+25,Heitor Nascimento Duarte,Analista de Faturamento,Financeiro e Controladoria,17,Campinas/SP,2010-03-18,3012,heitor.duarte@brisalog.example
+26,Cláudia Carvalho Lacerda,Analista de Planejamento Financeiro,Financeiro e Controladoria,16,Campinas/SP,2025-05-07,3013,claudia.lacerda@brisalog.example
+27,André Figueiredo Nunes,Assistente Financeiro,Financeiro e Controladoria,17,Campinas/SP,2025-01-30,3014,andre.nunes@brisalog.example
+28,Caio Vasconcelos Prado,Diretor de TI,TI,1,Campinas/SP,2016-02-15,4001,caio.prado@brisalog.example
+29,Thiago Bastos Carvalho,Gerente de Infraestrutura e Suporte,TI,28,Campinas/SP,2020-03-02,4002,thiago.carvalho@brisalog.example
+30,Márcia Coutinho Vasconcelos,Coordenador de Sistemas,TI,28,Campinas/SP,2012-05-11,4003,marcia.vasconcelos@brisalog.example
+31,Rosana Moreira Ferreira,Analista de Suporte N1,TI,29,Campinas/SP,2015-01-10,4004,rosana.ferreira@brisalog.example
+32,Nicole Lacerda Batista,Analista de Suporte N1,TI,29,Campinas/SP,2013-04-09,4005,nicole.batista@brisalog.example
+33,Valdir Machado Vasconcelos,Analista de Suporte N1,TI,29,Campinas/SP,2018-02-20,4006,valdir.vasconcelos@brisalog.example
+34,Marcos Pinto Nascimento,Analista de Suporte N1,TI,29,Uberlândia/MG,2023-06-16,4007,marcos.nascimento@brisalog.example
+35,Carla Lima Borges,Analista de Infraestrutura,TI,29,Campinas/SP,2019-08-20,4008,carla.borges@brisalog.example
+36,Lívia Santos Borges,Analista de Infraestrutura,TI,29,Campinas/SP,2012-04-19,4009,livia.borges@brisalog.example
+37,Rodrigo Viana Vaz,Analista de Segurança da Informação,TI,28,Campinas/SP,2012-07-11,4010,rodrigo.vaz@brisalog.example
+38,Mateus Henriques Sousa,Desenvolvedor de Sistemas,TI,30,Campinas/SP,2014-08-15,4011,mateus.sousa@brisalog.example
+39,Bruno Araújo Carvalho,Desenvolvedor de Sistemas,TI,30,Campinas/SP,2018-09-21,4012,bruno.carvalho@brisalog.example
+40,Patrícia Nogueira Salgado,Diretora Comercial,Comercial,1,Campinas/SP,2019-02-11,5001,patricia.salgado@brisalog.example
+41,Ricardo Siqueira Borges,Gerente Comercial,Comercial,40,Campinas/SP,2013-10-01,5002,ricardo.borges@brisalog.example
+42,Heitor Viana Xavier,Coordenador de Contas,Comercial,41,Campinas/SP,2014-07-10,5003,heitor.xavier@brisalog.example
+43,João Nogueira Pereira,Executivo de Contas,Comercial,42,Campinas/SP,2012-09-12,5004,joao.pereira@brisalog.example
+44,Michele Jardim Vaz,Executivo de Contas,Comercial,42,Campinas/SP,2025-06-11,5005,michele.vaz@brisalog.example
+45,Ingrid Gomes Moraes,Executivo de Contas,Comercial,42,Campinas/SP,2020-06-14,5006,ingrid.moraes@brisalog.example
+46,Vera Nogueira Teixeira,Executivo de Contas,Comercial,42,Campinas/SP,2011-07-06,5007,vera.teixeira@brisalog.example
+47,Cristiane Duarte Cavalcanti,Executivo de Contas,Comercial,42,Campinas/SP,2018-05-28,5008,cristiane.cavalcanti@brisalog.example
+48,Mauro Magalhães Almeida,Executivo de Contas,Comercial,42,Uberlândia/MG,2023-02-09,5009,mauro.almeida@brisalog.example
+49,Kleber Azevedo Santana,Analista Comercial,Comercial,42,Campinas/SP,2013-08-05,5010,kleber.santana@brisalog.example
+50,Fábio Santana Rodrigues,Analista Comercial,Comercial,42,Campinas/SP,2020-01-05,5011,fabio.rodrigues@brisalog.example
+51,Priscila Andrade Vieira,Analista Comercial,Comercial,42,Campinas/SP,2011-11-29,5012,priscila.vieira@brisalog.example
+52,Sofia Vasconcelos Pinto,Analista de Preços,Comercial,41,Campinas/SP,2020-10-26,5013,sofia.pinto@brisalog.example
+53,Tatiane Ribeiro Vasconcelos,Analista de Atendimento ao Cliente,Comercial,41,Campinas/SP,2018-06-22,5014,tatiane.vasconcelos@brisalog.example
+54,Bárbara Duarte Brandão,Analista de Atendimento ao Cliente,Comercial,41,Campinas/SP,2019-08-01,5015,barbara.brandao@brisalog.example
+55,Felipe Silva Dias,Analista de Atendimento ao Cliente,Comercial,41,Campinas/SP,2026-06-21,5016,felipe.dias@brisalog.example
+56,Carlos Costa Vieira,Analista de Atendimento ao Cliente,Comercial,41,Campinas/SP,2014-04-12,5017,carlos.vieira@brisalog.example
+57,Sofia Vaz Rodrigues,Analista de Atendimento ao Cliente,Comercial,41,Uberlândia/MG,2024-11-01,5018,sofia.rodrigues@brisalog.example
+58,Silvia Vieira Araújo,Analista de Atendimento ao Cliente,Comercial,41,Uberlândia/MG,2025-05-17,5019,silvia.araujo@brisalog.example
+59,Elaine Freitas Vieira,Assistente Comercial,Comercial,42,Campinas/SP,2010-05-17,5020,elaine.vieira@brisalog.example
+60,Helena Torres Ferreira,Assistente Comercial,Comercial,42,Campinas/SP,2016-12-30,5021,helena.ferreira@brisalog.example
+61,Miguel Moreira Almeida,Assistente Comercial,Comercial,42,Campinas/SP,2012-05-31,5022,miguel.almeida@brisalog.example
+62,Eduardo Fontes Barreto,Diretor de Operações,Operações e Logística,1,Campinas/SP,2018-12-31,6001,eduardo.barreto@brisalog.example
+63,Wagner Pimentel Souza,Gerente de CD,Operações e Logística,62,Campinas/SP,2014-01-11,6002,wagner.souza@brisalog.example
+64,Luciana Ferraz Medeiros,Gerente de CD,Operações e Logística,62,Uberlândia/MG,2015-07-13,7001,luciana.medeiros@brisalog.example
+65,Anderson Matos Vieira,Gerente de Transporte,Operações e Logística,62,Campinas/SP,2017-06-29,6003,anderson.vieira@brisalog.example
+66,Douglas Paiva Cavalcanti,Coordenador de Armazém,Operações e Logística,63,Campinas/SP,2017-09-14,6004,douglas.cavalcanti@brisalog.example
+67,Rosana Teixeira Esteves,Coordenador de Armazém,Operações e Logística,64,Uberlândia/MG,2024-09-16,7002,rosana.esteves@brisalog.example
+68,Igor Lima Jardim,Coordenador de Transporte,Operações e Logística,65,Campinas/SP,2016-09-30,6005,igor.jardim@brisalog.example
+69,Sofia Castro Neves,Supervisor de Turno,Operações e Logística,66,Campinas/SP,2012-12-21,6006,sofia.neves@brisalog.example
+70,Cláudia Martins Neves,Supervisor de Turno,Operações e Logística,66,Campinas/SP,2019-01-15,6007,claudia.neves@brisalog.example
+71,Daniel Figueiredo Esteves,Supervisor de Turno,Operações e Logística,66,Campinas/SP,2010-04-26,6008,daniel.esteves@brisalog.example
+72,Juliana Guedes Martins,Supervisor de Turno,Operações e Logística,67,Uberlândia/MG,2022-04-26,7003,juliana.martins@brisalog.example
+73,Jaqueline Pereira Soares,Supervisor de Turno,Operações e Logística,67,Uberlândia/MG,2025-09-15,7004,jaqueline.soares@brisalog.example
+74,Jonas Oliveira Figueiredo,Analista de Planejamento Logístico,Operações e Logística,63,Campinas/SP,2018-08-26,6009,jonas.figueiredo@brisalog.example
+75,Luan Vieira Rodrigues,Analista de Planejamento Logístico,Operações e Logística,63,Campinas/SP,2024-05-05,6010,luan.rodrigues@brisalog.example
+76,Carla Soares Marques,Analista de Planejamento Logístico,Operações e Logística,64,Uberlândia/MG,2024-04-30,7005,carla.marques@brisalog.example
+77,Jonas Gonçalves Duarte,Analista de Controle de Estoque,Operações e Logística,66,Campinas/SP,2013-08-30,6011,jonas.duarte@brisalog.example
+78,Tainá Machado Pacheco,Analista de Controle de Estoque,Operações e Logística,66,Campinas/SP,2015-07-23,6012,taina.pacheco@brisalog.example
+79,Flávia Almeida Rocha,Analista de Controle de Estoque,Operações e Logística,67,Uberlândia/MG,2026-04-07,7006,flavia.rocha@brisalog.example
+80,Elaine Ribeiro Vasconcelos,Analista de Roteirização,Operações e Logística,68,Campinas/SP,2014-03-20,6013,elaine.vasconcelos@brisalog.example
+81,Tatiane Figueiredo Soares,Conferente,Operações e Logística,69,Campinas/SP,2018-07-27,6014,tatiane.soares@brisalog.example
+82,Júlio Lima Neves,Conferente,Operações e Logística,70,Campinas/SP,2018-09-29,6015,julio.neves@brisalog.example
+83,Nicole Xavier Batista,Conferente,Operações e Logística,71,Campinas/SP,2013-08-30,6016,nicole.batista2@brisalog.example
+84,Lívia Almeida Nunes,Conferente,Operações e Logística,69,Campinas/SP,2010-03-01,6017,livia.nunes@brisalog.example
+85,Marcos Costa Cardoso,Conferente,Operações e Logística,70,Campinas/SP,2022-07-08,6018,marcos.cardoso@brisalog.example
+86,Amanda Machado Cardoso,Conferente,Operações e Logística,71,Campinas/SP,2017-10-26,6019,amanda.cardoso@brisalog.example
+87,Diego Lacerda Fernandes,Conferente,Operações e Logística,72,Uberlândia/MG,2022-07-12,7007,diego.fernandes@brisalog.example
+88,Júlio Moreira Freitas,Conferente,Operações e Logística,73,Uberlândia/MG,2026-01-25,7008,julio.freitas@brisalog.example
+89,Natália Farias Ribeiro,Conferente,Operações e Logística,72,Uberlândia/MG,2025-06-28,7009,natalia.ribeiro@brisalog.example
+90,Thaís Soares Brandão,Conferente,Operações e Logística,73,Uberlândia/MG,2023-05-02,7010,thais.brandao@brisalog.example
+91,Camila Jardim Mendes,Conferente,Operações e Logística,72,Uberlândia/MG,2021-11-27,7011,camila.mendes@brisalog.example
+92,Nicole Pacheco Andrade,Operador de Empilhadeira,Operações e Logística,69,Campinas/SP,2010-09-18,6020,nicole.andrade@brisalog.example
+93,Flávia Soares Lacerda,Operador de Empilhadeira,Operações e Logística,70,Campinas/SP,2011-01-28,6021,flavia.lacerda@brisalog.example
+94,Felipe Borges Dias,Operador de Empilhadeira,Operações e Logística,71,Campinas/SP,2012-02-06,6022,felipe.dias2@brisalog.example
+95,Júlio Pinto Araújo,Operador de Empilhadeira,Operações e Logística,69,Campinas/SP,2015-06-27,6023,julio.araujo@brisalog.example
+96,Tadeu Moraes Martins,Operador de Empilhadeira,Operações e Logística,70,Campinas/SP,2018-09-21,6024,tadeu.martins@brisalog.example
+97,Isabela Pereira Cavalcanti,Operador de Empilhadeira,Operações e Logística,71,Campinas/SP,2013-12-22,6025,isabela.cavalcanti@brisalog.example
+98,Júlio Araújo Rodrigues,Operador de Empilhadeira,Operações e Logística,69,Campinas/SP,2017-04-17,6026,julio.rodrigues@brisalog.example
+99,Lucas Fernandes Soares,Operador de Empilhadeira,Operações e Logística,73,Uberlândia/MG,2022-08-28,7012,lucas.soares@brisalog.example
+100,Sandra Brandão Vaz,Operador de Empilhadeira,Operações e Logística,72,Uberlândia/MG,2022-07-13,7013,sandra.vaz@brisalog.example
+101,Olívia Sousa Nunes,Operador de Empilhadeira,Operações e Logística,73,Uberlândia/MG,2022-09-09,7014,olivia.nunes@brisalog.example
+102,Isabela Vieira Soares,Operador de Empilhadeira,Operações e Logística,72,Uberlândia/MG,2022-10-16,7015,isabela.soares@brisalog.example
+103,Rafael Dias Lima,Operador de Empilhadeira,Operações e Logística,73,Uberlândia/MG,2025-10-08,7016,rafael.lima@brisalog.example
+104,Felipe Henriques Lima,Auxiliar de Armazém,Operações e Logística,70,Campinas/SP,2014-12-14,6027,felipe.lima@brisalog.example
+105,Bárbara Almeida Batista,Auxiliar de Armazém,Operações e Logística,71,Campinas/SP,2018-07-26,6028,barbara.batista@brisalog.example
+106,Sérgio Figueiredo Neves,Auxiliar de Armazém,Operações e Logística,69,Campinas/SP,2014-02-23,6029,sergio.neves@brisalog.example
+107,Josiane Magalhães Viana,Auxiliar de Armazém,Operações e Logística,70,Campinas/SP,2018-05-03,6030,josiane.viana@brisalog.example
+108,Antônio Moreira Xavier,Auxiliar de Armazém,Operações e Logística,71,Campinas/SP,2021-07-09,6031,antonio.xavier@brisalog.example
+109,Letícia Lima Coutinho,Auxiliar de Armazém,Operações e Logística,69,Campinas/SP,2021-05-18,6032,leticia.coutinho@brisalog.example
+110,Ingrid Gomes Vaz,Auxiliar de Armazém,Operações e Logística,70,Campinas/SP,2017-10-14,6033,ingrid.vaz@brisalog.example
+111,Renan Henriques Torres,Auxiliar de Armazém,Operações e Logística,71,Campinas/SP,2021-08-10,6034,renan.torres@brisalog.example
+112,Tadeu Moraes Ramos,Auxiliar de Armazém,Operações e Logística,69,Campinas/SP,2022-10-15,6035,tadeu.ramos@brisalog.example
+113,Gilberto Azevedo Miranda,Auxiliar de Armazém,Operações e Logística,70,Campinas/SP,2014-08-21,6036,gilberto.miranda@brisalog.example
+114,João Freitas Jardim,Auxiliar de Armazém,Operações e Logística,72,Uberlândia/MG,2025-01-20,7017,joao.jardim@brisalog.example
+115,Rafael Cardoso Barbosa,Auxiliar de Armazém,Operações e Logística,73,Uberlândia/MG,2021-10-30,7018,rafael.barbosa@brisalog.example
+116,Vinícius Ferreira Borges,Auxiliar de Armazém,Operações e Logística,72,Uberlândia/MG,2023-01-10,7019,vinicius.borges@brisalog.example
+117,Silvia Fernandes Rodrigues,Auxiliar de Armazém,Operações e Logística,73,Uberlândia/MG,2021-08-14,7020,silvia.rodrigues@brisalog.example
+118,Júlio Sousa Duarte,Auxiliar de Armazém,Operações e Logística,72,Uberlândia/MG,2023-10-11,7021,julio.duarte@brisalog.example
+119,Raquel Xavier Coutinho,Auxiliar de Armazém,Operações e Logística,73,Uberlândia/MG,2025-06-10,7022,raquel.coutinho@brisalog.example
+120,Flávia Esteves Henriques,Auxiliar de Armazém,Operações e Logística,72,Uberlândia/MG,2026-01-07,7023,flavia.henriques@brisalog.example
+121,Henrique Almeida Freitas,Auxiliar de Armazém,Operações e Logística,73,Uberlândia/MG,2025-08-21,7024,henrique.freitas@brisalog.example
+122,Sérgio Pereira Andrade,Auxiliar de Armazém,Operações e Logística,72,Uberlândia/MG,2021-10-15,7025,sergio.andrade@brisalog.example
+123,Thaís Moraes Xavier,Auxiliar de Armazém,Operações e Logística,73,Uberlândia/MG,2026-08-13,7026,thais.xavier@brisalog.example
+124,Rafaela Cavalcanti Almeida,Motorista,Operações e Logística,68,Campinas/SP,2019-02-17,6037,rafaela.almeida@brisalog.example
+125,Jonas Magalhães Martins,Motorista,Operações e Logística,68,Campinas/SP,2012-09-15,6038,jonas.martins@brisalog.example
+126,Daniel Moreira Neves,Motorista,Operações e Logística,68,Campinas/SP,2018-07-31,6039,daniel.neves@brisalog.example
+127,Laura Nunes Gonçalves,Motorista,Operações e Logística,68,Campinas/SP,2026-03-03,6040,laura.goncalves@brisalog.example
+128,Marcelo Araújo Moraes,Motorista,Operações e Logística,68,Campinas/SP,2011-06-13,6041,marcelo.moraes@brisalog.example
+129,Gustavo Ferreira Vaz,Motorista,Operações e Logística,68,Campinas/SP,2026-09-04,6042,gustavo.vaz@brisalog.example
+130,Renan Castro Araújo,Motorista,Operações e Logística,68,Uberlândia/MG,2023-12-09,7027,renan.araujo@brisalog.example
+131,Alexandre Moreira Gonçalves,Motorista,Operações e Logística,68,Uberlândia/MG,2025-10-22,7028,alexandre.goncalves@brisalog.example
+132,Gustavo Gonçalves Araújo,Motorista,Operações e Logística,68,Uberlândia/MG,2026-07-02,7029,gustavo.araujo@brisalog.example
+133,João Castro Duarte,Motorista,Operações e Logística,68,Uberlândia/MG,2023-10-08,7030,joao.duarte@brisalog.example
+134,Sérgio Pinto Figueiredo,Motorista,Operações e Logística,68,Uberlândia/MG,2025-12-20,7031,sergio.figueiredo@brisalog.example
+135,Beatriz Camargo Leal,Diretora de Compliance e Jurídico,Compliance e Jurídico,1,Campinas/SP,2014-08-31,8001,beatriz.leal@brisalog.example
+136,Elisa Santana Batista,Coordenador Jurídico,Compliance e Jurídico,135,Campinas/SP,2014-08-16,8002,elisa.batista@brisalog.example
+137,Carla Duarte Lacerda,Advogada Corporativa,Compliance e Jurídico,136,Campinas/SP,2015-05-11,8003,carla.lacerda@brisalog.example
+138,Vanessa Henriques Magalhães,Analista de Compliance,Compliance e Jurídico,135,Campinas/SP,2026-03-08,8004,vanessa.magalhaes@brisalog.example
+139,Joaquim Neves Rocha,Analista de Compliance,Compliance e Jurídico,135,Campinas/SP,2024-01-13,8005,joaquim.rocha@brisalog.example
+140,Marina Fontoura Quintela,Analista de Privacidade,Compliance e Jurídico,135,Campinas/SP,2025-05-05,8010,marina.quintela@brisalog.example

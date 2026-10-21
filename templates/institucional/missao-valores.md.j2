@@ -1,0 +1,56 @@
+---
+titulo: "Missão, visão e valores"
+area: institucional
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Missão, visão e valores da {{ f.empresa.nome_fantasia }}
+
+A {{ f.empresa.razao_social }}, conhecida como {{ f.empresa.nome_fantasia }}, atua desde {{ f.empresa.fundacao_ano }} com {{ f.empresa.setor }}. Este documento reúne o que nos move e o que esperamos uns dos outros no dia a dia.
+
+## Missão
+
+{{ f.empresa.missao }}
+
+## Visão
+
+{{ f.empresa.visao }}
+
+## Os {{ f.valores | length }} valores
+
+Os valores abaixo orientam contratações, avaliações de desempenho e decisões do cotidiano. Cada um vem com um exemplo prático para facilitar a conversa em equipe.
+
+{% for v in f.valores %}
+### {{ loop.index }}. {{ v.nome }}
+
+{{ v.descricao }}
+
+*Exemplo no dia a dia:* {{ v.exemplo }}
+
+{% endfor %}
+## Como usar os valores para decidir
+
+Quando surgir uma dúvida sobre o que fazer, vale se perguntar:
+
+- Isso protege o produto, a temperatura e o prazo da carga? (**{{ f.valores[0].nome }}**)
+- Eu faria o que prometi, ou avisei cedo que não será possível? (**{{ f.valores[1].nome }}**)
+- Existe um caminho mais curto e mais claro para chegar ao mesmo resultado? (**{{ f.valores[2].nome }}**)
+- O que essa situação nos ensina e como compartilho isso com os colegas? (**{{ f.valores[3].nome }}**)
+
+Se as respostas apontarem em direções diferentes, converse com seu gestor ou com a área de Pessoas e Cultura. Não existe pergunta pequena demais.
+
+## Os valores na avaliação de desempenho
+
+Os comportamentos ligados aos quatro valores respondem por {{ f.rh.desempenho.peso_comportamentos }}% da nota da avaliação anual; os resultados respondem pelos outros {{ f.rh.desempenho.peso_resultados }}%. Detalhes estão no documento de avaliação de desempenho.
+
+## Quem somos em poucas linhas
+
+- Sede em {{ f.empresa.sede }} e centros de distribuição em {{ f.unidades.campinas.cidade }} e {{ f.unidades.uberlandia.cidade }}.
+- Cerca de {{ f.empresa.colaboradores }} colaboradores, distribuídos em {{ f.departamentos | length }} departamentos.
+- Faturamento líquido de cerca de {{ milhoes(f.empresa.faturamento_liquido_2025) }} em 2025.
+
+Dúvidas sobre cultura e valores podem ser enviadas para {{ email('rh') }}.

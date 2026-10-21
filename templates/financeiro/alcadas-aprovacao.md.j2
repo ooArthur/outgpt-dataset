@@ -1,0 +1,50 @@
+---
+titulo: "Alçadas de aprovação (versão 2026)"
+area: financeiro
+versao: "2026.1"
+vigencia: "A partir de {{ iso_br(f.financeiro.alcadas.vigencia_inicio) }}"
+acesso: publico
+responsavel: "Financeiro e Controladoria ({{ email('financeiro') }})"
+status: vigente
+substitui: "financeiro/alcadas-aprovacao-v2025"
+---
+
+# Alçadas de aprovação de despesas e compras
+
+Alçada é o limite de valor que cada nível de liderança pode aprovar. Ela vale para compras, contratações, reembolsos e pagamentos fora de contrato. Esta versão **substitui a de 2025**.
+
+## Tabela de alçadas
+
+| Quem aprova | Valor por operação |
+|---|---|
+| Gestor imediato (coordenador ou gerente) | até {{ brl(f.financeiro.alcadas.gestor_ate) }} |
+| Diretor da área | acima de {{ brl(f.financeiro.alcadas.gestor_ate) }} e até {{ brl(f.financeiro.alcadas.diretor_ate) }} |
+| CEO | acima de {{ brl(f.financeiro.alcadas.diretor_ate) }} |
+
+Operações acima de {{ brl(f.financeiro.alcadas.ciencia_conselho_acima) }} também são levadas ao Conselho de Administração, para ciência.
+
+## Regras de aplicação
+
+1. **O valor é o total da operação**, não da parcela. Contratos recorrentes são avaliados pelo valor total do período contratado.
+2. **Não é permitido fracionar** uma compra para ficar abaixo de uma alçada. O Financeiro monitora pedidos semelhantes feitos ao mesmo fornecedor em curto intervalo.
+3. **Ninguém aprova a própria despesa.** Quando o solicitante é o gestor, a aprovação sobe um nível.
+4. **Ausência do aprovador:** o substituto formal indicado no {{ f.sistemas.erp }} pode aprovar no mesmo limite.
+5. A aprovação deve ser registrada **antes** da compra ou da assinatura, e não depois.
+
+## Exemplos
+
+- Um coordenador de Operações quer comprar {{ brl(f.financeiro.alcadas.exemplos[0]) }} em etiquetas térmicas: a aprovação é do próprio gestor.
+- A Diretora Comercial precisa de um evento com cliente orçado em {{ brl(f.financeiro.alcadas.exemplos[1]) }}: a aprovação é do diretor da área.
+- A renovação anual da licença do {{ f.sistemas.wms }} custa {{ brl(f.financeiro.alcadas.exemplos[2]) }}: como passa de {{ brl(f.financeiro.alcadas.diretor_ate) }}, precisa do CEO.
+
+## Relação com outras políticas
+
+As alçadas se combinam com a política de compras, que define o número de cotações exigido por faixa de valor, e com a política de brindes, que tem limites próprios. Em reembolsos, vale a alçada do gestor para valores pequenos.
+
+## Versão anterior
+
+Em 2025, o gestor aprovava até {{ brl(f.financeiro.alcadas.v2025.gestor_ate) }} e o diretor até {{ brl(f.financeiro.alcadas.v2025.diretor_ate) }}. Essa tabela foi revogada em {{ iso_br(f.financeiro.alcadas.v2025.vigencia_fim) }}; consulte o documento da versão 2025 apenas para operações aprovadas naquele ano.
+
+## Dúvidas
+
+Escreva para {{ email('financeiro') }}.

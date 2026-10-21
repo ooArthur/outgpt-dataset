@@ -1,0 +1,29 @@
+departamento,trimestre,orcado,realizado,saldo,status
+Diretoria Executiva,2026T1,768000,769732,-1732,realizado
+Diretoria Executiva,2026T2,800000,823251,-23251,realizado
+Diretoria Executiva,2026T3,832000,,,em_aberto
+Diretoria Executiva,2026T4,800000,,,em_aberto
+Pessoas e Cultura,2026T1,1152000,1217057,-65057,realizado
+Pessoas e Cultura,2026T2,1200000,1129962,70038,realizado
+Pessoas e Cultura,2026T3,1248000,,,em_aberto
+Pessoas e Cultura,2026T4,1200000,,,em_aberto
+Financeiro e Controladoria,2026T1,1008000,964518,43482,realizado
+Financeiro e Controladoria,2026T2,1050000,982692,67308,realizado
+Financeiro e Controladoria,2026T3,1092000,,,em_aberto
+Financeiro e Controladoria,2026T4,1050000,,,em_aberto
+TI,2026T1,1560000,1633853,-73853,realizado
+TI,2026T2,1625000,1510830,114170,realizado
+TI,2026T3,1690000,,,em_aberto
+TI,2026T4,1625000,,,em_aberto
+Comercial,2026T1,1416000,1451997,-35997,realizado
+Comercial,2026T2,1475000,1367565,107435,realizado
+Comercial,2026T3,1534000,,,em_aberto
+Comercial,2026T4,1475000,,,em_aberto
+Operações e Logística,2026T1,9120000,9153546,-33546,realizado
+Operações e Logística,2026T2,9500000,8940993,559007,realizado
+Operações e Logística,2026T3,9880000,,,em_aberto
+Operações e Logística,2026T4,9500000,,,em_aberto
+Compliance e Jurídico,2026T1,432000,422908,9092,realizado
+Compliance e Jurídico,2026T2,450000,449674,326,realizado
+Compliance e Jurídico,2026T3,468000,,,em_aberto
+Compliance e Jurídico,2026T4,450000,,,em_aberto

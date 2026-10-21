@@ -1,0 +1,54 @@
+---
+titulo: "LGPD e privacidade de dados pessoais"
+area: compliance
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Compliance e Jurídico ({{ email('compliance') }})"
+status: vigente
+---
+
+# LGPD e privacidade de dados pessoais
+
+A Lei Geral de Proteção de Dados Pessoais (LGPD, Lei 13.709/2018) estabelece regras para o tratamento de dados de pessoas físicas. Na {{ f.empresa.nome_fantasia }}, tratamos dados de colaboradores, candidatos, clientes e motoristas parceiros, e todos nós somos responsáveis por cuidar bem deles. Este documento é um guia prático e não substitui orientação jurídica.
+
+## Conceitos em uma frase
+
+- **Dado pessoal:** qualquer informação que identifique uma pessoa, como nome, CPF, e-mail ou placa vinculada ao motorista.
+- **Dado sensível:** informação mais delicada, como saúde (atestados) e biometria.
+- **Titular:** a pessoa a quem o dado se refere.
+- **Tratamento:** tudo o que fazemos com o dado: coletar, guardar, consultar, compartilhar e apagar.
+
+## Encarregado pelo tratamento de dados (DPO)
+
+A encarregada é **{{ f.encarregado_lgpd.nome }}**, da área de Compliance e Jurídico. Ela recebe pedidos de titulares, orienta as áreas e conversa com a autoridade nacional quando necessário. Contato: {{ email(f.encarregado_lgpd.email) }} ou ramal {{ f.encarregado_lgpd.ramal }}.
+
+## Princípios que aplicamos no trabalho
+
+1. **Finalidade:** só usamos o dado para o motivo informado.
+2. **Necessidade:** pedimos o mínimo indispensável. Se uma planilha não precisa do CPF, o CPF não entra.
+3. **Segurança:** dados pessoais não circulam por aplicativos pessoais de mensagem e planilhas com dados pessoais ficam em pastas com acesso controlado no {{ f.sistemas.docs }}.
+4. **Transparência:** o titular pode saber como usamos o dado dele.
+
+## Direitos dos titulares
+
+Qualquer pessoa pode pedir confirmação de tratamento, acesso, correção, anonimização, portabilidade ou eliminação de dados, nos limites da lei. A resposta deve ser dada em até **{{ f.compliance.lgpd.prazo_resposta_titular_dias }} dias**. Se um colaborador receber um pedido desse tipo, ele encaminha para {{ email(f.compliance.lgpd.email) }} sem responder por conta própria.
+
+## Incidentes
+
+Perdeu um notebook, enviou uma lista de clientes para o destinatário errado ou percebeu um acesso indevido? Comunique **imediatamente** a TI ({{ email('seguranca') }}) e a encarregada. O prazo interno para o comunicado ao DPO é de **{{ f.compliance.lgpd.incidente_comunicar_horas }} horas** após a descoberta. Avisar cedo é sempre melhor do que esconder.
+
+## Situações do dia a dia
+
+- **Currículos:** guardamos currículos de candidatos não contratados por até {{ f.compliance.lgpd.retencao_curriculos_meses }} meses, e depois eliminamos.
+- **Fotos e vídeos nos CDs:** câmeras servem à segurança patrimonial. Imagens não podem ser repassadas por aplicativos de mensagem.
+- **Atestados:** são dados sensíveis e ficam restritos ao RH.
+- **Dados de clientes:** o time Comercial usa o mínimo necessário para propostas e contratos.
+
+## Treinamento
+
+Todo novo colaborador faz o treinamento de LGPD nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias de empresa, e há uma reciclagem anual.
+
+## Dúvidas
+
+Em caso de dúvida, pergunte antes de compartilhar: {{ email(f.compliance.lgpd.email) }}.

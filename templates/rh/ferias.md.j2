@@ -1,0 +1,55 @@
+---
+titulo: "Política de férias"
+area: rh
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Pessoas e Cultura ({{ email('rh') }})"
+status: vigente
+---
+
+# Política de férias
+
+Descansar faz parte de trabalhar bem. Esta política explica como planejar, solicitar e receber suas férias na {{ f.empresa.nome_fantasia }}, em linha com a CLT.
+
+## Direito e duração
+
+Depois de cada período de 12 meses de trabalho, o colaborador tem direito a **{{ f.rh.ferias.dias }} dias de férias**. O gozo deve acontecer nos 12 meses seguintes, e a área de Pessoas e Cultura acompanha os saldos no {{ f.sistemas.rh }}.
+
+## Fracionamento
+
+As férias podem ser divididas em até **{{ f.rh.ferias.fracionamento_max_periodos }} períodos**, desde que:
+
+1. um dos períodos tenha no mínimo **{{ f.rh.ferias.periodo_min_maior }} dias corridos**;
+2. os demais períodos tenham no mínimo **{{ f.rh.ferias.periodo_min_demais }} dias corridos** cada.
+
+Exemplo: 14 + 10 + 6 dias é uma combinação válida; 20 + 4 + 6 não é, porque um dos períodos tem menos de {{ f.rh.ferias.periodo_min_demais }} dias.
+
+## Abono pecuniário
+
+Você pode converter até **{{ f.rh.ferias.abono_dias }} dias** de férias em dinheiro (abono). O pedido deve ser feito junto com a solicitação das férias. Quem escolhe o abono goza os {{ f.rh.ferias.dias - f.rh.ferias.abono_dias }} dias restantes.
+
+## Como solicitar, passo a passo
+
+1. Converse com seu gestor sobre as datas, considerando a escala da equipe.
+2. Abra o pedido no {{ f.sistemas.rh }} com **pelo menos {{ f.rh.ferias.antecedencia_pedido_dias }} dias de antecedência**.
+3. O {{ f.rh.ferias.aprovador }} analisa e aprova ou sugere nova data.
+4. Pessoas e Cultura confirma e emite o aviso de férias.
+
+## Pagamento
+
+O pagamento das férias, com o adicional constitucional de um terço, é feito até **{{ f.rh.ferias.pagamento_antecedencia_dias }} dias antes do início** do período. O adiantamento do 13º salário {{ f.rh.ferias.adiantamento_13 }}.
+
+## Casos frequentes
+
+**Posso emendar férias com feriado?** Sim, desde que a escala da equipe permita e o gestor aprove.
+
+**Posso vender as férias inteiras?** Não. O abono é limitado a {{ f.rh.ferias.abono_dias }} dias.
+
+**Estou no CD, o processo muda?** O processo é o mesmo, mas a escala de turnos é definida pelo supervisor com mais antecedência nos meses de pico, como outubro a dezembro. Combine as datas cedo.
+
+**Um pedido pode ser recusado?** O gestor pode propor outra data quando houver conflito de escala, mas as férias precisam ser concedidas dentro do período legal.
+
+## Dúvidas
+
+Escreva para {{ email('rh') }} ou ligue para o ramal {{ f.rh.ramal_rh }}.

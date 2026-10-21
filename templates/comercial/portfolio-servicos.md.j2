@@ -1,0 +1,48 @@
+---
+titulo: "Portfólio de serviços logísticos"
+area: comercial
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "Comercial ({{ email('comercial') }})"
+status: vigente
+---
+
+# Portfólio de serviços logísticos
+
+A {{ f.empresa.nome_fantasia }} atende redes de varejo, indústrias de alimentos e bebidas e distribuidores regionais. O portfólio é organizado em {{ servicos | map(attribute='categoria') | unique | list | length }} famílias. Os preços de tabela, por unidade de cobrança, estão no catálogo de serviços (`data/catalogo_servicos.csv`) e são apresentados aqui com os valores vigentes.
+
+## Onde operamos
+
+- **{{ f.unidades.campinas.nome }}** — {{ f.unidades.campinas.papel }}, com {{ num(f.unidades.campinas.area_m2) }} m², {{ num(f.unidades.campinas.posicoes_palete) }} posições-palete, {{ f.unidades.campinas.docas }} docas e {{ f.unidades.campinas.camaras_frias }} câmaras frias.
+- **{{ f.unidades.uberlandia.nome }}** — {{ f.unidades.uberlandia.papel }}, com {{ num(f.unidades.uberlandia.area_m2) }} m², {{ num(f.unidades.uberlandia.posicoes_palete) }} posições-palete, {{ f.unidades.uberlandia.docas }} docas e {{ f.unidades.uberlandia.camaras_frias }} câmaras frias.
+
+{% for cat in servicos | map(attribute='categoria') | unique %}
+## {{ cat }}
+
+| Código | Serviço | Cobrança | Preço de tabela | Disponibilidade |
+|---|---|---|---|---|
+{% for s in servicos if s.categoria == cat %}
+| {{ s.codigo }} | {{ s.servico }} | {{ s.unidade_cobranca }} | {{ brl2(s.preco) }} | {{ s.disponibilidade }} |
+{% endfor %}
+
+{% endfor %}
+## Observações importantes
+
+- Serviços de transporte refrigerado têm adicional de {{ f.comercial.adicional_refrigerado_pct }}% sobre o valor do transporte seco equivalente.
+- A armazenagem congelada (-18 °C) existe somente no {{ f.unidades.campinas.nome }}.
+- A montagem de kits promocionais é feita apenas em Campinas e exige o mínimo de 500 kits por ordem.
+- Os preços acima são de tabela. Descontos por volume e prazo seguem a política de preços e descontos.
+
+## Como contratar
+
+1. O cliente fala com o Comercial pelo e-mail {{ email('comercial') }}.
+2. Um executivo de contas levanta volumes, perfil de produto e temperatura.
+3. A proposta é emitida com validade de {{ f.comercial.descontos.validade_proposta_dias }} dias.
+4. Após o aceite, Operações e Logística organiza a implantação da carga no {{ f.sistemas.wms }}.
+
+## Perguntas frequentes
+
+**Atendem produtos congelados em Uberlândia?** Hoje não. A armazenagem congelada é exclusiva de Campinas, mas é possível armazenar em Campinas e distribuir para a região de Uberlândia.
+
+**Há contrato mínimo?** Sim, de {{ f.comercial.descontos.contrato_min_meses }} meses. Veja a política de preços e descontos.

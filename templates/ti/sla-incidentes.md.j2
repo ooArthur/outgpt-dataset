@@ -1,0 +1,54 @@
+---
+titulo: "SLA de incidentes e requisições de TI"
+area: ti
+versao: "2026.1"
+vigencia: "2026-01-01"
+acesso: publico
+responsavel: "TI ({{ email('ti') }})"
+status: vigente
+---
+
+# SLA de incidentes e requisições de TI
+
+O SLA (acordo de nível de serviço) define em quanto tempo a TI se compromete a **resolver** cada chamado. A prioridade é definida pelo impacto no negócio, não pela urgência de quem abre o chamado.
+
+## Prazos por prioridade
+
+| Prioridade | Prazo de resolução | Primeira resposta | Quando se aplica |
+|---|---|---|---|
+{% for p in ['P1', 'P2', 'P3', 'P4'] %}
+| {{ p }} | {{ f.ti.sla[p].resolucao }} | {{ f.ti.sla[p].resposta }} | {{ f.ti.sla[p].descricao }} |
+{% endfor %}
+
+Os prazos de P3 e P4 são contados em dias úteis. Os de P1 e P2 são contados em horas corridas dentro do horário de atendimento, exceto P1, que tem plantão {{ f.ti.sla.plantao_p1 }}.
+
+## Horário de atendimento
+
+O atendimento regular funciona de {{ f.ti.sla.horas_atendimento }}. Para chamados P1 fora desse horário, ligue para o ramal {{ f.ti.sla.ramal }}, que é encaminhado ao plantão.
+
+## Como abrir um chamado
+
+1. Acesse o {{ f.sistemas.chamados }} pelo {{ f.sistemas.intranet }} e escolha *Incidente* (algo parou de funcionar) ou *Requisição* (você precisa de algo novo).
+2. Descreva o que aconteceu, desde quando e qual o impacto. Anexe uma imagem do erro, se houver.
+3. Indique se mais pessoas ou a operação do CD foram afetadas. Isso ajuda a definir a prioridade correta.
+
+Também é possível abrir chamados por e-mail ({{ email('ti') }}) ou pelo ramal {{ f.ti.sla.ramal }}.
+
+## Filas de atendimento
+
+Os chamados são encaminhados para uma das filas: {{ f.ti.sla.filas | join(', ') }}. O N1 resolve o que é rotineiro, como senhas e dúvidas; as demais filas tratam infraestrutura, sistemas e segurança.
+
+## Exemplos de classificação
+
+- *"O BrisaWMS não abre em nenhum coletor do CD Campinas."* → **P1**, pois a operação está parada.
+- *"Não consigo emitir notas fiscais no BrisaERP desde cedo."* → **P2**, porque o faturamento está bloqueado.
+- *"Minha impressora está falhando na etiqueta."* → **P3**, pois existe outra impressora no andar.
+- *"Preciso do pacote de design instalado."* → **P4**, uma requisição simples.
+
+## O que acontece se o prazo estourar
+
+Quando um chamado chega a {{ f.ti.sla.alerta_pct }}% do prazo sem solução, o sistema avisa o gerente de Infraestrutura e Suporte. Se o prazo vencer, o solicitante recebe uma atualização com o motivo e a nova previsão. Chamados P1 geram um relato de causa raiz em até {{ f.ti.sla.rca_dias_uteis }} dias úteis.
+
+## Reclassificação
+
+Se você acredita que a prioridade está errada, responda ao chamado explicando o impacto. A TI reavalia e pode subir ou baixar a prioridade.
