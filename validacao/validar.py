@@ -381,13 +381,31 @@ def checa_tickets(ficha):
             erro(f"tickets {r['id']}: {r['prioridade']} deve ser incidente (SLA crítico)")
         if r["prioridade"] == "P1" and r["sentimento"] == "positivo":
             erro(f"tickets {r['id']}: P1 com sentimento positivo é incoerente")
+        if r["dificuldade"] not in ("facil", "dificil"):
+            erro(f"tickets {r['id']}: dificuldade inválida {r['dificuldade']!r}")
+        sec = r["categoria_secundaria"]
+        if sec and (sec not in CATEGORIAS or sec == r["categoria"]):
+            erro(f"tickets {r['id']}: categoria_secundaria inválida ({sec!r}) — deve ser outra categoria válida")
+        if sec and r["dificuldade"] != "dificil":
+            erro(f"tickets {r['id']}: ticket ambíguo deve ter dificuldade=dificil")
         if not r["descricao"].strip() or not r["assunto"].strip():
             erro(f"tickets {r['id']}: texto vazio")
         dt.date.fromisoformat(r["data"])
+    n = len(t)
+    dificeis = sum(r["dificuldade"] == "dificil" for r in t)
+    ambiguos = sum(bool(r["categoria_secundaria"]) for r in t)
+    vagos = sum(len(r["descricao"].split()) <= 6 for r in t)
+    if dificeis / n < 0.20:
+        erro(f"tickets difíceis: {dificeis / n:.1%} (mínimo 20%)")
+    if ambiguos / n < 0.10:
+        erro(f"tickets ambíguos: {ambiguos / n:.1%} (mínimo 10%)")
+    if vagos / n < 0.04:
+        erro(f"tickets muito curtos (1 a 6 palavras): {vagos / n:.1%} (esperado ≈ 5%)")
+    stats["tickets_dificuldade"] = {"dificeis": dificeis, "ambiguos": ambiguos, "muito_curtos": vagos, "pct_dificeis": round(100 * dificeis / n, 1)}
     stats["tickets"] = {"total": len(t), "categoria": dict(Counter(r["categoria"] for r in t)),
                         "prioridade": dict(sorted(Counter(r["prioridade"] for r in t).items())),
                         "sentimento": dict(Counter(r["sentimento"] for r in t)), "fila": dict(Counter(r["fila"] for r in t)),
-                        "tipo": dict(Counter(r["tipo"] for r in t))}
+                        "tipo": dict(Counter(r["tipo"] for r in t)), "dificuldade": dict(Counter(r["dificuldade"] for r in t))}
 
 
 def checa_repositorio():
@@ -451,7 +469,9 @@ def relatorio():
             "Pares espelho": ac["pares_espelho"], "Itens sobre CSVs restritos": ac["csv_restritos"], "Perguntas públicas (colaborador)": ac["publicas"]}, "Métrica", "Valor")]
     tk = s["tickets"]
     out += ["\n### Tickets de TI\n", tabela(tk["categoria"], "Categoria", "Tickets"), "\n", tabela(tk["prioridade"], "Prioridade", "Tickets"), "\n",
-            tabela(tk["sentimento"], "Sentimento", "Tickets"), "\n", tabela(tk["fila"], "Fila", "Tickets"), "\n", tabela(tk["tipo"], "Tipo", "Tickets")]
+            tabela(tk["sentimento"], "Sentimento", "Tickets"), "\n", tabela(tk["fila"], "Fila", "Tickets"), "\n", tabela(tk["tipo"], "Tipo", "Tickets"), "\n", tabela(tk["dificuldade"], "Dificuldade", "Tickets"),
+            f"\nAmbíguos (duas categorias): **{s['tickets_dificuldade']['ambiguos']}**; muito curtos (≤ 6 palavras): **{s['tickets_dificuldade']['muito_curtos']}**; "
+            f"difíceis no total: **{s['tickets_dificuldade']['pct_dificeis']}%**.\n"]
     (RAIZ / "validacao" / "relatorio.md").write_text("".join(x if x.endswith("\n") or x == "" else x for x in out), encoding="utf-8")
 
 
@@ -472,7 +492,7 @@ def atualizar_readme():
         linhas.append(f"| &nbsp;&nbsp;↳ `{tp}` | {q['tipo_treino'].get(tp, 0) + q['tipo_teste'].get(tp, 0)} |")
     mm = s["memorizacao"]
     linhas += [f"| Pares de memorização (`qa_memorizacao_*`) | {mm['treino'] + mm['teste']} ({mm['treino']} + {mm['teste']}) |"]
-    linhas += [f"| Perguntas de avaliação | {s['avaliacao']['total']} |", f"| Itens de avaliação de acesso | {s['acesso']['itens']} ({s['acesso']['negar']} negar, {s['acesso']['responder']} responder) |", f"| Tickets de TI | {s['tickets']['total']} |"]
+    linhas += [f"| Perguntas de avaliação | {s['avaliacao']['total']} |", f"| Itens de avaliação de acesso | {s['acesso']['itens']} ({s['acesso']['negar']} negar, {s['acesso']['responder']} responder) |", f"| Tickets de TI | {s['tickets']['total']} ({s['tickets_dificuldade']['dificeis']} difíceis, {s['tickets_dificuldade']['ambiguos']} ambíguos) |"]
     novo = "<!-- STATS:START -->\n" + "\n".join(linhas) + "\n<!-- STATS:END -->"
     readme = (RAIZ / "README.md").read_text(encoding="utf-8")
     readme = re.sub(r"<!-- STATS:START -->.*?<!-- STATS:END -->", lambda _m: novo, readme, flags=re.S)

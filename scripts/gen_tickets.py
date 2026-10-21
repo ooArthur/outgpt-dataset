@@ -341,6 +341,150 @@ def aplica_abrev(txt, rng):
     return txt
 
 
+def compor(cen, prio, sent, depto, rng, anexo=None):
+    """Monta (assunto, texto) de um ticket. A ordem das chamadas ao rng é a original; `anexo` (segundo problema) não sorteia nada."""
+    cat, fila, tipo, prios, assuntos, descs, dpref = cen
+    slots = {"s": rng.choice(SISTEMAS_ACESSO), "l": rng.choice(LOCAIS), "sw": rng.choice(SOFTWARES), "e": rng.choice(EQUIPS),
+             "m": rng.choice(MOTIVOS_PICO), "n": rng.choice(["3", "4", "5", "seis", "oito"]), "d": depto}
+    assunto = rng.choice(assuntos).format(**slots)
+    corpo = rng.choice(descs).format(**slots)
+    if anexo:
+        corpo = corpo.rstrip() + " " + anexo
+    partes = []
+    if sent == "frustrado":
+        partes.append(rng.choice(FRUSTRADO_ABRE))
+    if sent == "urgente" and rng.random() < 0.6:
+        partes.append(rng.choice(URGENTE_ABRE))
+    partes.append(corpo)
+    base = prios[0][0]
+    if prio < base:
+        partes.append(rng.choice(IMPACTO_ALTO))
+    elif prio > base:
+        partes.append(rng.choice(IMPACTO_BAIXO))
+    comp = rng.random()
+    banco = EXTRAS_REQ if tipo == "requisição" else EXTRAS
+    if comp > 0.60:  # longo
+        partes += rng.sample(banco, rng.choice([2, 3]))
+    elif comp > 0.40:
+        partes.append(rng.choice(banco))
+    if sent == "frustrado":
+        partes.append(rng.choice(FRUSTRADO_FECHA))
+    if sent == "positivo":
+        partes.append(rng.choice(POSITIVO))
+    texto = " ".join(partes)
+    if comp < 0.15 and not anexo:  # curto: só a primeira frase útil
+        texto = " ".join(partes[:2]) if sent in ("frustrado", "urgente") else corpo.split(". ")[0].rstrip(".") + "."
+    if sent == "urgente" and rng.random() < 0.5:
+        assunto = "[URGENTE] " + assunto
+    if rng.random() < 0.7:
+        texto = rng.choice(SAUDACOES) + " " + texto
+    if rng.random() < 0.45:
+        texto = texto + " " + rng.choice(FECHAMENTOS)
+    if rng.random() < 0.22:
+        texto = aplica_abrev(texto, rng)
+        assunto = aplica_abrev(assunto, rng)
+    if rng.random() < 0.10:
+        texto, assunto = texto.lower(), assunto.lower()
+    if rng.random() < 0.06:
+        texto = sem_acento(texto)
+    if sent == "frustrado" and rng.random() < 0.3:
+        texto = texto.replace(".", "!", 1)
+    return assunto, texto, slots
+
+
+# ----------------------------------------------------------------------------- tickets difíceis (v1.1)
+N_AMBIGUOS, N_VAGOS, N_INFORMAIS = 55, 25, 25  # 11%, 5% e 5% de 500
+CONECTORES = ["Além disso,", "Aproveitando,", "E também:", "Outro problema:", "Ah, e"]
+VAGO_GENERICO = ["não funciona", "sistema fora", "deu erro", "travou", "não abre", "sem acesso", "preciso de ajuda", "problema de novo", "tá estranho"]
+VAGO_CAT = {
+    "Acesso e Senhas": ["não consigo entrar", "senha não vai", "acesso negado"], "E-mail e Colaboração": ["e-mail não chega", "caixa cheia"],
+    "Rede e VPN": ["sem internet", "vpn caiu", "rede lenta"], "Hardware": ["não liga", "tela preta", "quebrou"],
+    "Software e Licenças": ["programa não abre", "licença expirou"], "Sistemas Internos": ["sistema fora", "erro no sistema", "wms parado"],
+    "Impressão": ["não imprime", "impressora parada"], "Segurança": ["email estranho", "acho que fui hackeado"]}
+VAGO_SENT = {"frustrado": ["de novo isso!", "já falei, não funciona!", "ninguém resolve"], "urgente": ["URGENTE não funciona", "urgente, parou tudo"],
+             "positivo": ["valeu, mas continua sem funcionar", "obrigado, ainda não resolveu"]}
+GIRIAS_ABRE = ["mano,", "cara,", "fala ae,", "e aí galera,", "pessoal da ti,", "migo,", "bom diaaa,"]
+GIRIAS_FECHA = ["vlw", "valeu mano", "pfv ajuda ae", "abç", "tmj"]
+GIRIAS_MAPA = [(r"\bnão\b", "ñ"), (r"\bvocê\b", "vc"), (r"\bpara\b", "pra"), (r"\bque\b", "q"), (r"\bestá\b", "tá"), (r"\bestou\b", "to"),
+               (r"\btambém\b", "tbm"), (r"\bporque\b", "pq"), (r"\bobrigad[oa]\b", "vlw"), (r"\bpor favor\b", "pfv"), (r"\bde novo\b", "dnv"),
+               (r"\bmuito\b", "mt"), (r"\bproblema\b", "pb"), (r"\bmensagem\b", "msg"), (r"\bhoje\b", "hj"), (r"\bagora\b", "agr"),
+               (r"\bcomputador\b", "pc"), (r"\bsistema\b", "sist"), (r"\bimpressora\b", "impressra"), (r"\bpreciso\b", "presiso")]
+NOMES_SIS = ("Brisa", "Rota", "Pessoas", "Ponto", "Portal", "Service")
+
+
+def minuscula_inicial(frase):
+    primeira = frase.split()[0]
+    if primeira.startswith(NOMES_SIS) or not (primeira[0].isupper() and primeira[1:].islower()):
+        return frase
+    return frase[0].lower() + frase[1:]
+
+
+def digita_errado(txt, rng, prob):
+    import re
+    palavras = txt.split(" ")
+    for i, p in enumerate(palavras):
+        m = re.match(r"^(\W*)([A-Za-zÀ-ú]{5,})(\W*)$", p)
+        if m and rng.random() < prob:
+            pre, w, suf = m.groups()
+            k = rng.randint(1, len(w) - 3)
+            palavras[i] = pre + (w[:k] + w[k + 1] + w[k] + w[k + 2:] if rng.random() < 0.6 else w[:k] + w[k + 1:]) + suf
+    return " ".join(palavras)
+
+
+def gagueira_informal(txt, rng):
+    """Vocabulário informal pesado: gírias, abreviações, minúsculas, sem acento e erros de digitação."""
+    import re
+    for a, b in GIRIAS_MAPA:
+        if rng.random() < 0.9:
+            txt = re.sub(a, b, txt, flags=re.I)
+    txt = digita_errado(txt, rng, 0.22)
+    txt = rng.choice(GIRIAS_ABRE) + " " + txt.lower()
+    txt = sem_acento(txt).replace(". ", " ").replace(",", "" if rng.random() < 0.5 else ",")
+    return txt.rstrip(".") + " " + rng.choice(GIRIAS_FECHA)
+
+
+def candidatos(cat, prio, fila, tipo):
+    todos = [c for c in CENARIOS if c[0] == cat and any(p == prio for p, _ in c[3])]
+    return ([c for c in todos if c[1] == fila and c[2] == tipo] or [c for c in todos if c[1] == fila] or todos)
+
+
+def endurecer(tickets, vistos, rng):
+    """Troca 105 tickets (21%) por versões difíceis, preservando categoria, prioridade, sentimento, data e departamento do ticket trocado."""
+    idx = list(range(len(tickets)))
+    rng.shuffle(idx)
+    grupos = (("ambiguo", idx[:N_AMBIGUOS]), ("vago", idx[N_AMBIGUOS:N_AMBIGUOS + N_VAGOS]),
+              ("informal", idx[N_AMBIGUOS + N_VAGOS:N_AMBIGUOS + N_VAGOS + N_INFORMAIS]))
+    for tipo_dif, indices in grupos:
+        for i in indices:
+            v = tickets[i]
+            for _ in range(50):
+                cen = rng.choice(candidatos(v["categoria"], v["prioridade"], v["fila"], v["tipo"]))
+                anexo, sec = None, ""
+                if tipo_dif == "ambiguo":
+                    outro = rng.choice([c for c in CENARIOS if c[0] != v["categoria"]])
+                    sl = {"s": rng.choice(SISTEMAS_ACESSO), "l": rng.choice(LOCAIS), "sw": rng.choice(SOFTWARES), "e": rng.choice(EQUIPS),
+                          "m": rng.choice(MOTIVOS_PICO), "n": "4", "d": v["departamento_solicitante"]}
+                    frase = rng.choice(outro[5]).format(**sl).split(". ")[0].rstrip(".")
+                    anexo = f"{rng.choice(CONECTORES)} {minuscula_inicial(frase)}."
+                    sec = outro[0]
+                    assunto2 = minuscula_inicial(rng.choice(outro[4]).format(**sl))
+                assunto, texto, _ = compor(cen, v["prioridade"], v["sentimento"], v["departamento_solicitante"], rng, anexo=anexo)
+                if tipo_dif == "ambiguo":
+                    assunto = f"{assunto} e {assunto2}"
+                elif tipo_dif == "vago":
+                    opcoes = VAGO_SENT.get(v["sentimento"], []) if v["sentimento"] != "neutro" else []
+                    texto = rng.choice(opcoes) if opcoes and rng.random() < 0.8 else rng.choice(VAGO_CAT[v["categoria"]] + VAGO_GENERICO)
+                else:
+                    texto, assunto = gagueira_informal(texto, rng), sem_acento(assunto.lower())
+                chave = normaliza(assunto + texto)
+                if chave not in vistos:
+                    vistos.add(chave)
+                    break
+            else:
+                raise RuntimeError(f"não foi possível gerar ticket difícil ({tipo_dif})")
+            v.update({"assunto": assunto, "descricao": texto, "fila": cen[1], "tipo": cen[2], "dificuldade": "dificil", "categoria_secundaria": sec})
+
+
 def gerar():
     ficha = carregar_ficha()
     rng = random.Random(ficha["empresa"]["seed"] + 4)
@@ -360,55 +504,16 @@ def gerar():
         prio = prio_alvo
         sent = pesado(rng, SENT_POR_PRIO[prio])
         depto = rng.choice(dpref) if dpref and rng.random() < 0.8 else rng.choices(dep_nomes, weights=dep_pesos)[0]
-        slots = {"s": rng.choice(SISTEMAS_ACESSO), "l": rng.choice(LOCAIS), "sw": rng.choice(SOFTWARES), "e": rng.choice(EQUIPS),
-                 "m": rng.choice(MOTIVOS_PICO), "n": rng.choice(["3", "4", "5", "seis", "oito"]), "d": depto}
-        assunto = rng.choice(assuntos).format(**slots)
-        corpo = rng.choice(descs).format(**slots)
-        partes = []
-        if sent == "frustrado":
-            partes.append(rng.choice(FRUSTRADO_ABRE))
-        if sent == "urgente" and rng.random() < 0.6:
-            partes.append(rng.choice(URGENTE_ABRE))
-        partes.append(corpo)
-        base = prios[0][0]
-        if prio < base:
-            partes.append(rng.choice(IMPACTO_ALTO))
-        elif prio > base:
-            partes.append(rng.choice(IMPACTO_BAIXO))
-        comp = rng.random()
-        banco = EXTRAS_REQ if tipo == "requisição" else EXTRAS
-        if comp > 0.60:  # longo
-            partes += rng.sample(banco, rng.choice([2, 3]))
-        elif comp > 0.40:
-            partes.append(rng.choice(banco))
-        if sent == "frustrado":
-            partes.append(rng.choice(FRUSTRADO_FECHA))
-        if sent == "positivo":
-            partes.append(rng.choice(POSITIVO))
-        texto = " ".join(partes)
-        if comp < 0.15:  # curto: só a primeira frase útil
-            texto = " ".join(partes[:2]) if sent in ("frustrado", "urgente") else corpo.split(". ")[0].rstrip(".") + "."
-        if sent == "urgente" and rng.random() < 0.5:
-            assunto = "[URGENTE] " + assunto
-        if rng.random() < 0.7:
-            texto = rng.choice(SAUDACOES) + " " + texto
-        if rng.random() < 0.45:
-            texto = texto + " " + rng.choice(FECHAMENTOS)
-        if rng.random() < 0.22:
-            texto = aplica_abrev(texto, rng)
-            assunto = aplica_abrev(assunto, rng)
-        if rng.random() < 0.10:
-            texto, assunto = texto.lower(), assunto.lower()
-        if rng.random() < 0.06:
-            texto = sem_acento(texto)
-        if sent == "frustrado" and rng.random() < 0.3:
-            texto = texto.replace(".", "!", 1)
+        assunto, texto, _ = compor(cen, prio, sent, depto, rng)
         chave = normaliza(assunto + texto)
         if chave in vistos:
             continue
         vistos.add(chave)
         tickets.append({"data": rng.choice(dias_uteis).isoformat(), "departamento_solicitante": depto, "assunto": assunto,
                         "descricao": texto, "categoria": cat, "fila": fila, "prioridade": prio, "tipo": tipo, "sentimento": sent})
+    for t in tickets:
+        t.update({"dificuldade": "facil", "categoria_secundaria": ""})
+    endurecer(tickets, vistos, random.Random(ficha["empresa"]["seed"] + 41))
     tickets.sort(key=lambda t: t["data"])
     for i, t in enumerate(tickets, 1):
         t["id"] = f"TI-2026-{i:04d}"
@@ -417,7 +522,8 @@ def gerar():
 
 def main():
     t = gerar()
-    campos = ["id", "data", "departamento_solicitante", "assunto", "descricao", "categoria", "fila", "prioridade", "tipo", "sentimento"]
+    campos = ["id", "data", "departamento_solicitante", "assunto", "descricao", "categoria", "fila", "prioridade", "tipo", "sentimento",
+              "dificuldade", "categoria_secundaria"]
     escrever_csv("tickets/tickets_ti.csv", campos, t)
     from collections import Counter
     print("tickets:", len(t), dict(Counter(x["prioridade"] for x in t)), dict(Counter(x["sentimento"] for x in t)))

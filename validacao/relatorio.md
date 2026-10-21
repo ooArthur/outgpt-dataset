@@ -16,7 +16,7 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 | data/financeiro_trimestral.csv | 1.1 KB |
 | data/funcionarios.csv | 18.1 KB |
 | data/orcamento_departamentos_2026.csv | 1.4 KB |
-| tickets/tickets_ti.csv | 142.5 KB |
+| tickets/tickets_ti.csv | 149.1 KB |
 
 - `docs/`: **46** documentos (306–712 palavras; média 376).
 ### Documentos por área
@@ -153,3 +153,10 @@ Treino: **1180** pares (318 fatos); teste: **309** pares (309 fatos).
 |---|---:|
 | incidente | 364 |
 | requisição | 136 |
+
+| Dificuldade | Tickets |
+|---|---:|
+| dificil | 105 |
+| facil | 395 |
+
+Ambíguos (duas categorias): **55**; muito curtos (≤ 6 palavras): **29**; difíceis no total: **21.0%**.
