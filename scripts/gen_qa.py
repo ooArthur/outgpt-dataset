@@ -18,6 +18,7 @@ WH = ("Qual", "Quais", "Quanto", "Quantos", "Quantas", "Como", "Quem", "Onde", "
 ABERTURAS = ["oi, ", "oi! ", "bom dia, ", "boa tarde, ", "e aí, ", "me tira uma dúvida: ", "só uma dúvida: ", "gente, ", "fala, "]
 FORMAIS_WH = ["Poderia me informar ", "Gostaria de saber ", "Pode me dizer ", "Por favor, me explique "]
 FORMAIS_GERAL = ["Tenho uma dúvida: ", "Pergunta rápida: ", "Preciso confirmar uma informação: "]
+FORMAIS_SUFIXO = [", por favor?", ", se possível?", ", se não for incômodo?"]
 AREAS_SUG = {
     "rh": "Pessoas e Cultura (rh@brisalog.example)", "financeiro": "Financeiro e Controladoria (financeiro@brisalog.example)",
     "ti": "TI (ti@brisalog.example)", "comercial": "o Comercial (comercial@brisalog.example)",
@@ -48,10 +49,18 @@ def informal(q, rng):
     return s
 
 
+PRIMEIRA_PESSOA = re.compile(r"^(Preciso|Quero|Gostaria|Tenho|Posso|Poderia|Pode|Consigo|Vou)\b")
+
+
 def formal(q, rng):
     if q.startswith(WH):
         return rng.choice(FORMAIS_WH) + lower_first(q)
-    return rng.choice(FORMAIS_GERAL) + q
+    prefixo = rng.choice(FORMAIS_GERAL)  # sempre sorteia, para não alterar o rng do restante do dataset
+    if PRIMEIRA_PESSOA.match(q):
+        # já está em primeira pessoa: um prefixo empilharia duas aberturas. Cortesia no fim, sem novo sorteio
+        # (o sufixo é escolhido pelo índice do prefixo descartado), para que a pergunta continue distinta e o dataset estável.
+        return q.rstrip("?") + FORMAIS_SUFIXO[FORMAIS_GERAL.index(prefixo)]
+    return prefixo + q
 
 
 def typo(q, rng):
@@ -271,7 +280,7 @@ FORA = [
     "Faz um resumo do livro Dom Casmurro.", "Me ensina a jogar xadrez.", "Qual a melhor escola de Campinas para meu filho?",
     "Me ajuda a decidir em quem votar?", "Como abrir uma empresa própria no meu nome?",
     "Qual a melhor marca de celular atualmente?", "Escreva um discurso de formatura.", "Quanto tempo leva para assar um frango inteiro?",
-    "Me explica como funciona o mercado de ações.", "Quem escreveu Grande Sertão: Veredas?", "Como faço para trocar o pneu do carro?",
+    "Me explica como funciona o mercado de ações.", "Quem escreveu o livro Grande Sertão Veredas?", "Como faço para trocar o pneu do carro?",
     "Qual o signo de quem nasce em outubro?", "Me sugere um nome para o meu cachorro.", "Quais são os melhores destinos de praia do Nordeste?",
     "Como funciona o financiamento de um imóvel?", "Me ajuda a estudar para o ENEM?", "Qual é a letra da música Garota de Ipanema?",
 ]

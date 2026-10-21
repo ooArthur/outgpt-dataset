@@ -19,6 +19,8 @@ CATEGORIAS = {"Acesso e Senhas", "E-mail e Colaboração", "Rede e VPN", "Hardwa
 FILAS = {"N1", "N2", "Infraestrutura", "Sistemas", "Segurança"}
 TIPOS_QA = {"direta", "com_contexto", "sem_resposta", "multi_turno", "fora_de_escopo"}
 TIPOS_AVAL = {"simples", "numerica", "multi-documento", "versao_antiga_vs_nova", "sem_resposta", "fora_de_escopo"}
+ABERTURA_EMPILHADA = re.compile(r"^(Tenho uma dúvida|Pergunta rápida|Preciso confirmar uma informação|Poderia me informar|Gostaria de saber|"
+                                r"Pode me dizer|Por favor, me explique)[:,]? (Preciso|Quero|Gostaria|Tenho|Posso|Poderia|Pode)\b")
 SEGREDOS = re.compile(r"(ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|BEGIN (RSA |EC )?PRIVATE KEY)")
 
 erros, avisos, stats = [], [], {}
@@ -206,6 +208,8 @@ def checa_qa(fatos):
                 ids_split[sp].add(fid)
             for x in m:
                 if x["role"] == "user":
+                    if pergunta_de(x["content"]).count(":") >= 2 or ABERTURA_EMPILHADA.match(pergunta_de(x["content"])):
+                        erro(f"{loc}: abertura conversacional empilhada: {pergunta_de(x['content'])[:80]!r}")
                     q = normaliza(pergunta_de(x["content"]))
                     if q in perguntas:
                         erro(f"{loc}: pergunta duplicada (também em {perguntas[q]}): {pergunta_de(x['content'])[:70]!r}")

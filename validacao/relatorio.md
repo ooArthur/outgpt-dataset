@@ -7,8 +7,8 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 |---|---:|
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
 | fatos/fatos.jsonl | 325.1 KB |
-| qa/qa_teste.jsonl | 639.9 KB |
-| qa/qa_treino.jsonl | 3664.0 KB |
+| qa/qa_teste.jsonl | 639.8 KB |
+| qa/qa_treino.jsonl | 3663.6 KB |
 | data/catalogo_servicos.csv | 2.7 KB |
 | data/financeiro_trimestral.csv | 1.1 KB |
 | data/funcionarios.csv | 18.1 KB |
