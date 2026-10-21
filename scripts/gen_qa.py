@@ -314,7 +314,7 @@ def enriquecer(pares, fatos_por_id, ctxs, rng):
                 if (r_abre < 0.25 and m.get("status") != "revogada" and not re.search(r"\d", titulo)
                         and "Fonte:" not in resp and resp.split()[0] in ABERTURA_SEGURA):
                     resp = f"De acordo com {titulo}, {resp[0].lower()}{resp[1:]}"
-            if r_fecha < 0.15:
+            if r_fecha < 0.15 and fato["fonte_doc"].endswith(".md"):  # diretório (CSV): o contato "institucional" seria o RH, estranho p/ ramais
                 fonte = SUFIXO_FONTE.search(resp)
                 corpo, cauda = (resp[:fonte.start()], resp[fonte.start():]) if fonte else (resp, "")
                 resp = corpo + FECHOS[int(r_var * len(FECHOS))].format(area=AREAS_SUG[fato["area"]]) + cauda

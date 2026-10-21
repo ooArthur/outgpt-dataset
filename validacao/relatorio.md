@@ -8,14 +8,14 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 | avaliacao/perguntas_acesso.jsonl | 6.3 KB |
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
 | export/sft_memorizacao_teste.jsonl | 157.7 KB |
-| export/sft_teste.jsonl | 561.3 KB |
-| export/sft_treino_base.jsonl | 3227.4 KB |
-| export/sft_treino_memorizacao.jsonl | 3832.2 KB |
+| export/sft_teste.jsonl | 560.1 KB |
+| export/sft_treino_base.jsonl | 3223.0 KB |
+| export/sft_treino_memorizacao.jsonl | 3827.8 KB |
 | fatos/fatos.jsonl | 325.1 KB |
 | qa/qa_memorizacao_teste.jsonl | 225.5 KB |
 | qa/qa_memorizacao_treino.jsonl | 859.5 KB |
-| qa/qa_teste.jsonl | 650.4 KB |
-| qa/qa_treino.jsonl | 3717.9 KB |
+| qa/qa_teste.jsonl | 649.2 KB |
+| qa/qa_treino.jsonl | 3713.4 KB |
 | rag/chunks.jsonl | 280.0 KB |
 | data/catalogo_servicos.csv | 2.7 KB |
 | data/financeiro_trimestral.csv | 1.1 KB |
@@ -92,13 +92,13 @@ Treino: **1180** pares (318 fatos); teste: **309** pares (309 fatos).
 ### Diversidade das respostas (treino)
 | Métrica | Valor |
 |---|---:|
-| Palavras por resposta (média) | 23.9 |
-| Respostas distintas | 1020 (38.8%) |
+| Palavras por resposta (média) | 23.7 |
+| Respostas distintas | 985 (37.4%) |
 | Maior repetição de uma resposta | 63 |
 | Variantes de recusa em uso | 7 |
 | Recusa original (% das recusas) | 26.4 |
 
-> **Nota:** diversidade de respostas abaixo da meta da v1.1: {'palavras_por_resposta': 23.9, 'respostas_distintas': 1020, 'pct_distintas': 38.8, 'maior_repeticao': 63, 'variantes_recusa_usadas': 7, 'pct_recusa_original': 26.4}
+> **Nota:** diversidade de respostas abaixo da meta da v1.1: {'palavras_por_resposta': 23.7, 'respostas_distintas': 985, 'pct_distintas': 37.4, 'maior_repeticao': 63, 'variantes_recusa_usadas': 7, 'pct_recusa_original': 26.4}
 
 ### Avaliação
 | Tipo | Perguntas |
