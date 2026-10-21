@@ -1,0 +1,551 @@
+[rh/ferias] rag
+F: Após 12 meses de trabalho, o colaborador tem direito a 30 dias de férias.
+Q: Quantos dias de férias eu tenho por ano?
+Q: Qual é a duração das férias na Brisa Log?
+K: dias de férias
+A: Você tem direito a {{ f.rh.ferias.dias }} dias de férias depois de cada período de 12 meses de trabalho, conforme a política de férias.
+E: **{{ f.rh.ferias.dias }} dias de férias**
+
+[rh/ferias] rag
+F: As férias podem ser divididas em até 3 períodos, sendo um de no mínimo 14 dias corridos e os demais de no mínimo 5 dias corridos.
+Q: Posso dividir minhas férias? Em quantos períodos?
+Q: Como funciona o fracionamento de férias?
+K: fracionar férias
+A: Sim. As férias podem ser divididas em até {{ f.rh.ferias.fracionamento_max_periodos }} períodos, desde que um deles tenha no mínimo {{ f.rh.ferias.periodo_min_maior }} dias corridos e os demais tenham no mínimo {{ f.rh.ferias.periodo_min_demais }} dias corridos cada.
+E: **{{ f.rh.ferias.fracionamento_max_periodos }} períodos**
+
+[rh/ferias] rag
+F: É possível converter até 10 dias de férias em abono pecuniário.
+Q: Posso vender dias de férias? Quantos?
+Q: Quantos dias de férias posso converter em dinheiro?
+K: abono de férias
+A: Você pode converter até {{ f.rh.ferias.abono_dias }} dias de férias em dinheiro (abono pecuniário), pedindo junto com a solicitação das férias. Quem escolhe o abono goza os {{ f.rh.ferias.dias - f.rh.ferias.abono_dias }} dias restantes.
+E: até **{{ f.rh.ferias.abono_dias }} dias**
+
+[rh/ferias] rag
+F: O pedido de férias deve ser aberto no PessoasHub com pelo menos 30 dias de antecedência.
+Q: Com quanto tempo de antecedência devo pedir férias?
+Q: Qual o prazo para solicitar férias?
+K: antecedência pedido férias
+A: O pedido deve ser aberto no PessoasHub com pelo menos {{ f.rh.ferias.antecedencia_pedido_dias }} dias de antecedência.
+E: **pelo menos {{ f.rh.ferias.antecedencia_pedido_dias }} dias de antecedência**
+
+[rh/ferias] ft
+F: O gestor imediato aprova ou sugere nova data para as férias.
+Q: Quem aprova meu pedido de férias?
+Q: Quem decide as datas das minhas férias?
+K: aprovação de férias
+A: Quem analisa o pedido de férias é o gestor imediato, que aprova ou sugere uma nova data considerando a escala da equipe. Depois, Pessoas e Cultura confirma e emite o aviso de férias.
+E: O {{ f.rh.ferias.aprovador }} analisa e aprova
+
+[rh/ferias] rag
+F: O pagamento das férias é feito até 2 dias antes do início do período.
+Q: Quando recebo o pagamento das férias?
+Q: Com quantos dias de antecedência as férias são pagas?
+K: pagamento de férias
+A: O pagamento das férias, com o adicional de um terço, é feito até {{ f.rh.ferias.pagamento_antecedencia_dias }} dias antes do início do período.
+E: até **{{ f.rh.ferias.pagamento_antecedencia_dias }} dias antes do início**
+
+[rh/ferias] ft
+F: Não é possível vender as férias inteiras; o abono é limitado.
+Q: Posso vender todas as minhas férias?
+Q: Dá para converter as férias inteiras em dinheiro?
+K: vender férias inteiras
+A: Não. O abono é limitado a {{ f.rh.ferias.abono_dias }} dias, então você precisa gozar o restante das férias.
+E: O abono é limitado a {{ f.rh.ferias.abono_dias }} dias
+
+[rh/ferias] ft
+F: Nos meses de pico, de outubro a dezembro, a escala de férias dos CDs é definida pelo supervisor com mais antecedência.
+Q: Como ficam as férias de quem trabalha no CD no fim do ano?
+Q: Tem alguma regra especial de férias para a operação nos meses de pico?
+K: férias no CD fim de ano
+A: O processo é o mesmo, mas nos meses de pico, como outubro a dezembro, o supervisor define a escala de turnos com mais antecedência. Combine as datas cedo.
+E: outubro a dezembro
+
+[rh/beneficios] rag
+F: O vale-refeição é de R$ 42 por dia trabalhado.
+Q: Qual é o valor do vale-refeição?
+Q: Quanto é o VR por dia?
+K: valor do VR
+A: O vale-refeição é de {{ brl(f.rh.beneficios.vr_dia) }} por dia trabalhado, creditado mensalmente em cartão.
+E: {{ brl(f.rh.beneficios.vr_dia) }} por dia trabalhado
+
+[rh/beneficios] rag
+F: O vale-alimentação é de R$ 380 por mês.
+Q: Qual o valor do vale-alimentação?
+Q: Quanto é o VA mensal?
+K: valor do VA
+A: O vale-alimentação é de {{ brl(f.rh.beneficios.va_mes) }} por mês, creditado em cartão para uso em supermercados.
+E: {{ brl(f.rh.beneficios.va_mes) }} por mês
+
+[rh/beneficios] rag
+F: A empresa custeia 70% da mensalidade do plano de saúde do titular, com coparticipação.
+Q: Quanto a empresa paga do plano de saúde?
+Q: O plano de saúde tem coparticipação?
+K: plano de saúde empresa paga
+A: O plano de saúde tem coparticipação, e a empresa custeia {{ f.rh.beneficios.saude_empresa_pct }}% da mensalidade do titular.
+E: **{{ f.rh.beneficios.saude_empresa_pct }}%** da mensalidade do titular
+
+[rh/beneficios] rag
+F: A coparticipação do plano de saúde é de R$ 25 por consulta e R$ 15 por exame simples.
+Q: Quanto pago de coparticipação por consulta?
+Q: Qual o valor da coparticipação em exames?
+K: coparticipação consulta exame
+A: Na coparticipação do plano de saúde, o colaborador paga {{ brl(f.rh.beneficios.saude_copart_consulta) }} por consulta e {{ brl(f.rh.beneficios.saude_copart_exame) }} por exame simples.
+E: {{ brl(f.rh.beneficios.saude_copart_consulta) }} por consulta
+
+[rh/beneficios] ft
+F: Dependentes podem ser incluídos no plano de saúde mediante pagamento integral da mensalidade deles.
+Q: Posso incluir meu cônjuge ou filhos no plano de saúde?
+Q: Como incluo dependentes no plano?
+K: dependentes no plano de saúde
+A: Sim. Dependentes podem ser incluídos no plano de saúde, mas a mensalidade deles é paga integralmente pelo colaborador.
+E: Dependentes podem ser incluídos mediante pagamento integral
+
+[rh/beneficios] ft
+F: O plano odontológico é opcional e custeado integralmente pelo colaborador; o seguro de vida é sem custo.
+Q: O plano odontológico é pago pela empresa?
+Q: O seguro de vida tem custo para o colaborador?
+K: odonto e seguro de vida
+A: O plano odontológico é opcional e custeado integralmente pelo colaborador. Já o seguro de vida é sem custo para o colaborador.
+E: O plano odontológico é {{ f.rh.beneficios.odonto }}
+
+[rh/beneficios] rag
+F: O auxílio-creche é de R$ 600 por mês para filhos de até 5 anos.
+Q: Qual o valor do auxílio-creche?
+Q: Até que idade do filho vale o auxílio-creche?
+K: auxílio-creche
+A: O auxílio-creche é de {{ brl(f.rh.beneficios.auxilio_creche) }} por mês para filhos de até {{ f.rh.beneficios.auxilio_creche_idade_anos }} anos, mediante comprovação de matrícula.
+E: {{ brl(f.rh.beneficios.auxilio_creche) }} por mês para filhos de até {{ f.rh.beneficios.auxilio_creche_idade_anos }} anos
+
+[rh/beneficios] rag
+F: O programa de bem-estar reembolsa 50% da mensalidade de academia, limitado a R$ 120 por mês.
+Q: A empresa reembolsa academia?
+Q: Qual o limite do reembolso de atividade física?
+K: reembolso academia
+A: Sim. O programa de bem-estar reembolsa {{ f.rh.beneficios.bem_estar_pct }}% da mensalidade de academia ou atividade física, limitado a {{ brl(f.rh.beneficios.bem_estar_teto) }} por mês.
+E: **{{ f.rh.beneficios.bem_estar_pct }}%** da mensalidade de academia
+
+[rh/beneficios] rag
+F: Todo colaborador tem direito a 1 dia de folga no mês do aniversário.
+Q: Tenho folga no meu aniversário?
+Q: Quantos dias de folga de aniversário eu tenho?
+K: folga de aniversário
+A: Sim. Todo colaborador tem direito a {{ f.rh.beneficios.folga_aniversario }} dia de folga no mês do aniversário, a combinar com o gestor.
+E: **{{ f.rh.beneficios.folga_aniversario }} dia de folga**
+
+[rh/beneficios] rag
+F: A primeira parcela do 13º salário é paga até 30 de novembro e a segunda até 20 de dezembro.
+Q: Quando é pago o 13º salário?
+Q: Quais as datas das parcelas do décimo terceiro?
+K: datas do 13º
+A: O 13º salário é pago em duas parcelas: a primeira até {{ f.rh.decimo_terceiro.parcela1_ate }} e a segunda até {{ f.rh.decimo_terceiro.parcela2_ate }}.
+E: a primeira até {{ f.rh.decimo_terceiro.parcela1_ate }}
+
+[rh/beneficios] rag
+F: O plano de saúde e os demais benefícios passam a valer após 30 dias da admissão; a adesão deve ser feita no PessoasHub nesse prazo.
+Q: Quando começa o plano de saúde de quem foi admitido?
+Q: Em quanto tempo preciso aderir aos benefícios depois de entrar?
+K: carência dos benefícios
+A: O plano de saúde e os demais benefícios passam a valer após {{ f.rh.beneficios.carencia_beneficios_dias }} dias da admissão, e a adesão deve ser feita no {{ f.sistemas.rh }} dentro desse prazo. Os benefícios de alimentação começam no primeiro mês.
+E: após {{ f.rh.beneficios.carencia_beneficios_dias }} dias da admissão
+
+[rh/beneficios] ft
+F: O extrato de benefícios fica no PessoasHub, na área Meus benefícios.
+Q: Onde vejo o extrato dos meus benefícios?
+Q: Como consulto meus benefícios?
+K: extrato de benefícios
+A: Você consulta o extrato no PessoasHub, na área *Meus benefícios*.
+E: na área *Meus benefícios*
+
+[rh/home-office] rag
+F: Colaboradores elegíveis podem trabalhar em home office 2 dias por semana.
+Q: Quantos dias de home office posso fazer por semana?
+Q: Qual é a regra atual de home office?
+K: dias de home office
+A: Pela política de 2026, os colaboradores elegíveis podem trabalhar de casa {{ f.rh.home_office.dias_semana }} dias por semana.
+E: **{{ f.rh.home_office.dias_semana }} dias por semana**
+
+[rh/home-office] ft
+F: Os dias presenciais coletivos são terça-feira e quarta-feira.
+Q: Quais são os dias presenciais obrigatórios?
+Q: Em quais dias da semana tenho que ir ao escritório?
+K: dias presenciais
+A: Os dias presenciais coletivos são {{ f.rh.home_office.dias_presenciais_fixos }}, para reuniões, treinamentos e encontros entre equipes.
+E: **{{ f.rh.home_office.dias_presenciais_fixos }}**
+
+[rh/home-office] ft
+F: O regime híbrido vale para as áreas administrativas e não se aplica a cargos operacionais de CD e frota.
+Q: Quem pode fazer home office?
+Q: Operador de empilhadeira pode trabalhar em home office?
+K: elegibilidade home office
+A: O regime híbrido vale para colaboradores das áreas administrativas. Não se aplica aos cargos operacionais de centro de distribuição e frota, como operadores de empilhadeira e motoristas.
+E: Não se aplica aos {{ f.rh.home_office.nao_elegiveis }}
+
+[rh/home-office] rag
+F: O auxílio internet do home office é de R$ 100 por mês.
+Q: Tem auxílio internet para quem trabalha em casa?
+Q: Qual o valor do auxílio internet?
+K: auxílio internet
+A: Sim. O auxílio internet do home office é de {{ brl(f.rh.home_office.auxilio_internet) }} por mês.
+E: Auxílio internet | {{ brl(f.rh.home_office.auxilio_internet) }}
+
+[rh/home-office] rag
+F: A ajuda de custo única para estrutura de home office é de R$ 500.
+Q: Existe ajuda para comprar cadeira ou mesa para o home office?
+Q: Qual o valor da ajuda de estrutura do home office?
+K: ajuda de estrutura home office
+A: Sim. Existe uma ajuda de custo única de {{ brl(f.rh.home_office.ajuda_estrutura_unica) }} para estrutura (cadeira, mesa, iluminação), paga após a primeira semana em regime híbrido, mediante solicitação no {{ f.sistemas.rh }}.
+E: {{ brl(f.rh.home_office.ajuda_estrutura_unica) }} | pagamento único
+
+[rh/home-office] ft
+F: Em home office, o acesso a sistemas internos deve ser feito pela BrisaVPN e o ponto continua obrigatório.
+Q: Como acesso os sistemas internos em home office?
+Q: Preciso bater ponto no home office?
+K: regras do home office
+A: Em home office, o acesso a sistemas internos deve ser feito pela BrisaVPN, com verificação em duas etapas, e o ponto deve ser registrado normalmente no PontoBrisa.
+E: Acesse sistemas internos somente pela {{ f.ti.vpn.nome }}
+
+[rh/home-office-v2025] rag
+F: Pela política de 2025 (revogada), o home office era de 1 dia por semana, sem auxílio internet e sem ajuda de estrutura.
+Q: Quantos dias de home office valiam na política de 2025?
+Q: Como era a regra de home office em 2025?
+K: home office em 2025
+A: A política de 2025 está revogada. Nela, o home office era de {{ f.rh.home_office.v2025.dias_semana }} dia por semana, sem auxílio internet e sem ajuda de estrutura. Hoje vale a política de 2026, com {{ f.rh.home_office.dias_semana }} dias por semana.
+E: {{ f.rh.home_office.v2025.dias_semana }} dia por semana
+
+[rh/home-office-v2025] rag
+F: A política de home office de 2025 vigorou de 01/01/2025 a 31/12/2025.
+Q: Até quando valeu a política de home office de 2025?
+Q: A política de home office de 2025 ainda está em vigor?
+K: vigência home office 2025
+A: Não. A política de home office de 2025 vigorou de {{ iso_br(f.rh.home_office.v2025.vigencia_inicio) }} a {{ iso_br(f.rh.home_office.v2025.vigencia_fim) }} e foi substituída pela política de 2026.
+E: de {{ iso_br(f.rh.home_office.v2025.vigencia_inicio) }} a {{ iso_br(f.rh.home_office.v2025.vigencia_fim) }}
+
+[rh/home-office-v2025] ft
+F: Em 2025, o home office era restrito a quem já tinha concluído o período de experiência.
+Q: Quem podia fazer home office em 2025?
+Q: Em 2025, funcionário novo podia trabalhar de casa?
+K: elegibilidade home office 2025
+A: Pela política revogada de 2025, só podiam fazer home office colaboradores das áreas administrativas que já tivessem concluído o período de experiência de {{ f.rh.onboarding.periodo_experiencia_dias }} dias.
+E: pelo menos {{ f.rh.onboarding.periodo_experiencia_dias }} dias de empresa
+
+[rh/onboarding-dia-1] rag
+F: A recepção no primeiro dia é às 09:00.
+Q: A que horas devo chegar no meu primeiro dia?
+Q: Qual o horário de recepção do onboarding?
+K: horário primeiro dia
+A: A recepção no primeiro dia é às {{ f.rh.onboarding.horario_dia1 }}, na {{ f.rh.onboarding.local_dia1 }}.
+E: | {{ f.rh.onboarding.horario_dia1 }} |
+
+[rh/onboarding-dia-1] ft
+F: No primeiro dia o novo colaborador recebe crachá, kit de boas-vindas, notebook (quando o cargo exige) e acessos básicos.
+Q: O que eu recebo no primeiro dia de trabalho?
+Q: Quando recebo meu notebook?
+K: o que recebo no onboarding
+A: No primeiro dia você recebe crachá e kit de boas-vindas, além do equipamento e dos acessos básicos (e-mail, chat, PessoasHub e Portal Brisa). O notebook é entregue pela TI à tarde, quando o cargo exige.
+E: Crachá de acesso e kit de boas-vindas
+
+[rh/onboarding-dia-1] rag
+F: Os treinamentos obrigatórios devem ser concluídos nos primeiros 15 dias: Código de Conduta, LGPD e privacidade, Segurança da informação e Segurança no trabalho.
+Q: Quais treinamentos são obrigatórios para quem entra?
+Q: Em quantos dias preciso concluir os treinamentos obrigatórios?
+K: treinamentos obrigatórios
+A: Nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias você conclui: {{ f.rh.onboarding.treinamentos | join('; ') }}.
+E: Nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias
+
+[rh/onboarding-dia-1] rag
+F: O buddy acompanha o novo colaborador por 8 semanas.
+Q: Por quanto tempo o buddy me acompanha?
+Q: O que é o buddy e quanto tempo dura o acompanhamento?
+K: duração do buddy
+A: O buddy é um colega experiente que acompanha você por {{ f.rh.onboarding.buddy_semanas }} semanas.
+E: por {{ f.rh.onboarding.buddy_semanas }} semanas
+
+[rh/onboarding-dia-1] rag
+F: O período de experiência é de 90 dias.
+Q: Quanto tempo dura o período de experiência?
+Q: O contrato começa com experiência de quantos dias?
+K: período de experiência
+A: O contrato começa com um período de experiência de {{ f.rh.onboarding.periodo_experiencia_dias }} dias.
+E: período de experiência de {{ f.rh.onboarding.periodo_experiencia_dias }} dias
+
+[rh/plano-30-60-90] rag
+F: Os check-ins formais do plano de integração acontecem nos dias 7, 30, 60 e 90.
+Q: Em que dias acontecem os check-ins do plano 30-60-90?
+Q: Quando são as conversas de acompanhamento do onboarding?
+K: dias dos check-ins
+A: Os check-ins formais acontecem nos dias {{ f.rh.onboarding.checkin_dias | join(', ') }}, em conversas de cerca de 30 minutos com o gestor.
+E: nos dias {{ f.rh.onboarding.checkin_dias | join(', ') }}
+
+[rh/plano-30-60-90] ft
+F: Nos dias 1 a 30 o foco do plano de integração é conhecer a empresa, o time e as rotinas.
+Q: Qual o objetivo dos primeiros 30 dias de integração?
+Q: O que devo fazer no primeiro mês na empresa?
+K: primeiros 30 dias
+A: Nos dias 1 a 30 o objetivo é conhecer: entender a empresa, o time e as rotinas, concluir os treinamentos obrigatórios, aprender os sistemas básicos da função e acompanhar de perto o trabalho de um colega.
+E: Objetivo: entender a empresa, o time e as rotinas
+
+[rh/plano-30-60-90] ft
+F: Nos dias 31 a 60 o foco é contribuir; nos dias 61 a 90, assumir a rotina com autonomia e definir metas do primeiro ciclo.
+Q: O que se espera de mim entre o segundo e o terceiro mês?
+Q: O que acontece nos dias 61 a 90 do plano de integração?
+K: dias 61 a 90
+A: Nos dias 31 a 60 o foco é contribuir, executando parte das atividades com revisão do gestor. Nos dias 61 a 90 você assume a rotina completa e define, com o gestor, as metas do primeiro ciclo de desempenho.
+E: Objetivo: trabalhar com autonomia e definir metas
+
+[rh/jornada-e-ponto] rag
+F: A jornada é de 44 horas semanais, de segunda a sexta, o que equivale a 8h48 por dia.
+Q: Qual é a jornada de trabalho semanal?
+Q: Quantas horas por dia eu trabalho?
+K: jornada semanal
+A: A jornada é de {{ f.rh.jornada.horas_semanais }} horas semanais, de {{ f.rh.jornada.dias }}, o que equivale a {{ f.rh.jornada.horas_diarias }} por dia.
+E: **{{ f.rh.jornada.horas_semanais }} horas semanais**
+
+[rh/jornada-e-ponto] rag
+F: Nas áreas administrativas o horário é das 08:00 às 17:48, com 1 hora de intervalo.
+Q: Qual o horário de trabalho do administrativo?
+Q: Que horas entro e saio no escritório?
+K: horário administrativo
+A: Nas áreas administrativas o horário é das {{ f.rh.jornada.entrada_adm }} às {{ f.rh.jornada.saida_adm }}, com {{ f.rh.jornada.intervalo_min }} de intervalo para refeição.
+E: das {{ f.rh.jornada.entrada_adm }} às {{ f.rh.jornada.saida_adm }}
+
+[rh/jornada-e-ponto] ft
+F: O ponto é registrado no PontoBrisa, em quatro marcações por dia.
+Q: Onde registro o ponto?
+Q: Quantas marcações de ponto faço por dia?
+K: sistema de ponto
+A: O ponto é registrado no PontoBrisa, no computador, no aplicativo ou no relógio dos CDs, em quatro marcações por dia: entrada, saída para o intervalo, volta e saída.
+E: quatro marcações por dia
+
+[rh/jornada-e-ponto] rag
+F: A tolerância de ponto é de 10 minutos por dia.
+Q: Qual a tolerância de atraso no ponto?
+Q: Posso me atrasar quantos minutos sem desconto?
+K: tolerância de ponto
+A: A tolerância é de {{ f.rh.jornada.tolerancia_min }} minutos por dia, somando atrasos e saídas antecipadas.
+E: **{{ f.rh.jornada.tolerancia_min }} minutos por dia**
+
+[rh/jornada-e-ponto] rag
+F: O ajuste de ponto pode ser feito no PontoBrisa em até 3 dias após a data, com justificativa.
+Q: Esqueci de bater o ponto, até quando posso ajustar?
+Q: Qual o prazo para ajuste de ponto?
+K: ajuste de ponto
+A: Faça o ajuste no PontoBrisa em até {{ f.rh.jornada.ajuste_ponto_dias }} dias depois da data, com justificativa. O gestor aprova e o RH confere.
+E: em até **{{ f.rh.jornada.ajuste_ponto_dias }} dias**
+
+[rh/jornada-e-ponto] rag
+F: Horas extras exigem aprovação prévia do gestor, com limite de 2 horas por dia.
+Q: Qual o limite de horas extras por dia?
+Q: Preciso de aprovação para fazer hora extra?
+K: limite de hora extra
+A: Horas extras precisam de aprovação prévia do gestor, com limite de {{ f.rh.jornada.limite_he_dia }} horas por dia.
+E: **{{ f.rh.jornada.limite_he_dia }} horas por dia**
+
+[rh/jornada-e-ponto] rag
+F: O saldo do banco de horas deve ser compensado em até 6 meses.
+Q: Em quanto tempo preciso compensar o banco de horas?
+Q: Qual o prazo do banco de horas?
+K: prazo banco de horas
+A: O saldo do banco de horas deve ser compensado em até {{ f.rh.jornada.banco_horas_meses }} meses.
+E: em até **{{ f.rh.jornada.banco_horas_meses }} meses**
+
+[rh/plano-de-carreira] rag
+F: A promoção exige interstício mínimo de 18 meses no nível atual.
+Q: Qual o tempo mínimo para ser promovido?
+Q: Quanto tempo preciso ficar no mesmo nível antes de uma promoção?
+K: interstício mínimo
+A: A promoção exige interstício mínimo de {{ f.rh.carreira.intersticio_meses }} meses no nível atual, além de desempenho Atende ou acima e aderência aos valores.
+E: **interstício mínimo de {{ f.rh.carreira.intersticio_meses }} meses**
+
+[rh/plano-de-carreira] ft
+F: Existem duas trilhas de carreira: Técnica/Especialista e Gestão.
+Q: Quais são as trilhas de carreira da Brisa Log?
+Q: Preciso virar gestor para crescer na empresa?
+K: trilhas de carreira
+A: Existem duas trilhas: Técnica/Especialista, para quem quer se aprofundar em um tema, e Gestão, para quem quer coordenar equipes. Não é preciso virar gestor para crescer.
+E: **{{ f.rh.carreira.trilhas[0] }}:**
+
+[rh/plano-de-carreira] rag
+F: Os ciclos de promoção acontecem em abril e outubro.
+Q: Em quais meses acontecem as promoções?
+Q: Quando são os ciclos de promoção?
+K: ciclos de promoção
+A: As promoções são analisadas em dois ciclos por ano, em **{{ f.rh.carreira.ciclos_promocao[0] }} e {{ f.rh.carreira.ciclos_promocao[1] }}**.
+E: **{{ f.rh.carreira.ciclos_promocao[0] }} e {{ f.rh.carreira.ciclos_promocao[1] }}**
+
+[rh/plano-de-carreira] rag
+F: A data-base do reajuste coletivo é em maio.
+Q: Qual a data-base do reajuste coletivo?
+Q: Em que mês acontece o dissídio?
+K: data-base
+A: O reajuste coletivo é definido na data-base de {{ f.rh.carreira.data_base }}, conforme a convenção coletiva da categoria.
+E: data-base de **{{ f.rh.carreira.data_base }}**
+
+[rh/plano-de-carreira] ft
+F: As vagas internas são divulgadas primeiro no Portal Brisa.
+Q: Como me candidato a uma vaga interna?
+Q: Onde são divulgadas as vagas abertas para mudar de área?
+K: vagas internas
+A: As vagas abertas são divulgadas primeiro internamente no Portal Brisa. Para se candidatar, avise seu gestor.
+E: divulgadas primeiro internamente no {{ f.sistemas.intranet }}
+
+[rh/avaliacao-desempenho] ft
+F: O ciclo de avaliação é anual, com check-in semestral.
+Q: Como funciona o ciclo de avaliação de desempenho?
+Q: Com que frequência sou avaliado?
+K: ciclo de avaliação
+A: O ciclo de avaliação é {{ f.rh.desempenho.ciclo }}. A autoavaliação ocorre em {{ f.rh.desempenho.autoavaliacao_mes }}, a calibração em {{ f.rh.desempenho.calibracao_mes }} e a devolutiva em {{ f.rh.desempenho.devolutiva_mes }}.
+E: O ciclo é {{ f.rh.desempenho.ciclo }}
+
+[rh/avaliacao-desempenho] rag
+F: A nota da avaliação combina 60% de resultados e 40% de comportamentos.
+Q: Qual o peso de resultados e comportamentos na avaliação?
+Q: Como a nota de desempenho é composta?
+K: composição da nota
+A: A nota combina {{ f.rh.desempenho.peso_resultados }}% de resultados (entrega das metas) e {{ f.rh.desempenho.peso_comportamentos }}% de comportamentos, medidos pelos quatro valores da empresa.
+E: **Resultados ({{ f.rh.desempenho.peso_resultados }}%):**
+
+[rh/avaliacao-desempenho] ft
+F: A escala de avaliação tem cinco níveis; "Atende" é o esperado para quem cumpre bem a função.
+Q: Quais são os níveis da escala de avaliação?
+Q: Qual nota é a esperada na avaliação?
+K: escala de avaliação
+A: A escala tem cinco níveis: {{ f.rh.desempenho.escala | join(', ') }}. O nível *{{ f.rh.desempenho.escala[2] }}* é o esperado para quem cumpre bem a função.
+E: {{ f.rh.desempenho.escala | join(', ') }}
+
+[rh/avaliacao-desempenho] ft
+F: O colaborador pode pedir revisão da nota ao RH em caso de discordância fundamentada.
+Q: Posso contestar minha nota de avaliação?
+Q: Discordei da minha avaliação, o que faço?
+K: contestar avaliação
+A: Sim. Você pode registrar seus comentários no sistema e solicitar revisão ao RH em caso de discordância fundamentada.
+E: solicitar revisão ao RH
+
+[rh/codigo-de-conduta] ft
+F: O código de conduta não tolera assédio moral ou sexual, piadas discriminatórias, exposição humilhante ou intimidação.
+Q: A empresa tolera assédio?
+Q: O que o código de conduta diz sobre assédio e discriminação?
+K: assédio e discriminação
+A: Não. O código de conduta não tolera assédio moral ou sexual, piadas discriminatórias, exposição humilhante ou intimidação. Em caso de ocorrência, procure o gestor, o RH ou a Linha Ética.
+E: Não toleramos assédio moral ou sexual
+
+[rh/codigo-de-conduta] ft
+F: Qualquer pessoa pode parar a operação se perceber algo errado com produto, temperatura ou segurança.
+Q: Posso parar a operação se perceber um problema de segurança?
+Q: Quem pode interromper uma operação por risco ao produto?
+K: parar a operação
+A: Sim. Pelo princípio do Cuidado com a cadeia, produto, temperatura e segurança no trabalho são inegociáveis, e qualquer pessoa pode parar a operação se algo estiver errado.
+E: qualquer pessoa pode parar a operação
+
+[rh/codigo-de-conduta] ft
+F: Nas redes sociais, o colaborador não deve publicar informações internas, fotos de documentos ou de áreas restritas dos CDs.
+Q: Posso postar fotos do CD nas redes sociais?
+Q: O que posso publicar sobre a empresa nas redes?
+K: redes sociais e confidencialidade
+A: Não publique informações internas, fotos de documentos ou de áreas restritas dos CDs. Nas redes, fale por si, não pela empresa.
+E: Não publique informações internas
+
+[rh/canal-de-denuncias] ft
+F: O canal de denúncias se chama Linha Ética Brisa e aceita relatos anônimos.
+Q: Como faço uma denúncia?
+Q: O canal de denúncias é anônimo?
+K: canal de denúncias
+A: Use a Linha Ética Brisa, por e-mail ({{ email(f.rh.denuncias.email) }}), telefone ou formulário no Portal Brisa. É possível relatar de forma anônima, e a retaliação é proibida.
+E: É possível relatar **de forma anônima**
+
+[rh/canal-de-denuncias] rag
+F: A Linha Ética dá retorno inicial em até 5 dias úteis e conclui a apuração em até 60 dias.
+Q: Em quanto tempo a Linha Ética responde a uma denúncia?
+Q: Qual o prazo de apuração das denúncias?
+K: prazo da apuração
+A: O retorno inicial acontece em até {{ f.rh.denuncias.retorno_inicial_dias_uteis }} dias úteis, e a apuração é concluída em até {{ f.rh.denuncias.conclusao_dias }} dias, podendo ser prorrogada em casos complexos, com aviso ao denunciante.
+E: **{{ f.rh.denuncias.retorno_inicial_dias_uteis }} dias úteis**
+
+[rh/canal-de-denuncias] rag
+F: O telefone da Linha Ética é 0800 000 0000 (fictício) e o e-mail é etica@brisalog.example.
+Q: Qual o telefone da Linha Ética?
+Q: Qual o e-mail do canal de denúncias?
+K: contato da Linha Ética
+A: Você pode ligar para {{ f.rh.denuncias.telefone }} ou escrever para {{ email(f.rh.denuncias.email) }}.
+E: | Telefone | {{ f.rh.denuncias.telefone }} |
+
+[rh/canal-de-denuncias] ft
+F: Quem relata de boa-fé não pode sofrer retaliação; quem sofrer deve relatar também esse fato.
+Q: Posso ser punido por fazer uma denúncia?
+Q: Existe proteção contra retaliação?
+K: retaliação
+A: Não. A retaliação é proibida: nenhuma pessoa pode ser prejudicada por relatar de boa-fé. Quem sofrer retaliação deve relatar também esse fato.
+E: **Retaliação é proibida**
+
+[rh/faixas-salariais] rag
+F: A faixa salarial de Analista de Suporte N1 vai de R$ 3.600 a R$ 5.200.
+Q: Qual a faixa salarial de analista de suporte N1?
+Q: Quanto ganha um analista de suporte N1, na faixa do cargo?
+K: faixa Analista de Suporte N1
+A: A faixa salarial do cargo Analista de Suporte N1 vai de {{ brl(f.quadro.ti[3].faixa[0]) }} a {{ brl(f.quadro.ti[3].faixa[1]) }} mensais. Essa informação é de acesso restrito ao RH.
+E: | Analista de Suporte N1 | Júnior | {{ brl(f.quadro.ti[3].faixa[0]) }} | {{ brl(f.quadro.ti[3].faixa[1]) }} |
+
+[rh/faixas-salariais] rag
+F: A faixa salarial de Conferente vai de R$ 2.600 a R$ 3.500.
+Q: Qual a faixa salarial de conferente?
+Q: Qual o piso e o teto do cargo de conferente?
+K: faixa Conferente
+A: A faixa salarial do cargo Conferente vai de {{ brl(f.quadro.ops[9].faixa[0]) }} a {{ brl(f.quadro.ops[9].faixa[1]) }} mensais. Essa informação é de acesso restrito ao RH.
+E: | Conferente | Operacional | {{ brl(f.quadro.ops[9].faixa[0]) }} | {{ brl(f.quadro.ops[9].faixa[1]) }} |
+
+[rh/faixas-salariais] rag
+F: A faixa salarial de Analista de RH Pleno vai de R$ 6.200 a R$ 8.800.
+Q: Qual a faixa salarial de analista de RH pleno?
+Q: Quanto é a faixa do analista de RH pleno?
+K: faixa Analista de RH Pleno
+A: A faixa do cargo Analista de RH Pleno vai de {{ brl(f.quadro.rh[2].faixa[0]) }} a {{ brl(f.quadro.rh[2].faixa[1]) }} mensais, informação de acesso restrito ao RH.
+E: | Analista de RH Pleno | Pleno | {{ brl(f.quadro.rh[2].faixa[0]) }} | {{ brl(f.quadro.rh[2].faixa[1]) }} |
+
+[rh/faixas-salariais] rag
+F: A faixa salarial de Motorista vai de R$ 3.300 a R$ 4.600.
+Q: Qual a faixa salarial de motorista?
+Q: Quanto pode ganhar um motorista, segundo a faixa do cargo?
+K: faixa Motorista
+A: A faixa do cargo Motorista vai de {{ brl(f.quadro.ops[12].faixa[0]) }} a {{ brl(f.quadro.ops[12].faixa[1]) }} mensais, informação de acesso restrito ao RH.
+E: | Motorista | Operacional | {{ brl(f.quadro.ops[12].faixa[0]) }} | {{ brl(f.quadro.ops[12].faixa[1]) }} |
+
+[rh/faixas-salariais] ft
+F: A contratação acima do ponto médio da faixa exige aprovação da diretora de Pessoas e Cultura; acima do máximo não é permitida.
+Q: Quem aprova contratação acima do ponto médio da faixa?
+Q: Posso contratar acima do máximo da faixa salarial?
+K: contratação acima da faixa
+A: A contratação acima do ponto médio da faixa exige aprovação da diretora de Pessoas e Cultura. Contratar acima do máximo da faixa não é permitido.
+E: exige aprovação da diretora de Pessoas e Cultura
+
+[rh/plr] rag
+F: O PLR paga até 1,5 salário por colaborador, uma vez ao ano, em março do ano seguinte ao exercício.
+Q: Qual o valor máximo do PLR?
+Q: Quando o PLR é pago?
+K: teto e pagamento do PLR
+A: O PLR paga até {{ f.rh.plr.teto_salarios | string | replace('.', ',') }} salário por colaborador, uma vez ao ano, em {{ f.rh.plr.pagamento }}.
+E: até **{{ f.rh.plr.teto_salarios | string | replace('.', ',') }} salário**
+
+[rh/plr] rag
+F: A composição do PLR é de 50% metas corporativas, 30% metas da área e 20% desempenho individual.
+Q: Como o PLR é calculado?
+Q: Qual o peso das metas corporativas, da área e individuais no PLR?
+K: composição do PLR
+A: O PLR é composto por {{ f.rh.plr.peso_corporativo }}% de metas corporativas, {{ f.rh.plr.peso_area }}% de metas da área e {{ f.rh.plr.peso_individual }}% de desempenho individual.
+E: | Metas corporativas | {{ f.rh.plr.peso_corporativo }}% |
+
+[rh/plr] rag
+F: Para receber o PLR é preciso ter pelo menos 90 dias de empresa.
+Q: Quanto tempo de casa preciso para receber PLR?
+Q: Quem tem direito ao PLR?
+K: carência do PLR
+A: Têm direito os colaboradores ativos no fim do exercício que tenham pelo menos {{ f.rh.plr.carencia_dias }} dias de empresa.
+E: pelo menos **{{ f.rh.plr.carencia_dias }} dias**
+
+[rh/plr] ft
+F: O PLR só é acionado se o EBITDA do exercício for igual ou superior à meta aprovada pelo Conselho.
+Q: O PLR é garantido todo ano?
+Q: Qual o gatilho do PLR?
+K: gatilho do PLR
+A: O programa só é acionado se houver cumprimento do gatilho: {{ f.rh.plr.gatilho }}. Sem o gatilho, não há pagamento.
+E: **{{ f.rh.plr.gatilho }}**

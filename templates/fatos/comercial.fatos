@@ -1,0 +1,111 @@
+[comercial/portfolio-servicos] ft
+F: O portfólio é organizado em cinco famílias: Armazenagem, Valor agregado, Transporte, Distribuição urbana e Logística reversa.
+Q: Quais são as famílias de serviços da Brisa Log?
+Q: O que a Brisa Log oferece aos clientes?
+K: famílias de serviços
+A: O portfólio tem cinco famílias: Armazenagem, Valor agregado, Transporte, Distribuição urbana e Logística reversa.
+E: ## Logística reversa
+
+[comercial/portfolio-servicos] rag
+F: O transporte refrigerado tem adicional de 28% sobre o transporte seco equivalente.
+Q: Quanto custa a mais o transporte refrigerado?
+Q: Qual o adicional do transporte com temperatura controlada?
+K: adicional refrigerado
+A: Serviços de transporte refrigerado têm adicional de {{ f.comercial.adicional_refrigerado_pct }}% sobre o valor do transporte seco equivalente.
+E: adicional de {{ f.comercial.adicional_refrigerado_pct }}%
+
+[comercial/portfolio-servicos] rag
+F: A proposta comercial tem validade de 15 dias.
+Q: Qual a validade de uma proposta comercial?
+Q: Por quantos dias a proposta vale?
+K: validade da proposta
+A: A proposta comercial tem validade de {{ f.comercial.descontos.validade_proposta_dias }} dias.
+E: validade de {{ f.comercial.descontos.validade_proposta_dias }} dias
+
+[comercial/portfolio-servicos] ft
+F: Para contratar, o cliente fala com o Comercial, um executivo de contas levanta volumes e perfil de produto e emite a proposta; após o aceite, Operações implanta a carga no BrisaWMS.
+Q: Como um cliente contrata a Brisa Log?
+Q: Quais são as etapas para contratar um serviço?
+K: como contratar
+A: O cliente fala com o Comercial ({{ email('comercial') }}), um executivo de contas levanta volumes, perfil de produto e temperatura, a proposta é emitida e, após o aceite, Operações e Logística organiza a implantação da carga no BrisaWMS.
+E: Um executivo de contas levanta volumes
+
+[comercial/precos-e-descontos] rag
+F: O desconto de tabela por volume é 0% até R$ 49.999, 3% de R$ 50.000 a R$ 149.999, 6% de R$ 150.000 a R$ 399.999 e 9% a partir de R$ 400.000 de faturamento mensal contratado.
+Q: Quais são as faixas de desconto por volume?
+Q: Quanto de desconto ganha um cliente que contrata R$ 200.000 por mês?
+K: desconto por volume
+A: O desconto de volume depende do faturamento mensal contratado: {% for fx in f.comercial.descontos.faixas_volume %}{% if fx.ate is none %}a partir de {{ brl(fx.de) }}, {{ fx.pct }}%{% elif fx.de == 0 %}até {{ brl(fx.ate) }}, {{ fx.pct }}%{% else %}de {{ brl(fx.de) }} a {{ brl(fx.ate) }}, {{ fx.pct }}%{% endif %}{{ '; ' if not loop.last else '.' }}{% endfor %}
+E: a partir de {{ brl(f.comercial.descontos.faixas_volume[3].de) }} | {{ f.comercial.descontos.faixas_volume[3].pct }}%
+
+[comercial/precos-e-descontos] rag
+F: O contrato mínimo é de 12 meses, e contratos de 24 meses ou mais recebem bônus de 2 pontos percentuais.
+Q: Qual o prazo mínimo de contrato?
+Q: Existe bônus para contrato de 24 meses?
+K: contrato mínimo e bônus
+A: O contrato mínimo é de {{ f.comercial.descontos.contrato_min_meses }} meses. Contratos de 24 meses ou mais recebem um bônus de {{ f.comercial.descontos.bonus_prazo_24_meses_pp }} pontos percentuais de desconto, somado ao desconto por volume.
+E: **{{ f.comercial.descontos.contrato_min_meses }} meses**
+
+[comercial/precos-e-descontos] rag
+F: O coordenador de contas aprova descontos até 5%, o gerente comercial até 10%, a diretora comercial até 15% e o CEO acima de 15%.
+Q: Quem aprova desconto comercial de 8%?
+Q: Qual a alçada de desconto de cada nível?
+K: alçadas de desconto
+A: Descontos até {{ f.comercial.descontos.alcada_coordenador_pct }}% são aprovados pelo coordenador de contas, até {{ f.comercial.descontos.alcada_gerente_pct }}% pelo gerente comercial, até {{ f.comercial.descontos.alcada_diretora_pct }}% pela diretora comercial e acima disso pelo CEO.
+E: | até {{ f.comercial.descontos.alcada_gerente_pct }}% | gerente comercial |
+
+[comercial/precos-e-descontos] ft
+F: A alçada de descontos comerciais não substitui a alçada de aprovação de despesas do Financeiro.
+Q: A alçada de desconto é a mesma alçada de aprovação de despesas?
+Q: Posso usar a alçada do Financeiro para dar desconto?
+K: alçada de desconto versus despesa
+A: Não. A alçada de descontos é específica de preços comerciais e não substitui a alçada de aprovação de despesas do Financeiro.
+E: não substitui a alçada de aprovação de despesas do Financeiro
+
+[comercial/precos-e-descontos] ft
+F: Não é permitido prometer prazo ou preço sem proposta aprovada nem dar desconto verbal fora das alçadas.
+Q: Posso prometer um preço ao cliente antes da proposta aprovada?
+Q: Posso dar desconto por telefone?
+K: promessa de preço
+A: Não. Não se pode prometer prazo ou preço sem proposta aprovada nem dar desconto verbal fora das alçadas.
+E: Prometer prazo ou preço sem proposta aprovada
+
+[comercial/atendimento-cliente] rag
+F: O atendimento ao cliente funciona de segunda a sexta, das 7h às 19h, e aos sábados das 8h às 12h.
+Q: Qual o horário de atendimento ao cliente?
+Q: O atendimento ao cliente abre aos sábados?
+K: horário de atendimento ao cliente
+A: O atendimento funciona {{ f.comercial.atendimento.horario }}. O e-mail é {{ email(f.comercial.atendimento.email) }} e o ramal é {{ f.comercial.atendimento.ramal }}.
+E: | Horário | {{ f.comercial.atendimento.horario }} |
+
+[comercial/atendimento-cliente] rag
+F: A primeira resposta ao cliente deve ocorrer em até 2 horas úteis.
+Q: Em quanto tempo devemos responder a um cliente pela primeira vez?
+Q: Qual o prazo de primeira resposta no atendimento?
+K: primeira resposta ao cliente
+A: A primeira resposta deve ocorrer em até {{ f.comercial.atendimento.primeira_resposta_horas_uteis }} horas úteis.
+E: **{{ f.comercial.atendimento.primeira_resposta_horas_uteis }} horas úteis**
+
+[comercial/atendimento-cliente] rag
+F: Casos não resolvidos em 24 horas são escalonados para o gerente comercial.
+Q: Quando um caso do cliente sobe para o gerente comercial?
+Q: Em quanto tempo escalamos uma ocorrência?
+K: escalonamento de ocorrência
+A: Se o caso não for resolvido em {{ f.comercial.atendimento.escalonamento_horas }} horas, ele sobe para o gerente comercial.
+E: em **{{ f.comercial.atendimento.escalonamento_horas }} horas**
+
+[comercial/atendimento-cliente] rag
+F: A meta de OTIF é 97% e a meta de NPS é 75.
+Q: Qual a meta de OTIF da empresa?
+Q: Qual é a meta de NPS?
+K: metas OTIF e NPS
+A: A meta de OTIF (entrega no prazo e completa) é de {{ f.comercial.atendimento.meta_otif }}%, e a meta de NPS é de {{ f.comercial.atendimento.meta_nps }}.
+E: meta de **{{ f.comercial.atendimento.meta_otif }}%**
+
+[comercial/atendimento-cliente] ft
+F: Casos de risco sanitário, como suspeita de quebra de cadeia fria, devem ser escalados imediatamente ao gerente comercial e ao diretor de Operações.
+Q: O que fazer se houver suspeita de quebra da cadeia fria numa entrega?
+Q: Quando escalo imediatamente uma ocorrência de cliente?
+K: escalar risco sanitário
+A: Escale imediatamente casos de risco sanitário, como suspeita de quebra de cadeia fria, ou ameaça de rompimento de contrato, avisando o gerente comercial e o diretor de Operações.
+E: Escale imediatamente casos de risco sanitário

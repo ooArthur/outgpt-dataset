@@ -1,0 +1,191 @@
+[compliance/lgpd-privacidade] ft
+F: A encarregada pelo tratamento de dados (DPO) é Marina Fontoura Quintela, da área de Compliance e Jurídico.
+Q: Quem é o DPO da empresa?
+Q: Quem é a encarregada de dados pessoais?
+K: DPO da Brisa Log
+A: A encarregada pelo tratamento de dados (DPO) é {{ f.encarregado_lgpd.nome }}, da área de Compliance e Jurídico. Contato: {{ email(f.encarregado_lgpd.email) }} ou ramal {{ f.encarregado_lgpd.ramal }}.
+E: **{{ f.encarregado_lgpd.nome }}**
+
+[compliance/lgpd-privacidade] rag
+F: Pedidos de titulares de dados devem ser respondidos em até 15 dias.
+Q: Em quantos dias respondemos a um pedido de titular de dados?
+Q: Qual o prazo para atender direitos do titular na LGPD?
+K: prazo de resposta ao titular
+A: A resposta a um pedido de titular deve ser dada em até {{ f.compliance.lgpd.prazo_resposta_titular_dias }} dias. Quem receber o pedido encaminha para {{ email(f.compliance.lgpd.email) }} sem responder por conta própria.
+E: em até **{{ f.compliance.lgpd.prazo_resposta_titular_dias }} dias**
+
+[compliance/lgpd-privacidade] rag
+F: Incidentes com dados pessoais devem ser comunicados ao DPO em até 24 horas após a descoberta.
+Q: Em quanto tempo comunico um vazamento de dados ao DPO?
+Q: Enviei uma lista de clientes para a pessoa errada, qual o prazo para avisar?
+K: prazo de comunicação de incidente
+A: Comunique imediatamente a TI ({{ email('seguranca') }}) e a encarregada. O prazo interno para o comunicado ao DPO é de {{ f.compliance.lgpd.incidente_comunicar_horas }} horas após a descoberta.
+E: **{{ f.compliance.lgpd.incidente_comunicar_horas }} horas**
+
+[compliance/lgpd-privacidade] rag
+F: Currículos de candidatos não contratados são guardados por até 12 meses e depois eliminados.
+Q: Por quanto tempo guardamos currículos de candidatos não contratados?
+Q: Qual a retenção de currículos?
+K: retenção de currículos
+A: Guardamos currículos de candidatos não contratados por até {{ f.compliance.lgpd.retencao_curriculos_meses }} meses, e depois eliminamos.
+E: por até {{ f.compliance.lgpd.retencao_curriculos_meses }} meses
+
+[compliance/lgpd-privacidade] ft
+F: Atestados são dados sensíveis e ficam restritos ao RH.
+Q: Quem pode ver os atestados dos colaboradores?
+Q: Atestado médico é um dado sensível?
+K: atestados e dados sensíveis
+A: Atestados são dados sensíveis e ficam restritos ao RH.
+E: **Atestados:** são dados sensíveis e ficam restritos ao RH
+
+[compliance/lgpd-privacidade] ft
+F: Imagens das câmeras dos CDs servem à segurança patrimonial e não podem ser repassadas por aplicativos de mensagem.
+Q: Posso enviar vídeo das câmeras do CD por WhatsApp?
+Q: Para que servem as câmeras dos CDs?
+K: imagens das câmeras
+A: Não. As câmeras dos CDs servem à segurança patrimonial, e as imagens não podem ser repassadas por aplicativos de mensagem.
+E: Imagens não podem ser repassadas por aplicativos de mensagem
+
+[compliance/lgpd-privacidade] ft
+F: Todo novo colaborador faz o treinamento de LGPD nos primeiros 15 dias de empresa, com reciclagem anual.
+Q: Quando faço o treinamento de LGPD?
+Q: O treinamento de LGPD é obrigatório?
+K: treinamento de LGPD
+A: Sim. Todo novo colaborador faz o treinamento de LGPD nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias de empresa, e há uma reciclagem anual.
+E: nos primeiros {{ f.rh.onboarding.treinamentos_prazo_dias }} dias de empresa
+
+[compliance/anticorrupcao] ft
+F: A política anticorrupção proíbe pagar facilitação, dar presentes a agentes públicos, contratar intermediário sem avaliação, fraudar licitações e registrar pagamentos de forma imprecisa.
+Q: O que a política anticorrupção proíbe?
+Q: Posso pagar um cafezinho para agilizar um processo com órgão público?
+K: o que é proibido anticorrupção
+A: É proibido pagar "facilitação" para acelerar processos, dar presentes ou favores a agentes públicos, contratar intermediário sem avaliação prévia, fraudar licitações ou manipular preços e registrar pagamentos de forma imprecisa.
+E: Pagar "facilitação" ou "cafezinho"
+
+[compliance/anticorrupcao] ft
+F: Se um agente público pedir propina, o colaborador deve recusar com educação, anotar o ocorrido e comunicar Compliance ou a Linha Ética imediatamente.
+Q: O que fazer se um fiscal pedir propina?
+Q: Um agente público pediu dinheiro, o que eu faço?
+K: pedido de propina
+A: Recuse com educação e firmeza, sem discutir nem ameaçar, anote data, local, nome e o que foi pedido e comunique Compliance imediatamente ou use a Linha Ética Brisa. Nenhuma consequência negativa será imposta a quem recusar uma propina.
+E: Recuse com educação e firmeza
+
+[compliance/anticorrupcao] rag
+F: A due diligence de terceiros vale por 24 meses.
+Q: Por quanto tempo vale a due diligence de um terceiro?
+Q: De quanto em quanto tempo reavaliamos terceiros?
+K: validade da due diligence
+A: A due diligence de integridade de terceiros tem validade de {{ f.compliance.anticorrupcao.due_diligence_validade_meses }} meses.
+E: validade de **{{ f.compliance.anticorrupcao.due_diligence_validade_meses }} meses**
+
+[compliance/anticorrupcao] ft
+F: A política anticorrupção se alinha à Lei Anticorrupção (Lei 12.846/2013).
+Q: Em qual lei a política anticorrupção se baseia?
+Q: A empresa segue a Lei Anticorrupção?
+K: lei anticorrupção
+A: Sim. Nossa postura está alinhada à {{ f.compliance.anticorrupcao.lei }}, que responsabiliza empresas por atos de corrupção contra a administração pública.
+E: {{ f.compliance.anticorrupcao.lei }}
+
+[compliance/conflito-interesses] rag
+F: O conflito de interesses deve ser declarado a Compliance e ao gestor em até 10 dias da ciência.
+Q: Em quanto tempo devo declarar um conflito de interesses?
+Q: Descobri um possível conflito de interesses, qual o prazo para declarar?
+K: prazo para declarar conflito
+A: Informe seu gestor e Compliance assim que perceber o conflito, em até {{ f.compliance.conflito.declaracao_prazo_dias }} dias da ciência. Enquanto o caso é analisado, afaste-se das decisões relacionadas.
+E: em até **{{ f.compliance.conflito.declaracao_prazo_dias }} dias**
+
+[compliance/conflito-interesses] ft
+F: Ter um conflito de interesses não é uma falta; esconder é.
+Q: Declarar um conflito de interesses é errado?
+Q: Posso ser punido por declarar um conflito de interesses?
+K: declarar conflito não é falta
+A: Não. Ter um conflito de interesses não é uma falta; esconder é. Por isso, a declaração é incentivada, e Compliance avalia e orienta.
+E: **esconder** é
+
+[compliance/conflito-interesses] ft
+F: Parentes podem trabalhar na empresa, mas não em relação direta de subordinação nem em funções que aprovem o trabalho um do outro.
+Q: Posso trabalhar na mesma equipe de um parente?
+Q: Parentes podem ser chefe e subordinado?
+K: parentes na empresa
+A: Parentes podem trabalhar na empresa, mas não em relação direta de subordinação nem em funções que aprovem o trabalho um do outro.
+E: Parentes podem trabalhar na empresa
+
+[compliance/conflito-interesses] rag
+F: Líderes e áreas de risco fazem declaração de conflitos anualmente.
+Q: Com que frequência é feita a declaração de conflitos?
+Q: Quem precisa fazer a declaração anual de conflito de interesses?
+K: declaração periódica de conflitos
+A: Além das declarações pontuais, líderes e áreas de risco, como Compras, Comercial e Financeiro, fazem declaração de conflitos com frequência {{ f.compliance.conflito.revisao }}.
+E: com frequência **{{ f.compliance.conflito.revisao }}**
+
+[compliance/politica-brindes] rag
+F: O limite para brindes e presentes é de R$ 150 por pessoa.
+Q: Qual o limite de valor para brindes e presentes?
+Q: Posso aceitar um presente de R$ 140 de um fornecedor?
+K: limite de brindes
+A: O limite para brindes e presentes é de {{ brl(f.compliance.brindes.limite) }} por pessoa, valendo para o que recebemos e para o que oferecemos.
+E: | Brinde ou presente | até {{ brl(f.compliance.brindes.limite) }} |
+
+[compliance/politica-brindes] rag
+F: O limite para refeições e hospitalidade é de R$ 200 por pessoa.
+Q: Qual o limite de valor de uma refeição oferecida por um cliente ou fornecedor?
+Q: Quanto pode custar um almoço de negócios por pessoa?
+K: limite de hospitalidade
+A: O limite para refeição ou hospitalidade é de {{ brl(f.compliance.brindes.refeicao_limite) }} por pessoa.
+E: | Refeição ou hospitalidade | até {{ brl(f.compliance.brindes.refeicao_limite) }} |
+
+[compliance/politica-brindes] ft
+F: É proibido dar ou receber dinheiro e cartões-presente, e não se oferece nada a agentes públicos, de qualquer valor.
+Q: Posso dar um presente a um fiscal?
+Q: Posso receber cartão-presente de um fornecedor?
+K: brindes proibidos
+A: Não. É proibido dar ou receber dinheiro, cartões-presente ou equivalentes, e não oferecemos presentes ou hospitalidade a agentes públicos, de qualquer valor.
+E: **Nunca dinheiro.**
+
+[compliance/politica-brindes] rag
+F: Brindes devem ser registrados no formulário da política em até 5 dias úteis.
+Q: Em quanto tempo devo registrar um brinde recebido?
+Q: Qual o prazo para registrar brinde?
+K: registro de brinde
+A: Brindes aceitos ou oferecidos devem ser registrados no formulário da política, no Portal Brisa, em até {{ f.compliance.brindes.registro_prazo_dias }} dias úteis.
+E: em até **{{ f.compliance.brindes.registro_prazo_dias }} dias úteis**
+
+[compliance/politica-brindes-v2025] rag
+F: Pela política de 2025 (revogada), o limite de brindes era de R$ 100 e o de refeições de R$ 150.
+Q: Qual era o limite de brindes em 2025?
+Q: Como era o limite de refeições na política antiga de brindes?
+K: limite de brindes em 2025
+A: A política de 2025 está revogada. Nela, o limite para brindes era de {{ brl(f.compliance.brindes.v2025.limite) }} e para refeições, de {{ brl(f.compliance.brindes.v2025.refeicao_limite) }}. Hoje valem {{ brl(f.compliance.brindes.limite) }} e {{ brl(f.compliance.brindes.refeicao_limite) }}.
+E: | Brinde ou presente | até {{ brl(f.compliance.brindes.v2025.limite) }} |
+
+[compliance/politica-brindes-v2025] ft
+F: O prazo de registro, a proibição de dinheiro e a vedação a agentes públicos não mudaram entre a política revogada e a vigente.
+Q: O que não mudou na política de brindes em 2026?
+Q: As regras sobre agentes públicos mudaram em 2026?
+K: o que não mudou nos brindes
+A: Não mudaram o prazo de registro, a proibição de dinheiro e a vedação a agentes públicos. A alteração de 2026 foi apenas nos limites de valor.
+E: **não mudaram**
+
+[compliance/gestao-terceiros] ft
+F: Terceiros de risco alto incluem intermediários que lidam com órgãos públicos, transportadores de refrigerados, fornecedores de valor relevante e fornecedores com acesso a dados ou sistemas.
+Q: Quais terceiros são considerados de risco alto?
+Q: Transportadora parceira de refrigerados é risco alto?
+K: terceiros de risco alto
+A: São de risco alto os intermediários que lidam com órgãos públicos, os transportadores parceiros de produtos refrigerados, os fornecedores de serviços de valor relevante e os que acessam dados pessoais ou sistemas da empresa.
+E: transportadores parceiros que carregam produtos refrigerados
+
+[compliance/gestao-terceiros] ft
+F: Terceiros de risco alto exigem aprovação do diretor da área e da diretora de Compliance e Jurídico.
+Q: Quem aprova a contratação de um terceiro de risco alto?
+Q: Quem decide sobre fornecedor classificado como alto risco?
+K: aprovação de risco alto
+A: Risco alto exige aprovação do diretor da área e da diretora de Compliance e Jurídico.
+E: Risco alto exige aprovação do diretor da área
+
+[compliance/gestao-terceiros] ft
+F: Os contratos com terceiros devem conter cláusulas de anticorrupção, proteção de dados, legislação trabalhista e direito de auditoria.
+Q: Quais cláusulas os contratos com terceiros devem ter?
+Q: Contrato de fornecedor precisa de cláusula anticorrupção?
+K: cláusulas contratuais
+A: Sim. Os contratos devem conter cláusulas de anticorrupção, de proteção de dados (LGPD), de respeito à legislação trabalhista e de direito de auditoria.
+E: cláusulas de anticorrupção, de proteção de dados (LGPD)

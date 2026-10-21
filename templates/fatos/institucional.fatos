@@ -1,0 +1,433 @@
+# Formato: [doc] destino(ft|rag); F=fato; Q=perguntas; K=palavra-chave; A=resposta; E=evidência (deve estar no doc)
+
+[institucional/missao-valores] ft
+F: A missão da Brisa Log é levar alimentos e bebidas ao varejo regional com segurança, pontualidade e cuidado em cada etapa da cadeia.
+Q: Qual é a missão da Brisa Log?
+Q: Para que a Brisa Log existe?
+K: missão da empresa
+A: A missão da Brisa Log é levar alimentos e bebidas ao varejo regional com segurança, pontualidade e cuidado em cada etapa da cadeia, conforme o documento de missão, visão e valores.
+E: {{ f.empresa.missao }}
+
+[institucional/missao-valores] ft
+F: A visão da Brisa Log é ser a operadora logística preferida do varejo regional de alimentos e bebidas, reconhecida pela confiança e pela simplicidade.
+Q: Qual é a visão da empresa?
+Q: Aonde a Brisa Log quer chegar?
+K: visão da Brisa Log
+A: Nossa visão é ser a operadora logística preferida do varejo regional de alimentos e bebidas, reconhecida pela confiança e pela simplicidade de trabalhar com a gente.
+E: {{ f.empresa.visao }}
+
+[institucional/missao-valores] ft
+F: Os quatro valores da Brisa Log são Cuidado com a cadeia, Palavra cumprida, Simplicidade e Aprender sempre.
+Q: Quais são os valores da Brisa Log?
+Q: Me lista os valores da empresa, por favor.
+K: valores da empresa
+A: A Brisa Log tem quatro valores: Cuidado com a cadeia, Palavra cumprida, Simplicidade e Aprender sempre.
+E: ### 4. Aprender sempre
+
+[institucional/missao-valores] ft
+F: O valor Cuidado com a cadeia significa tratar produto, temperatura e prazo com zelo, pois cada caixa carrega o trabalho de muita gente e a confiança de um cliente.
+Q: O que significa o valor "Cuidado com a cadeia"?
+Q: Como é o valor Cuidado com a cadeia no dia a dia?
+K: cuidado com a cadeia
+A: Cuidado com a cadeia é tratar produto, temperatura e prazo com o mesmo zelo, porque cada caixa carrega o trabalho de muita gente e a confiança de um cliente. Um exemplo é registrar a temperatura da câmara fria no horário correto, mesmo em dia de pico.
+E: {{ f.valores[0].exemplo }}
+
+[institucional/missao-valores] ft
+F: O valor Palavra cumprida significa fazer o que foi combinado e, quando não for possível, avisar cedo e propor uma saída.
+Q: O que quer dizer "Palavra cumprida" como valor da empresa?
+Q: Como aplicar o valor Palavra cumprida?
+K: palavra cumprida
+A: Palavra cumprida é fazer o que combinamos e, quando não for possível, avisar cedo e propor uma saída. Por exemplo, avisar o cliente assim que perceber que uma entrega vai atrasar, em vez de esperar ele ligar.
+E: {{ f.valores[1].exemplo }}
+
+[institucional/missao-valores] ft
+F: O valor Simplicidade significa preferir processos curtos, linguagem clara e decisões próximas de quem executa.
+Q: O que é o valor Simplicidade na Brisa Log?
+Q: Como a Brisa Log define simplicidade?
+K: valor simplicidade
+A: Simplicidade é preferir processos curtos, linguagem clara e decisões próximas de quem executa. Eliminar uma etapa de aprovação que não protege nada é um exemplo.
+E: {{ f.valores[2].exemplo }}
+
+[institucional/missao-valores] ft
+F: O valor Aprender sempre significa que erros viram aprendizado compartilhado e todos têm espaço para crescer.
+Q: O que significa "Aprender sempre"?
+Q: Qual a ideia por trás do valor Aprender sempre?
+K: aprender sempre
+A: Aprender sempre significa que os erros viram aprendizado compartilhado e que todo mundo tem espaço para crescer. Um exemplo é registrar, no fim do mês, o aprendizado de uma ocorrência para outras equipes não repetirem o problema.
+E: {{ f.valores[3].exemplo }}
+
+[institucional/missao-valores] rag
+F: Os comportamentos ligados aos valores respondem por uma parte da nota da avaliação anual e os resultados pelo restante.
+Q: Qual o peso dos valores na avaliação de desempenho?
+Q: Quanto da nota da avaliação vem dos comportamentos?
+K: peso comportamentos avaliação
+A: Os comportamentos ligados aos quatro valores respondem por {{ f.rh.desempenho.peso_comportamentos }}% da nota da avaliação anual, e os resultados respondem por {{ f.rh.desempenho.peso_resultados }}%.
+E: {{ f.rh.desempenho.peso_comportamentos }}% da nota da avaliação anual
+
+[institucional/historia] rag
+F: A Brisa Log foi fundada em 2009, em Campinas/SP.
+Q: Em que ano a Brisa Log foi fundada?
+Q: Quando a empresa começou?
+K: ano de fundação
+A: A Brisa Log foi fundada em {{ f.empresa.fundacao_ano }}, em {{ f.empresa.sede }}, conforme o documento de história da empresa.
+E: nasceu em {{ f.empresa.fundacao_ano }}
+
+[institucional/historia] ft
+F: A Brisa Log foi fundada por Antônio Brisa Ferraz e Sônia Brisa Ferraz.
+Q: Quem fundou a Brisa Log?
+Q: Quem são os fundadores da empresa?
+K: fundadores
+A: A Brisa Log foi fundada por {{ f.empresa.fundadores[0] }} e {{ f.empresa.fundadores[1] }}.
+E: {{ f.empresa.fundadores[0] }} e {{ f.empresa.fundadores[1] }}
+
+[institucional/historia] ft
+F: Em 2019, Helena Monteiro Duarte assumiu como CEO e a empresa passou a ser uma sociedade anônima.
+Q: Desde quando a Helena Monteiro Duarte é CEO?
+Q: Quando a Brisa Log virou sociedade anônima?
+K: CEO desde quando
+A: Em 2019 a empresa passou a ser uma sociedade anônima e Helena Monteiro Duarte assumiu como CEO, no processo de profissionalização da gestão.
+E: Helena Monteiro Duarte assume como CEO
+
+[institucional/historia] rag
+F: O CD de Uberlândia foi aberto em 2021.
+Q: Quando o CD Uberlândia foi aberto?
+Q: Em que ano começou a operação em Uberlândia?
+K: abertura CD Uberlândia
+A: O CD Uberlândia foi inaugurado em {{ f.unidades.uberlandia.inauguracao }}, para atender o Triângulo Mineiro e o Alto Paranaíba.
+E: Em {{ f.unidades.uberlandia.inauguracao }}, a empresa abriu o {{ f.unidades.uberlandia.nome }}
+
+[institucional/historia] rag
+F: O primeiro centro de distribuição próprio, em Campinas, foi inaugurado em 2013.
+Q: Quando foi inaugurado o primeiro centro de distribuição próprio da Brisa Log?
+Q: Em que ano o CD Campinas começou a operar?
+K: inauguração CD Campinas
+A: O primeiro centro de distribuição próprio, o CD Campinas, foi inaugurado em {{ f.unidades.campinas.inauguracao }}.
+E: em {{ f.unidades.campinas.inauguracao }}, que deu espaço
+
+[institucional/historia] ft
+F: O programa de rastreabilidade da cadeia fria foi lançado em 2023 e monitora a temperatura de todas as viagens refrigeradas.
+Q: O que é o programa de rastreabilidade da cadeia fria?
+Q: A Brisa Log monitora a temperatura das entregas refrigeradas?
+K: rastreabilidade cadeia fria
+A: Sim. Desde o lançamento do programa de rastreabilidade da cadeia fria, em 2023, todas as viagens refrigeradas têm monitoramento de temperatura, e o cliente recebe um relatório ao final de cada entrega.
+E: relatório ao final de cada entrega
+
+[institucional/historia] ft
+F: A Brisa Log começou com uma frota inicial de três caminhões e um galpão alugado.
+Q: Como a Brisa Log começou?
+Q: Com quantos caminhões a empresa foi fundada?
+K: início da empresa
+A: Em 2009, a Brisa Log começou em Campinas com uma frota inicial de três caminhões e um galpão alugado.
+E: frota inicial de três caminhões e um galpão alugado
+
+[institucional/organograma] ft
+F: Todos os diretores da Brisa Log reportam à CEO Helena Monteiro Duarte.
+Q: A quem os diretores reportam?
+Q: Quem é a CEO da Brisa Log?
+K: CEO da empresa
+A: Todos os diretores reportam à CEO, Helena Monteiro Duarte.
+E: Todos os diretores reportam à CEO, **{{ f.departamentos[0].diretor }}**
+
+[institucional/organograma] rag
+F: A Brisa Log é organizada em 7 departamentos.
+Q: Quantos departamentos a Brisa Log tem?
+Q: Quais são os departamentos da empresa?
+K: departamentos
+A: A Brisa Log tem {{ f.departamentos | length }} departamentos: {{ f.departamentos | map(attribute='nome') | join(', ') }}.
+E: é organizada em {{ f.departamentos | length }} departamentos
+
+[institucional/organograma] ft
+F: A diretora de Pessoas e Cultura é Marcela Tavares Rocha.
+Q: Quem é a diretora de Pessoas e Cultura?
+Q: Quem lidera o RH?
+K: diretora de RH
+A: A diretora de Pessoas e Cultura é Marcela Tavares Rocha. A coordenadora de RH é Fernanda Lopes Guimarães.
+E: Marcela Tavares Rocha
+
+[institucional/organograma] ft
+F: O diretor Financeiro é Rogério Albuquerque Lins.
+Q: Quem é o diretor financeiro?
+Q: Quem lidera o Financeiro e Controladoria?
+K: diretor financeiro
+A: O diretor Financeiro é Rogério Albuquerque Lins. A Controladoria é gerida por Daniela Pires Amaral e o Financeiro por Otávio Resende Maia.
+E: Rogério Albuquerque Lins
+
+[institucional/organograma] ft
+F: O diretor de TI é Caio Vasconcelos Prado e o gerente de Infraestrutura e Suporte é Thiago Bastos Carvalho.
+Q: Quem é o diretor de TI?
+Q: Quem é o gerente de infraestrutura e suporte?
+K: diretor de TI
+A: O diretor de TI é Caio Vasconcelos Prado, e o gerente de Infraestrutura e Suporte é Thiago Bastos Carvalho.
+E: Caio Vasconcelos Prado
+
+[institucional/organograma] ft
+F: A diretora Comercial é Patrícia Nogueira Salgado e o gerente comercial é Ricardo Siqueira Borges.
+Q: Quem é a diretora comercial?
+Q: Quem é o gerente comercial?
+K: diretora comercial
+A: A diretora Comercial é Patrícia Nogueira Salgado, e o gerente comercial é Ricardo Siqueira Borges.
+E: Ricardo Siqueira Borges
+
+[institucional/organograma] ft
+F: O diretor de Operações é Eduardo Fontes Barreto.
+Q: Quem é o diretor de operações?
+Q: Quem comanda Operações e Logística?
+K: diretor de operações
+A: O diretor de Operações é Eduardo Fontes Barreto. Os CDs são geridos por Wagner Pimentel Souza (Campinas) e Luciana Ferraz Medeiros (Uberlândia), e o transporte por Anderson Matos Vieira.
+E: Eduardo Fontes Barreto
+
+[institucional/organograma] ft
+F: A diretora de Compliance e Jurídico é Beatriz Camargo Leal.
+Q: Quem é a diretora de compliance?
+Q: Quem lidera Compliance e Jurídico?
+K: diretora de compliance
+A: A diretora de Compliance e Jurídico é Beatriz Camargo Leal. A encarregada de dados (DPO) é Marina Fontoura Quintela.
+E: Beatriz Camargo Leal
+
+[institucional/organograma] ft
+F: Os ramais seguem o número da área: 1 Diretoria, 2 Pessoas e Cultura, 3 Financeiro, 4 TI, 5 Comercial, 6 Operações em Campinas, 7 Operações em Uberlândia e 8 Compliance e Jurídico.
+Q: Como funcionam os ramais da empresa?
+Q: Como descubro de qual área é um ramal?
+K: padrão de ramais
+A: O primeiro dígito do ramal indica a área: 1 para a Diretoria, 2 para Pessoas e Cultura, 3 para o Financeiro, 4 para TI, 5 para o Comercial, 6 para Operações em Campinas, 7 para Operações em Uberlândia e 8 para Compliance e Jurídico.
+E: 7 para Operações em Uberlândia e 8 para Compliance e Jurídico
+
+[institucional/organograma] ft
+F: Os e-mails corporativos seguem o padrão nome.sobrenome@brisalog.example.
+Q: Qual é o padrão de e-mail dos colaboradores?
+Q: Como são formados os e-mails da empresa?
+K: padrão de e-mail
+A: Os e-mails seguem o padrão nome.sobrenome@{{ f.empresa.dominio_email }}.
+E: nome.sobrenome@{{ f.empresa.dominio_email }}
+
+[institucional/organograma] rag
+F: A Brisa Log tem 140 colaboradores.
+Q: Quantos colaboradores a Brisa Log tem?
+Q: Qual o tamanho do quadro de pessoal?
+K: número de colaboradores
+A: A Brisa Log tem {{ f.empresa.colaboradores }} colaboradores, distribuídos em {{ f.departamentos | length }} departamentos.
+E: No total, são {{ f.empresa.colaboradores }} colaboradores
+
+[institucional/organograma] rag
+F: Operações e Logística é a maior área da empresa, com 73 colaboradores.
+Q: Qual é a maior área da empresa e quantas pessoas tem?
+Q: Quantas pessoas trabalham em Operações e Logística?
+K: headcount operações
+A: Operações e Logística é a maior área, com {{ hc['Operações e Logística'].total }} colaboradores, sendo {{ hc['Operações e Logística']['Campinas/SP'] }} em Campinas e {{ hc['Operações e Logística']['Uberlândia/MG'] }} em Uberlândia.
+E: | Operações e Logística | {{ f.departamentos[5].diretor }} ({{ f.departamentos[5].cargo_diretor }}) | {{ hc['Operações e Logística'].total }} |
+
+[institucional/glossario-siglas] ft
+F: CD significa centro de distribuição.
+Q: O que significa CD na Brisa Log?
+Q: O que é um CD?
+K: sigla CD
+A: CD significa centro de distribuição. A Brisa Log tem o CD Campinas e o CD Uberlândia.
+E: **CD** — centro de distribuição
+
+[institucional/glossario-siglas] ft
+F: WMS é o sistema de gestão de armazém; o da Brisa Log é o BrisaWMS.
+Q: O que é WMS?
+Q: Qual é o sistema de gestão de armazém da empresa?
+K: sigla WMS
+A: WMS é o sistema de gestão de armazém. O da Brisa Log é o BrisaWMS.
+E: **WMS** — sistema de gestão de armazém
+
+[institucional/glossario-siglas] ft
+F: TMS é o sistema de gestão de transporte; o da Brisa Log é o RotaViva.
+Q: O que é TMS?
+Q: Qual sistema a empresa usa para gestão de transporte?
+K: sigla TMS
+A: TMS é o sistema de gestão de transporte, e o da Brisa Log é o RotaViva.
+E: **TMS** — sistema de gestão de transporte
+
+[institucional/glossario-siglas] ft
+F: OTIF significa on time, in full: entrega no prazo e completa.
+Q: O que significa OTIF?
+Q: O que é OTIF na logística da Brisa Log?
+K: OTIF
+A: OTIF vem de "on time, in full" e significa entrega no prazo e completa.
+E: *on time, in full*
+
+[institucional/glossario-siglas] ft
+F: Cross-docking é a operação em que a carga é recebida e expedida sem ficar armazenada por longo período.
+Q: O que é cross-docking?
+Q: Pode explicar o que é cross docking?
+K: cross-docking
+A: Cross-docking é a operação em que a carga é recebida e expedida sem ser armazenada por longo período.
+E: **Cross-docking**
+
+[institucional/glossario-siglas] ft
+F: DRE é a demonstração do resultado do exercício.
+Q: O que é DRE?
+Q: O que significa a sigla DRE?
+K: sigla DRE
+A: DRE é a demonstração do resultado do exercício.
+E: **DRE** — demonstração do resultado do exercício
+
+[institucional/glossario-siglas] ft
+F: EBITDA é o resultado antes de juros, impostos, depreciação e amortização.
+Q: O que é EBITDA?
+Q: O que significa EBITDA para o Financeiro?
+K: EBITDA
+A: EBITDA é o resultado antes de juros, impostos, depreciação e amortização.
+E: **EBITDA**
+
+[institucional/glossario-siglas] ft
+F: CMV é o custo das mercadorias vendidas.
+Q: O que é CMV?
+Q: O que significa CMV?
+K: sigla CMV
+A: CMV significa custo das mercadorias vendidas.
+E: **CMV** — custo das mercadorias vendidas
+
+[institucional/glossario-siglas] ft
+F: PLR é a participação nos lucros ou resultados.
+Q: O que significa PLR?
+Q: PLR quer dizer o quê?
+K: sigla PLR
+A: PLR é a participação nos lucros ou resultados.
+E: **PLR** — participação nos lucros ou resultados
+
+[institucional/glossario-siglas] ft
+F: Buddy é o colega que acompanha o novo integrante nas primeiras semanas.
+Q: O que é um buddy?
+Q: Quem é o buddy no onboarding?
+K: buddy
+A: Buddy é o colega que acompanha o novo integrante da equipe nas primeiras semanas de empresa.
+E: **Buddy**
+
+[institucional/glossario-siglas] ft
+F: N1 e N2 são níveis de suporte de TI; o N1 atende primeiro e o N2 trata casos mais complexos.
+Q: O que significam N1 e N2 no suporte de TI?
+Q: Qual a diferença entre N1 e N2?
+K: N1 e N2
+A: N1 e N2 são níveis de suporte. O N1 atende primeiro, e o N2 trata casos mais complexos.
+E: **N1 / N2**
+
+[institucional/glossario-siglas] ft
+F: MFA é a verificação em duas etapas.
+Q: O que é MFA?
+Q: O que significa MFA?
+K: sigla MFA
+A: MFA é a verificação em duas etapas, usada para proteger acessos.
+E: **MFA** — verificação em duas etapas
+
+[institucional/glossario-siglas] ft
+F: DPO é o encarregado pelo tratamento de dados pessoais.
+Q: O que é DPO?
+Q: O que significa DPO?
+K: sigla DPO
+A: DPO é o encarregado pelo tratamento de dados pessoais, conforme a LGPD.
+E: **DPO** — encarregado pelo tratamento de dados pessoais
+
+[institucional/glossario-siglas] ft
+F: Due diligence é a avaliação prévia de terceiros antes de contratar.
+Q: O que é due diligence?
+Q: O que significa due diligence na área de compliance?
+K: due diligence
+A: Due diligence é a avaliação prévia de terceiros antes de contratar.
+E: **Due diligence**
+
+[institucional/glossario-siglas] ft
+F: Milk run é uma rota fixa de coleta em vários fornecedores.
+Q: O que é milk run?
+Q: Pode explicar o termo milk run?
+K: milk run
+A: Milk run é uma rota fixa de coleta em vários fornecedores.
+E: **Milk run**
+
+[institucional/glossario-siglas] ft
+F: VUC é o veículo urbano de carga, usado em entregas no varejo.
+Q: O que significa VUC?
+Q: O que é um VUC?
+K: sigla VUC
+A: VUC é o veículo urbano de carga, usado em entregas no varejo.
+E: **VUC**
+
+[institucional/canais-internos] ft
+F: O Portal Brisa é a intranet da empresa, onde ficam políticas, diretório, calendário de fechamento e formulários.
+Q: O que é o Portal Brisa?
+Q: Onde encontro as políticas da empresa?
+K: Portal Brisa
+A: O Portal Brisa é a intranet da empresa ({{ f.empresa.intranet }}). Ali ficam as políticas vigentes, o diretório de colaboradores, o calendário de fechamento e os formulários.
+E: as políticas vigentes, o diretório de colaboradores
+
+[institucional/canais-internos] rag
+F: O Brisa em Foco é o comunicado semanal enviado por e-mail toda segunda-feira às 09:00.
+Q: O que é o Brisa em Foco e quando sai?
+Q: Que dia chega o comunicado semanal da empresa?
+K: Brisa em Foco
+A: O Brisa em Foco é o comunicado semanal da empresa, enviado por e-mail toda {{ f.canais.comunicado_dia }}, às {{ f.canais.comunicado_hora }}.
+E: toda {{ f.canais.comunicado_dia }}, às {{ f.canais.comunicado_hora }}
+
+[institucional/canais-internos] ft
+F: A CEO realiza um town hall trimestral com resultados e espaço para perguntas, que podem ser anônimas.
+Q: O que é o town hall da empresa?
+Q: Posso enviar perguntas anônimas para o town hall?
+K: town hall
+A: O town hall é um encontro trimestral da CEO com apresentação de resultados e espaço para perguntas. As perguntas podem ser enviadas de forma anônima antes do encontro.
+E: perguntas, que podem ser enviadas de forma anônima
+
+[institucional/canais-internos] ft
+F: Dados de clientes e de colegas não devem ser tratados por aplicativos pessoais de mensagem.
+Q: Posso usar WhatsApp pessoal para tratar dados de clientes?
+Q: Posso mandar informações de clientes por aplicativo pessoal de mensagem?
+K: dados de clientes em app pessoal
+A: Não. Dados de clientes ou de colegas não devem ser tratados em aplicativos pessoais de mensagem; use os canais corporativos, como o BrisaChat e o BrisaMail.
+E: Não use aplicativos pessoais de mensagem para tratar dados de clientes ou de colegas
+
+[institucional/canais-internos] ft
+F: Dúvidas sobre ajuda com sistema, senha ou equipamento vão ao ServiceDesk Brisa ou ao ramal 4000.
+Q: Onde peço ajuda com senha ou equipamento?
+Q: Qual canal uso para um problema de TI?
+K: canal para ajuda de TI
+A: Para ajuda com sistema, senha ou equipamento, use o ServiceDesk Brisa ou ligue para o ramal {{ f.ti.sla.ramal }}.
+E: {{ f.sistemas.chamados }} ou ramal {{ f.ti.sla.ramal }}
+
+[institucional/unidades] rag
+F: O CD Campinas tem 18.000 m², 14.000 posições-palete, 22 docas e 4 câmaras frias.
+Q: Qual o tamanho do CD Campinas?
+Q: Quantas docas e câmaras frias o CD Campinas tem?
+K: capacidade CD Campinas
+A: O CD Campinas tem {{ num(f.unidades.campinas.area_m2) }} m², {{ num(f.unidades.campinas.posicoes_palete) }} posições-palete, {{ f.unidades.campinas.docas }} docas e {{ f.unidades.campinas.camaras_frias }} câmaras frias.
+E: {{ num(f.unidades.campinas.area_m2) }} m²
+
+[institucional/unidades] rag
+F: O CD Uberlândia tem 11.000 m², 8.500 posições-palete, 14 docas e 2 câmaras frias.
+Q: Qual o tamanho do CD Uberlândia?
+Q: Quantas docas e câmaras frias o CD Uberlândia tem?
+K: capacidade CD Uberlândia
+A: O CD Uberlândia tem {{ num(f.unidades.uberlandia.area_m2) }} m², {{ num(f.unidades.uberlandia.posicoes_palete) }} posições-palete, {{ f.unidades.uberlandia.docas }} docas e {{ f.unidades.uberlandia.camaras_frias }} câmaras frias.
+E: {{ num(f.unidades.uberlandia.area_m2) }} m²
+
+[institucional/unidades] ft
+F: O CD Campinas é a sede administrativa e o centro de distribuição principal.
+Q: Qual é a sede da Brisa Log?
+Q: Qual o papel do CD Campinas?
+K: sede da empresa
+A: O CD Campinas é a sede administrativa e o centro de distribuição principal da Brisa Log, em Campinas/SP.
+E: sede administrativa e centro de distribuição principal
+
+[institucional/unidades] ft
+F: A armazenagem congelada (-18 °C), a montagem de kits e a coleta programada existem apenas no CD Campinas.
+Q: Uberlândia tem armazenagem congelada?
+Q: Quais serviços só existem em Campinas?
+K: serviços exclusivos de Campinas
+A: Não. A armazenagem congelada (-18 °C), a montagem de kits e a coleta programada (milk run) estão disponíveis apenas no CD Campinas.
+E: | Armazenagem congelada (-18 °C) | disponível | não disponível |
+
+[institucional/unidades] ft
+F: Os turnos operacionais dos CDs são manhã (06:00 às 15:48) e tarde (14:00 às 23:48).
+Q: Quais são os turnos dos CDs?
+Q: Que horas começa o turno da manhã no CD?
+K: turnos do CD
+A: Os CDs têm dois turnos: manhã, das {{ f.rh.jornada.turno_manha }}, e tarde, das {{ f.rh.jornada.turno_tarde }}.
+E: das {{ f.rh.jornada.turno_manha }}
+
+[institucional/unidades] ft
+F: Cada turno tem um supervisor responsável, que passa o resumo do dia ao turno seguinte e registra ocorrências no BrisaWMS.
+Q: Quem passa o resumo do turno nos CDs?
+Q: Onde as ocorrências do turno são registradas?
+K: passagem de turno
+A: Cada turno tem um supervisor responsável, que passa o resumo do dia ao turno seguinte pelo BrisaChat e registra as ocorrências no BrisaWMS.
+E: registra ocorrências no {{ f.sistemas.wms }}

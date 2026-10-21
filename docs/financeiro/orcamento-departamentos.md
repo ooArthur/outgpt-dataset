@@ -34,7 +34,7 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Departamento | Orçado 1º semestre | Realizado 1º semestre | Saldo |
 |---|---|---|---|
-| Diretoria Executiva | R$ 1.568.000 | R$ 1.592.983 | R$ -24.983 |
+| Diretoria Executiva | R$ 1.568.000 | R$ 1.592.983 | -R$ 24.983 |
 | Pessoas e Cultura | R$ 2.352.000 | R$ 2.347.019 | R$ 4.981 |
 | Financeiro e Controladoria | R$ 2.058.000 | R$ 1.947.210 | R$ 110.790 |
 | TI | R$ 3.185.000 | R$ 3.144.683 | R$ 40.317 |
@@ -48,8 +48,8 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Trimestre | Orçado | Realizado | Saldo |
 |---|---|---|---|
-| 2026T1 | R$ 768.000 | R$ 769.732 | R$ -1.732 |
-| 2026T2 | R$ 800.000 | R$ 823.251 | R$ -23.251 |
+| 2026T1 | R$ 768.000 | R$ 769.732 | -R$ 1.732 |
+| 2026T2 | R$ 800.000 | R$ 823.251 | -R$ 23.251 |
 | 2026T3 | R$ 832.000 | — | — |
 | 2026T4 | R$ 800.000 | — | — |
 
@@ -57,7 +57,7 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Trimestre | Orçado | Realizado | Saldo |
 |---|---|---|---|
-| 2026T1 | R$ 1.152.000 | R$ 1.217.057 | R$ -65.057 |
+| 2026T1 | R$ 1.152.000 | R$ 1.217.057 | -R$ 65.057 |
 | 2026T2 | R$ 1.200.000 | R$ 1.129.962 | R$ 70.038 |
 | 2026T3 | R$ 1.248.000 | — | — |
 | 2026T4 | R$ 1.200.000 | — | — |
@@ -75,7 +75,7 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Trimestre | Orçado | Realizado | Saldo |
 |---|---|---|---|
-| 2026T1 | R$ 1.560.000 | R$ 1.633.853 | R$ -73.853 |
+| 2026T1 | R$ 1.560.000 | R$ 1.633.853 | -R$ 73.853 |
 | 2026T2 | R$ 1.625.000 | R$ 1.510.830 | R$ 114.170 |
 | 2026T3 | R$ 1.690.000 | — | — |
 | 2026T4 | R$ 1.625.000 | — | — |
@@ -84,7 +84,7 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Trimestre | Orçado | Realizado | Saldo |
 |---|---|---|---|
-| 2026T1 | R$ 1.416.000 | R$ 1.451.997 | R$ -35.997 |
+| 2026T1 | R$ 1.416.000 | R$ 1.451.997 | -R$ 35.997 |
 | 2026T2 | R$ 1.475.000 | R$ 1.367.565 | R$ 107.435 |
 | 2026T3 | R$ 1.534.000 | — | — |
 | 2026T4 | R$ 1.475.000 | — | — |
@@ -93,7 +93,7 @@ O realizado está disponível até **2026T2**. Saldo positivo significa gasto ab
 
 | Trimestre | Orçado | Realizado | Saldo |
 |---|---|---|---|
-| 2026T1 | R$ 9.120.000 | R$ 9.153.546 | R$ -33.546 |
+| 2026T1 | R$ 9.120.000 | R$ 9.153.546 | -R$ 33.546 |
 | 2026T2 | R$ 9.500.000 | R$ 8.940.993 | R$ 559.007 |
 | 2026T3 | R$ 9.880.000 | — | — |
 | 2026T4 | R$ 9.500.000 | — | — |

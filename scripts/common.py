@@ -62,9 +62,11 @@ def _milhar(n, casas=0):
 def brl(valor):
     """R$ 2.000 para inteiros; R$ 1.234,56 quando há centavos."""
     valor = float(valor)
+    sinal = "-" if valor < 0 else ""
+    valor = abs(valor)
     if abs(valor - round(valor)) < 1e-9:
-        return "R$ " + _milhar(round(valor))
-    return "R$ " + _milhar(valor, 2)
+        return sinal + "R$ " + _milhar(round(valor))
+    return sinal + "R$ " + _milhar(valor, 2)
 
 
 def brl2(valor):
@@ -122,3 +124,25 @@ def dia_semana(d):
 def trimestres_fin():
     """Lista ordenada de rótulos '2024T1'... do CSV financeiro."""
     return [l["trimestre"] for l in ler_csv("data/financeiro_trimestral.csv")]
+
+
+# ------------------------------------------------------------ documentos
+def ler_doc(rel):
+    """Lê docs/.../x.md e devolve (meta, corpo). rel é relativo à raiz do repositório."""
+    texto = (RAIZ / rel).read_text(encoding="utf-8")
+    _, fm, corpo = texto.split("---", 2)
+    return yaml.safe_load(fm), corpo.strip()
+
+
+def chunks_doc(rel):
+    """Divide o corpo do documento em trechos por título (para contexto de RAG)."""
+    meta, corpo = ler_doc(rel)
+    blocos, atual = [], []
+    for linha in corpo.splitlines():
+        if linha.startswith("#") and atual:
+            blocos.append("\n".join(atual).strip())
+            atual = []
+        atual.append(linha)
+    if atual:
+        blocos.append("\n".join(atual).strip())
+    return meta, [b for b in blocos if len(b.split()) >= 8]

@@ -1,0 +1,359 @@
+[ti/sla-incidentes] rag
+F: Um incidente P1 deve ser resolvido em até 4 horas.
+Q: Qual o prazo de resolução de um chamado P1?
+Q: Em quanto tempo a TI resolve um incidente crítico?
+K: SLA P1
+A: Chamados P1 têm prazo de resolução de {{ f.ti.sla.P1.resolucao }}, com primeira resposta em {{ f.ti.sla.P1.resposta }}. O plantão de P1 funciona {{ f.ti.sla.plantao_p1 }}.
+E: | P1 | {{ f.ti.sla.P1.resolucao }} |
+
+[ti/sla-incidentes] rag
+F: Um incidente P2 deve ser resolvido em até 8 horas.
+Q: Qual o prazo do SLA P2?
+Q: Em quanto tempo um chamado P2 é resolvido?
+K: SLA P2
+A: Chamados P2 têm prazo de resolução de {{ f.ti.sla.P2.resolucao }}, com primeira resposta em {{ f.ti.sla.P2.resposta }}.
+E: | P2 | {{ f.ti.sla.P2.resolucao }} |
+
+[ti/sla-incidentes] rag
+F: Um chamado P3 deve ser resolvido em até 3 dias úteis.
+Q: Qual o prazo do SLA P3?
+Q: Em quantos dias úteis um chamado P3 é resolvido?
+K: SLA P3
+A: Chamados P3 têm prazo de resolução de {{ f.ti.sla.P3.resolucao }}, com primeira resposta em {{ f.ti.sla.P3.resposta }}.
+E: | P3 | {{ f.ti.sla.P3.resolucao }} |
+
+[ti/sla-incidentes] rag
+F: Um chamado P4 deve ser resolvido em até 5 dias úteis.
+Q: Qual o prazo do SLA P4?
+Q: Em quanto tempo uma requisição simples de TI é atendida?
+K: SLA P4
+A: Chamados P4, como requisições simples, têm prazo de resolução de {{ f.ti.sla.P4.resolucao }}, com primeira resposta em {{ f.ti.sla.P4.resposta }}.
+E: | P4 | {{ f.ti.sla.P4.resolucao }} |
+
+[ti/sla-incidentes] ft
+F: P1 é a prioridade para parada total de um sistema crítico ou de uma unidade, como o BrisaWMS fora do ar em um CD.
+Q: O que é um chamado P1?
+Q: Quando um incidente de TI é considerado P1?
+K: definição de P1
+A: P1 é a prioridade mais alta, usada quando há parada total de um sistema crítico ou de uma unidade, como o BrisaWMS fora do ar em um CD, rede indisponível ou suspeita de ataque em andamento.
+E: parada total de um sistema crítico ou de uma unidade
+
+[ti/sla-incidentes] ft
+F: A prioridade é definida pelo impacto no negócio, não pela urgência de quem abre o chamado.
+Q: Quem define a prioridade de um chamado de TI?
+Q: A prioridade depende da minha urgência?
+K: critério de prioridade
+A: A prioridade é definida pelo impacto no negócio, e não pela urgência de quem abre o chamado. Se achar que está errada, responda ao chamado explicando o impacto e a TI reavalia.
+E: pelo impacto no negócio
+
+[ti/sla-incidentes] rag
+F: O atendimento regular da TI funciona de segunda a sexta, das 7h às 19h, e o ramal é 4000.
+Q: Qual o horário de atendimento da TI?
+Q: Qual o ramal da TI?
+K: horário e ramal da TI
+A: O atendimento regular da TI funciona de {{ f.ti.sla.horas_atendimento }}. O ramal é {{ f.ti.sla.ramal }}, e o e-mail é {{ email(f.ti.sla.email) }}.
+E: de {{ f.ti.sla.horas_atendimento }}
+
+[ti/sla-incidentes] ft
+F: Chamados de TI são abertos no ServiceDesk Brisa, escolhendo Incidente ou Requisição.
+Q: Como abro um chamado de TI?
+Q: Qual a diferença entre incidente e requisição ao abrir um chamado?
+K: abrir chamado de TI
+A: Acesse o ServiceDesk Brisa pelo Portal Brisa e escolha *Incidente* (algo parou de funcionar) ou *Requisição* (você precisa de algo novo). Também dá para abrir por e-mail ou pelo ramal {{ f.ti.sla.ramal }}.
+E: escolha *Incidente* (algo parou de funcionar)
+
+[ti/sla-incidentes] ft
+F: As filas de atendimento de TI são N1, N2, Infraestrutura, Sistemas e Segurança.
+Q: Quais são as filas de atendimento da TI?
+Q: Para onde vão os chamados de TI?
+K: filas da TI
+A: Os chamados são encaminhados para uma das filas: {{ f.ti.sla.filas | join(', ') }}.
+E: {{ f.ti.sla.filas | join(', ') }}
+
+[ti/sla-incidentes] rag
+F: Quando um chamado chega a 80% do prazo sem solução, o gerente de Infraestrutura e Suporte é avisado.
+Q: O que acontece quando um chamado de TI está perto de estourar o prazo?
+Q: A partir de qual percentual do prazo o gerente é avisado?
+K: alerta de prazo do chamado
+A: Quando um chamado chega a {{ f.ti.sla.alerta_pct }}% do prazo sem solução, o sistema avisa o gerente de Infraestrutura e Suporte.
+E: chega a {{ f.ti.sla.alerta_pct }}% do prazo
+
+[ti/sla-incidentes] rag
+F: Chamados P1 geram um relato de causa raiz em até 5 dias úteis.
+Q: Em quanto tempo sai o relato de causa raiz de um P1?
+Q: O que a TI entrega depois de resolver um incidente P1?
+K: causa raiz P1
+A: Chamados P1 geram um relato de causa raiz em até {{ f.ti.sla.rca_dias_uteis }} dias úteis.
+E: em até {{ f.ti.sla.rca_dias_uteis }} dias úteis
+
+[ti/acesso-e-senhas] rag
+F: A senha deve ter no mínimo 12 caracteres e ser trocada a cada 180 dias.
+Q: Quais são as regras de senha da empresa?
+Q: Qual o tamanho mínimo da senha e de quanto em quanto tempo troco?
+K: regras de senha
+A: A senha deve ter no mínimo {{ f.ti.senhas.tamanho_min }} caracteres e ser trocada a cada {{ f.ti.senhas.troca_dias }} dias, sem repetir as últimas {{ f.ti.senhas.historico }} senhas.
+E: | Tamanho mínimo | {{ f.ti.senhas.tamanho_min }} caracteres |
+
+[ti/acesso-e-senhas] rag
+F: A conta é bloqueada após 5 tentativas erradas.
+Q: Quantas tentativas erradas bloqueiam minha conta?
+Q: Por que minha conta foi bloqueada?
+K: bloqueio por tentativas
+A: A conta é bloqueada após {{ f.ti.senhas.tentativas_bloqueio }} tentativas de senha erradas. Para desbloquear, use o autoatendimento (com MFA) ou abra um chamado.
+E: após {{ f.ti.senhas.tentativas_bloqueio }} tentativas erradas
+
+[ti/acesso-e-senhas] rag
+F: O bloqueio de tela por inatividade ocorre após 15 minutos.
+Q: Em quanto tempo a tela bloqueia sozinha?
+Q: Qual o tempo de bloqueio de sessão por inatividade?
+K: bloqueio de tela
+A: O bloqueio de tela por inatividade ocorre após {{ f.ti.senhas.sessao_inatividade_min }} minutos.
+E: {{ f.ti.senhas.sessao_inatividade_min }} minutos
+
+[ti/acesso-e-senhas] ft
+F: O MFA é obrigatório para e-mail, VPN, BrisaERP e qualquer acesso remoto.
+Q: Onde a verificação em duas etapas é obrigatória?
+Q: Preciso de MFA para acessar o e-mail?
+K: MFA obrigatório
+A: Sim. O MFA é obrigatório para e-mail, VPN, BrisaERP e qualquer acesso remoto, usando um aplicativo autenticador no celular. Se trocar de aparelho, abra um chamado antes de apagar o aplicativo antigo.
+E: O MFA é obrigatório para e-mail, VPN
+
+[ti/acesso-e-senhas] ft
+F: A TI nunca pede a senha do colaborador, e a senha não deve ser compartilhada com ninguém.
+Q: A TI pode me pedir minha senha?
+Q: Posso passar minha senha para um colega?
+K: compartilhar senha
+A: Não. Nunca compartilhe sua senha com colegas nem com a TI, que nunca pede sua senha. Senhas de acesso compartilhado devem ficar no BrisaCofre.
+E: A TI nunca pede sua senha
+
+[ti/acesso-e-senhas] ft
+F: O BrisaCofre é o gerenciador de senhas corporativo.
+Q: Qual gerenciador de senhas a empresa usa?
+Q: Onde guardo senhas compartilhadas?
+K: gerenciador de senhas
+A: A empresa disponibiliza o BrisaCofre, que guarda senhas de forma criptografada. Senhas compartilhadas devem ficar nele, e não em planilhas ou anotações.
+E: **{{ f.sistemas.cofre }}**
+
+[ti/acesso-e-senhas] ft
+F: Os acessos são encerrados no mesmo dia do desligamento do colaborador.
+Q: Quando o acesso de quem sai da empresa é encerrado?
+Q: Os acessos de um desligado são cortados quando?
+K: acessos no desligamento
+A: Quando alguém deixa a empresa, o RH avisa a TI e os acessos são encerrados no mesmo dia do desligamento.
+E: no mesmo dia do desligamento
+
+[ti/uso-aceitavel] ft
+F: Arquivos de trabalho devem ficar no BrisaDocs, nunca em nuvens pessoais.
+Q: Posso guardar arquivos de trabalho no meu Google Drive pessoal?
+Q: Onde devo salvar arquivos de trabalho?
+K: onde salvar arquivos
+A: Não. Os arquivos de trabalho ficam no BrisaDocs, nunca em nuvens pessoais.
+E: {{ f.ti_extra.uso.armazenamento }}
+
+[ti/uso-aceitavel] ft
+F: Só é permitido instalar software homologado pela TI, solicitado pelo ServiceDesk Brisa.
+Q: Posso instalar programas no notebook da empresa?
+Q: Como peço a instalação de um software?
+K: instalar software
+A: Somente software homologado pela TI. Para instalar, faça a solicitação no ServiceDesk Brisa.
+E: Instalar {{ f.ti_extra.uso.software }}
+
+[ti/uso-aceitavel] ft
+F: Ferramentas de IA generativa externas só podem ser usadas com informações públicas; dados pessoais, de clientes e confidenciais não podem ser inseridos.
+Q: Posso colocar dados de clientes em uma IA como o ChatGPT?
+Q: Qual a regra para usar ferramentas de inteligência artificial?
+K: uso de IA generativa
+A: Ferramentas de IA generativa externas só podem ser usadas com informações públicas. Nunca insira dados pessoais, de clientes, preços, contratos ou informações Confidenciais ou Restritas em serviços não aprovados pela TI. O OutGPT é a opção aprovada para dúvidas sobre políticas da empresa.
+E: Nunca insira dados pessoais
+
+[ti/uso-aceitavel] ft
+F: Pen drives pessoais não podem ser conectados a equipamentos da empresa sem autorização da TI.
+Q: Posso usar pen drive pessoal no notebook da empresa?
+Q: Dispositivo USB pessoal é permitido?
+K: pen drive pessoal
+A: Não sem autorização. Dispositivos pessoais de armazenamento, como pen drives, não podem ser conectados a equipamentos da empresa sem a autorização da TI.
+E: Conectar dispositivos pessoais de armazenamento
+
+[ti/solicitacao-equipamentos] rag
+F: O prazo de entrega de equipamento em estoque é de até 5 dias úteis após a aprovação.
+Q: Em quanto tempo recebo um equipamento solicitado?
+Q: Qual o prazo de entrega de equipamentos da TI?
+K: prazo de entrega de equipamento
+A: O prazo de entrega é de até {{ f.ti.equipamentos.prazo_entrega_dias_uteis }} dias úteis após a aprovação, quando o equipamento está em estoque. Para compras novas, o prazo depende do fornecedor.
+E: até **{{ f.ti.equipamentos.prazo_entrega_dias_uteis }} dias úteis**
+
+[ti/solicitacao-equipamentos] rag
+F: O parque de notebooks é renovado a cada 4 anos.
+Q: De quanto em quanto tempo os notebooks são trocados?
+Q: Qual a periodicidade de renovação de notebooks?
+K: renovação de notebooks
+A: O parque de notebooks é renovado a cada {{ f.ti.equipamentos.renovacao_anos }} anos.
+E: a cada **{{ f.ti.equipamentos.renovacao_anos }} anos**
+
+[ti/solicitacao-equipamentos] rag
+F: Perda ou roubo de equipamento deve ser comunicado à TI em até 24 horas.
+Q: Perdi meu notebook, em quanto tempo devo avisar?
+Q: Qual o prazo para comunicar roubo de equipamento?
+K: perda ou roubo de equipamento
+A: Comunique à TI em até {{ f.ti.equipamentos.comunicar_perda_horas }} horas pelo ramal {{ f.ti.sla.ramal }} ou por {{ email('seguranca') }}. Em caso de roubo, registre também um boletim de ocorrência.
+E: em até **{{ f.ti.equipamentos.comunicar_perda_horas }} horas**
+
+[ti/solicitacao-equipamentos] ft
+F: Cada colaborador tem direito a um notebook individual; monitor adicional é concedido a quem atua em home office, com pedido do gestor.
+Q: Tenho direito a monitor extra para home office?
+Q: Quantos notebooks posso ter?
+K: monitor adicional
+A: Cada colaborador tem direito a um notebook de uso individual. Monitor adicional é concedido a quem atua em home office, mediante solicitação do gestor.
+E: Monitor adicional é concedido a quem atua em home office
+
+[ti/solicitacao-equipamentos] ft
+F: Computadores pessoais não são conectados à rede corporativa; visitantes e prestadores usam a rede de convidados.
+Q: Posso conectar meu notebook pessoal à rede da empresa?
+Q: Qual rede visitantes usam?
+K: notebook pessoal na rede
+A: Não. Computadores pessoais não são conectados à rede corporativa. Visitantes e prestadores usam a rede de convidados.
+E: Computadores pessoais não são conectados à rede corporativa
+
+[ti/vpn-trabalho-remoto] ft
+F: A VPN da empresa é a BrisaVPN e deve ser usada ao acessar BrisaERP, BrisaWMS, RotaViva e pastas do BrisaDocs de fora das unidades.
+Q: Quando preciso usar a VPN?
+Q: Qual é a VPN da empresa?
+K: quando usar VPN
+A: Use a BrisaVPN sempre que estiver fora de um CD ou do escritório e precisar acessar BrisaERP, BrisaWMS, RotaViva, pastas do BrisaDocs ou qualquer sistema interno que não abra pela internet comum.
+E: Use a VPN sempre que estiver fora
+
+[ti/vpn-trabalho-remoto] ft
+F: O acesso à VPN é solicitado por chamado de Acesso remoto, com aprovação do gestor.
+Q: Como peço acesso à VPN?
+Q: Quem aprova meu acesso remoto?
+K: pedir acesso à VPN
+A: Abra um chamado de *Acesso remoto* no ServiceDesk Brisa. Seu gestor aprova e a TI instala o cliente da BrisaVPN no notebook corporativo.
+E: Abra um chamado de *Acesso remoto*
+
+[ti/vpn-trabalho-remoto] ft
+F: A VPN só deve ser usada em equipamentos corporativos e não pode ser compartilhada com familiares.
+Q: Posso usar a VPN no meu computador pessoal?
+Q: Posso deixar meu filho usar meu acesso remoto?
+K: VPN em equipamento pessoal
+A: Não. A VPN só deve ser usada em equipamentos corporativos, e o acesso não pode ser compartilhado com ninguém, nem da família.
+E: A VPN só deve ser usada em equipamentos corporativos
+
+[ti/vpn-trabalho-remoto] ft
+F: Problemas de VPN que paralisam uma equipe inteira são P2; falhas individuais são P3.
+Q: Qual a prioridade de um problema de VPN?
+Q: Minha VPN não conecta, qual prioridade do chamado?
+K: prioridade de problema de VPN
+A: Problemas de VPN que impedem o trabalho de uma equipe inteira são tratados como P2; falhas individuais, como P3.
+E: são tratados como P2; falhas individuais, como P3
+
+[ti/backup] rag
+F: O backup incremental é diário, às 22h, e o completo é semanal, aos domingos.
+Q: Com que frequência o backup é feito?
+Q: Quando rodam os backups?
+K: frequência do backup
+A: O backup incremental é {{ f.ti.backup.incremental }}, e o completo é {{ f.ti.backup.completo }}. O teste de restauração é {{ f.ti.backup.teste_restauracao }}.
+E: | Incremental | {{ f.ti.backup.incremental }} |
+
+[ti/backup] rag
+F: Cópias diárias são mantidas por 30 dias e cópias mensais por 12 meses.
+Q: Por quanto tempo os backups ficam guardados?
+Q: Qual a retenção dos backups?
+K: retenção de backup
+A: Cópias diárias são mantidas por {{ f.ti.backup.retencao_diario_dias }} dias, e cópias mensais por {{ f.ti.backup.retencao_mensal_meses }} meses.
+E: mantidas por **{{ f.ti.backup.retencao_diario_dias }} dias**
+
+[ti/backup] rag
+F: O RPO é de 24 horas e o RTO de 8 horas.
+Q: Quais são o RPO e o RTO da empresa?
+Q: Quanto dado podemos perder e em quanto tempo restauramos um serviço crítico?
+K: RPO e RTO
+A: O RPO é de {{ f.ti.backup.rpo_horas }} horas (no máximo, o trabalho do último dia pode ser perdido) e o RTO é de {{ f.ti.backup.rto_horas }} horas para restaurar serviços críticos.
+E: {{ f.ti.backup.rpo_horas }} horas.**
+
+[ti/backup] ft
+F: Arquivos salvos só no disco do notebook ou na área de trabalho não entram no backup automático.
+Q: Meus arquivos do notebook têm backup?
+Q: O que não é copiado no backup?
+K: o que não tem backup
+A: Não são copiados automaticamente os arquivos salvos apenas no disco do notebook, na área de trabalho ou em nuvens pessoais. Guarde os arquivos de trabalho no BrisaDocs.
+E: **Não são copiados** automaticamente
+
+[ti/backup] ft
+F: Para restaurar um arquivo apagado, abra um chamado de Restauração de arquivo informando caminho, nome e data aproximada.
+Q: Apaguei um arquivo sem querer, como recupero?
+Q: Como peço restauração de arquivo?
+K: restaurar arquivo
+A: Abra um chamado em *Restauração de arquivo* no ServiceDesk Brisa, informando o caminho da pasta, o nome do arquivo e a data aproximada em que ele existia. Em geral, o chamado é P3.
+E: Restauração de arquivo
+
+[ti/seguranca-informacao] ft
+F: A informação é classificada em quatro níveis: Público, Interno, Confidencial e Restrito.
+Q: Quais são os níveis de classificação da informação?
+Q: Como a informação é classificada?
+K: classificação da informação
+A: Existem quatro níveis: Público, Interno, Confidencial e Restrito. Na dúvida, trate a informação como um nível acima.
+E: | {{ f.ti.seguranca.classificacao[3] }} |
+
+[ti/seguranca-informacao] ft
+F: Mensagens suspeitas de phishing devem ser encaminhadas para phishing@brisalog.example, sem clicar nem responder.
+Q: Recebi um e-mail suspeito, o que faço?
+Q: Para onde encaminho um phishing?
+K: reportar phishing
+A: Não clique nem responda. Encaminhe a mensagem para {{ email(f.ti.seguranca.email_phishing) }}. Se já clicou, desconecte o equipamento da rede e avise a TI imediatamente.
+E: encaminhe a mensagem para {{ email(f.ti.seguranca.email_phishing) }}
+
+[ti/seguranca-informacao] ft
+F: Incidentes de segurança devem ser comunicados imediatamente pelo ramal 4000 ou por seguranca@brisalog.example, e os graves são tratados como P1.
+Q: Como reporto um incidente de segurança?
+Q: Suspeito que minha conta foi invadida, para quem aviso?
+K: reportar incidente de segurança
+A: Comunique imediatamente pelo ramal {{ f.ti.sla.ramal }} ou por {{ email(f.ti.seguranca.email_seguranca) }}. Incidentes graves são tratados como P1 e acionam o plantão.
+E: Comunique pelo ramal {{ f.ti.sla.ramal }} ou por {{ email(f.ti.seguranca.email_seguranca) }}
+
+[ti/seguranca-informacao] ft
+F: A TI faz simulações de phishing; quem cai recebe orientação, sem punição.
+Q: Quem cai em simulação de phishing é punido?
+Q: A TI faz testes de phishing?
+K: simulação de phishing
+A: A TI realiza simulações de phishing. Quem cai recebe orientação, sem punição.
+E: quem cai recebe orientação, sem punição
+
+[ti/catalogo-sistemas] ft
+F: O BrisaWMS é o sistema de gestão de armazém e o dono do processo é Operações e Logística.
+Q: Para que serve o BrisaWMS?
+Q: Quem é o dono do BrisaWMS?
+K: BrisaWMS
+A: O BrisaWMS é o sistema de gestão de armazém, usado em recebimento, estoque, separação e expedição. O dono do processo é Operações e Logística.
+E: | BrisaWMS | gestão de armazém
+
+[ti/catalogo-sistemas] ft
+F: O RotaViva é o sistema de gestão de transporte, roteirização e monitoramento de entregas.
+Q: Para que serve o RotaViva?
+Q: Qual sistema faz a roteirização das entregas?
+K: RotaViva
+A: O RotaViva é o sistema de gestão de transporte, usado para roteirização e monitoramento de entregas. O dono do processo é Operações e Logística.
+E: | RotaViva | gestão de transporte
+
+[ti/catalogo-sistemas] ft
+F: O PessoasHub é onde o colaborador pede férias, vê holerite, benefícios e dados cadastrais.
+Q: Onde vejo meu holerite?
+Q: Para que serve o PessoasHub?
+K: PessoasHub
+A: O PessoasHub concentra férias, holerites, benefícios e dados cadastrais. O dono do processo é Pessoas e Cultura.
+E: | PessoasHub | férias, holerites
+
+[ti/catalogo-sistemas] ft
+F: O BrisaERP cuida de finanças, compras, faturamento e despesas, e o dono do processo é Financeiro e Controladoria.
+Q: Para que serve o BrisaERP?
+Q: Qual sistema uso para compras e faturamento?
+K: BrisaERP
+A: O BrisaERP é o sistema de finanças, compras, faturamento e despesas. O dono do processo é Financeiro e Controladoria.
+E: | BrisaERP | finanças, compras
+
+[ti/catalogo-sistemas] ft
+F: Para pedir acesso a um sistema, o gestor abre uma requisição no ServiceDesk Brisa, o dono do processo aprova e a TI concede.
+Q: Como peço acesso a um sistema interno?
+Q: Quem aprova meu acesso ao BrisaWMS?
+K: pedir acesso a sistema
+A: O gestor abre uma requisição no ServiceDesk Brisa informando o sistema e o perfil desejado. O dono do processo aprova e a TI concede o acesso, em geral com prioridade P4.
+E: O dono do processo aprova, e a TI concede

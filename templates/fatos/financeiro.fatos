@@ -1,0 +1,343 @@
+[financeiro/reembolso] rag
+F: O pedido de reembolso deve ser enviado em até 15 dias corridos após a despesa.
+Q: Em quantos dias devo pedir o reembolso depois de uma despesa?
+Q: Qual o prazo para enviar a solicitação de reembolso?
+K: prazo para enviar reembolso
+A: A solicitação de reembolso deve ser enviada em até {{ f.financeiro.reembolso.prazo_envio_dias }} dias corridos após a data da despesa.
+E: em até **{{ f.financeiro.reembolso.prazo_envio_dias }} dias corridos**
+
+[financeiro/reembolso] rag
+F: O reembolso é pago em até 30 dias após o envio da solicitação completa.
+Q: Em quanto tempo o reembolso é pago?
+Q: Quando cai o dinheiro do meu reembolso?
+K: prazo de pagamento do reembolso
+A: O reembolso é pago em até {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias após o envio da solicitação completa. Se faltar algo, o prazo só começa a contar quando a pendência for resolvida.
+E: em até **{{ f.financeiro.reembolso.prazo_pagamento_dias }} dias** após o envio
+
+[financeiro/reembolso] ft
+F: O pedido de reembolso é aberto no módulo Despesas do BrisaERP.
+Q: Onde peço reembolso de despesas?
+Q: Qual sistema uso para solicitar reembolso?
+K: onde pedir reembolso
+A: Abra a solicitação no módulo Despesas do BrisaERP, anexe o comprovante e informe finalidade e centro de custo.
+E: Abra uma solicitação no {{ f.financeiro.reembolso.sistema }}
+
+[financeiro/reembolso] rag
+F: A refeição durante deslocamento a trabalho é reembolsada até R$ 70 por refeição.
+Q: Qual o limite de reembolso de refeição?
+Q: Quanto posso gastar com almoço a trabalho para ser reembolsado?
+K: teto de refeição reembolso
+A: A refeição durante deslocamento a trabalho é reembolsável até {{ brl(f.financeiro.reembolso.refeicao_teto) }} por refeição.
+E: até {{ brl(f.financeiro.reembolso.refeicao_teto) }} por refeição
+
+[financeiro/reembolso] rag
+F: A quilometragem com carro próprio, com aprovação prévia, é reembolsada a R$ 1,20 por km.
+Q: Quanto é reembolsado por km rodado com carro próprio?
+Q: Qual o valor do reembolso de quilometragem?
+K: reembolso por km
+A: A quilometragem com carro próprio, com aprovação prévia, é reembolsada a {{ brl(f.financeiro.reembolso.km_valor) }} por km rodado.
+E: {{ brl(f.financeiro.reembolso.km_valor) }} por km rodado
+
+[financeiro/reembolso] ft
+F: Não são reembolsadas bebidas alcoólicas, multas de trânsito, despesas pessoais e despesas sem comprovante legível.
+Q: O que não é reembolsado pela empresa?
+Q: Posso pedir reembolso de bebida alcoólica ou multa?
+K: despesas não reembolsáveis
+A: Não são reembolsadas bebidas alcoólicas, multas de trânsito, despesas pessoais nem despesas sem comprovante ou com comprovante ilegível. Despesas enviadas fora do prazo só com exceção aprovada pelo diretor da área.
+E: Bebidas alcoólicas.
+
+[financeiro/reembolso-v2025] rag
+F: Pela política de 2025 (revogada), o reembolso era pago em até 45 dias após o envio, e o envio era em até 10 dias.
+Q: Qual era o prazo de pagamento do reembolso em 2025?
+Q: Como era a regra de reembolso antes de 2026?
+K: reembolso em 2025
+A: A política de 2025 está revogada. Nela, a solicitação devia ser enviada em até {{ f.financeiro.reembolso.v2025.prazo_envio_dias }} dias e o pagamento ocorria em até {{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} dias. Hoje valem {{ f.financeiro.reembolso.prazo_envio_dias }} dias para enviar e {{ f.financeiro.reembolso.prazo_pagamento_dias }} para pagar.
+E: até **{{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} dias**
+
+[financeiro/reembolso-v2025] ft
+F: A regra de 2026 reduziu o prazo de pagamento do reembolso e deu mais tempo para enviar o pedido.
+Q: O que mudou no reembolso de 2025 para 2026?
+Q: O prazo de reembolso ficou melhor ou pior em 2026?
+K: mudança reembolso 2026
+A: Em 2026 o colaborador ganhou mais tempo para enviar o pedido ({{ f.financeiro.reembolso.v2025.prazo_envio_dias }} para {{ f.financeiro.reembolso.prazo_envio_dias }} dias) e o prazo de pagamento foi reduzido ({{ f.financeiro.reembolso.v2025.prazo_pagamento_dias }} para {{ f.financeiro.reembolso.prazo_pagamento_dias }} dias).
+E: **reduz** o prazo de pagamento
+
+[financeiro/alcadas-aprovacao] rag
+F: O gestor imediato aprova despesas de até R$ 2.000 por operação.
+Q: Até que valor meu gestor pode aprovar uma despesa?
+Q: Qual a alçada do gestor?
+K: alçada do gestor
+A: O gestor imediato (coordenador ou gerente) aprova operações de até {{ brl(f.financeiro.alcadas.gestor_ate) }}.
+E: até {{ brl(f.financeiro.alcadas.gestor_ate) }} |
+
+[financeiro/alcadas-aprovacao] rag
+F: O diretor da área aprova operações acima de R$ 2.000 e até R$ 20.000.
+Q: Até quanto um diretor pode aprovar?
+Q: Qual a alçada do diretor da área?
+K: alçada do diretor
+A: O diretor da área aprova operações acima de {{ brl(f.financeiro.alcadas.gestor_ate) }} e até {{ brl(f.financeiro.alcadas.diretor_ate) }}.
+E: acima de {{ brl(f.financeiro.alcadas.gestor_ate) }} e até {{ brl(f.financeiro.alcadas.diretor_ate) }}
+
+[financeiro/alcadas-aprovacao] rag
+F: Operações acima de R$ 20.000 precisam da aprovação do CEO.
+Q: Quando preciso da aprovação do CEO para uma compra?
+Q: Acima de qual valor o CEO precisa aprovar?
+K: alçada do CEO
+A: Operações acima de {{ brl(f.financeiro.alcadas.diretor_ate) }} precisam da aprovação do CEO.
+E: | CEO | acima de {{ brl(f.financeiro.alcadas.diretor_ate) }} |
+
+[financeiro/alcadas-aprovacao] rag
+F: Operações acima de R$ 200.000 também são levadas ao Conselho de Administração, para ciência.
+Q: Acima de qual valor o Conselho de Administração precisa saber da operação?
+Q: Quando o conselho é comunicado de uma compra?
+K: ciência do conselho
+A: Operações acima de {{ brl(f.financeiro.alcadas.ciencia_conselho_acima) }} também são levadas ao Conselho de Administração, para ciência.
+E: acima de {{ brl(f.financeiro.alcadas.ciencia_conselho_acima) }} também
+
+[financeiro/alcadas-aprovacao] ft
+F: Não é permitido fracionar uma compra para ficar abaixo de uma alçada, e ninguém aprova a própria despesa.
+Q: Posso dividir uma compra em duas para o gestor aprovar?
+Q: Posso aprovar minha própria despesa?
+K: fracionar compra e autoaprovação
+A: Não. É proibido fracionar uma compra para ficar abaixo de uma alçada, e ninguém aprova a própria despesa; quando o solicitante é o gestor, a aprovação sobe um nível.
+E: **Não é permitido fracionar**
+
+[financeiro/alcadas-aprovacao] ft
+F: A aprovação deve ser registrada antes da compra ou da assinatura.
+Q: Posso comprar primeiro e pedir aprovação depois?
+Q: Quando devo registrar a aprovação de uma compra?
+K: momento da aprovação
+A: Não. A aprovação deve ser registrada antes da compra ou da assinatura, e não depois.
+E: **antes** da compra ou da assinatura
+
+[financeiro/alcadas-aprovacao-v2025] rag
+F: Pela tabela de 2025 (revogada), o gestor aprovava até R$ 1.000 e o diretor até R$ 10.000.
+Q: Qual era a alçada do gestor em 2025?
+Q: Quanto o diretor podia aprovar em 2025?
+K: alçadas de 2025
+A: A tabela de 2025 está revogada. Nela, o gestor aprovava até {{ brl(f.financeiro.alcadas.v2025.gestor_ate) }} e o diretor até {{ brl(f.financeiro.alcadas.v2025.diretor_ate) }}. Hoje valem {{ brl(f.financeiro.alcadas.gestor_ate) }} e {{ brl(f.financeiro.alcadas.diretor_ate) }}.
+E: até {{ brl(f.financeiro.alcadas.v2025.gestor_ate) }}
+
+[financeiro/alcadas-aprovacao-v2025] ft
+F: As alçadas subiram para que as decisões fiquem mais próximas de quem executa, em linha com o valor Simplicidade.
+Q: Por que as alçadas de aprovação mudaram?
+Q: Qual o motivo do aumento das alçadas em 2026?
+K: motivo da mudança de alçadas
+A: Com o crescimento do faturamento e o aumento de preços de insumos, muitas compras corriqueiras dependiam de diretoria. Em linha com o valor Simplicidade, a empresa elevou os limites para aproximar as decisões de quem executa.
+E: decisões fiquem mais próximas de quem executa
+
+[financeiro/politica-viagens] rag
+F: O hotel tem limite de R$ 380 por diária em capitais e R$ 300 nas demais cidades.
+Q: Qual o limite de diária de hotel em viagem?
+Q: Quanto posso gastar de hotel em capital?
+K: limite de hotel
+A: O hotel tem limite de {{ brl(f.financeiro.viagens.hotel_capital) }} por diária em capitais e {{ brl(f.financeiro.viagens.hotel_demais) }} por diária nas demais cidades.
+E: até {{ brl(f.financeiro.viagens.hotel_capital) }} por diária
+
+[financeiro/politica-viagens] rag
+F: A alimentação em viagem tem limite de R$ 90 por dia.
+Q: Qual o limite de alimentação por dia em viagem?
+Q: Quanto posso gastar com comida numa viagem a trabalho?
+K: limite de alimentação em viagem
+A: A alimentação em viagem tem limite de {{ brl(f.financeiro.viagens.refeicao_dia) }} por dia.
+E: até {{ brl(f.financeiro.viagens.refeicao_dia) }} por dia
+
+[financeiro/politica-viagens] rag
+F: As passagens aéreas devem ser compradas com pelo menos 14 dias de antecedência.
+Q: Com quanta antecedência devo comprar passagem aérea?
+Q: Qual a antecedência mínima para passagens?
+K: antecedência de passagem
+A: Passagens aéreas devem ser compradas com pelo menos {{ f.financeiro.viagens.antecedencia_aereo_dias }} dias de antecedência, sempre que possível. Compras mais próximas da data precisam de justificativa.
+E: pelo menos **{{ f.financeiro.viagens.antecedencia_aereo_dias }} dias**
+
+[financeiro/politica-viagens] rag
+F: O adiantamento de viagem é de até 50% do custo estimado de hospedagem e alimentação.
+Q: Posso pedir adiantamento de viagem? Quanto?
+Q: Qual o percentual máximo de adiantamento?
+K: adiantamento de viagem
+A: Sim. É possível pedir adiantamento de até {{ f.financeiro.viagens.adiantamento_max_pct }}% do custo estimado de hospedagem e alimentação.
+E: até **{{ f.financeiro.viagens.adiantamento_max_pct }}%**
+
+[financeiro/politica-viagens] rag
+F: A prestação de contas da viagem deve ser feita em até 5 dias úteis após o retorno.
+Q: Quanto tempo tenho para prestar contas da viagem?
+Q: Qual o prazo da prestação de contas depois de viajar?
+K: prazo prestação de contas
+A: A prestação de contas deve ser feita no BrisaERP em até {{ f.financeiro.viagens.prestacao_contas_dias_uteis }} dias úteis após o retorno. Valores adiantados e não utilizados devem ser devolvidos.
+E: **{{ f.financeiro.viagens.prestacao_contas_dias_uteis }} dias úteis**
+
+[financeiro/politica-viagens] ft
+F: O aluguel de carro só é permitido com aprovação do diretor da área.
+Q: Posso alugar carro em viagem a trabalho?
+Q: Quem aprova aluguel de carro?
+K: aluguel de carro
+A: O aluguel de carro só é permitido com aprovação do diretor da área.
+E: {{ f.financeiro.viagens.carro_aluguel }}
+
+[financeiro/calendario-fechamento] rag
+F: O fechamento contábil mensal acontece até o 5º dia útil do mês seguinte.
+Q: Até que dia o fechamento contábil mensal é feito?
+Q: Quando fecha a contabilidade do mês?
+K: dia do fechamento contábil
+A: O fechamento contábil mensal acontece até o {{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil do mês seguinte.
+E: até o **{{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil**
+
+[financeiro/calendario-fechamento] rag
+F: O corte de despesas e documentos é no 3º dia útil e a conciliação bancária no 4º dia útil.
+Q: Qual o prazo para lançar despesas antes do fechamento?
+Q: Quando é a conciliação bancária?
+K: corte de despesas
+A: O corte de despesas e documentos é no {{ f.financeiro.fechamento.dia_util_corte_despesas }}º dia útil, e a conciliação bancária no {{ f.financeiro.fechamento.dia_util_conciliacao }}º dia útil, antes do fechamento no {{ f.financeiro.fechamento.dia_util_fechamento }}º dia útil.
+E: **Corte de despesas e documentos — {{ f.financeiro.fechamento.dia_util_corte_despesas }}º dia útil.**
+
+[financeiro/calendario-fechamento] ft
+F: Despesas lançadas após o corte ficam para o mês seguinte.
+Q: O que acontece se eu perder o corte de despesas?
+Q: Lancei uma despesa depois do corte, entra no mês?
+K: perdi o corte
+A: Despesas lançadas após o corte ficam para o mês seguinte, o que pode distorcer o orçamento da sua área. Em casos excepcionais, o diretor da área pode pedir ao Financeiro a inclusão tardia.
+E: Despesas lançadas após o corte ficam para o mês seguinte
+
+[financeiro/calendario-fechamento] rag
+F: O último trimestre fechado é 2026T2.
+Q: Qual é o último trimestre com fechamento contábil?
+Q: Até que trimestre os resultados estão fechados?
+K: último trimestre fechado
+A: O último trimestre fechado é {{ f.financeiro.data_ultimo_fechamento_trimestre }}.
+E: O último trimestre fechado é {{ f.financeiro.data_ultimo_fechamento_trimestre }}
+
+[financeiro/politica-compras] rag
+F: Compras de até R$ 2.000 podem ser feitas de forma direta, com uma cotação ou preço de tabela.
+Q: Até que valor posso fazer compra direta?
+Q: Preciso de cotação para uma compra pequena?
+K: compra direta
+A: Compras de até {{ brl(f.financeiro.compras.compra_direta_ate) }} podem ser feitas de forma direta, com uma cotação ou preço de tabela, com aprovação do gestor imediato.
+E: | Até {{ brl(f.financeiro.compras.compra_direta_ate) }} |
+
+[financeiro/politica-compras] rag
+F: Compras de R$ 2.001 a R$ 20.000 exigem no mínimo 3 cotações e aprovação do diretor da área.
+Q: Quantas cotações são necessárias para uma compra de R$ 10.000?
+Q: Quando preciso de 3 cotações?
+K: número de cotações
+A: Compras de {{ brl(f.financeiro.compras.compra_direta_ate + 1) }} a {{ brl(f.financeiro.compras.tres_cotacoes_ate) }} exigem no mínimo {{ f.financeiro.compras.cotacoes_minimas }} cotações e aprovação do diretor da área.
+E: mínimo de **{{ f.financeiro.compras.cotacoes_minimas }} cotações**
+
+[financeiro/politica-compras] rag
+F: Compras acima de R$ 20.000 exigem concorrência formal com proposta escrita e aprovação do CEO.
+Q: O que é exigido para compras acima de R$ 20.000?
+Q: Compras grandes precisam de concorrência?
+K: compras acima de 20 mil
+A: Compras acima de {{ brl(f.financeiro.compras.tres_cotacoes_ate) }} exigem concorrência formal com proposta escrita e aprovação do CEO.
+E: Acima de {{ brl(f.financeiro.compras.tres_cotacoes_ate) }} | concorrência formal
+
+[financeiro/politica-compras] ft
+F: Compras sem pedido de compra (PC) emitido no BrisaERP não são pagas.
+Q: Posso comprar sem emitir pedido de compra?
+Q: O que acontece se eu comprar sem PC?
+K: pedido de compra obrigatório
+A: Não. O PC deve ser emitido no BrisaERP antes de contratar; compras sem PC não são pagas.
+E: Compras sem PC não são pagas
+
+[financeiro/politica-compras] rag
+F: A homologação de fornecedores vale por 24 meses.
+Q: Por quanto tempo vale a homologação de um fornecedor?
+Q: De quanto em quanto tempo o fornecedor é reavaliado?
+K: validade da homologação
+A: A homologação de fornecedores vale por {{ f.financeiro.compras.homologacao_validade_meses }} meses e depois é renovada.
+E: vale por **{{ f.financeiro.compras.homologacao_validade_meses }} meses**
+
+[financeiro/pagamento-fornecedores] rag
+F: O prazo padrão de pagamento a fornecedores é de 30 dias após o recebimento da mercadoria ou conclusão do serviço.
+Q: Qual o prazo padrão de pagamento aos fornecedores?
+Q: Em quantos dias a Brisa Log paga as notas?
+K: prazo padrão de pagamento
+A: O prazo padrão é de {{ f.financeiro.compras.pagamento_prazo_padrao_dias }} dias após o recebimento da mercadoria ou a conclusão do serviço, desde que a nota fiscal esteja correta e aprovada.
+E: **{{ f.financeiro.compras.pagamento_prazo_padrao_dias }} dias**
+
+[financeiro/pagamento-fornecedores] rag
+F: Os pagamentos a fornecedores são realizados às terças e quintas-feiras.
+Q: Em quais dias da semana os fornecedores são pagos?
+Q: Quando acontece o ciclo de pagamento?
+K: dias de pagamento
+A: Os pagamentos a fornecedores são realizados em {{ f.financeiro.compras.dias_pagamento }}.
+E: realizados em **{{ f.financeiro.compras.dias_pagamento }}**
+
+[financeiro/pagamento-fornecedores] rag
+F: A nota fiscal deve ser enviada com pelo menos 5 dias de antecedência do vencimento.
+Q: Com quantos dias de antecedência o fornecedor deve enviar a NF?
+Q: Qual a antecedência para enviar nota fiscal ao Contas a Pagar?
+K: antecedência da NF
+A: A nota fiscal deve ser enviada, em XML e PDF, com pelo menos {{ f.financeiro.compras.nf_antecedencia_dias }} dias de antecedência do vencimento, com o número do pedido de compra nas observações.
+E: pelo menos **{{ f.financeiro.compras.nf_antecedencia_dias }} dias**
+
+[financeiro/pagamento-fornecedores] ft
+F: Mudanças de dados bancários de fornecedores exigem pedido formal assinado e confirmação por telefone; o Financeiro nunca altera por e-mail apenas.
+Q: Como um fornecedor altera sua conta bancária?
+Q: O Financeiro muda dados bancários por e-mail?
+K: alteração de dados bancários
+A: Alterações de conta bancária exigem pedido formal assinado pelo representante legal e confirmação por telefone com um contato já cadastrado. O Financeiro nunca altera dados bancários apenas por e-mail, para proteger contra golpes.
+E: O Financeiro nunca altera dados bancários apenas por e-mail
+
+[financeiro/resumo-dre] rag
+F: A receita líquida de 2025 foi de R$ 85.000.000.
+Q: Qual foi a receita líquida de 2025?
+Q: Quanto a Brisa Log faturou líquido em 2025?
+K: receita líquida 2025
+A: A receita líquida de 2025 foi de {{ brl(anual['2025'].receita_liquida) }}, cerca de {{ milhoes(anual['2025'].receita_liquida) }}.
+E: **{{ brl(anual['2025'].receita_liquida) }}**
+
+[financeiro/resumo-dre] rag
+F: O EBITDA de 2025 foi de R$ 5.124.079.
+Q: Qual foi o EBITDA de 2025?
+Q: Quanto foi o EBITDA do ano passado?
+K: EBITDA 2025
+A: O EBITDA de 2025 foi de {{ brl(anual['2025'].ebitda) }}, com margem EBITDA de {{ pct(anual['2025'].ebitda / anual['2025'].receita_liquida * 100, 1) }}.
+E: | **EBITDA** | {{ brl(anual['2024'].ebitda) }} | {{ brl(anual['2025'].ebitda) }} |
+
+[financeiro/resumo-dre] rag
+F: A receita líquida cresceu 11,5% de 2024 para 2025.
+Q: Qual foi o crescimento da receita líquida de 2024 para 2025?
+Q: A receita cresceu quanto de um ano para o outro?
+K: crescimento da receita
+A: A receita líquida cresceu {{ pct((anual['2025'].receita_liquida / anual['2024'].receita_liquida - 1) * 100, 1) }} de 2024 para 2025.
+E: foi de {{ pct((anual['2025'].receita_liquida / anual['2024'].receita_liquida - 1) * 100, 1) }}
+
+[financeiro/resumo-dre] rag
+F: O resultado líquido de 2025 foi de R$ 1.402.777.
+Q: Qual foi o resultado líquido de 2025?
+Q: Quanto de lucro a empresa teve em 2025?
+K: resultado líquido 2025
+A: O resultado líquido de 2025 foi de {{ brl(anual['2025'].resultado_liquido) }}, uma margem líquida de {{ pct(anual['2025'].resultado_liquido / anual['2025'].receita_liquida * 100, 1) }}.
+E: | **Resultado líquido** | {{ brl(anual['2024'].resultado_liquido) }} | {{ brl(anual['2025'].resultado_liquido) }} |
+
+[financeiro/resumo-dre] ft
+F: O quarto trimestre costuma ser o mais forte do ano por causa da sazonalidade de alimentos e bebidas no fim de ano.
+Q: Por que o quarto trimestre costuma ser o mais forte?
+Q: Existe sazonalidade nos resultados da empresa?
+K: sazonalidade
+A: Sim. O quarto trimestre costuma ser o mais forte do ano por causa da sazonalidade de alimentos e bebidas no fim de ano.
+E: O quarto trimestre costuma ser o mais forte do ano
+
+[financeiro/orcamento-departamentos] rag
+F: O orçamento total de 2026 é de R$ 64.400.000.
+Q: Qual é o orçamento total da empresa para 2026?
+Q: Quanto a empresa orçou para 2026 no total?
+K: orçamento total 2026
+A: O orçamento total de custos e despesas de 2026 é de {{ brl(total_orc_2026) }}, distribuído entre os {{ f.departamentos | length }} departamentos.
+E: **{{ brl(total_orc_2026) }}**
+
+[financeiro/orcamento-departamentos] ft
+F: O orçamento por departamento inclui custos operacionais de CD e frota, que na DRE aparecem no CMV.
+Q: Por que o orçamento é maior que as despesas operacionais da DRE?
+Q: O orçamento dos departamentos inclui custos de CD?
+K: orçamento versus DRE
+A: O orçamento inclui custos operacionais de CD e frota, que na DRE aparecem no CMV. Por isso o total orçado é maior que as despesas operacionais da DRE.
+E: que na DRE aparecem no CMV
+
+[financeiro/orcamento-departamentos] ft
+F: Remanejamentos entre trimestres do mesmo departamento são aprovados pela Controladoria; entre departamentos, pela CEO.
+Q: Quem aprova remanejamento de orçamento?
+Q: Posso mover orçamento de um departamento para outro?
+K: remanejamento de orçamento
+A: Remanejamentos entre trimestres do mesmo departamento são aprovados pela Controladoria; entre departamentos, pela CEO.
+E: Remanejamentos entre trimestres do mesmo departamento
