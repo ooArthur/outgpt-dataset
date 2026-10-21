@@ -7,11 +7,16 @@ Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 avi
 |---|---:|
 | avaliacao/perguntas_acesso.jsonl | 6.3 KB |
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
+| export/sft_memorizacao_teste.jsonl | 157.7 KB |
+| export/sft_teste.jsonl | 561.3 KB |
+| export/sft_treino_base.jsonl | 3227.4 KB |
+| export/sft_treino_memorizacao.jsonl | 3832.2 KB |
 | fatos/fatos.jsonl | 325.1 KB |
 | qa/qa_memorizacao_teste.jsonl | 225.5 KB |
 | qa/qa_memorizacao_treino.jsonl | 859.5 KB |
 | qa/qa_teste.jsonl | 650.4 KB |
 | qa/qa_treino.jsonl | 3717.9 KB |
+| rag/chunks.jsonl | 280.0 KB |
 | data/catalogo_servicos.csv | 2.7 KB |
 | data/financeiro_trimestral.csv | 1.1 KB |
 | data/funcionarios.csv | 18.1 KB |
@@ -114,6 +119,22 @@ Treino: **1180** pares (318 fatos); teste: **309** pares (309 fatos).
 | Pares espelho | 7 |
 | Itens sobre CSVs restritos | 4 |
 | Perguntas públicas (colaborador) | 3 |
+
+### Exportação para treino (`export/`, só `messages`)
+| Arquivo | Exemplos |
+|---|---:|
+| sft_treino_base.jsonl | 2631 |
+| sft_treino_memorizacao.jsonl | 3811 |
+| sft_teste.jsonl | 483 |
+| sft_memorizacao_teste.jsonl | 309 |
+
+### RAG de referência e ferramentas
+| Item | Valor |
+|---|---:|
+| Chunks em rag/chunks.jsonl | 533 |
+| Documentos indexados | 46 |
+| Chunks do diretório | 140 |
+| Itens usados no teste do avaliador (3 modos simulados) | 429 |
 
 ### Tickets de TI
 | Categoria | Tickets |

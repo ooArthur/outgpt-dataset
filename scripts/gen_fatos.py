@@ -5,7 +5,7 @@ from pathlib import Path
 
 from jinja2 import Environment, StrictUndefined
 
-from common import (RAIZ, brl, brl2, carregar_ficha, chunks_doc, escrever_jsonl, ler_csv, ler_doc, num, slug)
+from common import (linha_diretorio, RAIZ, brl, brl2, carregar_ficha, chunks_doc, escrever_jsonl, ler_csv, ler_doc, num, slug)
 from render_docs import contexto
 
 DESTINO = {"ft": "finetuning", "rag": "rag"}
@@ -183,9 +183,7 @@ def fatos_diretorio(ficha, rng):
     por_id = {f["id"]: f for f in func}
     rel = "data/funcionarios.csv"
     lideres = {d["diretor"] for d in ficha["departamentos"]}
-    linha = lambda f: (f"Diretório — {f['nome']}, {f['cargo']} ({f['departamento']}, {f['unidade']}); "
-                       f"ramal {f['ramal']}; e-mail {f['email']}"
-                       + (f"; gestor imediato: {por_id[f['gestor_id']]['nome']} ({por_id[f['gestor_id']]['cargo']})" if f["gestor_id"] else ""))
+    linha = lambda f: linha_diretorio(f, por_id)
     out = []
     for f in func:
         if f["nome"] in lideres:

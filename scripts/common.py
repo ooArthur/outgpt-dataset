@@ -183,3 +183,10 @@ MARCADORES_ACESSO = ["acesso restrito", "restrito", "não tenho permissão", "se
 def sem_resposta_renderizadas():
     """Todas as recusas válidas (variante x área), para o validador."""
     return {v.format(area=a) for v in SEM_RESP_VARIANTES for a in AREAS_SUG.values()}
+
+
+def linha_diretorio(f, por_id):
+    """Linha de diretório usada como contexto (fatos de ramal/gestor) e como chunk do RAG de referência."""
+    g = por_id.get(f["gestor_id"]) if f["gestor_id"] else None
+    return (f"Diretório — {f['nome']}, {f['cargo']} ({f['departamento']}, {f['unidade']}); ramal {f['ramal']}; e-mail {f['email']}"
+            + (f"; gestor imediato: {g['nome']} ({g['cargo']})" if g else ""))

@@ -351,6 +351,53 @@ def checa_avaliacao(perguntas_qa):
     stats["avaliacao"] = {"total": len(av), "tipo": dict(Counter(r["tipo"] for r in av))}
 
 
+def checa_export():
+    esperados = {"sft_treino_base.jsonl": ["qa/qa_treino.jsonl"], "sft_treino_memorizacao.jsonl": ["qa/qa_treino.jsonl", "qa/qa_memorizacao_treino.jsonl"],
+                 "sft_teste.jsonl": ["qa/qa_teste.jsonl"], "sft_memorizacao_teste.jsonl": ["qa/qa_memorizacao_teste.jsonl"]}
+    tam = {}
+    for nome, fontes in esperados.items():
+        regs = jsonl(f"export/{nome}")
+        n_esp = sum(len(jsonl(f)) for f in fontes)
+        if len(regs) != n_esp:
+            erro(f"export/{nome}: {len(regs)} exemplos, esperado {n_esp}")
+        if any(set(r) != {"messages"} for r in regs):
+            erro(f"export/{nome}: registros devem ter somente a chave 'messages'")
+        tam[nome] = len(regs)
+    stats["export"] = tam
+
+
+def checa_rag_e_ferramentas():
+    import acesso as ac
+    chunks = jsonl("rag/chunks.jsonl")
+    ids = [c["chunk_id"] for c in chunks]
+    if len(ids) != len(set(ids)):
+        erro("rag/chunks.jsonl: chunk_id duplicado")
+    for c in chunks:
+        if not (RAIZ / c["fonte_doc"]).exists():
+            erro(f"rag/chunks.jsonl {c['chunk_id']}: fonte inexistente")
+        elif ac.acesso_da_fonte(c["fonte_doc"]) != c["acesso"]:
+            erro(f"rag/chunks.jsonl {c['chunk_id']}: acesso diverge da fonte")
+        if not c["texto"].strip():
+            erro(f"rag/chunks.jsonl {c['chunk_id']}: texto vazio")
+    import teste_avaliacao
+    e, st, _ = teste_avaliacao.rodar()
+    for x in e:
+        erro(f"avaliador: {x}")
+    nb = RAIZ / "treino" / "qlora_colab.ipynb"
+    if not nb.exists():
+        erro("treino/qlora_colab.ipynb ausente (gere com scripts/gerar_notebook.py)")
+    else:
+        try:
+            import nbformat
+            nbformat.validate(nbformat.read(nb, as_version=4))
+        except ImportError:
+            json.loads(nb.read_text(encoding="utf-8"))  # sem nbformat: ao menos JSON válido
+        except Exception as ex:  # noqa: BLE001
+            erro(f"treino/qlora_colab.ipynb inválido: {ex}")
+    stats["rag"] = {"chunks": len(chunks), "docs": len({c["fonte_doc"] for c in chunks if c["fonte_doc"].endswith(".md")}),
+                    "diretorio": sum(c["fonte_doc"].endswith(".csv") for c in chunks), "itens_teste_avaliador": st["itens"]}
+
+
 def checa_acesso():
     import teste_acesso
     jsonl("avaliacao/perguntas_acesso.jsonl")
@@ -467,6 +514,10 @@ def relatorio():
     ac = s["acesso"]
     out += ["\n### Controle de acesso (`avaliacao/perguntas_acesso.jsonl`)\n", tabela({"Itens": ac["itens"], "negar": ac["negar"], "responder": ac["responder"],
             "Pares espelho": ac["pares_espelho"], "Itens sobre CSVs restritos": ac["csv_restritos"], "Perguntas públicas (colaborador)": ac["publicas"]}, "Métrica", "Valor")]
+    out += ["\n### Exportação para treino (`export/`, só `messages`)\n", tabela(s["export"], "Arquivo", "Exemplos")]
+    rg = s["rag"]
+    out += ["\n### RAG de referência e ferramentas\n", tabela({"Chunks em rag/chunks.jsonl": rg["chunks"], "Documentos indexados": rg["docs"],
+            "Chunks do diretório": rg["diretorio"], "Itens usados no teste do avaliador (3 modos simulados)": rg["itens_teste_avaliador"]}, "Item", "Valor")]
     tk = s["tickets"]
     out += ["\n### Tickets de TI\n", tabela(tk["categoria"], "Categoria", "Tickets"), "\n", tabela(tk["prioridade"], "Prioridade", "Tickets"), "\n",
             tabela(tk["sentimento"], "Sentimento", "Tickets"), "\n", tabela(tk["fila"], "Fila", "Tickets"), "\n", tabela(tk["tipo"], "Tipo", "Tickets"), "\n", tabela(tk["dificuldade"], "Dificuldade", "Tickets"),
@@ -508,6 +559,8 @@ def main():
     checa_memorizacao(fatos, perguntas)
     checa_avaliacao(perguntas)
     checa_acesso()
+    checa_export()
+    checa_rag_e_ferramentas()
     checa_tickets(ficha)
     checa_repositorio()
     relatorio()
