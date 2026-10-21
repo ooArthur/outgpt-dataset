@@ -1,10 +1,11 @@
 # Relatório de validação
 Gerado por `validacao/validar.py`. **Status: ✅ APROVADO** — 0 erro(s), 0 aviso(s).
 ## Verificações
-- Documentos: front matter completo, sem marcação `{{ }}`, 300 a 900 palavras, rodapé fictício, pares de versão.- Financeiro: aritmética de todos os trimestres e receita líquida de 2025 igual à ficha.- Funcionários: todo `gestor_id` existe; e-mails no domínio fictício; headcount igual ao da ficha.- JSONL válidos; sem perguntas duplicadas; nenhum `fato_id` no treino e no teste; todo `fonte_doc` existe.- Perguntas de fatos `rag` aparecem só como `com_contexto`; avaliação sem repetir treino/teste; tickets coerentes com o SLA; sem arquivos > 5 MB nem segredos.
+- Documentos: front matter completo, sem marcação `{{ }}`, 300 a 900 palavras, rodapé fictício, pares de versão.- Financeiro: aritmética de todos os trimestres e receita líquida de 2025 igual à ficha.- Funcionários: todo `gestor_id` existe; e-mails no domínio fictício; headcount igual ao da ficha.- Controle de acesso: matriz de perfis cobre todos os níveis dos documentos; 20 itens de acesso coerentes com `pode_ver(perfil, fonte)`.- JSONL válidos; sem perguntas duplicadas; nenhum `fato_id` no treino e no teste; todo `fonte_doc` existe.- Perguntas de fatos `rag` aparecem só como `com_contexto`; avaliação sem repetir treino/teste; tickets coerentes com o SLA; sem arquivos > 5 MB nem segredos.
 ## Contagens por arquivo
 | Arquivo | Tamanho |
 |---|---:|
+| avaliacao/perguntas_acesso.jsonl | 6.3 KB |
 | avaliacao/perguntas_avaliacao.jsonl | 31.8 KB |
 | fatos/fatos.jsonl | 325.1 KB |
 | qa/qa_memorizacao_teste.jsonl | 225.5 KB |
@@ -103,6 +104,16 @@ Treino: **1180** pares (318 fatos); teste: **309** pares (309 fatos).
 | versao_antiga_vs_nova | 12 |
 | sem_resposta | 10 |
 | fora_de_escopo | 8 |
+
+### Controle de acesso (`avaliacao/perguntas_acesso.jsonl`)
+| Métrica | Valor |
+|---|---:|
+| Itens | 20 |
+| negar | 10 |
+| responder | 10 |
+| Pares espelho | 7 |
+| Itens sobre CSVs restritos | 4 |
+| Perguntas públicas (colaborador) | 3 |
 
 ### Tickets de TI
 | Categoria | Tickets |

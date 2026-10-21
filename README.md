@@ -103,6 +103,7 @@ A saída é determinística: rodar o build duas vezes produz arquivos idênticos
 | &nbsp;&nbsp;↳ `sem_resposta` | 458 |
 | Pares de memorização (`qa_memorizacao_*`) | 1489 (1180 + 309) |
 | Perguntas de avaliação | 100 |
+| Itens de avaliação de acesso | 20 (10 negar, 10 responder) |
 | Tickets de TI | 500 |
 <!-- STATS:END -->
 

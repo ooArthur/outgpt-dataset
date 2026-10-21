@@ -351,6 +351,15 @@ def checa_avaliacao(perguntas_qa):
     stats["avaliacao"] = {"total": len(av), "tipo": dict(Counter(r["tipo"] for r in av))}
 
 
+def checa_acesso():
+    import teste_acesso
+    jsonl("avaliacao/perguntas_acesso.jsonl")
+    e, st = teste_acesso.rodar()
+    for x in e:
+        erro(f"acesso: {x}")
+    stats["acesso"] = st
+
+
 def checa_tickets(ficha):
     t = ler_csv("tickets/tickets_ti.csv")
     if len(t) != 500:
@@ -408,6 +417,7 @@ def relatorio():
     out += ["## Verificações\n", "- Documentos: front matter completo, sem marcação `{{ }}`, 300 a 900 palavras, rodapé fictício, pares de versão.",
             "- Financeiro: aritmética de todos os trimestres e receita líquida de 2025 igual à ficha.",
             "- Funcionários: todo `gestor_id` existe; e-mails no domínio fictício; headcount igual ao da ficha.",
+            "- Controle de acesso: matriz de perfis cobre todos os níveis dos documentos; 20 itens de acesso coerentes com `pode_ver(perfil, fonte)`.",
             "- JSONL válidos; sem perguntas duplicadas; nenhum `fato_id` no treino e no teste; todo `fonte_doc` existe.",
             "- Perguntas de fatos `rag` aparecem só como `com_contexto`; avaliação sem repetir treino/teste; tickets coerentes com o SLA; sem arquivos > 5 MB nem segredos.\n"]
     out += ["## Contagens por arquivo\n", tabela({k: f"{v} KB" for k, v in s["arquivos"].items()}, "Arquivo", "Tamanho")]
@@ -436,6 +446,9 @@ def relatorio():
     if avisos_info:
         out += ["\n> **Nota:** " + n + "\n" for n in avisos_info]
     out += ["\n### Avaliação\n", tabela(s["avaliacao"]["tipo"], "Tipo", "Perguntas")]
+    ac = s["acesso"]
+    out += ["\n### Controle de acesso (`avaliacao/perguntas_acesso.jsonl`)\n", tabela({"Itens": ac["itens"], "negar": ac["negar"], "responder": ac["responder"],
+            "Pares espelho": ac["pares_espelho"], "Itens sobre CSVs restritos": ac["csv_restritos"], "Perguntas públicas (colaborador)": ac["publicas"]}, "Métrica", "Valor")]
     tk = s["tickets"]
     out += ["\n### Tickets de TI\n", tabela(tk["categoria"], "Categoria", "Tickets"), "\n", tabela(tk["prioridade"], "Prioridade", "Tickets"), "\n",
             tabela(tk["sentimento"], "Sentimento", "Tickets"), "\n", tabela(tk["fila"], "Fila", "Tickets"), "\n", tabela(tk["tipo"], "Tipo", "Tickets")]
@@ -459,7 +472,7 @@ def atualizar_readme():
         linhas.append(f"| &nbsp;&nbsp;↳ `{tp}` | {q['tipo_treino'].get(tp, 0) + q['tipo_teste'].get(tp, 0)} |")
     mm = s["memorizacao"]
     linhas += [f"| Pares de memorização (`qa_memorizacao_*`) | {mm['treino'] + mm['teste']} ({mm['treino']} + {mm['teste']}) |"]
-    linhas += [f"| Perguntas de avaliação | {s['avaliacao']['total']} |", f"| Tickets de TI | {s['tickets']['total']} |"]
+    linhas += [f"| Perguntas de avaliação | {s['avaliacao']['total']} |", f"| Itens de avaliação de acesso | {s['acesso']['itens']} ({s['acesso']['negar']} negar, {s['acesso']['responder']} responder) |", f"| Tickets de TI | {s['tickets']['total']} |"]
     novo = "<!-- STATS:START -->\n" + "\n".join(linhas) + "\n<!-- STATS:END -->"
     readme = (RAIZ / "README.md").read_text(encoding="utf-8")
     readme = re.sub(r"<!-- STATS:START -->.*?<!-- STATS:END -->", lambda _m: novo, readme, flags=re.S)
@@ -474,6 +487,7 @@ def main():
     perguntas = checa_qa(fatos)
     checa_memorizacao(fatos, perguntas)
     checa_avaliacao(perguntas)
+    checa_acesso()
     checa_tickets(ficha)
     checa_repositorio()
     relatorio()

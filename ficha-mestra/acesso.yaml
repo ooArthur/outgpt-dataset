@@ -1,0 +1,17 @@
+# Matriz de controle de acesso (governança). Fonte única para o filtro de documentos antes do RAG.
+# O controle é da PLATAFORMA (filtro dos trechos recuperados), não do modelo: o modelo não sabe quem pergunta.
+perfis:
+  colaborador: [publico]
+  gestor:      [publico, gestores]
+  rh:          [publico, gestores, rh_restrito]
+  financeiro:  [publico, gestores, financeiro_restrito]
+  diretoria:   [publico, gestores, rh_restrito, financeiro_restrito]
+mensagem_negado: "Essa informação é de acesso restrito. Para saber mais, fale com {area}."
+
+# Sensibilidade dos CSVs que não são fonte de nenhum fato (os demais são deduzidos dos fatos em fatos.jsonl;
+# quando houver os dois, os valores precisam concordar — o teste de acesso confere).
+fontes_csv:
+  data/funcionarios.csv: publico
+  data/catalogo_servicos.csv: publico
+  data/financeiro_trimestral.csv: financeiro_restrito
+  data/orcamento_departamentos_2026.csv: gestores
